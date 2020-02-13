@@ -67,7 +67,16 @@ class Cms extends Controller
      * All urls are redirected trough here to view the page
      * @param  Request $request
      */
-    public function viewPage(Request $request) {
+    public function viewPage(Request $request, $slug) {
+      $oPage = Page::where('slug', $slug)->first();
+      if (is_null($oPage)) {
 
+      }
+      else {
+        return view("cms/page", [
+          'title' => $oPage->title,
+          'content' => $oPage->content,
+        ]);
+      }
     }
 }
