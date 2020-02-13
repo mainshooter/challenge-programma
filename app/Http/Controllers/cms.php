@@ -13,10 +13,35 @@ class Cms extends Controller
      * @param  Request $request
      */
     public function index(Request $request) {
-      $Pages = Page::all();
+      $aPages = Page::all();
       return view("cms/index", [
-        "Pages" => $Pages,
+        "Pages" => $aPages,
       ]);
+    }
+
+    public function editPage(Request $request, $iId) {
+      $oPage = Page::find($iId);
+      if (is_null($oPage)) {
+        return redirect()->route("cms.index");
+      }
+      return view("cms/edit", [
+        "oPage" => $oPage,
+      ]);
+    }
+
+    public function edit(Request $request, $iId) {
+      $oPage = Page::find($iId);
+      if (is_null($oPage)) {
+        return redirect()->route("cms.index");
+      }
+
+      $oPage->title = $request->page_title;
+      $oPage->slug = $request->url_slug;
+      $oPage->content = $request->page_content;
+
+      $oPage->save();
+
+      return redirect()->route("cms.index");
     }
 
     /**
