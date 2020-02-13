@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Page;
 
 class Cms extends Controller
@@ -31,7 +32,35 @@ class Cms extends Controller
      * @param  Request $request
      */
     public function create(Request $request) {
+      $sTitle = $request->page_title;
+      $sSlug = $request->url_slug;
+      $sContent = $request->page_content;
+      // replace non letter or digits by -
+      $sSlug = preg_replace('~[^\pL\d]+~u', '-', $sSlug);
 
+      // transliterate
+      $sSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $sSlug);
+
+      // remove unwanted characters
+      $sSlug = preg_replace('~[^-\w]+~', '', $sSlug);
+
+      // trim
+      $sSlug = trim($sSlug, '-');
+
+      // remove duplicate -
+      $sSlug = preg_replace('~-+~', '-', $sSlug);
+
+      // lowercase
+      $sSlug = strtolower($sSlug);
+
+      $oPage = new Page();
+      $oPage->title = $sTitle;
+      $oPage->slug = $sSlug;
+      $oPage->content = $sContent;
+
+      $oPage->save();
+
+      return redirect()->route("cms.index");
     }
 
     /**

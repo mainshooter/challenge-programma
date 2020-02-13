@@ -19,6 +19,7 @@ class Cms extends Migration
           $table->string('slug');
           $table->text('content');
           $table->date("last_update");
+          $table->date("created_at");
         });
     }
 

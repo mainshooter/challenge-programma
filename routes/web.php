@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('cms')->group(function() {
+  Route::get('/', "Cms@index")->name("cms.index");
+  Route::get('create', "Cms@createPage")->name("cms.create");
+  Route::post('create', "Cms@create")->name("cms.create.post");
+});
