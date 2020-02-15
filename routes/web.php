@@ -19,6 +19,7 @@ Route::prefix('cms')->group(function() {
   Route::get('/', "Cms@index")->name("cms.index");
   Route::get('create', "Cms@createPage")->name("cms.create");
   Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
+  Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
 
   Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
   Route::post('create', "Cms@create")->name("cms.create.post");

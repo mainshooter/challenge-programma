@@ -15,7 +15,8 @@
         <td>{{$Page->title}}</td>
         <td>{{$Page->last_update}}</td>
         <td>
-          <a href="{{ route('cms.edit', 1) }}">Edit page</a>
+          <a href="{{ route('cms.edit', $Page->page_id) }}">Edit page</a>
+          <a href="{{ route('cms.delete', $Page->page_id) }}">Delete page</a>
         </td>
       </tr>
     @endforeach

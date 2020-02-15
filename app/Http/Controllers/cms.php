@@ -19,6 +19,11 @@ class Cms extends Controller
       ]);
     }
 
+    /**
+     * Presents the view to edit the page
+     * @param  Request $request [description]
+     * @param  int  $iId        The id of the page you want to edit
+     */
     public function editPage(Request $request, $iId) {
       $oPage = Page::find($iId);
       if (is_null($oPage)) {
@@ -29,6 +34,11 @@ class Cms extends Controller
       ]);
     }
 
+    /**
+     * Updates the changes to the page based on new edits
+     * @param  Request $request [description]
+     * @param  int  $iId        id of the page
+     */
     public function edit(Request $request, $iId) {
       $oPage = Page::find($iId);
       if (is_null($oPage)) {
@@ -85,6 +95,15 @@ class Cms extends Controller
 
       $oPage->save();
 
+      return redirect()->route("cms.index");
+    }
+
+    public function delete(Request $request, $iId) {
+      $oPage = Page::find($iId);
+
+      if (!is_null($oPage)) {
+        $oPage->delete();
+      }
       return redirect()->route("cms.index");
     }
 
