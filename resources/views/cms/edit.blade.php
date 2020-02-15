@@ -37,8 +37,6 @@
   let form = document.querySelector("form");
   form.addEventListener('submit', () => {
     let pageContentInput = document.querySelector("input[name=page_content]");
-    let quil = document.querySelector("#editor");
-    pageContentInput.value = quil.innerHTML;
-    console.log(pageContentInput.value);
+    pageContentInput.value = document.querySelector(".ql-editor").innerHTML;
   });
 </script>
