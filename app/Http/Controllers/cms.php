@@ -46,7 +46,7 @@ class Cms extends Controller
       }
 
       $oPage->title = $request->page_title;
-      $oPage->slug = $request->url_slug;
+      $oPage->slug = slugify($request->url_slug);
       $oPage->content = $request->page_content;
 
       $oPage->save();
@@ -69,24 +69,9 @@ class Cms extends Controller
     public function create(Request $request) {
       $sTitle = $request->page_title;
       $sSlug = $request->url_slug;
-      $sContent = $request->page_content;
+      $sContent = slugify($request->page_content);
       // replace non letter or digits by -
-      $sSlug = preg_replace('~[^\pL\d]+~u', '-', $sSlug);
 
-      // transliterate
-      $sSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $sSlug);
-
-      // remove unwanted characters
-      $sSlug = preg_replace('~[^-\w]+~', '', $sSlug);
-
-      // trim
-      $sSlug = trim($sSlug, '-');
-
-      // remove duplicate -
-      $sSlug = preg_replace('~-+~', '-', $sSlug);
-
-      // lowercase
-      $sSlug = strtolower($sSlug);
 
       $oPage = new Page();
       $oPage->title = $sTitle;
@@ -114,7 +99,7 @@ class Cms extends Controller
     public function viewPage(Request $request, $slug) {
       $oPage = Page::where('slug', $slug)->first();
       if (is_null($oPage)) {
-
+        abort(404);
       }
       else {
         return view("cms/page", [
