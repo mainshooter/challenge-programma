@@ -1,0 +1,53 @@
+.carousel-inner img {
+    width: 800px;
+    height: 400px;
+    align-items: center;
+    margin: auto;
+
+}
+
+.div {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.cards{
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.cards h2{
+
+    margin-bottom: 20px;
+}
+
+.card{
+
+    text-align: center;
+    width: 288px;
+    height: 171px;
+    min-width: 288px;
+    min-height: 171px;
+    margin: 0 auto;
+}
+
+.row{
+    display: table;
+    width: 100%;
+}
+
+.carousel {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 800px;
+    border: 1px solid black;
+}
+
+.carousel-indicators li {
+    background-color: gray;
+}
+
+.container {
+    align-items: center;
+}
