@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/homepage.css') }}" >
@@ -49,7 +49,7 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            <div class="col-sm-auto">
+            <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Bedrijf naam</h5>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto">
+            <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Bedrijf naam</h5>
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-auto">
+            <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Bedrijf naam</h5>
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-auto">
+            <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Bedrijf naam</h5>

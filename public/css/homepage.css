@@ -18,12 +18,10 @@
 }
 
 .cards h2{
-
     margin-bottom: 20px;
 }
 
 .card{
-
     text-align: center;
     width: 288px;
     height: 171px;
@@ -33,13 +31,15 @@
 }
 
 .row{
-    display: table;
     width: 100%;
 }
 
+.body{
+ width: 100vw;
+}
+
 .carousel {
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0;
     width: 800px;
     border: 1px solid black;
 }
