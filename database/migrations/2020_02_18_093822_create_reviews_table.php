@@ -13,8 +13,12 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('review', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name_company');
+            $table->string('name_reviewer');
+            $table->MediumText('body');
+            $table->integer('rating');
             $table->timestamps();
         });
     }

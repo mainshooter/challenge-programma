@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
+
 class HomepageController extends Controller
 {
     public function index(){
@@ -10,6 +12,8 @@ class HomepageController extends Controller
         $thirdimage = asset('images/visitekaart.jpg');
         $fourthimage = asset('images/visitekaart.jpg');
 
-        return view('homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage]);
+        $review = Review::all()->random(4);
+
+        return view('homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage, 'reviews' => $review]);
     }
 }

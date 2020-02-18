@@ -53,44 +53,20 @@
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bedrijf naam</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Naam van reviewer</h6>
-                        <p class="card-text">Voorbeeld van wat voor een inhoud een review kan hebben rewwre ww  wewr ewerw erwer .</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bedrijf naam</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Naam van reviewer</h6>
-                        <p class="card-text">Voorbeeld van wat voor een inhoud een review kan hebben rewwre ww  wewr ewerw erwer .</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bedrijf naam</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Naam van reviewer</h6>
-                        <p class="card-text">Voorbeeld van wat voor een inhoud een review kan hebben rewwre ww  wewr ewerw erwer.</p>
+            @foreach($reviews as $review)
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$review->name_company}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$review->name_reviewer}}</h6>
+                            <p class="card-text">{{$review->body}}</p>
+                            <p class="card-text">{{$review->rating}} / 10</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bedrijf naam</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Naam van reviewer</h6>
-                        <p class="card-text">Voorbeeld van wat voor een inhoud een review kan hebben rewwre ww  wewr ewerw erwer .</p>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-2"></div>
         </div>
         </div>
