@@ -9,21 +9,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/nav.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
+
     @yield ('head')
 
     <title>Homepage</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #ca1830">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
             <!-- MainLogo leftside -->
             <div class="navbar-brand">
-                <img class="CP" src="../images/LogoCP.png">
+                <img class="CP" src="/images/LogoCP.png">
             </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,17 +63,15 @@
                 </ul>
             </div>
         </div>
-
-
-</nav>
-        <div class="row">
-            <div class="col-2 sidebar"></div>
-            <div class="col-8 main">
-                <div class="mh-100">
-                    @yield ('content')
-                </div>
-            </div>
-            <div class="col-2 sidebar"></div>
-        </div>
-</body>
+      </nav>
+      <div class="row">
+          <div class="col-2 sidebar"></div>
+          <div class="col-8 main">
+              <div class="mh-100">
+                  @yield ('content')
+              </div>
+          </div>
+          <div class="col-2 sidebar"></div>
+      </div>
+    </body>
 </html>
