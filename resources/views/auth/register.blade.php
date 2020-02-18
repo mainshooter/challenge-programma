@@ -9,17 +9,19 @@
 
                 <div class="card-body">
 
-                    <div id="tab" class="btn-group btn-group-justified" data-toggle="buttons">
-                        <a href="#students" class="btn btn-default" data-toggle="tab">
-                          <input type="radio" /> Studenten
-                        </a>
-                        <a href="#business" class="btn btn-default" data-toggle="tab">
-                          <input type="radio" /> Bedrijven
-                        </a>
-                    </div>
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#students" role="tab" aria-controls="One" aria-selected="true">Studenten</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#business" role="tab" aria-controls="Two" aria-selected="false">Bedrijven</a>
+                        </li>
+                    </ul>
+
                     <div class="tab-content">
-                        <div class="tab-pane" id="students">
+                        <div class="tab-pane active" id="students" >
                             <h4>Studenten registratie</h4> 
+                            
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
         
