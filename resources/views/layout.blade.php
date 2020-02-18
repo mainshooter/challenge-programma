@@ -37,7 +37,7 @@
 
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="{{route('home')}}">HOME</a>
                     </li>
 
                     <li class="nav-item">
@@ -61,22 +61,8 @@
                     </li>
 
                 </ul>
-            </div>
-        </div>
-      </nav>
-      <div class="row">
-          <div class="col-2 sidebar"></div>
-          <div class="col-8 main">
-              <div class="mh-100">
-                  @yield ('content')
-              </div>
-          </div>
-          <div class="col-2 sidebar"></div>
-      </div>
-    </body>
-</html>
 
-                <!-- Right Side Of Navbar -->
+                {{-- <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
@@ -96,8 +82,8 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
@@ -107,4 +93,19 @@
                             </div>
                         </li>
                     @endguest
-                </ul>
+                </ul> --}}
+            </div>
+        </div>
+      </nav>
+      <div class="row">
+          <div class="col-2 sidebar"></div>
+          <div class="col-8 main">
+              <div class="mh-100">
+                  @yield ('content')
+              </div>
+          </div>
+          <div class="col-2 sidebar"></div>
+      </div>
+    </body>
+</html>
+
