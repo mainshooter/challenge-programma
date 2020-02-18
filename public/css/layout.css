@@ -1,8 +1,8 @@
-.container {
+.YieldedArea {
     display: flex;
     width: 1500px;
     border: 1px solid #220203;
-    position: absolute;
+    position: relative;
     background: lightgrey;
     top: 52px;
     bottom: 0;
@@ -16,8 +16,12 @@
 
 .linkedin {
     margin-right: 20px;
-    margin-top: 10px;
+    margin-top: 0px;
     width: 30px;
     height: 30px;
+}
+
+.main {
+    border: 1px solid black;
 }
 
