@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#students" role="tab" aria-controls="One" aria-selected="true">Studenten</a>
                         </li>
