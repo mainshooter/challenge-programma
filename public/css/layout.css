@@ -15,3 +15,8 @@ html, body {
     width: 50px;
     height: 50px;
 }
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
