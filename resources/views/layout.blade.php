@@ -37,7 +37,7 @@
 
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="{{ route('home') }}">HOME</a>
                     </li>
 
                     <li class="nav-item">
@@ -53,7 +53,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">BEHEER</a>
+                        <a class="nav-link" href="{{ route('login') }}">BEHEER</a>
                     </li>
 
                     <li class="nav-item">
