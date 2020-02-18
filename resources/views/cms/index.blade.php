@@ -19,8 +19,9 @@
         <td>{{$Page->title}}</td>
         <td>{{$Page->last_update}}</td>
         <td>
-          <a href="{{ route('cms.edit', $Page->page_id) }}" class="btn btn-secondary">Edit</a>
-          <a href="{{ route('cms.delete', $Page->page_id) }}" class="btn btn-danger">Delete</a>
+          <a href="{{ route('cms.edit', $Page->page_id) }}" class="btn btn-secondary">Bewerk</a>
+          <a href="{{ route('cms.delete', $Page->page_id) }}" class="btn btn-danger">Verwijder</a>
+          <a target="_blank" href="{{ route('cms.view', $Page->slug) }}" class="btn btn-link">Bekijk</a>
         </td>
       </tr>
     @endforeach

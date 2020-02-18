@@ -25,4 +25,4 @@ Route::prefix('cms')->group(function() {
   Route::post('create', "Cms@create")->name("cms.create.post");
 });
 
-Route::get("page/{slug}", "Cms@viewPage");
+Route::get("page/{slug}", "Cms@viewPage")->name('cms.view');
