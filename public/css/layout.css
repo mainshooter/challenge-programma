@@ -5,7 +5,6 @@ html, body {
 .main {
     min-height: 100%;
     overflow: hidden;
-    margin: 30px 0;
 }
 
 .sidebar {
