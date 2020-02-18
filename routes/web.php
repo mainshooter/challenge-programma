@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomepageController@Show');
+Route::get('/', 'HomepageController@index');
 
-Route::get('/homepage', 'HomepageController@Show');
+Route::get('/homepage', 'HomepageController@index');
 
