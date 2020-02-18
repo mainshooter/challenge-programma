@@ -1,27 +1,19 @@
-.YieldedArea {
-    display: flex;
-    width: 1500px;
-    border: 1px solid #220203;
-    position: relative;
+html, body {
+    height: 100%;
+}
+
+.main {
+    border: 1px solid black;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.sidebar {
     background: lightgrey;
-    top: 52px;
-    bottom: 0;
-    margin-left: 350px;
 }
 
 .CP {
     width: 50px;
     height: 50px;
-}
-
-.linkedin {
-    margin-right: 20px;
-    margin-top: 0px;
-    width: 30px;
-    height: 30px;
-}
-
-.main {
-    border: 1px solid black;
 }
 
