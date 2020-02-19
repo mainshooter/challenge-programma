@@ -1,14 +1,17 @@
 @extends('layout')
 
 @section('content')
+@component('component/formError')
+@endcomponent
   <a href='{{ route("cms.index") }}'>
     <button type="button" class="btn btn-primary">Terug</button>
   </a>
+
   <form class="form" method="post">
     @csrf
     <div class="form-group">
       <label>Title</label>
-      <input type="text" name="page_title" class="form-validation form-control" required>
+      <input type="text" name="page_title" class="form-validation form-control">
     </div>
 
     <div class="form-group">

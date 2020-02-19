@@ -40,6 +40,12 @@ class Cms extends Controller
      * @param  int  $iId        id of the page
      */
     public function edit(Request $request, $iId) {
+      $validateData = $request->validate([
+        'page_title' => 'required|max:255',
+        'url_slug' => 'required|max:100',
+        'page_content' => 'required',
+      ]);
+      
       $oPage = Page::find($iId);
       if (is_null($oPage)) {
         return redirect()->route("cms.index");
@@ -67,6 +73,11 @@ class Cms extends Controller
      * @param  Request $request
      */
     public function create(Request $request) {
+      $validateData = $request->validate([
+        'page_title' => 'required|max:255',
+        'url_slug' => 'required|max:100',
+        'page_content' => 'required',
+      ]);
       $sTitle = $request->page_title;
       $sSlug = $request->url_slug;
       $sContent = slugify($request->page_content);
