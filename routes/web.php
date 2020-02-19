@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('admin')->group(function() {
+  Route::prefix("event")->group(function() {
+    Route::get('/', 'EventController@index');
+  });
+});
