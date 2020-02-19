@@ -26,7 +26,7 @@
 
     <input type="hidden" name="page_content">
 
-    <input type="submit" name="" class="btn btn-primary">
+    <input type="submit" name="" value="Opslaan" class="btn btn-primary">
   </form>
 
   <!-- Main Quill library -->
