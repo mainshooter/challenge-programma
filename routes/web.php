@@ -16,6 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('home', 'HomeController@index')->name('home');
+// Route::get('/', 'Auth\RegisterController@register_global')->name('register_global');
+// Route::get('/', 'Auth\RegisterController@register_students')->name('register_students');
+
+// custom auth routes
+Route::get('global_register', 'Auth\RegisterController@showGlobalRegisterForm')->name('global_register');
+Route::get('register_students', 'Auth\RegisterController@showStudentRegisterForm')->name('register_students');
 
 Auth::routes();
 
