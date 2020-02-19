@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+@component('component/formError')
+@endcomponent
   <a href='{{ route("cms.index") }}'>
     <button type="button" class="btn btn-primary">Terug</button>
   </a>
