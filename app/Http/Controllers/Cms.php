@@ -45,7 +45,7 @@ class Cms extends Controller
         'url_slug' => 'required|max:100',
         'page_content' => 'required',
       ]);
-      
+
       $oPage = Page::find($iId);
       if (is_null($oPage)) {
         return redirect()->route("cms.index");
@@ -94,6 +94,11 @@ class Cms extends Controller
       return redirect()->route("cms.index");
     }
 
+    /**
+     * Deletes the page if it exists
+     * @param  Request $request
+     * @param  int  $iId        Id of the page
+     */
     public function delete(Request $request, $iId) {
       $oPage = Page::find($iId);
 
