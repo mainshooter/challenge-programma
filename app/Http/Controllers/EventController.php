@@ -17,4 +17,12 @@ class EventController extends Controller
         "aEvents" => $aEvents,
       ]);
     }
+
+    /**
+     * Presents the form to add a event
+     * @param  Request $request
+     */
+    public function createPage(Request $request) {
+      return view("event/create");
+    }
 }
