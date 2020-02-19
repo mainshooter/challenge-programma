@@ -13,7 +13,7 @@ class CmsTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testCreate()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/cms');
@@ -24,5 +24,33 @@ class CmsTest extends DuskTestCase
             $browser->click("input[type=submit]");
             $browser->assertSee("Pagina toevoegen");
         });
+    }
+
+    public function testEdit() {
+      $this->browse(function(Browser $browser) {
+        $browser->visit('/cms');
+        $browser->click("a.btn.btn-secondary");
+        $sCurrentTitle = $browser->value('input[name=page_title]');
+        $sNewTitle = $sCurrentTitle . "2";
+        $browser->value('input[name=page_title]', $sNewTitle);
+        $browser->click("input[type=submit]");
+        $browser->assertSee($sNewTitle);
+      });
+    }
+
+    public function testView() {
+      $this->browse(function(Browser $browser) {
+        $browser->visit('/cms');
+        $browser->click("a.btn.btn-link");
+        $browser->assertSee("Test pagina2");
+      });
+    }
+
+    public function testDelete() {
+      $this->browse(function(Browser $browser) {
+        $browser->visit("/cms");
+        $browser->click("a.btn.btn-danger");
+        $browser->assertSee("Pagina toevoegen");
+      });
     }
 }

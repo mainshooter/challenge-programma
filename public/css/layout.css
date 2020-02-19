@@ -5,8 +5,11 @@ html, body {
 .main {
     min-height: 100%;
     overflow: hidden;
+    margin-top: 2em;
 }
-
+.btn {
+  margin: 0.3em 0;
+}
 .sidebar {
     background: lightgrey;
 }
