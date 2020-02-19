@@ -5,35 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registreren') }}</div>
+                <div class="card-header">{{ __('Registreren Student') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        {{-- student/company --}}
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Registreren als') }}</label>
-
-                            <div class="col-md-6">
-                                <ul class="nav " role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#students" role="tab" aria-controls="One" aria-selected="true">Studenten</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#company" role="tab" aria-controls="Two" aria-selected="false">Bedrijven</a>
-                                    </li>
-                                </ul>
-                                {{-- <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
-                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
-                            </div>
-                        </div>
 
                         {{-- voornaam --}}
                         <div class="form-group row">
@@ -57,7 +33,7 @@
 
                             <div class="col-md-6">
                                 <input id="infixname" type="text" class="form-control @error('infixname') is-invalid @enderror" 
-                                    name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" autofocus>
+                                    name="infixname" value="{{ old('infixname') }}" autocomplete="infixname" autofocus>
 
                                 @error('infixname')
                                     <span class="invalid-feedback" role="alert">
@@ -83,6 +59,23 @@
                                 @enderror
                             </div>
                         </div>
+
+                        {{-- telefoon --}}
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer') }}</label>
+
+                            <div class="col-md-3">
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" 
+                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus
+                                    placeholder="+31 612 34 56 78">
+
+                                @error('lastname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         
                         {{-- leerjaar --}}
                         <div class="form-group row">
@@ -100,6 +93,7 @@
                             </div>
                         </div>
 
+                        {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 

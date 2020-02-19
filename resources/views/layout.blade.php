@@ -72,9 +72,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                         </li>
-                        @if (Route::has('register'))
+                        @if (Route::has('global_register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registreren') }}</a>
+                                <a class="nav-link" href="{{ route('global_register') }}">{{ __('Registreren') }}</a>
                             </li>
                         @endif
                     @else
