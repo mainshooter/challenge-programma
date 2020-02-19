@@ -10,8 +10,9 @@
         <tr>
           <th>#</th>
           <th>Naam</th>
-          <th>Datum</th>
+          <th>Start op</th>
           <th>Adres</th>
+          <th>Postcode</th>
           <th>Punten</th>
           <th></th>
         </tr>
@@ -21,8 +22,9 @@
           <tr>
             <td>{{$oEvent->id}}</td>
             <td>{{$oEvent->name}}</td>
-            <td>{{$oEvent->date}}</td>
+            <td>{{$oEvent->event_start_date_time}}</td>
             <td>{{$oEvent->street}} {{$oEvent->house_number}}, {{$oEvent->city}}</td>
+            <td>{{$oEvent->zipcode}}</td>
             <td>{{$oEvent->points}}</td>
             <td>
               <a href="#" class="btn btn-primary">Bewerk</a>

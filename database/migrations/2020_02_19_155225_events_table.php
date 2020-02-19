@@ -21,7 +21,8 @@ class EventsTable extends Migration
           $table->string('street');
           $table->string('city');
           $table->integer("house_number");
-          $table->string("house_number_addition");
+          $table->string("house_number_addition")->nullable();
+          $table->string('zipcode');
           $table->dateTime('event_start_date_time');
           $table->dateTime('event_end_date_time');
         });
