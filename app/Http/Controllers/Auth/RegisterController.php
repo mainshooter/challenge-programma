@@ -56,6 +56,11 @@ class RegisterController extends Controller
         return view('auth\register\register_students');
     }
 
+    public function showCompanyRegisterForm()
+    {
+        return view('auth\register\register_company');
+    }
+
 
     /**
      * Get a validator for an incoming registration request.

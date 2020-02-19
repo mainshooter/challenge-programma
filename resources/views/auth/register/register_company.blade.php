@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registreren Student') }}</div>
+                <div class="card-header">{{ __('Registreren Bedrijf') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        {{-- voornaam --}}
+                        {{-- bedrijfsnaam --}}
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam *') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Bedrijfsnaam *') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
@@ -27,15 +27,15 @@
                             </div>
                         </div>
 
-                        {{-- tussenvoegsel --}}
+                        {{-- adres --}}
                         <div class="form-group row">
-                            <label for="infixname" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam & Huisnummer *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="infixname" type="text" class="form-control @error('infixname') is-invalid @enderror" 
-                                    name="infixname" value="{{ old('infixname') }}" autocomplete="infixname" autofocus>
+                                <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" 
+                                name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
-                                @error('infixname')
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,16 +43,15 @@
                             </div>
                         </div>
 
-
-                        {{-- achternaam --}}
+                        {{-- postcode --}}
                         <div class="form-group row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam *') }}</label>
+                            <label for="postal-code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" 
-                                    name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+                                <input id="postal-code" type="text" class="form-control @error('postal-code') is-invalid @enderror" 
+                                    name="postal-code" value="{{ old('postal-code') }}" required autocomplete="postal-code" autofocus>
 
-                                @error('lastname')
+                                @error('postal-code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -77,26 +76,6 @@
                             </div>
                         </div>
                         
-                        {{-- leerjaar --}}
-                        <div class="form-group row">
-                            <label for="schoolyear" class="col-md-4 col-form-label text-md-right">{{ __('Studiejaar') }}</label>
-
-                            <div class="col-md-2">
-                                <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror" 
-                                    name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
-                            </div>
-                        </div>
-
-                        {{-- certificaat --}}
-                        {{-- <div class="form-group row">
-                            <label for="cert-checkbox" class="col-md-4 col-form-label text-md-right">{{ __('Certificaat') }}</label>
-
-                            <div class="col-md-2">
-                                <input id="cert-checkbox" type="checkbox" class="align-bottom @error('cert-checkbox') is-invalid @enderror" 
-                                    name="cert-checkbox" value="{{ old('cert-checkbox') }}"  >
-                            </div>
-                        </div> --}}
-
                         {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres *') }}</label>

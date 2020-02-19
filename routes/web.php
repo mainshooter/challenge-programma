@@ -22,6 +22,7 @@ Route::get('home', 'HomeController@index')->name('home');
 // custom auth routes
 Route::get('global_register', 'Auth\RegisterController@showGlobalRegisterForm')->name('global_register');
 Route::get('register_students', 'Auth\RegisterController@showStudentRegisterForm')->name('register_students');
+Route::get('register_company', 'Auth\RegisterController@showCompanyRegisterForm')->name('register_company');
 
 Auth::routes();
 
