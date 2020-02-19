@@ -69,7 +69,7 @@
                                     name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus
                                     placeholder="+31 612 34 56 78">
 
-                                @error('lastname')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -84,12 +84,16 @@
                             <div class="col-md-2">
                                 <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror" 
                                     name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
-                        
-                                @error('schoolyear')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- certificaat --}}
+                        <div class="form-group row">
+                            <label for="cert-checkbox" class="col-md-4 col-form-label text-md-right">{{ __('Certificaat') }}</label>
+
+                            <div class="col-md-2 form-check">
+                                <input id="cert-checkbox" type="checkbox" class="form-check-input @error('cert-checkbox') is-invalid @enderror" 
+                                    name="cert-checkbox" value="{{ old('cert-checkbox') }}"  >
                             </div>
                         </div>
 
