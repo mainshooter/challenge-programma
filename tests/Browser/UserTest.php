@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class User extends DuskTestCase
+class UserTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -16,8 +16,8 @@ class User extends DuskTestCase
     public function testExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('/admin/user')
+                    ->assertSee('Name');
         });
     }
 }
