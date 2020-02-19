@@ -37,13 +37,14 @@
         <label>Plaats</label>
         <input type="text" name="event_city" class="form-control">
       </div>
-      <label>Huisnummer + toevoeging</label>
-      <div class="col-8">
-        <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control col-8">
-        <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control col-4">
-
-      </div>
-      <div class="col-4">
+      <div class="row">
+        <label>Huisnummer + toevoeging</label>
+        <div class="col-8">
+          <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control col-8">
+        </div>
+        <div class="col-4">
+          <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control">
+        </div>
       </div>
       <div class="form-group">
         <label>Postcode</label>
