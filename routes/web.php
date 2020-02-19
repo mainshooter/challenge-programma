@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix("admin")->group(function() {
-  Route::get("user", "UserController@index")->name("user.index");
+Route::prefix("admin/user")->group(function() {
+  Route::get("/", "UserController@index")->name("user.index");
 });
