@@ -10,7 +10,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     @yield ('head')
 
@@ -18,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #ca1830">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
             <!-- MainLogo leftside -->
             <div class="navbar-brand">
@@ -62,17 +61,15 @@
                 </ul>
             </div>
         </div>
-
-
-</nav>
-        <div class="row">
-            <div class="col-2 sidebar"></div>
-            <div class="col-8 main">
-                <div class="mh-100">
-                    @yield ('content')
-                </div>
-            </div>
-            <div class="col-2 sidebar"></div>
-        </div>
-</body>
+      </nav>
+      <div class="row">
+          <div class="col-2 sidebar"></div>
+          <div class="col-8 main">
+              <div class="mh-100">
+                  @yield ('content')
+              </div>
+          </div>
+          <div class="col-2 sidebar"></div>
+      </div>
+    </body>
 </html>

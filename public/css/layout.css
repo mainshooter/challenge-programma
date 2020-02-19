@@ -1,17 +1,20 @@
 html, body {
     height: 100%;
 }
-
+.navbar {
+  background-color: #ca1830
+}
 .main {
     min-height: 100%;
-    overflow: hidden;
     margin-top: 2em;
 }
-.btn {
-  margin: 0.3em 0;
-}
+
 .sidebar {
     background: lightgrey;
+}
+
+.btn {
+  margin: 0.3em 0;
 }
 
 .CP {
