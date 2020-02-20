@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function() {
   Route::prefix("event")->group(function() {
-    Route::get('/', 'EventController@index');
-    Route::get('create', 'EventController@createPage');
+    Route::get('/', 'EventController@index')->name('event.index');
+    Route::get('create', 'EventController@createPage')->name('event.create');
+    Route::post('create', 'EventController@create');
   });
 });
