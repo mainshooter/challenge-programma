@@ -5,6 +5,9 @@
 <div class="col-12">
   @component('component/formError')
   @endcomponent
+
+  <a href="{{ route('event.index') }}" class="btn btn-primary">Terug</a>
+
   <h1>Event toevoegen</h1>
   <form method="post" class="row">
     @csrf

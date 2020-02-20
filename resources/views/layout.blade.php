@@ -64,12 +64,14 @@
             </div>
         </div>
       </nav>
-      <div class="row">
-          <div class="col-2 sidebar"></div>
-          <div class="col-8 main">
-                  @yield ('content')
-          </div>
-          <div class="col-2 sidebar"></div>
+      <div class="container">
+        <div class="row">
+            <div class="col-2 sidebar"></div>
+            <div class="col-8 main">
+                    @yield ('content')
+            </div>
+            <div class="col-2 sidebar"></div>
+        </div>
       </div>
     </body>
 </html>
