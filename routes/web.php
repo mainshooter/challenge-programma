@@ -24,5 +24,4 @@ Route::prefix('cms')->group(function() {
   Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
   Route::post('create', "Cms@create")->name("cms.create.post");
 });
-
-Route::get("page/{slug}", "Cms@viewPage")->name('cms.view');
+Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
