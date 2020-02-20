@@ -1,15 +1,16 @@
-html, body {
+html {
     height: 100%;
+    box-sizing: border-box;
 }
-.navbar {
-  background-color: #ca1830
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
 }
-.main {
-    min-height: 100%;
-}
-
-.sidebar {
-    background: lightgrey;
+.navbar{
+  background-color: #ca1830;
+  margin-bottom: 10px;
+    align-items: center;
 }
 
 .CP {
@@ -17,7 +18,72 @@ html, body {
     height: 50px;
 }
 
-.row {
-    margin-right: 0;
-    margin-left: 0;
+.navbar-collapse{
+    justify-content: center;
 }
+
+.content-container{
+    margin: 0 auto;
+    min-height: 85vh;
+    align-content: center;
+}
+
+
+.top-text{
+    color:#fff;
+    font-size:16px;
+    text-transform:uppercase;
+    margin-top:5px;
+    letter-spacing:2px;
+    text-align: center;
+}
+
+.footer
+{
+    padding: 1rem;
+    background-color:#26272b;
+    font-size:15px;
+    line-height:24px;
+    color:#737373;
+}
+
+
+.footer hr
+{
+    border-top-color:#bbb;
+    opacity:0.5
+}
+
+.footer h6
+{
+    color:#fff;
+    font-size:16px;
+    text-transform:uppercase;
+    margin-top:5px;
+    letter-spacing:2px
+}
+
+.footer a
+{
+    color:#737373;
+}
+
+.footer a:hover
+{
+    color:#3366cc;
+    text-decoration:none;
+}
+
+.footer-links
+{
+    padding-left:0;
+    list-style:none
+}
+
+
+.copyright-text
+{
+    margin:0
+}
+
+

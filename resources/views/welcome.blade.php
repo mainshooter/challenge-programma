@@ -2,6 +2,11 @@
 
 @section('content')
 
-<h1>Test voor container</h1>
-    
+    <div class="container" style="align-content: center;">
+        <h1>Test voor container</h1>
+
+    </div>
+
+
+
 @endsection
