@@ -13,7 +13,7 @@ class UserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testOverview()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user')
