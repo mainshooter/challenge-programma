@@ -21,11 +21,11 @@
       </div>
       <div class="form-group">
         <label>Start datum en tijd</label>
-        <input name="event_start_date_time" size="16" type="text" readonly class="form_datetime">
+        <input name="event_start_date_time" type="text" readonly class="form-control form_datetime">
       </div>
       <div class="form-group">
         <label>Eind datum en tijd</label>
-        <input name="event_end_date_time" size="16" type="text" readonly class="form_datetime">
+        <input name="event_end_date_time" type="text" readonly class="form-control form_datetime">
       </div>
     </div>
     <div class="col-6">
@@ -38,9 +38,11 @@
         <input type="text" name="event_city" class="form-control">
       </div>
       <div class="row">
-        <label>Huisnummer + toevoeging</label>
+        <div class="col-12">
+          <label>Huisnummer + toevoeging</label>
+        </div>
         <div class="col-8">
-          <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control col-8">
+          <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control">
         </div>
         <div class="col-4">
           <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control">
@@ -57,10 +59,13 @@
 
 @endsection
 @section('head')
-<script  defer src="{{ asset('js/moment.js') }}"></script>
-<script defer src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('css/datetimepicker.css') }}">
+<script src="{{ asset('js/datetimepicker.js') }}" defer></script>
 <script defer>
-console.log($('input[name="event_start_date_time"]'));
-  $('input[name="event_start_date_time"]').datetimepicker();
+  $(document).ready(() => {
+    jQuery('.form_datetime').datetimepicker('nl');
+    $('.form_datetime').datetimepicker();
+  });
+
 </script>
 @endsection
