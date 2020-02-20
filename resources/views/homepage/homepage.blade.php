@@ -6,9 +6,9 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
         </div>
-        <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
+        <div id="carousel-homepage" class="carousel slide col-md-10" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-homepage" data-slide-to="1"></li>
@@ -40,14 +40,20 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
     </div>
 
 
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @foreach($reviews as $review)
+            @if(count($reviews) == 3)
+                <div class="col-md-2"> </div>
+            @endif
+            @if(count($reviews) < 3)
+                <div class="col-md-3"></div>
+                @endif
+                @foreach($reviews as $review)
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
