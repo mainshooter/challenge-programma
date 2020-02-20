@@ -63,13 +63,13 @@
         </div>
       </nav>
       <div class="row">
-          <div class="col-2 sidebar"></div>
+          <div class="col-2"></div>
           <div class="col-8 main">
               <div class="mh-100">
                   @yield ('content')
               </div>
           </div>
-          <div class="col-2 sidebar"></div>
+          <div class="col-2"></div>
       </div>
     </body>
 </html>
