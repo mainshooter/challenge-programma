@@ -14,6 +14,6 @@ class HomepageController extends Controller
 
         $review = Review::all()->random(4);
 
-        return view('homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage, 'reviews' => $review]);
+        return view('homepage.homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage, 'reviews' => $review]);
     }
 }

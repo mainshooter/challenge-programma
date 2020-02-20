@@ -16,12 +16,24 @@
     text-align: center;
 }
 
-.cards h2{
+.cards h3{
     margin-bottom: 20px;
 }
 
 .card{
     text-align: center;
+}
+
+.card-text{
+    height: 80px;
+}
+
+.card-body{
+    padding: 5px;
+}
+
+.card-footer{
+    margin: 0;
 }
 
 .carousel {
