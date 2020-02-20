@@ -22,3 +22,6 @@ html, body {
 .table {
   margin-top: 2em;
 }
+.no-max-width {
+  max-width: unset !important;
+}

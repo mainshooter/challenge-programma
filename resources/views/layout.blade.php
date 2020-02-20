@@ -64,7 +64,7 @@
             </div>
         </div>
       </nav>
-      <div class="container">
+      <div class="container no-max-width">
         <div class="row">
             <div class="col-2 sidebar"></div>
             <div class="col-8 main">
