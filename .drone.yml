@@ -1,0 +1,10 @@
+pipeline:
+  publish_master:
+    image: plugins/docker
+    insecure: true
+    tag: [ master ]
+    when:
+      branch: master
+      event: push
+    cache_from:
+    - "diadashboard:master"
