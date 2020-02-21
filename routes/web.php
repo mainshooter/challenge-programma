@@ -15,3 +15,9 @@ Route::get('/', 'HomepageController@index');
 
 Route::get('/homepage', 'HomepageController@index');
 
+
+Route::prefix("admin")->group(function() {
+  Route::prefix("user")->group(function() {
+    Route::get("/", "UserController@index")->name("user.index");
+  });
+});
