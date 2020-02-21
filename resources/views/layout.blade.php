@@ -12,24 +12,20 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-
     @yield ('head')
 
-    <title>Homepage</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
-            <!-- MainLogo leftside -->
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <img class= "  CP navbar-brand" src="/images/LogoCP.png">
+                <img class= "CP navbar-brand" src="/images/LogoCP.png">
 
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
@@ -62,11 +58,9 @@
         </div>
     </nav>
 
-
     <div class="content-container">
         @yield ('content')
     </div>
-
 
     <footer class="footer">
         <div class="container">
@@ -84,7 +78,6 @@
 
                 <div class="col-xs-6 col-md-3">
                 </div>
-
                 <div class="col-xs-6 col-md-3">
                     <h6>Links</h6>
                     <ul class="footer-links">
