@@ -20,8 +20,8 @@
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
-        <!-- MainLogo leftside -->
-            <img class= " mx-auto CP navbar-brand" src="/images/LogoCP.png">
+        <div class="container">
+            <!-- MainLogo leftside -->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,8 +29,10 @@
 
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
+                <img class= "  CP navbar-brand" src="/images/LogoCP.png">
+
                 <!-- center navigation links -->
-                <ul class="navbar-nav justify-content-center ">
+                <ul class="navbar-nav">
                     <!-- regular navigation links -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">HOME</a>
@@ -58,6 +60,8 @@
 
                 </ul>
             </div>
+        </div>
+
     </nav>
 
 
@@ -70,8 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <p class="top-text">Challenge programma
-                    </p>
+                    <p class="top-text">Challenge programma</p>
                 </div>
             </div>
             <hr>
@@ -87,8 +90,8 @@
                 <div class="col-xs-6 col-md-3">
                     <h6>Links</h6>
                     <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/about/">Over ons</a></li>
-                        <li><a href="http://scanfcode.com/contact/">Contact</a></li>
+                        <li><a href="">Over ons</a></li>
+                        <li><a href="">Contact</a></li>
                         <li><a href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>

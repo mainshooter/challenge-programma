@@ -13,6 +13,10 @@ body {
     align-items: center;
 }
 
+.navbar ul li{
+   padding: 0 20px;
+}
+
 .CP {
     width: 50px;
     height: 50px;
