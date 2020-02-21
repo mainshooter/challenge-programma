@@ -12,7 +12,7 @@ class HomepageController extends Controller
         $thirdimage = asset('images/visitekaart.jpg');
         $fourthimage = asset('images/visitekaart.jpg');
 
-        $review = Review::all()->random(1);
+        $review = Review::all()->random(4);
 
         return view('homepage.homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage, 'reviews' => $review]);
     }
