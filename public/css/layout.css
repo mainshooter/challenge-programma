@@ -9,6 +9,10 @@ body{
     min-height: 100vh;
 }
 
+.no-max-width {
+  max-width: unset !important;
+}
+
 .navbar{
   background-color: #ca1830;
   margin-bottom: 10px;
@@ -79,6 +83,3 @@ body{
     padding-left:0;
     list-style:none
 }
-
-
-
