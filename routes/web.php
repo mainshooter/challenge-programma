@@ -27,3 +27,9 @@ Route::get('register_company', 'Auth\RegisterController@showCompanyRegisterForm'
 Auth::routes();
 
 
+
+Route::prefix("admin")->group(function() {
+  Route::prefix("user")->group(function() {
+    Route::get("/", "UserController@index")->name("user.index");
+  });
+});
