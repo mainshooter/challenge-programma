@@ -79,8 +79,8 @@ class Cms extends Controller
         'page_content' => 'required',
       ]);
       $sTitle = $request->page_title;
-      $sSlug = $request->url_slug;
-      $sContent = slugify($request->page_content);
+      $sSlug = slugify($request->url_slug);
+      $sContent = $request->page_content;
       // replace non letter or digits by -
 
 
