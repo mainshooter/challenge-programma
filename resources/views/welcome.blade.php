@@ -2,6 +2,12 @@
 
 @section('content')
 
-<h1>Test voor container</h1>
+<div class="container">
+    <h1>Test voor container</h1>
+    <h1>Test voor container</h1>
+    <h1>Test voor container</h1>
+    <h1>Test voor container</h1>
+
+</div>
 
 @endsection
