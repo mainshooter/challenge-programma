@@ -16,7 +16,7 @@ class CmsTest extends DuskTestCase
     public function testCreate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/cms');
+            $browser->visit('/admin/cms');
             $browser->clickLink("Pagina toevoegen");
             $browser->value("input[name=page_title]", "Test pagina");
             $browser->value("input[name=url_slug]", "test-pagina");
@@ -28,7 +28,7 @@ class CmsTest extends DuskTestCase
 
     public function testEdit() {
       $this->browse(function(Browser $browser) {
-        $browser->visit('/cms');
+        $browser->visit('/admin/cms');
         $browser->click("a.btn.btn-secondary");
         $sCurrentTitle = $browser->value('input[name=page_title]');
         $sNewTitle = $sCurrentTitle . "2";
@@ -40,7 +40,7 @@ class CmsTest extends DuskTestCase
 
     public function testView() {
       $this->browse(function(Browser $browser) {
-        $browser->visit('/cms');
+        $browser->visit('/admin/cms');
         $browser->click("a.btn.btn-link");
         $browser->assertSee("Test pagina2");
       });
@@ -48,7 +48,7 @@ class CmsTest extends DuskTestCase
 
     public function testDelete() {
       $this->browse(function(Browser $browser) {
-        $browser->visit("/cms");
+        $browser->visit("/admin/cms");
         $browser->click("a.btn.btn-danger");
         $browser->assertSee("Pagina toevoegen");
       });
