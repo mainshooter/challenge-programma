@@ -6,7 +6,6 @@
 @section('content')
     <div class="row">
         <div class="col-md-2"></div>
-
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
@@ -16,18 +15,17 @@
             </ol>
 
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="{{$images[0]}}" alt="First Slide">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{$images[1]}}" alt="Second Slide">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{$images[2]}}" alt="Third Slide">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{$images[3]}}" alt="Fourth Slide">
-                </div>
+                @for ($i = 0; $i < count($images); $i++)
+                    @if($i == 0)
+                    <div class="carousel-item active">
+                        <img src="{{$images[$i]}}" alt="First Slide">
+                    </div>
+                    @else
+                        <div class="carousel-item">
+                            <img src="{{$images[$i]}}">
+                        </div>
+                    @endif
+                @endfor
             </div>
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
