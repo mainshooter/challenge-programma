@@ -17,16 +17,16 @@
 
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="{{$firstimg}}" alt="First Slide">
+                    <img src="{{$images[0]}}" alt="First Slide">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$secondimg}}" alt="Second Slide">
+                    <img src="{{$images[1]}}" alt="Second Slide">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$thirdimg}}" alt="Third Slide">
+                    <img src="{{$images[2]}}" alt="Third Slide">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$fourthimg}}" alt="Fourth Slide">
+                    <img src="{{$images[3]}}" alt="Fourth Slide">
                 </div>
             </div>
 

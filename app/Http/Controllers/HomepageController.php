@@ -7,13 +7,16 @@ use App\Review;
 class HomepageController extends Controller
 {
     public function index(){
-        $firstimage = asset('images/visitekaart.jpg');
-        $secondimage = asset('images/visitekaart.jpg');
-        $thirdimage = asset('images/visitekaart.jpg');
-        $fourthimage = asset('images/visitekaart.jpg');
+        $image = asset('images/visitekaart.jpg');
+
+        $images = array();
+        array_push($images, $image);
+        array_push($images, $image);
+        array_push($images, $image);
+        array_push($images, $image);
 
         $review = Review::all()->random(4);
 
-        return view('homepage.homepage', ['firstimg' => $firstimage, 'secondimg' => $secondimage, 'thirdimg' => $thirdimage, 'fourthimg' => $fourthimage, 'reviews' => $review]);
+        return view('homepage.homepage', ['images' => $images, 'reviews' => $review]);
     }
 }
