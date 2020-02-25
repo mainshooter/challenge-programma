@@ -9,8 +9,8 @@ class ReviewController extends Controller
     public function index(){
 
        // $aReviews = Review::all();
-
-        return view('review/index');
+        $nRating = 8;
+        return view('review/index', ['avgRating' => $nRating]);
     }
 
 }
