@@ -24,10 +24,11 @@
 .card{
     text-align: center;
     margin-bottom: 20px;
+    min-height: 280px;
 }
 
 .card-text{
-    height: 80px;
+    min-height: 140px;
 }
 
 .card-body{
