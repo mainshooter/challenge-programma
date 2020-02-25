@@ -17,15 +17,16 @@
                     @for($i = 0; $i < 10 - $avgRating; $i++)
                         <span class="fa fa-star"></span>
                     @endfor
+                    <p>{{$avgRating}} / 10</p>
                     <H2>Wat bedrijven denken over het Challenge programma:</H2>
                     <div class="row">
                         @for($i = 0; $i < 5; $i++)
                             <div class="col-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Title</h5>
+                                        <h5 class="card-title">Bedrijf</h5>
                                         <h6 class="card-subtitle mb-2 text-muted">Reviewer</h6>
-                                        <p class="card-text body-text">dgdds dasgsdgag sdag sadg sadg sadg dsa gsdagdsasdaggsdagsda  sgdasdgagsdag asgd sadgd sa sadgsadsad sdaas gdsdg aas gsa gd gsag sadagsdgdsadg ga s gsd asgdgsda sda g        asdgasdgasdgdasdgsadgasd a</p>
+                                        <p class="card-text body-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer dsa</p>
                                         <p class="card-text">Rating / 10</p>
                                     </div>
                                 </div>
