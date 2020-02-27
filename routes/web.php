@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomepageController@index');
+
+Route::get('/homepage', 'HomepageController@index');
+
 
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
