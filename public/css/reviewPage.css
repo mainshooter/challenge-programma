@@ -3,20 +3,20 @@
 }
 
 .card{
-   margin: 10px;
+    margin: 10px;
     max-width: 400px;
-    height: 259px;
+    min-height: 259px;
 }
 
 .body-text{
-    height: 120px;
+    min-height: 120px;
 }
 
 .rating{
     text-align: center;
 }
 
-.checked {
+.checked{
     color: orange;
 }
 

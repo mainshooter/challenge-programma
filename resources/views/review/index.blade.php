@@ -10,18 +10,12 @@
         <div class="col-12">
             <div class="content">
                 <div class="rating">
-                    <p class="ratingtext">Het gemiddelde cijfer van het Challenge programma:</p>
-                    @for($i = 0; $i < $avgRating; $i++)
-                        <span class="fa fa-star checked"></span>
-                    @endfor
-                    @for($i = 0; $i < 10 - $avgRating; $i++)
-                        <span class="fa fa-star"></span>
-                    @endfor
-                    <p>{{$avgRating}} / 10</p>
-                    <H2>Wat bedrijven denken over het Challenge programma:</H2>
+
+                    <H2>Wat bedrijven denken over het Challenge programma</H2>
+                    <br>
                     <div class="row">
                         @for($i = 0; $i < 5; $i++)
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Bedrijf</h5>
@@ -33,6 +27,16 @@
                             </div>
                         @endfor
                     </div>
+                    <br>
+                    <p class="ratingtext">Het gemiddelde cijfer van het Challenge programma</p>
+                    @for($i = 0; $i < $avgRating; $i++)
+                        <span class="fa fa-star checked"></span>
+                    @endfor
+                    @for($i = 0; $i < 10 - $avgRating; $i++)
+                        <span class="fa fa-star"></span>
+                    @endfor
+                    <p>{{$avgRating}} / 10</p>
+                    <br>
                 </div>
             </div>
         </div>
