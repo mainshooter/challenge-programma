@@ -72,7 +72,11 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <h6>Over ons</h6>
-                    <p class="text-justify">Het challenge programma is een studentenvereniging die is opgericht door en voor studenten van de opleiding Bedrijfskunde. Leden die deelnemen aan het Challenge programma kunnen meedoen aan evenementen. Het is een gezellige en snel groeiende studentenvereniging.</p>
+                    <p class="text-justify">
+                        Het Challenge Programma is een groep studenten die zichzelf meer willen ontwikkelen als persoon en als bedrijfskundige.
+                        We bieden ze deze mogelijkheid omdat sommigen tijdens hun studie graag alvast een extra goede basis willen leggen voor hun toekomstige carrière.
+                        Netwerken, bedrijven bezoeken, je plek vinden of wat meer uitdaging zoeken in je studie, ons brede programma heeft voor ieder wat wils.
+                    </p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
@@ -82,7 +86,7 @@
                     <ul class="footer-links">
                         <li><a href="">Over ons</a></li>
                         <li><a href="">Contact</a></li>
-                        <li><a href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
