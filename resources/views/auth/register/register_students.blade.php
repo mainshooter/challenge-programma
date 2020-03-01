@@ -8,18 +8,18 @@
                 <div class="card-header">{{ __('Registreren Student') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('students.register') }}">
                         @csrf
 
                         {{-- voornaam --}}
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam *') }}</label>
+                            <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
-                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" 
+                                    name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
 
-                                @error('name')
+                                @error('firstname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -29,13 +29,13 @@
 
                         {{-- tussenvoegsel --}}
                         <div class="form-group row">
-                            <label for="infixname" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
+                            <label for="prefix" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
 
                             <div class="col-md-6">
-                                <input id="infixname" type="text" class="form-control @error('infixname') is-invalid @enderror" 
-                                    name="infixname" value="{{ old('infixname') }}" autocomplete="infixname" autofocus>
+                                <input id="prefix" type="text" class="form-control @error('prefix') is-invalid @enderror" 
+                                    name="prefix" value="{{ old('prefix') }}" autocomplete="prefix" autofocus>
 
-                                @error('infixname')
+                                @error('prefix')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

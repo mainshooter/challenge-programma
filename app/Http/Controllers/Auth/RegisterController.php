@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+//overwrite vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -21,7 +25,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
 
     /**
@@ -71,7 +74,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -86,9 +90,46 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstname' => $data['firstname'],
+            'prefix'    => $data['prefix'],
+            'lastname'    => $data['lastname'],
+            'phone'    => $data['phone'],
+            'schoolyear'    => $data['schoolyear'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    
+    /**
+     * OVERWRITES RegistersUsers.php
+     * 
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // this enables auto login after registration
+        // we dont want this to its commented
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
+    public function username()
+    {
+        return 'id';
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('students');
     }
 }

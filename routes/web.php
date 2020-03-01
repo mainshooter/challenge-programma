@@ -33,7 +33,17 @@ Route::get('register_company', 'Auth\RegisterController@showCompanyRegisterForm'
 
 Auth::routes();
 
+Route::prefix('students')
+    ->as('students.');
+    // ->group(function() {
+    //     Route::get('home', 'Home\EmployeeHomeController@index')->name('home');
 
+Route::namespace('Auth\Login')
+      ->group(function() {
+      Route::get('register', 'RegisterController@showStudentRegisterForm')->name('register');
+      // Route::post('login', 'EmployeeController@login')->name('login');
+      // Route::post('logout', 'EmployeeController@logout')->name('logout');
+  });
 
 Route::prefix("admin")->group(function() {
   Route::prefix("user")->group(function() {

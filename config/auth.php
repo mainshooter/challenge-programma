@@ -46,6 +46,12 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'students' => [
+            'redirectTo' => 'students.home',
+            'driver' => 'session',
+            'provider' => 'stuend',
+           ],
     ],
 
     /*
@@ -70,6 +76,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'students' => [
+            'driver' => 'eloquent',
+            'table' => App\Models\Students::class,
+           ],
 
         // 'users' => [
         //     'driver' => 'database',
