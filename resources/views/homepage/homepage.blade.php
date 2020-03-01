@@ -65,4 +65,7 @@
             <div class="col-md-2"></div>
         </div>
     </div>
+    <a href='/image'>
+        <button type="button" class="btn btn-primary">addimage</button>
+    </a>
 @endsection
