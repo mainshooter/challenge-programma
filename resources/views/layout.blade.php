@@ -34,21 +34,33 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">AGENDA</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="#">FOTOBOEK</a>
                     </li>
+                    @if(Auth::check())
+                        <?php $role = Auth::user()->role; ?>
+                        @if($role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">AGENDA</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PROFIEL</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">BEHEER</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">BEHEER</a>
-                    </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/cms">CMS</a>
+                                </li>
 
+                        @elseif($role == 'company' or $role == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">AGENDA</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">PROFIEL</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="#">CONTACT</a>
                     </li>
@@ -63,12 +75,12 @@
                         </li>
                         @if (Route::has('global_register'))
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('global_register') }}" role="button" 
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('global_register') }}" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('Registreren') }}
                                     <span class="caret"></span>
                                 </a>
-    
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('register_students') }}">
                                         {{ __('Studenten') }}
