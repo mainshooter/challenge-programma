@@ -36,5 +36,5 @@ Route::prefix('admin')->group(function() {
   });
 });
 
-Route::get('/image', 'ImageController@index');
-
+Route::get('/image', 'ImageController@index')->name('image.index');
+Route::post('/image/store', 'ImageController@store')->name('image.store.post');
