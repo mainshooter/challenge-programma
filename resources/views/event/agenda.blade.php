@@ -13,20 +13,18 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="event-modal">Evenement naam</h5>
+          <h5 class="modal-title" id="event-modal"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p class="modal-description">Omschrijving</p>
+          <p class="modal-description"></p>
           <p class="modal-address">
-            214 Onderwijsboulevard<br>
-            Den Bosch, 4585CX<br>
           </p>
           <ul>
-            <li class="modal-start-time">Begin tijd: 2020-03-02 19:53:00</li>
-            <li class="modal-end-time">Eind tijd: 2020-03-02 19:53:00</li>
+            <li class="modal-start-time"></li>
+            <li class="modal-end-time"></li>
           </ul>
         </div>
         <div class="modal-footer">
