@@ -18,6 +18,8 @@ body{
   margin: 0.3em 0;
 }
 
+
+
 .navbar{
   background-color: #ca1830;
   margin-bottom: 10px;
@@ -27,6 +29,11 @@ body{
 .navbar ul li{
    padding: 0 20px;
 }
+
+.navbar ul li a{
+    color: white;
+}
+
 
 .CP{
     width: 50px;
