@@ -50,7 +50,7 @@ return [
         'students' => [
             'redirectTo' => 'students.home',
             'driver' => 'session',
-            'provider' => 'stuend',
+            'provider' => 'student',
            ],
     ],
 
@@ -78,7 +78,7 @@ return [
         ],
         'students' => [
             'driver' => 'eloquent',
-            'table' => App\Models\Students::class,
+            'model' => App\Models\Students::class,
            ],
 
         // 'users' => [

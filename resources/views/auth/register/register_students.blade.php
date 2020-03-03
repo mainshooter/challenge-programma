@@ -16,7 +16,7 @@
                             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" 
+                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror"
                                     name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
 
                                 @error('firstname')
@@ -32,7 +32,7 @@
                             <label for="prefix" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prefix" type="text" class="form-control @error('prefix') is-invalid @enderror" 
+                                <input id="prefix" type="text" class="form-control @error('prefix') is-invalid @enderror"
                                     name="prefix" value="{{ old('prefix') }}" autocomplete="prefix" autofocus>
 
                                 @error('prefix')
@@ -49,7 +49,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" 
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
                                     name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
                                 @error('lastname')
@@ -65,7 +65,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer') }}</label>
 
                             <div class="col-md-3">
-                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" 
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
                                     name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus
                                     placeholder="+31 612 34 56 78">
 
@@ -76,13 +76,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         {{-- leerjaar --}}
                         <div class="form-group row">
                             <label for="schoolyear" class="col-md-4 col-form-label text-md-right">{{ __('Studiejaar') }}</label>
 
                             <div class="col-md-2">
-                                <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror" 
+                                <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror"
                                     name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             <label for="cert-checkbox" class="col-md-4 col-form-label text-md-right">{{ __('Certificaat') }}</label>
 
                             <div class="col-md-2">
-                                <input id="cert-checkbox" type="checkbox" class="align-bottom @error('cert-checkbox') is-invalid @enderror" 
+                                <input id="cert-checkbox" type="checkbox" class="align-bottom @error('cert-checkbox') is-invalid @enderror"
                                     name="cert-checkbox" value="{{ old('cert-checkbox') }}"  >
                             </div>
                         </div> --}}
@@ -102,7 +102,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -118,7 +118,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wacthwoord *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" required autocomplete="new-password">
 
                                 @error('password')

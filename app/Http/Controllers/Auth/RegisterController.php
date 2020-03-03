@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
 use App\Http\Controllers\Controller;
+use App\Models\Students;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -75,7 +76,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
+            'prefix'=>['nullable', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
+            'phone'=>['nullable', 'string', 'max:10'],
+            'schoolyear'=>['required','integer', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -100,10 +104,21 @@ class RegisterController extends Controller
         ]);
     }
 
-    
+    public function store(Request $request)
+    {
+        // Validate the request...
+
+        $student = new Students();
+
+        $student->name = $request->name;
+
+        $student->save();
+    }
+
+
     /**
      * OVERWRITES RegistersUsers.php
-     * 
+     *
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
