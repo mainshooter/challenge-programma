@@ -19,19 +19,19 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Omschrijving</p>
-          <p class="adress">
+          <p class="modal-description">Omschrijving</p>
+          <p class="modal-address">
             <strong>Example Inc.</strong><br>
             214 Onderwijsboulevard<br>
             Den Bosch, 4585CX<br>
           </p>
           <ul>
-            <li>Begin tijd: 2020-03-02 19:53:00</li>
-            <li>Eind tijd: 2020-03-02 19:53:00</li>
+            <li class="modal-start-time">Begin tijd: 2020-03-02 19:53:00</li>
+            <li class="modal-end-time">Eind tijd: 2020-03-02 19:53:00</li>
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
         </div>
       </div>
     </div>
@@ -62,6 +62,12 @@
         eventLimit: false,
         events: JSON.parse('{!! $sEvents !!}'),
         eventClick: (event) => {
+          let modal = document.querySelector('#event-modal');
+          let modalTitle = modal.querySelector('.modal-title');
+          let modalDescription = modal.querySelector('.model-description');
+          let modalAdress = modal.querySelector('.model-address');
+          let modalStart = modal.querySelector('.modal-start-time');
+          let modalEnd = modal.querySelector('.modal-end-time');
           $('#event-modal').modal('show');
         }
       });
