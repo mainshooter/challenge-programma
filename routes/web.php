@@ -26,6 +26,7 @@ Route::prefix('admin')->group(function() {
   });
   Route::prefix("user")->group(function() {
     Route::get("/", "UserController@index")->name("user.index");
+    Route::post('edit/{id}', 'UserController@edit')->name('user.edit.post');
   });
   Route::prefix('cms')->group(function() {
     Route::get('/', "Cms@index")->name("cms.index");
