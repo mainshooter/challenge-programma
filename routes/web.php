@@ -33,18 +33,21 @@ Auth::routes();
 
 
 Route::middleware('role:admin')->group(function () {
-    Route::prefix("admin")->group(function() {
-      Route::prefix("user")->group(function() {
-        Route::get("/", "UserController@index")->name("user.index");
-      });
-      Route::prefix('cms')->group(function() {
-        Route::get('/', "Cms@index")->name("cms.index");
-        Route::get('create', "Cms@createPage")->name("cms.create");
-        Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
-        Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
+    Route::prefix('admin')->group(function() {
+        Route::prefix("event")->group(function() {
+            Route::get('/', 'EventController@index');
+        });
+        Route::prefix("user")->group(function() {
+            Route::get("/", "UserController@index")->name("user.index");
+        });
+        Route::prefix('cms')->group(function() {
+            Route::get('/', "Cms@index")->name("cms.index");
+            Route::get('create', "Cms@createPage")->name("cms.create");
+            Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
+            Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
 
-        Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
-        Route::post('create', "Cms@create")->name("cms.create.post");
-      });
+            Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
+            Route::post('create', "Cms@create")->name("cms.create.post");
+        });
     });
 });
