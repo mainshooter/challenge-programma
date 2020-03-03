@@ -62,12 +62,20 @@
         eventLimit: false,
         events: JSON.parse('{!! $sEvents !!}'),
         eventClick: (event) => {
+          console.log(event.id);
           let modal = document.querySelector('#event-modal');
           let modalTitle = modal.querySelector('.modal-title');
           let modalDescription = modal.querySelector('.model-description');
           let modalAdress = modal.querySelector('.model-address');
           let modalStart = modal.querySelector('.modal-start-time');
           let modalEnd = modal.querySelector('.modal-end-time');
+          fetch("/event/detail/" + event.id)
+            .then(response => {
+              return response.json();
+            })
+            .then(data => {
+              console.log(data);
+            });
           $('#event-modal').modal('show');
         }
       });
