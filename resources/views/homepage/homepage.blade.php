@@ -48,7 +48,7 @@
                 <div class="col-md-2"> </div>
             @endif
             @if(count($reviews) < 3)
-                <div class="col-md-5"></div>
+                <div class="col-md-4"></div>
                 @endif
                 @foreach($reviews as $review)
                 <div class="col-md-2">
