@@ -1,0 +1,35 @@
+# This is a docker compose file that can be used for developing
+version: '2'
+
+services:
+  app:
+    image: challange-programma
+    depends_on:
+    - mysql
+    build: .
+    networks:
+    - frontend
+    - backend
+    ports:
+    - "7894:80"
+    volumes:
+      - "challange-programma-upload:/var/www/storage"
+    configs:
+      - source: challange-programma-local
+        target: /var/www/.env
+        mode: 0444
+
+  mysql:
+    image: mariadb
+    networks:
+    - backend
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: insecure
+      MYSQL_DATABASE: challange-programma
+      MYSQL_USER: challange-programma
+      MYSQL_PASSWORD: insecure
+
+networks:
+  frontend:
+  backend:
