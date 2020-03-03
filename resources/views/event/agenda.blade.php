@@ -21,7 +21,6 @@
         <div class="modal-body">
           <p class="modal-description">Omschrijving</p>
           <p class="modal-address">
-            <strong>Example Inc.</strong><br>
             214 Onderwijsboulevard<br>
             Den Bosch, 4585CX<br>
           </p>
@@ -62,18 +61,23 @@
         eventLimit: false,
         events: JSON.parse('{!! $sEvents !!}'),
         eventClick: (event) => {
-          console.log(event.id);
           let modal = document.querySelector('#event-modal');
           let modalTitle = modal.querySelector('.modal-title');
-          let modalDescription = modal.querySelector('.model-description');
-          let modalAdress = modal.querySelector('.model-address');
+          let modalDescription = modal.querySelector('.modal-description');
+          let modalAdress = modal.querySelector('.modal-address');
           let modalStart = modal.querySelector('.modal-start-time');
           let modalEnd = modal.querySelector('.modal-end-time');
-          fetch("/event/detail/" + event.id)
+          fetch("/agenda/detail/" + event.event.id)
             .then(response => {
               return response.json();
             })
             .then(data => {
+              let housenumberAdditionString = data.house_number_addition ? data.house_number_addition : " ";
+              modalTitle.innerText = data.name;
+              modalDescription.innerText = data.description;
+              modalAdress.innerText = data.street + " " + data.house_number + housenumberAdditionString + "\n " + data.city + " " + data.zipcode;
+              modalStart.innerText = new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
+              modalEnd.innerText = new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               console.log(data);
             });
           $('#event-modal').modal('show');
