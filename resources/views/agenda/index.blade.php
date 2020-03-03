@@ -39,7 +39,9 @@
             start: '2020-03-03T12:00',
             end: '2020-03-03T15:00',
           }
-        ]
+        ],
+        eventClick: (event) => {
+        }
       });
       calender.render();
     });
