@@ -33,13 +33,7 @@
         defaultView: 'dayGridMonth',
         editable: false,
         eventLimit: false,
-        events: [
-          {
-            title: 'My event',
-            start: '2020-03-03T12:00',
-            end: '2020-03-03T15:00',
-          }
-        ],
+        events: JSON.parse('{!! $sEvents !!}'),
         eventClick: (event) => {
         }
       });

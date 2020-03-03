@@ -20,6 +20,10 @@ class EventController extends Controller
 
     public function agenda(Request $request) {
       $aEvents = Event::all();
-      return view('event/agenda', []);
+      $aEvents = eventToAgendaItems($aEvents);
+      $sEvents = json_encode($aEvents);
+      return view('event/agenda', [
+        'sEvents' => $sEvents,
+      ]);
     }
 }
