@@ -47,3 +47,6 @@ RUN chown -R www-data:www-data /var/www
 USER www-data
 
 RUN composer install
+
+CMD ["/usr/bin/supervisord", "-c", "/var/www/supervisord.conf", "-n"]
+HEALTHCHECK CMD curl --fail http://localhost/ || exit 1

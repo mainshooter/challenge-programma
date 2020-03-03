@@ -1,6 +1,8 @@
-# This is a docker compose file that can be used for developing
 version: '3.3'
-
+configs:
+  challange-programma-local:
+    external:
+      name: challange-programma-local-v1
 services:
   app:
     image: challange-programma
@@ -12,8 +14,6 @@ services:
     - backend
     ports:
     - "7894:80"
-    volumes:
-      - "challange-programma-upload:/var/www/storage"
     configs:
       - source: challange-programma-local
         target: /var/www/.env
