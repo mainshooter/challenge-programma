@@ -17,4 +17,9 @@ class EventController extends Controller
         "aEvents" => $aEvents,
       ]);
     }
+
+    public function agenda(Request $request) {
+      $aEvents = Event::all();
+      return view('event/agenda', []);
+    }
 }

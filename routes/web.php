@@ -34,4 +34,4 @@ Route::prefix('admin')->group(function() {
   });
 });
 
-Route::get('/agenda', 'AgendaController@index')->name('agenda.index');
+Route::get('/agenda', 'EventController@agenda')->name('event.agenda');

@@ -34,7 +34,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('agenda.index') }}">AGENDA</a>
+                        <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
                     </li>
 
                     <li class="nav-item">
