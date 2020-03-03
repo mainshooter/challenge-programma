@@ -17,8 +17,4 @@ class EventController extends Controller
         "aEvents" => $aEvents,
       ]);
     }
-
-    public function edit(Request $request, $iId) {
-      
-    }
 }
