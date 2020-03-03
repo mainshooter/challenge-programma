@@ -9,35 +9,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     @yield ('head')
 
-    <title>Homepage</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
-            <!-- MainLogo leftside -->
-            <div class="navbar-brand">
-                <img class="CP" src="/images/LogoCP.png">
-            </div>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
+                <img class= "CP navbar-brand" src="/images/LogoCP.png">
 
-                <!-- left navigation links -->
-                <ul class="navbar-nav mr-auto">
-
+                <!-- center navigation links -->
+                <ul class="navbar-nav">
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="/">HOME</a>
                     </li>
 
                     <li class="nav-item">
@@ -59,19 +52,42 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">CONTACT</a>
                     </li>
-
                 </ul>
             </div>
         </div>
-      </nav>
-      <div class="row">
-          <div class="col-2 sidebar"></div>
-          <div class="col-8 main">
-              <div class="mh-100">
-                  @yield ('content')
-              </div>
-          </div>
-          <div class="col-2 sidebar"></div>
-      </div>
-    </body>
+    </nav>
+
+    <div class="content-container">
+        @yield ('content')
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p class="top-text">Challenge programma</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>Over ons</h6>
+                    <p class="text-justify">Het challenge programma is een studentenvereniging die is opgericht door en voor studenten van de opleiding Bedrijfskunde. Leden die deelnemen aan het Challenge programma kunnen meedoen aan evenementen. Het is een gezellige en snel groeiende studentenvereniging.</p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <h6>Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="">Over ons</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </footer>
+</body>
 </html>
