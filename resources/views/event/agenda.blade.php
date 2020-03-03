@@ -53,10 +53,10 @@
         plugins: ['dayGrid'],
         height: 'parent',
         locale: 'nl',
-        weekNumbers: true,
         defaultView: 'dayGridMonth',
         editable: false,
         eventLimit: false,
+        businessHours: true,
         events: JSON.parse('{!! $sEvents !!}'),
         eventClick: (event) => {
           let modal = document.querySelector('#event-modal');
@@ -74,8 +74,8 @@
               modalTitle.innerText = data.name;
               modalDescription.innerText = data.description;
               modalAdress.innerText = data.street + " " + data.house_number + housenumberAdditionString + "\n " + data.city + " " + data.zipcode;
-              modalStart.innerText = new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
-              modalEnd.innerText = new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
+              modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
+              modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               console.log(data);
             });
           $('#event-modal').modal('show');
