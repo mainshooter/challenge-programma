@@ -4,6 +4,7 @@
   <div class="container no-max-width">
     <div class="row">
       <div class="col-12">
+        <h1>Agenda</h1>
         <div id='calendar'></div>
       </div>
     </div>
@@ -26,8 +27,10 @@
       let calenderElement = document.querySelector('#calendar');
       let calender = new FullCalendar.Calendar(calenderElement, {
         plugins: ['dayGrid'],
+        height: 'parent',
         locale: 'nl',
         weekNumbers: true,
+        defaultView: 'dayGridMonth',
         editable: false,
         eventLimit: false,
         events: [
