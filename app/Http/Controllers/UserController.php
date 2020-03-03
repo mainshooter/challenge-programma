@@ -12,4 +12,8 @@ class UserController extends Controller
         'aUsers' => $aUsers
       ]);
     }
+
+    public function update(){
+        return view("user/update");
+    }
 }
