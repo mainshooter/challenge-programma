@@ -19,7 +19,7 @@ class HomepageController extends Controller
         $aReviews = Review::all();
 
         if(count($aReviews) > 3){
-            $aReviews = Review::all()->random(4);
+            $aReviews = $aReviews->random(4);
         }
 
         return view('homepage.homepage', ['images' => $aImages, 'reviews' => $aReviews]);
