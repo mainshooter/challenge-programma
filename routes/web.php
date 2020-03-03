@@ -21,7 +21,11 @@ Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
-Route::prefix("admin")->group(function() {
+
+Route::prefix('admin')->group(function() {
+  Route::prefix("event")->group(function() {
+    Route::get('/', 'EventController@index');
+  });
   Route::prefix("user")->group(function() {
     Route::get("/", "UserController@index")->name("user.index");
   });
