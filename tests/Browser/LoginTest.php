@@ -19,7 +19,6 @@ class LoginTest extends DuskTestCase
         $users = User::all();
         foreach($users as $user) {
             $this->browse(function ($browser) use ($user) {
-                echo $user->license_id;
                 $browser->loginAs($user)
                     ->visit('/home')
                     ->assertSee('Wat mensen over ons zeggen');
