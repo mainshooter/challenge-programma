@@ -7,6 +7,11 @@ use \App\User;
 
 class UserController extends Controller
 {
+
+    /**
+     * Presents a overview of all users
+     * @param  Request $request
+     */
     public function index(Request $request) {
       $aUsers = User::all();
       return view("user/index", [
@@ -14,6 +19,11 @@ class UserController extends Controller
       ]);
     }
 
+    /**
+     * Saves a user on post request for new changes
+     * @param  Request $request
+     * @param  int  $iId        The ID of the user
+     */
     public function edit(Request $request, $iId) {
       $validatedData = $request->validate([
         "name" => "required",
