@@ -36,7 +36,7 @@ class EventController extends Controller
         'event_description' => 'required',
         'event_points' => 'required|integer',
         'event_start_date_time' => 'required|date_format:Y/m/d H:i',
-        'event_end_date_time' => 'required|date_format:Y/m/d H:i',
+        'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
         'event_straat' => 'required|max:255',
         'event_city' => 'required|max:255',
         'event_house_number' => 'required|integer',
