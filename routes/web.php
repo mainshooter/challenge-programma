@@ -12,9 +12,6 @@
 */
 
 Route::get('/', 'HomepageController@index');
-//Route::get('/', function () {
-//     return view('home');
-// });
 
 Route::get('/homepage', 'HomepageController@index');
 
@@ -23,29 +20,15 @@ Route::get('/homepage', 'HomepageController@index');
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('home', 'HomeController@index')->name('home');
-// Route::get('/', 'Auth\RegisterController@register_global')->name('register_global');
-// Route::get('/', 'Auth\RegisterController@register_students')->name('register_students');
 
-// custom auth routes
-Route::get('global_register', 'Auth\RegisterController@showGlobalRegisterForm')->name('global_register');
-Route::get('register_students', 'Auth\RegisterController@showStudentRegisterForm')->name('register_students');
-Route::get('register_company', 'Auth\RegisterController@showCompanyRegisterForm')->name('register_company');
+Route::get('login', 'HomepageController@index')->name('login');
 
-Auth::routes();
-
-// Route::prefix('students')
-//     ->as('students.');
-//     ->group(function() {
-//         Route::get('home', 'Home\EmployeeHomeController@showStudentRegisterForm')->name('home');
-
-Route::namespace('Auth')
-      ->group(function() {
-     // Route::get('register', 'RegisterController@showStudentRegisterForm')->name('register');
-      Route::match(['get', 'post'], '/user/profile', 'StudentRegisterController@showStudentRegisterForm')->name('students.register');
-
-      // Route::post('login', 'EmployeeController@login')->name('login');
-      // Route::post('logout', 'EmployeeController@logout')->name('logout');
+Route::namespace('Auth')->group(function() {
+  Route::prefix('register')->group(function() {
+    Route::get('student', 'StudentRegisterController@showStudentRegisterForm')->name('register.student');
+    Route::post('student', 'StudentRegisterController@create')->name('register.student.post');
   });
+});
 
 Route::prefix("admin")->group(function() {
   Route::prefix("event")->group(function() {

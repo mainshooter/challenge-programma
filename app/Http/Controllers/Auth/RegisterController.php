@@ -52,17 +52,17 @@ class RegisterController extends Controller
      */
     public function showGlobalRegisterForm()
     {
-        return view('auth\register\global_register');
+        return view('auth/register/global_register');
     }
 
     public function showStudentRegisterForm()
     {
-        return view('auth\register\register_students');
+        return view('auth/register/register_students');
     }
 
     public function showCompanyRegisterForm()
     {
-        return view('auth\register\register_company');
+        return view('auth/register/register_company');
     }
 
 
