@@ -20,8 +20,8 @@ class LoginTest extends DuskTestCase
         foreach($users as $user) {
             $this->browse(function ($browser) use ($user) {
                 $browser->loginAs($user)
-                    ->visit('/home')
-                    ->assertSee('Wat mensen over ons zeggen');
+                    ->visit('home')
+                    ->assertPathIs('/home');
             });
         }
     }
