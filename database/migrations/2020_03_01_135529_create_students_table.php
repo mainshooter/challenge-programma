@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('firstname');
             $table->string('prefix');
             $table->string('lastname');
-            $table->bigInteger('phone');
+            $table->string('phone');
             $table->integer('schoolyear');
             $table->string('email')->unique();;
             $table->string('password');

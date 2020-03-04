@@ -21,12 +21,12 @@ class Students extends Model
 
     protected $connection = 'laravel';
 
-    protected $guarded = ['id'];
-    protected $hidden = [
-     'password',
-    ];
-    public function getAuthPassword()
-    {
-     return $this->password;
-    }
+    // protected $guarded = ['id'];
+    // protected $hidden = [
+    //  'password',
+    // ];
+    // public function getAuthPassword()
+    // {
+    //  return $this->password;
+    // }
 }

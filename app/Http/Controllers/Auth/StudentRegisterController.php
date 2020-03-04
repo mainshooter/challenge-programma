@@ -9,7 +9,6 @@ use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Models\Students;
 use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,7 +77,7 @@ class StudentRegisterController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'prefix'=>['nullable', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'phone'=>['nullable', 'string', 'max:10'],
+            'phone'=>['nullable', 'string', 'max:11'],
             'schoolyear'=>['required','integer', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -89,7 +88,7 @@ class StudentRegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\Students
      */
     protected function create(array $data)
     {
