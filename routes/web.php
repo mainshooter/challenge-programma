@@ -13,14 +13,14 @@
 
 Route::get('/', 'HomepageController@index');
 
+Route::get('home', 'HomepageController@index')->name('home');
 
-Route::get('/homepage', 'HomepageController@index');
+Route::get('homepage', 'HomepageController@index');
 
 
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
-Route::get('home', 'HomePageController@index')->name('home');
 // Route::get('/', 'Auth\RegisterController@register_global')->name('register_global');
 // Route::get('/', 'Auth\RegisterController@register_students')->name('register_students');
 
