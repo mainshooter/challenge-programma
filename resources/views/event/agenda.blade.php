@@ -29,7 +29,7 @@
         plugins: ['dayGrid'],
         height: 'parent',
         locale: 'nl',
-        weekNumbers: true,
+        weekNumbers: false,
         defaultView: 'dayGridMonth',
         editable: false,
         eventLimit: false,
