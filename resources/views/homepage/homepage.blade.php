@@ -44,12 +44,15 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @if(count($reviews) > 2)
-                <div class="col-md-2"> </div>
+            @if(count($reviews) == 2)
+                <div class="col-md-4"> </div>
             @endif
-            @if(count($reviews) < 3)
-                <div class="col-md-4"></div>
-                @endif
+            @if(count($reviews) == 3)
+                <div class="col-md-3"></div>
+            @endif
+            @if(count($reviews) == 1)
+                <div class="col-md-5"></div>
+            @endif
                 @foreach($reviews as $review)
                 <div class="col-md-2">
                     <div class="card">
