@@ -42,6 +42,27 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the register dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showGlobalRegisterForm()
+    {
+        return view('auth\register\global_register');
+    }
+
+    public function showStudentRegisterForm()
+    {
+        return view('auth\register\register_students');
+    }
+
+    public function showCompanyRegisterForm()
+    {
+        return view('auth\register\register_company');
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data

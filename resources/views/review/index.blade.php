@@ -16,7 +16,7 @@
                     <div class="row">
                         @foreach($aReviews as $review)
                             <div class="col-md-6 col-sm-12">
-                                <div class="card">
+                                <div class="card mx-auto">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$review->name_company}}</h5>
                                         <h6 class="card-subtitle mb-2 text-muted">{{$review->name_reviewer}}</h6>
