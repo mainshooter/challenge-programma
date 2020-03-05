@@ -21,7 +21,7 @@ Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
-
+Auth::routes();
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {
       Route::prefix("event")->group(function() {

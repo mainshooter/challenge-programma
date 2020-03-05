@@ -41,7 +41,7 @@ class EventController extends Controller
         'event_city' => 'required|max:255',
         'event_house_number' => 'required|integer',
         'event_house_number_addition' => 'nullable|max:1',
-        'event_zipcode' => 'required|max:6',
+        'event_zipcode' => 'required|max:6|min:6|regex:/^\d{4}[a-z]{2}$/i',
       ]);
 
       $oEvent = new Event();
