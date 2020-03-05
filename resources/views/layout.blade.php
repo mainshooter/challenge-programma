@@ -30,28 +30,89 @@
                 <ul class="navbar-nav">
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                        <a class="nav-link" href="#">Fotoboek</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FOTOBOEK</a>
+                        <a class="nav-link" href="#">Reviews</a>
                     </li>
+                    @if(Auth::check())
+                        <?php $role = Auth::user()->role; ?>
+                        @if($role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PROFIEL</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Beheer</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">BEHEER</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/cms">Cms</a>
+                            </li>
+                        @elseif($role == 'company' or $role == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profiel</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
+                        </li>
+                        @if (Route::has('global_register'))
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('global_register') }}" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Registreren') }}
+                                    <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('register_students') }}">
+                                        {{ __('Studenten') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('register_company') }}">
+                                        {{ __('Bedrijven') }}
+                                    </a>
+                                </div>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -91,3 +152,4 @@
     </footer>
 </body>
 </html>
+
