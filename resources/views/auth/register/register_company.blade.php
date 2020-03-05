@@ -77,7 +77,7 @@
 
                         {{-- adres --}}
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam & Huisnummer *') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam en huisnummer *') }}</label>
 
                             <div class="col-md-6">
                                 <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" 
@@ -113,8 +113,7 @@
 
                             <div class="col-md-3">
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" 
-                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus
-                                    placeholder="+31 612 34 56 78">
+                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">

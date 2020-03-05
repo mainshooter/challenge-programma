@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Students extends Model
+class Company extends Model
 {
-    protected $table = 'students';
+    protected $table = 'company';
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +17,10 @@ class Students extends Model
         'firstname', 
         'prefix', 
         'lastname',
+        'companyname',
+        'address',
+        'postalcode',
         'phone',
-        'schoolyear', 
         'email', 
         'password',
     ];

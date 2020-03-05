@@ -48,11 +48,6 @@ class StudentRegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function showGlobalRegisterForm()
-    // {
-    //     return view('auth\register\global_register');
-    // }
-
     public function index(Request $request)
     {
         return view('auth/register/register_students');
@@ -69,7 +64,7 @@ class StudentRegisterController extends Controller
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
 
-      $oStudent = new Students();
+      $oStudent = new Student();
 
       $oStudent->firstname = $request->firstname;
       $oStudent->prefix = $request->prefix;
@@ -83,9 +78,4 @@ class StudentRegisterController extends Controller
 
       return redirect()->route('home');
     }
-
-    // public function showCompanyRegisterForm()
-    // {
-    //     return view('auth/register/register_company');
-    // }
 }
