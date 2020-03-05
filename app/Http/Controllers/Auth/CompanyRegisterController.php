@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class StudentRegisterController extends Controller
+class CompanyRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -48,14 +48,9 @@ class StudentRegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function showGlobalRegisterForm()
-    // {
-    //     return view('auth\register\global_register');
-    // }
-
     public function index(Request $request)
     {
-        return view('auth/register/register_students');
+      return view('auth/register/register_company');
     }
 
     public function create(Request $request) {
@@ -83,9 +78,4 @@ class StudentRegisterController extends Controller
 
       return redirect()->route('home');
     }
-
-    // public function showCompanyRegisterForm()
-    // {
-    //     return view('auth/register/register_company');
-    // }
 }

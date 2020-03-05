@@ -66,8 +66,7 @@
 
                             <div class="col-md-3">
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus
-                                    placeholder="+31 612 34 56 78">
+                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -99,7 +98,7 @@
 
                         {{-- email --}}
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres *') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail *') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -115,7 +114,7 @@
 
                         {{-- password  --}}
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wacthwoord *') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord *') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"

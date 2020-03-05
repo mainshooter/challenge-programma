@@ -19,14 +19,16 @@ Route::get('/homepage', 'HomepageController@index');
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('login', 'HomepageController@index')->name('login');
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
-    Route::get('student', 'StudentRegisterController@showStudentRegisterForm')->name('register.student');
+    Route::get('student', 'StudentRegisterController@index')->name('register.student');
     Route::post('student', 'StudentRegisterController@create')->name('register.student.post');
+    Route::get('company', 'CompanyRegisterController@index')->name('register.company');
+    Route::post('company', 'CompanyRegisterController@create')->name('register.company.post');
   });
 });
 

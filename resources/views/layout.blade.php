@@ -62,7 +62,7 @@
                             <a class="nav-link" href="">{{ __('Inloggen') }}</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('register.student') }}" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Registreren') }}
                                 <span class="caret"></span>
@@ -72,7 +72,7 @@
                                 <a class="dropdown-item" href="{{ route('register.student') }}">
                                     {{ __('Studenten') }}
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('register.company')}}">
                                     {{ __('Bedrijven') }}
                                 </a>
                             </div>
