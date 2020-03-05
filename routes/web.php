@@ -15,6 +15,8 @@ Route::get('/', 'HomepageController@index');
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
+Route::get('reviews', "ReviewController@index");
+
 
 Route::prefix('admin')->group(function() {
   Route::prefix("event")->group(function() {
