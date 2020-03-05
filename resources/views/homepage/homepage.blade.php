@@ -53,7 +53,10 @@
             @if(count($reviews) == 1)
                 <div class="col-md-5"></div>
             @endif
-                @foreach($reviews as $review)
+            @if(count($reviews) == 4)
+                <div class="col-md-2"></div>
+            @endif
+            @foreach($reviews as $review)
                 <div class="col-md-2">
                     <div class="card">
                         <div class="card-body">
