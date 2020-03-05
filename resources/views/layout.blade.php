@@ -74,7 +74,7 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Inloggen') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"

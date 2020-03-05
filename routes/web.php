@@ -50,7 +50,8 @@ Route::prefix("admin")->group(function() {
     Route::get('create', "Cms@createPage")->name("cms.create");
     Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
     Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
-
+  });
+});
 
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {
