@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
 use App\Http\Controllers\Controller;
-use App\Models\Students;
+use App\Student;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;

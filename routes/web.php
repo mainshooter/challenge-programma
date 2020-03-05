@@ -17,7 +17,7 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-
+Auth::routes();
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
@@ -26,8 +26,6 @@ Route::get('reviews', "ReviewController@index");
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('home', 'HomepageController@index')->name('home');
-
-Route::get('login', 'HomepageController@index')->name('login');
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
