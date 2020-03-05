@@ -13,10 +13,6 @@
 
 Route::get('/', 'HomepageController@index');
 
-Route::get('/homepage', 'HomepageController@index');
-
-
-
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 
@@ -37,3 +33,6 @@ Route::prefix('admin')->group(function() {
     Route::post('create', "Cms@create")->name("cms.create.post");
   });
 });
+
+Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
+Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
