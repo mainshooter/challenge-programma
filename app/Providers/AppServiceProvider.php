@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        require_once __DIR__ . '/../../bootstrap/slugify_function.php';
+        require_once __DIR__ . '/../../bootstrap/helpers/slugify_function.php';
+        require_once __DIR__ . '/../../bootstrap/helpers/eventToAgenda_function.php';
     }
 }
