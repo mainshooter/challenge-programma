@@ -30,27 +30,42 @@
                 <ul class="navbar-nav">
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                        <a class="nav-link" href="#">Fotoboek</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FOTOBOEK</a>
+                        <a class="nav-link" href="#">Reviews</a>
                     </li>
+                    @if(Auth::check())
+                        <?php $role = Auth::user()->role; ?>
+                        @if($role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PROFIEL</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Beheer</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">BEHEER</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/cms">Cms</a>
+                            </li>
+                        @elseif($role == 'company' or $role == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profiel</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
 
@@ -135,3 +150,4 @@
     </footer>
 </body>
 </html>
+
