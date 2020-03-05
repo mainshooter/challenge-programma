@@ -11,11 +11,12 @@ class ReviewController extends Controller
 
         $aReviews = Review::all();
         $nRating = 0;
-
-        foreach($aReviews as $review){
-            $nRating += $review->rating;
+        if(count($aReviews) > 0){
+            foreach($aReviews as $review){
+                $nRating += $review->rating;
+            }
+            $nRating = round($nRating/count($aReviews));
         }
-        $nRating = round($nRating/count($aReviews));
         return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating]);
     }
 }
