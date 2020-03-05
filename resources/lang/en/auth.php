@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Je gebruikersnaam of wachtwoord is verkeerd.',
-    'throttle' => 'Te vaak geprobeerd om in te loggen. Probeer opnieuw in :seconds seconde.',
+    'failed' => 'These credentials do not match our records..',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
