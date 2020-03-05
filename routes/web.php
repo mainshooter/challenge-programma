@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function() {
   });
   Route::prefix("user")->group(function() {
     Route::get("/", "UserController@index")->name("user.index");
-    Route::get("/", "UserController@update");
+    Route::get("update", "UserController@update");
   });
   Route::prefix('cms')->group(function() {
     Route::get('/', "Cms@index")->name("cms.index");
