@@ -1,0 +1,29 @@
+.content{
+    align-content: center;
+}
+
+.card{
+    margin: 10px;
+    max-width: 400px;
+    min-height: 259px;
+}
+
+.body-text{
+    min-height: 120px;
+}
+
+.rating{
+    text-align: center;
+}
+
+.checked{
+    color: orange;
+}
+
+.ratingtext{
+    color: black;
+    font-size:25px;
+}
+
+
+

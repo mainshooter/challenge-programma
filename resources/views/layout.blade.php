@@ -44,20 +44,19 @@
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Agenda</a>
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Beheer</a>
                             </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/cms">Cms</a>
-                                </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/cms">Cms</a>
+                            </li>
                         @elseif($role == 'company' or $role == 'student')
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Agenda</a>
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
                             </li>
 
                             <li class="nav-item">

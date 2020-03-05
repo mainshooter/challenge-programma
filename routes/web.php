@@ -21,13 +21,8 @@ Route::get('homepage', 'HomepageController@index');
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
-// Route::get('/', 'Auth\RegisterController@register_global')->name('register_global');
-// Route::get('/', 'Auth\RegisterController@register_students')->name('register_students');
+Route::get('reviews', "ReviewController@index");
 
-// custom auth routes
-Route::get('global_register', 'Auth\RegisterController@showGlobalRegisterForm')->name('global_register');
-Route::get('register_students', 'Auth\RegisterController@showStudentRegisterForm')->name('register_students');
-Route::get('register_company', 'Auth\RegisterController@showCompanyRegisterForm')->name('register_company');
 
 Auth::routes();
 
@@ -51,3 +46,6 @@ Route::middleware('role:admin')->group(function () {
         });
     });
 });
+
+Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
+Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
