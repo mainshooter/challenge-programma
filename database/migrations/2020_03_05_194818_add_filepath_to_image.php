@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImageTable extends Migration
+class AddFilepathToImage extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('image', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->timestamps();
+        Schema::table('image', function (Blueprint $table) {
+            $table->string('filepath');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image');
+        Schema::table('image', function (Blueprint $table) {
+            $table->dropColumn('filepath');
+        });
     }
 }
