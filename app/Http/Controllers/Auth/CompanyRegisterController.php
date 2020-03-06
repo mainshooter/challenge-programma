@@ -60,8 +60,8 @@ class CompanyRegisterController extends Controller
         'lastname' => ['required', 'string', 'max:50'],
         'companyname' => ['required', 'string', 'max:50'],
         'address' => ['required', 'string', 'max:60'],
-        'postal-code' => ['required', 'string', 'max:10'],
-        'phone'=>['nullable', 'string', 'max:13'],
+        'postal_code' => ['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i', 'max:10'],
+        'phone'=>['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
         'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
@@ -73,7 +73,7 @@ class CompanyRegisterController extends Controller
       $oCompany->lastname = $request->lastname;
       $oCompany->companyname = $request->companyname;
       $oCompany->address = $request->address;
-      $oCompany->postalcode = $request['postal-code'];
+      $oCompany->postalcode = $request->postal_code;
       $oCompany->phone = $request->phone;
       $oCompany->email =  $request->email;
       $oCompany->password = Hash::make($request->password);
