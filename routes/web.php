@@ -29,6 +29,10 @@ Auth::routes();
 
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {
+        Route::get('/', function(){
+            return view('management.index');
+        });
+
         Route::prefix("event")->group(function() {
             Route::get('/', 'EventController@index');
         });
