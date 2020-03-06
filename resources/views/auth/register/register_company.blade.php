@@ -64,7 +64,7 @@
                             <label for="companyname" class="col-md-4 col-form-label text-md-right">{{ __('Bedrijfsnaam *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="companyname" type="text" class="form-control @error('companyname') is-invalid @enderror" 
+                                <input id="companyname" type="text" class="form-control @error('companyname') is-invalid @enderror"
                                     name="companyname" value="{{ old('companyname') }}" required autocomplete="companyname" autofocus>
 
                                 @error('companyname')
@@ -80,7 +80,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam en huisnummer *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" 
+                                <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror"
                                 name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                                 @error('address')
@@ -96,7 +96,7 @@
                             <label for="postal-code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="postal-code" type="text" class="form-control @error('postal-code') is-invalid @enderror" 
+                                <input id="postal-code" type="text" class="form-control @error('postal-code') is-invalid @enderror"
                                     name="postal-code" value="{{ old('postal-code') }}" required autocomplete="postal-code" autofocus>
 
                                 @error('postal-code')
@@ -112,7 +112,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer *') }}</label>
 
                             <div class="col-md-3">
-                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" 
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
                                     name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus required>
 
                                 @error('phone')
@@ -122,13 +122,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -141,10 +141,10 @@
 
                         {{-- password  --}}
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wacthwoord *') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" required autocomplete="new-password">
 
                                 @error('password')
