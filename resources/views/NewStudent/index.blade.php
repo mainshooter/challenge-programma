@@ -22,8 +22,8 @@
                             <td>{{$Student->email}}</td>
                             <td>{{$Student->schoolyear}}</td>
                             <td>
-                                <a href="#" class="btn btn-success">Accepteren</a>
-                                <a href="#" class="btn btn-danger">Verwijderen</a>
+                                <a href="{{ route('newstudent.accept', $Student->id) }}" class="btn btn-success">Accepteren</a>
+                                <a href="{{ route('newstudent.delete', $Student->id) }}" class="btn btn-danger">Verwijderen</a>
                             </td>
                         </tr>
                     @endforeach

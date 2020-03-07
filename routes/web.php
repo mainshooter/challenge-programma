@@ -36,21 +36,6 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
-Route::prefix("admin")->group(function() {
-  Route::prefix("event")->group(function() {
-    Route::get('/', 'EventController@index');
-  });
-  Route::prefix("user")->group(function() {
-    Route::get("/", "UserController@index")->name("user.index");
-  });
-  Route::prefix('cms')->group(function() {
-    Route::get('/', "Cms@index")->name("cms.index");
-    Route::get('create', "Cms@createPage")->name("cms.create");
-    Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
-    Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
-  });
-});
-
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {
         Route::prefix("event")->group(function() {
@@ -70,6 +55,8 @@ Route::middleware('role:admin')->group(function () {
         });
         Route::prefix("NewStudent")->group(function() {
             Route::get("/", "NewStudentController@index")->name("newstudent.index");
+            Route::get("delete/{id}", "NewStudentController@delete")->name("newstudent.delete");
+            Route::get("accept/{id}", "NewStudentController@accept")->name("newstudent.accept");
         });
     });
 });
