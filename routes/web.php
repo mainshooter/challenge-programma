@@ -23,6 +23,8 @@ Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
+//TODO DELETE
+Route::get("update", "UserController@update");
 
 Auth::routes();
 
