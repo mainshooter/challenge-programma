@@ -12,7 +12,8 @@ class ImageController
     use ValidatesRequests;
 
     public function index() {
-        return view('Image/image');
+        $images = Image::all();
+        return view('Image/image', compact('images', $images));
     }
 
     public function store(Request $request) {
@@ -25,7 +26,7 @@ class ImageController
             $file = $request->file('filepath');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('storage', $filename);
+            $file->move('public/storage', $filename);
             $image->filepath = $filename;
         }
         else {

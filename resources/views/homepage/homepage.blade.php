@@ -15,17 +15,14 @@
             </ol>
 
             <div class="carousel-inner" role="listbox">
-                @for ($i = 0; $i < count($images); $i++)
-                    @if($i == 0)
-                    <div class="carousel-item active">
-                        <img src="{{$images[$i]}}" alt="First Slide">
+                <div class="carousel-item active">
+                    <img src="{{$images[0]}}" alt="First Slide">
+                </div>
+                @foreach($images as $image)
+                    <div class="carousel-item">
+                        <img src="{{$image->filepath}}" alt=""/>
                     </div>
-                    @else
-                        <div class="carousel-item">
-                            <img src="{{$images[$i]}}">
-                        </div>
-                    @endif
-                @endfor
+                    @endforeach
             </div>
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
