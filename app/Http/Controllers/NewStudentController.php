@@ -33,7 +33,6 @@ class NewStudentController extends Controller
             $oUser->email = $oStudent->email;
             $oUser->password = $oStudent->password;
             $oUser->role = 'student';
-
             $oUser->save();
         }
         return redirect()->route("newstudent.index");
