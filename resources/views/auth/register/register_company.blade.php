@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register.company.post') }}">
                         @csrf
+
                         {{-- voornaam --}}
                         <div class="form-group row">
                             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam *') }}</label>
@@ -93,13 +94,13 @@
 
                         {{-- postcode --}}
                         <div class="form-group row">
-                            <label for="postal-code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode *') }}</label>
+                            <label for="postal_code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="postal-code" type="text" class="form-control @error('postal-code') is-invalid @enderror"
-                                    name="postal-code" value="{{ old('postal-code') }}" required autocomplete="postal-code" autofocus>
+                                <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror"
+                                    name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
 
-                                @error('postal-code')
+                                @error('postal_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
