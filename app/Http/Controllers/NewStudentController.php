@@ -9,7 +9,7 @@ use \App\User;
 class NewStudentController extends Controller
 {
     public function index(Request $request) {
-        $aStudents = Student::all();
+        $aStudents = Student::All()->where('isAccepted', 0);
         return view("newstudent/index", [
             'aStudents' => $aStudents
         ]);
@@ -35,6 +35,9 @@ class NewStudentController extends Controller
             $oUser->role = 'student';
 
             $oUser->save();
+
+            $oStudent->IsAccepted = 1;
+            $oStudent->update();
         }
         return redirect()->route("newstudent.index");
     }
