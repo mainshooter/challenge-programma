@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\User;
 
 class AcceptatieMail extends Mailable
 {
@@ -16,9 +17,17 @@ class AcceptatieMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    /**
+     * The order instance.
+     *
+     * @var User
+     */
+    public $oUser;
+
+    public function __construct(User $oUser)
     {
-        //
+        $this->oUser = $oUser;
     }
 
     /**
@@ -28,6 +37,8 @@ class AcceptatieMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('challenge@programma.nl')
+                    ->view('mail.acceptation')
+                    ->text('mail.acceptation');
     }
 }
