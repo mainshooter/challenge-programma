@@ -17,15 +17,39 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-
+Auth::routes();
 
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
+Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
-Auth::routes();
+Route::get('home', 'HomepageController@index')->name('home');
 
+Route::namespace('Auth')->group(function() {
+  Route::prefix('register')->group(function() {
+    Route::get('student', 'StudentRegisterController@index')->name('register.student');
+    Route::post('student', 'StudentRegisterController@create')->name('register.student.post');
+    Route::get('company', 'CompanyRegisterController@index')->name('register.company');
+    Route::post('company', 'CompanyRegisterController@create')->name('register.company.post');
+  });
+});
+
+Route::prefix("admin")->group(function() {
+  Route::prefix("event")->group(function() {
+    Route::get('/', 'EventController@index');
+  });
+  Route::prefix("user")->group(function() {
+    Route::get("/", "UserController@index")->name("user.index");
+  });
+  Route::prefix('cms')->group(function() {
+    Route::get('/', "Cms@index")->name("cms.index");
+    Route::get('create', "Cms@createPage")->name("cms.create");
+    Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
+    Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
+  });
+});
 
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {

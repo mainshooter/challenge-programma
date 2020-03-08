@@ -76,24 +76,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                         </li>
-                        @if (Route::has('global_register'))
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('global_register') }}" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Registreren') }}
-                                    <span class="caret"></span>
-                                </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Registreren') }}
+                                <span class="caret"></span>
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('register_students') }}">
-                                        {{ __('Studenten') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('register_company') }}">
-                                        {{ __('Bedrijven') }}
-                                    </a>
-                                </div>
-                            </li>
-                        @endif
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('register.student') }}">
+                                    {{ __('Studenten') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('register.company')}}">
+                                    {{ __('Bedrijven') }}
+                                </a>
+                            </div>
+                        </li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
