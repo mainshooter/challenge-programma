@@ -62,11 +62,11 @@
 
                         {{-- telefoon --}}
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer *') }}</label>
 
                             <div class="col-md-3">
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus>
+                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus required>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
