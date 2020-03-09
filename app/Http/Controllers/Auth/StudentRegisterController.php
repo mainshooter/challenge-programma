@@ -73,7 +73,7 @@ class StudentRegisterController extends Controller
       $oStudent->schoolyear = $request->schoolyear;
       $oStudent->email =  $request->email;
       $oStudent->password = Hash::make($request->password);
-      $oStudent->isAccepted = 0;
+      $oStudent->is_accepted = 0;
 
       $oStudent->save();
 

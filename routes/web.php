@@ -53,7 +53,7 @@ Route::middleware('role:admin')->group(function () {
             Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
             Route::post('create', "Cms@create")->name("cms.create.post");
         });
-        Route::prefix("newStudent")->group(function() {
+        Route::prefix("new-student")->group(function() {
             Route::get("/", "NewStudentController@index")->name("newstudent.index");
             Route::get("delete/{id}", "NewStudentController@delete")->name("newstudent.delete");
             Route::get("accept/{id}", "NewStudentController@accept")->name("newstudent.accept");

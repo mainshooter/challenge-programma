@@ -8,7 +8,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Naam</th>
+                        <th>Voornaam</th>
+                        <th>Tussenvoegsel</th>
+                        <th>Achternaam</th>
                         <th>E-mail</th>
                         <th>Schooljaar</th>
                         <th></th>
@@ -19,6 +21,8 @@
                         <tr>
                             <td>{{$Student->id}}</td>
                             <td>{{$Student->firstname}}</td>
+                            <td>{{$Student->prefix}}</td>
+                            <td>{{$Student->lastname}}</td>
                             <td>{{$Student->email}}</td>
                             <td>{{$Student->schoolyear}}</td>
                             <td>
