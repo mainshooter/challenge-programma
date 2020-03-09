@@ -41,6 +41,6 @@ class NewStudentController extends Controller
         }
 
 
-        return redirect()->route("newstudent.index");
+      return redirect()->route("newstudent.index");
     }
 }
