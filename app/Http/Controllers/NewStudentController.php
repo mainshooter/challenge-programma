@@ -9,7 +9,7 @@ use \App\User;
 class NewStudentController extends Controller
 {
     public function index(Request $request) {
-        $aStudents = Student::All()->where('isAccepted', 0);
+        $aStudents = Student::All()->where('is_accepted', 0);
         return view("newstudent/index", [
             'aStudents' => $aStudents
         ]);
@@ -18,27 +18,25 @@ class NewStudentController extends Controller
     public function delete(Request $request, $iId) {
         $oStudent = Student::find($iId);
 
-        if (!is_null($oStudent)) {
-            $oStudent->delete();
-        }
+        $oStudent->delete();
+
         return redirect()->route("newstudent.index");
     }
 
     public function accept(Request $request, $iId) {
         $oStudent = Student::find($iId);
 
-        if (!is_null($oStudent)) {
-            $oUser = new User();
-            $oUser->name = $oStudent->firstname;
-            $oUser->email = $oStudent->email;
-            $oUser->password = $oStudent->password;
-            $oUser->role = 'student';
+        $oUser = new User();
+        $oUser->name = $oStudent->firstname;
+        $oUser->email = $oStudent->email;
+        $oUser->password = $oStudent->password;
+        $oUser->role = 'student';
 
-            $oUser->save();
+        $oUser->save();
 
-            $oStudent->IsAccepted = 1;
-            $oStudent->update();
-        }
+        $oStudent->is_accepted = 1;
+        $oStudent->update();
+
         return redirect()->route("newstudent.index");
     }
 }
