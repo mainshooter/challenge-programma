@@ -14,7 +14,7 @@ class AddIsAcceptedToStudent extends Migration
     public function up()
     {
         Schema::table('student', function (Blueprint $table) {
-            $table->boolean('isAccepted');
+            $table->boolean('is_accepted');
         });
     }
 
