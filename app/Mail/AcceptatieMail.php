@@ -37,8 +37,7 @@ class AcceptatieMail extends Mailable
      */
     public function build()
     {
-        return $this->from('challenge@programma.nl')
-                    ->view('mail.acceptation')
+        return $this->from('main.mail.samebestserver.nl')
                     ->text('mail.acceptation');
     }
 }
