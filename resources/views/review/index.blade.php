@@ -14,18 +14,18 @@
                     <H2>Wat bedrijven denken over het Challenge programma</H2>
                     <br>
                     <div class="row">
-                        @for($i = 0; $i < 5; $i++)
+                        @foreach($aReviews as $review)
                             <div class="col-md-6 col-sm-12">
                                 <div class="card mx-auto">
                                     <div class="card-body">
-                                        <h5 class="card-title">Bedrijf</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Reviewer</h6>
-                                        <p class="card-text body-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer dsa</p>
-                                        <p class="card-text">Rating / 10</p>
+                                        <h5 class="card-title">{{$review->name_company}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{$review->name_reviewer}}</h6>
+                                        <p class="card-text body-text">{{$review->body}}</p>
+                                        <p class="card-text">{{$review->rating}} / 10</p>
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                     <br>
                     <p class="ratingtext">Het gemiddelde cijfer van het Challenge programma</p>
