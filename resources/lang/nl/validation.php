@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -157,5 +156,4 @@ return [
       'event_house_number_addition' => 'evenement huisnummer toevoegingen',
       'event_zipcode' => 'evenement postcode',
     ],
-
 ];

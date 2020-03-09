@@ -38,7 +38,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reviews</a>
+                        <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
@@ -79,24 +79,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                         </li>
-                        @if (Route::has('global_register'))
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('global_register') }}" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Registreren') }}
-                                    <span class="caret"></span>
-                                </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Registreren') }}
+                                <span class="caret"></span>
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('register_students') }}">
-                                        {{ __('Studenten') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('register_company') }}">
-                                        {{ __('Bedrijven') }}
-                                    </a>
-                                </div>
-                            </li>
-                        @endif
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('register.student') }}">
+                                    {{ __('Studenten') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('register.company')}}">
+                                    {{ __('Bedrijven') }}
+                                </a>
+                            </div>
+                        </li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -136,7 +134,11 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <h6>Over ons</h6>
-                    <p class="text-justify">Het challenge programma is een studentenvereniging die is opgericht door en voor studenten van de opleiding Bedrijfskunde. Leden die deelnemen aan het Challenge programma kunnen meedoen aan evenementen. Het is een gezellige en snel groeiende studentenvereniging.</p>
+                    <p class="text-justify">
+                        Het Challenge Programma is een groep studenten die zichzelf meer willen ontwikkelen als persoon en als bedrijfskundige.
+                        We bieden ze deze mogelijkheid omdat sommigen tijdens hun studie graag alvast een extra goede basis willen leggen voor hun toekomstige carrière.
+                        Netwerken, bedrijven bezoeken, je plek vinden of wat meer uitdaging zoeken in je studie, ons brede programma heeft voor ieder wat wils.
+                    </p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
@@ -146,7 +148,7 @@
                     <ul class="footer-links">
                         <li><a href="">Over ons</a></li>
                         <li><a href="">Contact</a></li>
-                        <li><a href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
