@@ -30,28 +30,87 @@
                 <ul class="navbar-nav">
                     <!-- regular navigation links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">AGENDA</a>
+                        <a class="nav-link" href="#">Fotoboek</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FOTOBOEK</a>
+                        <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
+                    @if(Auth::check())
+                        <?php $role = Auth::user()->role; ?>
+                        @if($role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PROFIEL</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Beheer</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">BEHEER</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/cms">Cms</a>
+                            </li>
+                        @elseif($role == 'company' or $role == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profiel</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Registreren') }}
+                                <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('register.student') }}">
+                                    {{ __('Studenten') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('register.company')}}">
+                                    {{ __('Bedrijven') }}
+                                </a>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -72,7 +131,11 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <h6>Over ons</h6>
-                    <p class="text-justify">Het challenge programma is een studentenvereniging die is opgericht door en voor studenten van de opleiding Bedrijfskunde. Leden die deelnemen aan het Challenge programma kunnen meedoen aan evenementen. Het is een gezellige en snel groeiende studentenvereniging.</p>
+                    <p class="text-justify">
+                        Het Challenge Programma is een groep studenten die zichzelf meer willen ontwikkelen als persoon en als bedrijfskundige.
+                        We bieden ze deze mogelijkheid omdat sommigen tijdens hun studie graag alvast een extra goede basis willen leggen voor hun toekomstige carrière.
+                        Netwerken, bedrijven bezoeken, je plek vinden of wat meer uitdaging zoeken in je studie, ons brede programma heeft voor ieder wat wils.
+                    </p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
@@ -82,7 +145,7 @@
                     <ul class="footer-links">
                         <li><a href="">Over ons</a></li>
                         <li><a href="">Contact</a></li>
-                        <li><a href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
@@ -91,3 +154,4 @@
     </footer>
 </body>
 </html>
+
