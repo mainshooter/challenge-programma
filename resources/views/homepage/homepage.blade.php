@@ -9,18 +9,18 @@
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-homepage" data-slide-to="1"></li>
-                <li data-target="#carousel-homepage" data-slide-to="2"></li>
-                <li data-target="#carousel-homepage" data-slide-to="3"></li>
+                @for($i = 1; $i < count($aImages) + 1; $i++)
+                  <li data-target="#carousel-homepage" data-slide-to="{{$i}}"></li>
+                @endfor
             </ol>
 
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="{{$images[0]}}" alt="First Slide">
+                    <img src="{{Storage::url($oStartImage->filepath)}}" alt="First Slide">
                 </div>
-                @foreach($images as $image)
+                @foreach($aImages as $image)
                     <div class="carousel-item">
-                        <img src="{{$image->filepath}}" alt=""/>
+                        <img src="{{Storage::url($image->filepath)}}" alt=""/>
                     </div>
                     @endforeach
             </div>

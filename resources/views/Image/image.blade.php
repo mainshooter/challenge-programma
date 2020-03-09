@@ -4,6 +4,8 @@
 
     <div class="container">
         <div class="jumbotron">
+          @component('component/formError')
+          @endcomponent
             <form action="{{ route('image.store.post') }}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="input-group">

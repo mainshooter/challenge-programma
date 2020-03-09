@@ -13,30 +13,21 @@ class ImageController
 
     public function index() {
         $images = Image::all();
-        return view('Image/image', compact('images', $images));
+        return view('Image/image', ['images', $images]);
     }
 
     public function store(Request $request) {
         $this->validate($request, [
-            'filepath' => 'image|nullable|max:1999'
+            'filepath' => 'image|max:10000'
         ]);
         $image = new Image();
 
-        if($request->hasFile('filepath')) {
-            $file = $request->file('filepath');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('public/storage', $filename);
-            $image->filepath = $filename;
-        }
-        else {
-            $image->filepath = 'NoImage';
-            return $request;
-        }
-
+        $oUpload = $request->file('filepath');
+        $sPath = $oUpload->store('public');
+        $image->filepath = $sPath;
+        $image->name = $oUpload->getClientOriginalName();
         $image->save();
-
-        return view('Image/image')->with('image',$image);
+        return redirect()->route('image.index');
     }
 
 }
