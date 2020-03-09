@@ -5,6 +5,7 @@ namespace Tests\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use App\User;
 
 class EventTest extends DuskTestCase
 {
@@ -16,6 +17,7 @@ class EventTest extends DuskTestCase
     public function testOverview()
     {
         $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
             $browser->visit('/admin/event')
                     ->assertSee('Event toevoegen');
         });
@@ -23,6 +25,7 @@ class EventTest extends DuskTestCase
 
     public function testCreate() {
       $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
         $browser->visit('/admin/event');
         $browser->clickLink('Event toevoegen');
         $browser->type('event_name', 'Mijn geweldige event');
@@ -44,7 +47,7 @@ class EventTest extends DuskTestCase
         $browser->click("input[name=event_house_number]");
 
         $browser->click("input[type=submit]");
-        $browser->assertSee('Mijn geweldige event');
+        $browser->assertSee('Event toevoegen');
       });
     }
 }
