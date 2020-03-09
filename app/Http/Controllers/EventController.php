@@ -31,7 +31,7 @@ class EventController extends Controller
      * @param  Request $request
      */
     public function create(Request $request) {
-      $alidatedData = $request->validate([
+      $request->validate([
         'event_name' => 'required|max:255',
         'event_description' => 'required',
         'event_points' => 'required|integer',
