@@ -11,7 +11,7 @@
                 <div class="menuDiv" >
                     <nav class="nav flex-column">
                         <a class="nav-link" href="admin/user">Gebruikersbeheer</a>
-                        <a class="nav-link" href="#">Accepteren studenten</a>
+                        <a class="nav-link" href="admin/new-student">Accepteren studenten</a>
                         <a class="nav-link" href="admin/event">Aanmaken evenement</a>
                         <a class="nav-link" href="admin/cms">CMS</a>
                     </nav>
