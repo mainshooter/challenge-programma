@@ -17,13 +17,9 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-Auth::routes();
-
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
-
-Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Auth::routes();
 
