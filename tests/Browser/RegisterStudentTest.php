@@ -18,13 +18,13 @@ class RegisterStudentTest extends DuskTestCase
           $browser->visit('/register/student');
           $browser->value("#firstname", "Henk");
           $browser->value("#lastname", "Gelens");
-          $browser->value("#phone", "+31 6 12345678");
+          $browser->value("#phone", "0612345678");
           $browser->value("#schoolyear", "2");
           $browser->value("#email", "Henkie@hotmail.com");
-          $browser->value("#password", "12345678");
-          $browser->value("#password-confirm", "12345678");
+          $browser->value("#password", "LeukWachtwoordIsDit!");
+          $browser->value("#password-confirm", "LeukWachtwoordIsDit!");
           $browser->click("input[type=submit]");
-          $browser->assertSee('Wat mensen over ons zeggen');
+          $browser->assertSee('Wat mensen over ons zeggen:');
       });
     }
 }
