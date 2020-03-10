@@ -20,8 +20,8 @@
                         <td>{{$User->name}}</td>
                         <td>{{$User->email}}</td>
                         <td>
-                            <a href="#">Bewerken</a>
-                            <a href="#">Verwijderen</a>
+                            <a href="{{ route('user.edit', $User->id) }}" class="btn btn-primary">Bewerken</a>
+                            <!-- Sprint 2 <a href="#">Verwijderen</a>-->
                         </td>
                     </tr>
                 @endforeach
