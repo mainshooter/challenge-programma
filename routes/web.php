@@ -25,7 +25,6 @@ Route::get('reviews', "ReviewController@index");
 
 Auth::routes();
 
-
 Route::middleware('role:admin')->group(function () {
     Route::prefix('admin')->group(function() {
         Route::prefix("event")->group(function() {
@@ -34,6 +33,7 @@ Route::middleware('role:admin')->group(function () {
         Route::prefix("user")->group(function() {
             Route::get("/", "UserController@index")->name("user.index");
             Route::get("update/{id}", "UserController@update")->name("user.update");
+            Route::post('edit/{id}', 'UserController@edit')->name('user.edit.post');
         });
         Route::prefix('cms')->group(function() {
             Route::get('/', "Cms@index")->name("cms.index");
