@@ -8,22 +8,23 @@
         <div class="col-md-2"></div>
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
+                @if(!is_null($oStartImage))
                 <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
                 @for($i = 1; $i < count($aImages) + 1; $i++)
                   <li data-target="#carousel-homepage" data-slide-to="{{$i}}"></li>
                 @endfor
             </ol>
-
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <img src="{{Storage::url($oStartImage->filepath)}}" alt="First Slide">
                 </div>
-                @foreach($aImages as $image)
+                @foreach($aImages as $oImage)
                     <div class="carousel-item">
-                        <img src="{{Storage::url($image->filepath)}}" alt=""/>
+                        <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
                     </div>
                     @endforeach
             </div>
+                @endif
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
