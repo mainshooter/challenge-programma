@@ -44,14 +44,8 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @if(count($reviews) > 2)
-                <div class="col-md-2"> </div>
-            @endif
-            @if(count($reviews) < 3)
-                <div class="col-md-5"></div>
-                @endif
-                @foreach($reviews as $review)
-                <div class="col-md-2">
+            @foreach($reviews as $review)
+                <div class="col-md-3 col-centered">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{$review->name_company}}</h5>
@@ -62,7 +56,6 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-md-2"></div>
         </div>
     </div>
 @endsection

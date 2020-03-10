@@ -1,0 +1,22 @@
+.nav{
+    text-align: center;
+    align-content: center;
+    align-self: center;
+}
+
+.col-12{
+    align-content: center;
+}
+
+.content-container{
+    align-content: center;
+}
+
+.menuDiv{
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.menuDiv a{
+    border: 1px solid black;
+}
