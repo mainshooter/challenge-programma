@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Gebruiker Wijzigen') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}"> {{-- Change to update --}}
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             {{-- voornaam --}}
@@ -17,7 +17,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control"
-                                           name="name" value="{{ old('name') }}" required autocomplete="name" readonly> {{-- Change to Locked, get name from selected user--}}
+                                           name="name" value="{{ $User->name }}" required autocomplete="name" autofocus> {{-- Change to Locked, get name from selected user--}}
                                 </div>
                             </div>
 
@@ -27,7 +27,7 @@
 
                                 <div class="col-md-6">
                                     <input id="infixname" type="text" class="form-control"
-                                           name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" readonly> {{-- Change to Locked, get name from selected user--}}
+                                           name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" autofocus> {{-- Change to Locked, get name from selected user--}}
 
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text" class="form-control"
-                                           name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" readonly> {{-- Change to Locked, get name from selected user--}}
+                                           name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus> {{-- Change to Locked, get name from selected user--}}
                                 </div>
                             </div>
 
@@ -63,7 +63,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"> {{-- Non locked, Get email from selected user --}}
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $User->email }}" required autocomplete="email"> {{-- Non locked, Get email from selected user --}}
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">

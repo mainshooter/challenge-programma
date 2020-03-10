@@ -23,9 +23,6 @@ Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
-//TODO DELETE
-Route::get("update", "UserController@update");
-
 Auth::routes();
 
 
@@ -36,7 +33,7 @@ Route::middleware('role:admin')->group(function () {
         });
         Route::prefix("user")->group(function() {
             Route::get("/", "UserController@index")->name("user.index");
-            Route::get("update", "UserController@update");
+            Route::get("update/{id}", "UserController@update")->name("user.update");
         });
         Route::prefix('cms')->group(function() {
             Route::get('/', "Cms@index")->name("cms.index");

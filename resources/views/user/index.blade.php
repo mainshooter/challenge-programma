@@ -20,7 +20,7 @@
                         <td>{{$User->name}}</td>
                         <td>{{$User->email}}</td>
                         <td>
-                            <a href="#">Bewerken</a>
+                            <a href="{{ route('user.update', $User->id) }}" class="btn btn-primary">Bewerken</a>
                             <a href="#">Verwijderen</a>
                         </td>
                     </tr>
