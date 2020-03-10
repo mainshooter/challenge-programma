@@ -16,9 +16,11 @@
                 @endfor
             </ol>
             <div class="carousel-inner" role="listbox">
+                @if(!is_null($oStartImage))
                 <div class="carousel-item active">
                     <img src="{{Storage::url($oStartImage->filepath)}}" alt="First Slide">
                 </div>
+                @endif
                 @foreach($aImages as $oImage)
                     <div class="carousel-item">
                         <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
