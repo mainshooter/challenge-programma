@@ -20,6 +20,7 @@
         </div>
         <div class="modal-body">
           <p class="modal-description"></p>
+          <p class="modal-point"></p>
           <p class="modal-address">
           </p>
           <ul>
@@ -65,6 +66,7 @@
           let modalAdress = modal.querySelector('.modal-address');
           let modalStart = modal.querySelector('.modal-start-time');
           let modalEnd = modal.querySelector('.modal-end-time');
+          let modalPoint = modal.querySelector('.modal-point');
           fetch("/agenda/detail/" + event.event.id)
             .then(response => {
               return response.json();
@@ -76,6 +78,7 @@
               modalAdress.innerText = data.street + " " + data.house_number + housenumberAdditionString + "\n " + data.city + " " + data.zipcode;
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
+              modalPoint.innerText = "Punt: " + data.points;
               console.log(data);
             });
           $('#event-modal').modal('show');
