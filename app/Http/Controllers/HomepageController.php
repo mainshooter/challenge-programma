@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use App\Image;
 
 class HomepageController extends Controller
 {
     public function index(){
-        $imImage = asset('images/visitekaart.jpg');
+        $aImages = Image::all();
+        $oStartImage = null;
 
-        $aImages = array();
-        array_push($aImages, $imImage);
-        array_push($aImages, $imImage);
-        array_push($aImages, $imImage);
-        array_push($aImages, $imImage);
+        if (count($aImages) > 3) {
+          $aImages = $aImages->random(4);
+        }
+        if (count($aImages) > 1) {
+          $oStartImage = $aImages[0];
+          unset($aImages[0]);
+        }
 
 
         $aReviews = Review::all();
@@ -22,6 +26,10 @@ class HomepageController extends Controller
             $aReviews = $aReviews->random(4);
         }
 
-        return view('homepage.homepage', ['images' => $aImages, 'reviews' => $aReviews]);
+        return view('homepage.homepage', [
+          'aImages' => $aImages,
+          'oStartImage' => $oStartImage,
+          'aReviews' => $aReviews,
+        ]);
     }
 }

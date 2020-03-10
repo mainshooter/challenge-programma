@@ -47,6 +47,10 @@ Route::middleware('role:admin')->group(function () {
             Route::get("update/{id}", "UserController@editPage")->name("user.edit");
             Route::post('update/{id}', 'UserController@edit')->name('user.edit.post');
     });
+    Route::prefix('image')->group(function() {
+      Route::get('/', 'ImageController@index')->name('image.index');
+      Route::post('/store', 'ImageController@store')->name('image.store.post');
+    });
     Route::prefix('cms')->group(function() {
         Route::get('/', "Cms@index")->name("cms.index");
         Route::get('create', "Cms@createPage")->name("cms.create");

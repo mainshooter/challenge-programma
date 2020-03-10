@@ -8,24 +8,24 @@
         <div class="col-md-2"></div>
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-homepage" data-slide-to="1"></li>
-                <li data-target="#carousel-homepage" data-slide-to="2"></li>
-                <li data-target="#carousel-homepage" data-slide-to="3"></li>
-            </ol>
-
-            <div class="carousel-inner" role="listbox">
-                @for ($i = 0; $i < count($images); $i++)
-                    @if($i == 0)
-                    <div class="carousel-item active">
-                        <img src="{{$images[$i]}}" alt="First Slide">
-                    </div>
-                    @else
-                        <div class="carousel-item">
-                            <img src="{{$images[$i]}}">
-                        </div>
-                    @endif
+                @if(!is_null($oStartImage))
+                  <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
+                @endif
+                @for($i = 1; $i < count($aImages) + 1; $i++)
+                  <li data-target="#carousel-homepage" data-slide-to="{{$i}}"></li>
                 @endfor
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @if(!is_null($oStartImage))
+                <div class="carousel-item active">
+                    <img src="{{Storage::url($oStartImage->filepath)}}" alt="First Slide">
+                </div>
+                @endif
+                @foreach($aImages as $oImage)
+                    <div class="carousel-item">
+                        <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
+                    </div>
+                    @endforeach
             </div>
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
@@ -44,14 +44,14 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @foreach($reviews as $review)
+            @foreach($aReviews as $oReview)
                 <div class="col-md-3 col-centered">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{$review->name_company}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$review->name_reviewer}}</h6>
-                            <p class="card-text">{{$review->body}}</p>
-                            <p class="card-footer">{{$review->rating}} / 10</p>
+                            <h5 class="card-title">{{$oReview->name_company}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$oReview->name_reviewer}}</h6>
+                            <p class="card-text">{{$oReview->body}}</p>
+                            <p class="card-footer">{{$oReview->rating}} / 10</p>
                         </div>
                     </div>
                 </div>
