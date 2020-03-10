@@ -33,7 +33,7 @@ class UserController extends Controller
       $validatedData = $request->validate([
           "name" => "required|Max:255",
           "email" => "required|email",
-          "role" => "required|in::student,admin,company",
+          "role" => "required|in:student,admin,company",
       ]);
 
       $oUser = User::find($iId);
