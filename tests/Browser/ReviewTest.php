@@ -7,19 +7,18 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use App\User;
 
-class UserTest extends DuskTestCase
+class ReviewTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
      *
-     * @return void
+     * @test
      */
-    public function testOverview()
+    public function ReviewPageTest()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-            $browser->visit('/admin/user')
-                    ->assertSee('Name');
+            $browser->visit('/reviews')
+                ->assertSee('Wat bedrijven denken over het Challenge programma');
         });
     }
 }
