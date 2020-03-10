@@ -19,9 +19,9 @@ class UserController extends Controller
       ]);
     }
 
-    public function update($iId){
-        $oUser = User::find($iId);
-        return view("user/update_user", ["User" => $oUser] );
+    public function editPage($iId){
+        $User = User::find($iId);
+        return view("user/update_user", ["User" => $User] );
     }
 
     /**
@@ -31,22 +31,22 @@ class UserController extends Controller
      */
     public function edit(Request $request, $iId) {
       $validatedData = $request->validate([
-        "name" => "required",
+        "name" => "required|digits_between:1:255",
         "email" => "required|email",
-        "role" => "required", //regex:(student|admin|company)
+        "role" => "required|regex:(student|admin|company)",
       ]);
 
-      $oUser = User::find($iId);
+      $User = User::find($iId);
 
-      if (is_null($oUser)) {
+      if (is_null($User)) {
         return redirect()->route('user.index');
       }
 
-      $oUser->name = $request->get('name');
-      $oUser->email = $request->get('email');
-      $oUser->role = $request->get('role');
+      $User->name = $request->get('name');
+      $User->email = $request->get('email');
+      $User->role = $request->get('role');
 
-      $oUser->save();
+      $User->save();
 
       return redirect()->route('user.index')->with('alert', 'user Info updated');
     }

@@ -21,47 +21,7 @@
                                 </div>
                             </div>
 
-                            {{-- tussenvoegsel --}}
-                            <!--
-                            <div class="form-group row">
-                                <label for="infixname" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="infixname" type="text" class="form-control"
-                                           name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" autofocus>
-
-                                </div>
-                            </div>
-                            -->
-
-                            {{-- achternaam --}}
-                            <!--
-                            <div class="form-group row">
-                                <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control"
-                                           name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
-                                </div>
-                            </div>
-                            -->
-
-                            {{-- leerjaar --}}
-                            <div class="form-group row">
-                                <label for="schoolyear" class="col-md-4 col-form-label text-md-right">{{ __('Studiejaar') }}</label>
-
-                                <div class="col-md-2">
-                                    <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror"
-                                           name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
-
-                                    @error('schoolyear')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                            {{-- Email Address --}}
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 
@@ -70,20 +30,21 @@
                                 </div>
                             </div>
 
+                            {{-- role --}}
                             <div class="form-group row">
                                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                                 <div class="col-md-6">
                                     <div>
-                                        <input id="role" type="radio" name="role" value="student" required checked>
+                                        <input id="role" type="radio" name="role" value="student" required {{$User->role == 'student' ? 'checked' : ''}}>
                                         <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Student') }}</label>
                                     </div>
                                     <div>
-                                        <input id="role" type="radio" name="role" value="company" required>
+                                        <input id="role" type="radio" name="role" value="company" required {{$User->role == 'company' ? 'checked' : ''}}>
                                         <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Bedrijf') }}</label>
                                     </div>
                                     <div>
-                                        <input id="role" type="radio" name="role" value="admin" required>
+                                        <input id="role" type="radio" name="role" value="admin" required {{$User->role == 'admin' ? 'checked' : ''}}>
                                         <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Admin') }}</label>
                                     </div>
 
