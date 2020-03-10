@@ -42,19 +42,10 @@
                     @if(Auth::check())
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
-                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Beheer</a>
                             </li>
-
-                        @elseif($role == 'company' or $role == 'student')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
-                            </li>
-
                         @endif
                     @endif
                 </ul>
@@ -133,8 +124,6 @@
                 <div class="col-xs-6 col-md-3">
                     <h6>Links</h6>
                     <ul class="footer-links">
-                        <li><a href="">Over ons</a></li>
-                        <li><a href="">Contact</a></li>
                         <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>
