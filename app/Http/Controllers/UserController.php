@@ -32,8 +32,8 @@ class UserController extends Controller
     public function edit(Request $request, $iId) {
       $validatedData = $request->validate([
         "name" => "required",
-        "email" => "required|email|unique:users",
-        "role" => "regex:(student|admin|company)",
+        "email" => "required|email",
+        "role" => "required", //regex:(student|admin|company)
       ]);
 
       $oUser = User::find($iId);
@@ -42,12 +42,12 @@ class UserController extends Controller
         return redirect()->route('user.index');
       }
 
-      $oUser->name = $request->name;
-      $oUser->email = $request->email;
-      $oUser->role = $request->role;
+      $oUser->name = $request->get('name');
+      $oUser->email = $request->get('email');
+      $oUser->role = $request->get('role');
 
       $oUser->save();
 
-      return redirect()->route('user.index');
+      return redirect()->route('user.index')->with('alert', 'user Info updated');
     }
 }

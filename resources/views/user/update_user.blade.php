@@ -6,18 +6,20 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Gebruiker Wijzigen') }}</div>
-
                     <div class="card-body">
+                        @component('component/formError')
+                        @endcomponent
                         <form method="POST" action="{{ route('user.edit.post', $User->id) }}">
-                            @csrf
+                            {{csrf_field()}}
+
 
                             {{-- voornaam --}}
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Naam') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control"
-                                           name="name" value="{{ $User->name }}" required autocomplete="name" autofocus> {{-- Change to Locked, get name from selected user--}}
+                                           name="name" value="{{ $User->name }}" required autocomplete="name" autofocus>
                                 </div>
                             </div>
 
@@ -28,7 +30,7 @@
 
                                 <div class="col-md-6">
                                     <input id="infixname" type="text" class="form-control"
-                                           name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" autofocus> {{-- Change to Locked, get name from selected user--}}
+                                           name="infixname" value="{{ old('infixname') }}" required autocomplete="infixname" autofocus>
 
                                 </div>
                             </div>
@@ -41,7 +43,7 @@
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text" class="form-control"
-                                           name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus> {{-- Change to Locked, get name from selected user--}}
+                                           name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
                                 </div>
                             </div>
                             -->
@@ -66,14 +68,34 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ $User->email }}" required autocomplete="email">
+                                    <input id="email" type="email" name="email" value="{{ $User->email }}" required autocomplete="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
+
+                                <div class="col-md-6">
+                                    <div>
+                                        <input id="role" type="radio" name="role" value="student" required checked>
+                                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Student') }}</label>
+                                    </div>
+                                    <div>
+                                        <input id="role" type="radio" name="role" value="company" required>
+                                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Bedrijf') }}</label>
+                                    </div>
+                                    <div>
+                                        <input id="role" type="radio" name="role" value="admin" required>
+                                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Admin') }}</label>
+                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Aanpassingen opslaan') }}
+                                        {{ __('Opslaan') }}
                                     </button>
                                 </div>
                             </div>
