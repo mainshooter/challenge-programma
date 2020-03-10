@@ -12,31 +12,31 @@ class ReviewsTableSeeder extends Seeder
     public function run()
     {
         DB::table('review')->insert([
-            'name_company' => "Bedrijf nummer 1",
-            'name_reviewer' => "Reviewer 1",
-            'body' => "Dit is een voorbeeld van hoe een review er uit zou kunnen zien",
-            'rating' => rand(1, 10)
+            'name_company' => "Sillips",
+            'name_reviewer' => "Piet Peters",
+            'body' => "Het Challenge programma is een goede studentenvereniging. We hebben samen een goede dag gehad en veel van elkaar geleerd.",
+            'rating' => 8
         ]);
 
         DB::table('review')->insert([
-            'name_company' => "Bedrijf nummer 2",
-            'name_reviewer' => "Reviewer 2",
-            'body' => "Dit is een voorbeeld van hoe een review er uit zou kunnen zien",
-            'rating' => rand(1, 10)
+            'name_company' => "Phiny",
+            'name_reviewer' => "Jan Versteeg",
+            'body' => "Goede workshop gehad met een aantal leden van het Challenge programma. Goed georganiseerd door het bestuur.",
+            'rating' => 8
         ]);
 
         DB::table('review')->insert([
-            'name_company' => "Bedrijf nummer 3",
-            'name_reviewer' => "Reviewer 3",
-            'body' => "Dit is een voorbeeld van hoe een review er uit zou kunnen zien",
-            'rating' => rand(1, 10)
+            'name_company' => "ALMS",
+            'name_reviewer' => "Rinaldo Romijn",
+            'body' => "Goed afgesproken, duidelijk overleg van te voren. Leuke groep studenten, in de toekomst komen er sowieso meer samenwerkingen.",
+            'rating' => 9
         ]);
 
         DB::table('review')->insert([
-            'name_company' => "Bedrijf nummer 4",
-            'name_reviewer' => "Reviewer 4",
-            'body' => "Dit is een voorbeeld van hoe een review er uit zou kunnen zien",
-            'rating' => rand(1, 10)
+            'name_company' => "Rinaltco",
+            'name_reviewer' => "Badr Bender",
+            'body' => "Uiteindelijk een leuke workshop gehad. Het regelen verliep iets minder soepel en de organisatie ook.",
+            'rating' => 6
         ]);
 
     }
