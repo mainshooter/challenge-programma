@@ -31,22 +31,22 @@ class UserController extends Controller
      */
     public function edit(Request $request, $iId) {
       $validatedData = $request->validate([
-        "name" => "required|digits_between:1:255",
-        "email" => "required|email",
-        "role" => "required|regex:(student|admin|company)",
+          "name" => "required|Max:255",
+          "email" => "required|email",
+          "role" => "required|in::student,admin,company",
       ]);
 
-      $User = User::find($iId);
+      $oUser = User::find($iId);
 
-      if (is_null($User)) {
+      if (is_null($oUser)) {
         return redirect()->route('user.index');
       }
 
-      $User->name = $request->get('name');
-      $User->email = $request->get('email');
-      $User->role = $request->get('role');
+      $oUser->name = $request->get('name');
+      $oUser->email = $request->get('email');
+      $oUser->role = $request->get('role');
 
-      $User->save();
+      $oUser->save();
 
       return redirect()->route('user.index');
     }

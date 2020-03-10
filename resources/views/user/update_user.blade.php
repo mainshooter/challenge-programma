@@ -26,7 +26,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" name="email" value="{{ $User->email }}" required autocomplete="email">
+                                    <input id="email" type="email" name="email" value="{{ $User->email }}" class="form-control" required autocomplete="email">
                                 </div>
                             </div>
 
@@ -53,9 +53,8 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Opslaan') }}
-                                    </button>
+                                    <input type="submit" class="btn btn-primary" value="{{ __('Opslaan') }}">
+
                                 </div>
                             </div>
                         </form>
