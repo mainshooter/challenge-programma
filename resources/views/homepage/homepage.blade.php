@@ -24,7 +24,7 @@
                     </div>
                     @endforeach
             </div>
-                @endif
+            @endif
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -63,7 +63,4 @@
             <div class="col-md-2"></div>
         </div>
     </div>
-    <a href='/image'>
-        <button type="button" class="btn btn-primary">addimage</button>
-    </a>
 @endsection
