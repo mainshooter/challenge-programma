@@ -11,11 +11,9 @@
               @endif
             <form action="{{ route('image.store.post') }}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name="filepath" class="custom-file-input">
-                        <label class="custom-file-label">Kies je Foto</label>
-                    </div>
+                <div class="form-group">
+                  <label for="filepath">Foto uploaden</label>
+                  <input type="file" name="filepath" class="form-control-file" id="filepath">
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Opslaan</button>
             </form>
