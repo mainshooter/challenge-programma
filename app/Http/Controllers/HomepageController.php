@@ -24,7 +24,7 @@ class HomepageController extends Controller
         return view('homepage.homepage', [
           'aImages' => $aImages,
           'oStartImage' => $oStartImage,
-          'reviews' => $aReviews,
+          'aReviews' => $aReviews,
         ]);
     }
 }

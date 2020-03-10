@@ -42,20 +42,20 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @if(count($reviews) > 2)
+            @if(count($aReviews) > 2)
                 <div class="col-md-2"> </div>
             @endif
-            @if(count($reviews) < 3)
+            @if(count($aReviews) < 3)
                 <div class="col-md-5"></div>
                 @endif
-                @foreach($reviews as $review)
+                @foreach($aReviews as $oReview)
                 <div class="col-md-2">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{$review->name_company}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$review->name_reviewer}}</h6>
-                            <p class="card-text">{{$review->body}}</p>
-                            <p class="card-footer">{{$review->rating}} / 10</p>
+                            <h5 class="card-title">{{$oReview->name_company}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$oReview->name_reviewer}}</h6>
+                            <p class="card-text">{{$oReview->body}}</p>
+                            <p class="card-footer">{{$oReview->rating}} / 10</p>
                         </div>
                     </div>
                 </div>
