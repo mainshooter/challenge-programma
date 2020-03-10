@@ -42,7 +42,7 @@
     <div class="cards">
         <H3>Wat mensen over ons zeggen: </H3>
         <div class="row">
-            @foreach($reviews as $review)
+            @foreach($aReviews as $oReview)
                 <div class="col-md-3 col-centered">
                     <div class="card">
                         <div class="card-body">
