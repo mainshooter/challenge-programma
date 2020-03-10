@@ -17,15 +17,11 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-Auth::routes();
-
 Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
-Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
-
-Route::get('home', 'HomepageController@index')->name('home');
+Auth::routes();
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
@@ -38,6 +34,9 @@ Route::namespace('Auth')->group(function() {
 
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
+    Route::get('/', function(){
+      return view('management.index');
+    });
     Route::prefix("event")->group(function() {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
@@ -54,8 +53,13 @@ Route::middleware('role:admin')->group(function () {
 
         Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
         Route::post('create', "Cms@create")->name("cms.create.post");
+        });
+        Route::prefix("new-student")->group(function() {
+            Route::get("/", "NewStudentController@index")->name("newstudent.index");
+            Route::get("delete/{id}", "NewStudentController@delete")->name("newstudent.delete");
+            Route::get("accept/{id}", "NewStudentController@accept")->name("newstudent.accept");
+        });
     });
-  });
 });
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
