@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Student;
 use \App\User;
+use Illuminate\Support\Facades\Mail;
+use \App\Mail\AcceptatieMail;
 
 class NewStudentController extends Controller
 {
@@ -36,6 +38,8 @@ class NewStudentController extends Controller
 
         $oStudent->is_accepted = 1;
         $oStudent->update();
+        Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
+
 
         return redirect()->route("newstudent.index");
     }
