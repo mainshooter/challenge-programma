@@ -48,6 +48,6 @@ class UserController extends Controller
 
       $User->save();
 
-      return redirect()->route('user.index')->with('alert', 'user Info updated');
+      return redirect()->route('user.index');
     }
 }

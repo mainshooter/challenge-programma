@@ -21,7 +21,7 @@
                         <td>{{$User->email}}</td>
                         <td>
                             <a href="{{ route('user.editPage', $User->id) }}" class="btn btn-primary">Bewerken</a>
-                            <a href="#">Verwijderen</a>
+                            <!-- Sprint 2 <a href="#">Verwijderen</a>-->
                         </td>
                     </tr>
                 @endforeach
