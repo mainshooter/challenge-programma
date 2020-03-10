@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
-      <a href="#" class="btn btn-primary">
+      <a href="{{ route('event.create') }}" class="btn btn-primary">
         Event toevoegen
       </a>
       <table class="table">

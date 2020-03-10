@@ -10,8 +10,8 @@ body{
 }
 
 .main {
-    min-height: 100%;
-    margin-top: 2em;
+  min-height: 100%;
+  margin-top: 2em;
 }
 
 .btn {
@@ -53,6 +53,7 @@ body{
 }
 
 .footer{
+    margin-top: 2em;
     padding: 1rem;
     background-color:#26272b;
     font-size:15px;
