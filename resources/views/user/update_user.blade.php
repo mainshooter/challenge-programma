@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Gebruiker Wijzigen') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('user.edit.post', $User->id) }}">
                             @csrf
 
                             {{-- voornaam --}}
@@ -22,6 +22,7 @@
                             </div>
 
                             {{-- tussenvoegsel --}}
+                            <!--
                             <div class="form-group row">
                                 <label for="infixname" class="col-md-4 col-form-label text-md-right">{{ __('Tussenvoegsel') }}</label>
 
@@ -31,9 +32,10 @@
 
                                 </div>
                             </div>
-
+                            -->
 
                             {{-- achternaam --}}
+                            <!--
                             <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
 
@@ -42,6 +44,7 @@
                                            name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus> {{-- Change to Locked, get name from selected user--}}
                                 </div>
                             </div>
+                            -->
 
                             {{-- leerjaar --}}
                             <div class="form-group row">
@@ -49,7 +52,7 @@
 
                                 <div class="col-md-2">
                                     <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror"
-                                           name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >  {{--Non locked, Get year from selected user--}}
+                                           name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
 
                                     @error('schoolyear')
                                     <span class="invalid-feedback" role="alert">
@@ -63,20 +66,14 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Emailadres') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $User->email }}" required autocomplete="email"> {{-- Non locked, Get email from selected user --}}
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ $User->email }}" required autocomplete="email">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Aanpassingen opslaan') }} {{--Change to Update selected user--}}
+                                        {{ __('Aanpassingen opslaan') }}
                                     </button>
                                 </div>
                             </div>
