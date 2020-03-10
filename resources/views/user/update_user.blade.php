@@ -11,8 +11,6 @@
                         @endcomponent
                         <form method="POST" action="{{ route('user.edit.post', $User->id) }}">
                             {{csrf_field()}}
-
-
                             {{-- voornaam --}}
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Naam') }}</label>
