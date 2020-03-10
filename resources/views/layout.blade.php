@@ -34,10 +34,6 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Fotoboek</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
                     <li class="nav-item">
@@ -47,29 +43,20 @@
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event.index') }}">Evenement</a>
+                                <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Beheer</a>
+                                <a class="nav-link" href="/admin">Beheer</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/cms">Cms</a>
-                            </li>
                         @elseif($role == 'company' or $role == 'student')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                                <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profiel</a>
-                            </li>
                         @endif
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
