@@ -60,7 +60,7 @@ class StudentRegisterController extends Controller
         'lastname' => ['required', 'string', 'max:50'],
         'phone'=>['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
         'schoolyear'=>['required','integer', 'max:10'],
-        'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+        'email' => ['required', 'string', 'email', 'max:50', 'unique:student,email'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
 

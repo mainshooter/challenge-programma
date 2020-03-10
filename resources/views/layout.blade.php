@@ -40,11 +40,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
+                    </li>
                     @if(Auth::check())
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event.agenda') }}">AGENDA</a>
+                                <a class="nav-link" href="{{ route('event.index') }}">Evenement</a>
                             </li>
 
                             <li class="nav-item">
@@ -152,6 +155,5 @@
             <hr>
         </div>
     </footer>
-</body>
+  </body>
 </html>
-
