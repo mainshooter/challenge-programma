@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\User;
+use \App\Mail\AcceptatieMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      * @param  Request $request
      */
     public function index(Request $request) {
-      $aUsers = User::all();
+      $aUsers = User::all()->where('is_accepted', true);
       return view("user/index", [
         'aUsers' => $aUsers
       ]);
