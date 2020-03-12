@@ -50,4 +50,33 @@ class UserController extends Controller
 
       return redirect()->route('user.index');
     }
+
+    public function notAcceptedStudentsOverview(Request $request) {
+        $aUsers = User::All()->where('is_accepted', 0);
+        return view("newstudent/index", [
+            'aUsers' => $aUsers
+        ]);
+    }
+
+    public function deleteUser(Request $request, $iId) {
+        $oUser = User::find($iId);
+
+        $oUser->delete();
+
+        return redirect()->route("user.not.accepted.overview");
+    }
+
+    public function acceptUser(Request $request, $iId) {
+        $oUser = User::find($iId);
+        if (is_null($oUser)) {
+          return redirect()->route("user.not.accepted.overview");
+        }
+
+        $oUser->is_accepted = 1;
+        $oUser->save();
+
+        Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
+
+        return redirect()->route("newstudent.index");
+    }
 }

@@ -46,6 +46,9 @@ Route::middleware('role:admin')->group(function () {
       Route::get("/", "UserController@index")->name("user.index");
       Route::get("update/{id}", "UserController@editPage")->name("user.edit");
       Route::post('update/{id}', 'UserController@edit')->name('user.edit.post');
+      Route::get('accept-users', 'UserController@notAcceptedStudentsOverview')->name('user.not.accepted.overview');
+      Route::get('delete-user/{id}', 'UserController@deleteUser')->name('user.delete');
+      Route::get('accept-user/{id}', 'UserController@acceptUser')->name('user.accept');
     });
     Route::prefix('image')->group(function() {
       Route::get('/', 'ImageController@index')->name('image.index');
@@ -59,11 +62,6 @@ Route::middleware('role:admin')->group(function () {
 
       Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
       Route::post('create', "Cms@create")->name("cms.create.post");
-      });
-      Route::prefix("new-student")->group(function() {
-        Route::get("/", "NewStudentController@index")->name("newstudent.index");
-        Route::get("delete/{id}", "NewStudentController@delete")->name("newstudent.delete");
-        Route::get("accept/{id}", "NewStudentController@accept")->name("newstudent.accept");
       });
     });
 });
