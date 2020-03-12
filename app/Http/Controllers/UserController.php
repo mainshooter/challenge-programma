@@ -53,7 +53,7 @@ class UserController extends Controller
 
     public function notAcceptedStudentsOverview(Request $request) {
         $aUsers = User::All()->where('is_accepted', 0);
-        return view("newstudent/index", [
+        return view("user/accept", [
             'aUsers' => $aUsers
         ]);
     }
@@ -77,6 +77,6 @@ class UserController extends Controller
 
         Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
 
-        return redirect()->route("newstudent.index");
+        return redirect()->route("user.not.accepted.overview");
     }
 }

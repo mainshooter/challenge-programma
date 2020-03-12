@@ -18,17 +18,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($aStudents as $Student)
+                    @foreach ($aUsers as $oUser)
                         <tr>
-                            <td>{{$Student->id}}</td>
-                            <td>{{$Student->firstname}}</td>
-                            <td>{{$Student->prefix}}</td>
-                            <td>{{$Student->lastname}}</td>
-                            <td>{{$Student->email}}</td>
-                            <td>{{$Student->schoolyear}}</td>
+                            <td>{{$oUser->id}}</td>
+                            <td>{{$oUser->firstname}}</td>
+                            <td>{{$oUser->prefix}}</td>
+                            <td>{{$oUser->lastname}}</td>
+                            <td>{{$oUser->email}}</td>
+                            <td>{{$oUser->schoolyear}}</td>
                             <td>
-                                <a href="{{ route('user.accept', $Student->id) }}" id="accept" class="btn btn-success">Accepteren</a>
-                                <a href="{{ route('user.delete', $Student->id) }}" id="delete" class="btn btn-danger">Verwijderen</a>
+                                <a href="{{ route('user.accept', $oUser->id) }}" id="accept" class="btn btn-success">Accepteren</a>
+                                <a href="{{ route('user.delete', $oUser->id) }}" id="delete" class="btn btn-danger">Verwijderen</a>
                             </td>
                         </tr>
                     @endforeach
