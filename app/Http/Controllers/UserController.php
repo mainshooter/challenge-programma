@@ -22,8 +22,18 @@ class UserController extends Controller
     }
 
     public function editPage($iId){
-        $User = User::find($iId);
-        return view("user/update_user", ["User" => $User] );
+        $oUser = User::find($iId);
+        if ($oUser->role == 'student') {
+          return view('user/edit_student', [
+            'oUser' => $oUser
+          ]);
+        }
+        else if ($oUser->role == 'company') {
+          return view('user/edit_company', [
+            'oUser' => $oUser,
+          ]);
+        }
+        return view("user/update_user", ["oUser" => $oUser] );
     }
 
     /**

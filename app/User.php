@@ -38,11 +38,11 @@ class User extends Authenticatable
     ];
 
     public function companyInfo() {
-      return $this->hasOne('App\CompanyInfo', 'id', 'user_id');
+      return $this->hasOne('App\CompanyInfo', 'user_id', 'id');
     }
 
     public function studentInfo() {
-      return $this->hasOne('App\StudentInfo', 'id', 'user_id');
+      return $this->hasOne('App\StudentInfo', 'user_id', 'id');
     }
 
 }

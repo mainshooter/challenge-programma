@@ -44,7 +44,7 @@ Route::middleware('role:admin')->group(function () {
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
-      Route::get("update/{id}", "UserController@editPage")->name("user.edit");
+      Route::get('edit/{id}', 'UserController@editPage')->name('user.edit');
       Route::post('update/{id}', 'UserController@edit')->name('user.edit.post');
       Route::get('accept-users', 'UserController@notAcceptedStudentsOverview')->name('user.not.accepted.overview');
       Route::get('delete-user/{id}', 'UserController@deleteUser')->name('user.delete');
