@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\User;
 use \App\StudentInfo;
+use \App\CompanyInfo;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -68,6 +69,52 @@ class UserController extends Controller
       $oStudentInfo->school_year = $request->schoolyear;
       $oUser->save();
       $oStudentInfo->save();
+
+      return redirect()->route('user.index');
+    }
+
+    public function updateCompany(Request $request, $iId) {
+      $oUser = User::where([
+        'id' => $iId,
+        'role' => 'company'
+      ])->first();
+
+      if (is_null($oUser)) {
+        return redirect()->route('user.index');
+      }
+
+      $request->validate([
+        'company_name' => 'required|string|max:50',
+        'firstname' => 'required|string|max:50',
+        'middlename'=> 'nullable|string|max:50',
+        'lastname' => 'required|string|max:50',
+        'phone'=> ['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
+        'email' => 'required|string|email|max:50|unique:users,email,' . $oUser->id,
+        'street' => 'required|max:255',
+        'city' => 'required|max:255',
+        'house_number' => 'required|integer',
+        'house_number_addition' => 'nullable|max:1',
+        'zipcode' => 'required|max:6|min:6|regex:/^\d{4}[a-z]{2}$/i',
+        "role" => "required|in:company,admin",
+      ]);
+
+      $oUser->firstname = $request->firstname;
+      $oUser->middlename = $request->middlename;
+      $oUser->lastname = $request->lastname;
+      $oUser->phone = $request->phone;
+      $oUser->email =  $request->email;
+      $oUser->role = $request->role;
+
+      $oCompanyInfo = CompanyInfo::find($iId);
+      $oCompanyInfo->company_name = $request->company_name;
+      $oCompanyInfo->street = $request->street;
+      $oCompanyInfo->city = $request->city;
+      $oCompanyInfo->house_number = $request->house_number;
+      $oCompanyInfo->house_number_addition = $request->house_number_addition;
+      $oCompanyInfo->zipcode = $request->zipcode;
+
+      $oUser->save();
+      $oCompanyInfo->save();
 
       return redirect()->route('user.index');
     }
