@@ -27,7 +27,7 @@ class RefactorRegister extends Migration
         });
 
         Schema::create('company_info', function(Blueprint $table) {
-          $table->unsignedBigInteger('user_id');
+          $table->unsignedBigInteger('user_id')->primary();
           $table->string('company_name');
           $table->string('street');
           $table->string('city');
@@ -37,7 +37,7 @@ class RefactorRegister extends Migration
         });
 
         Schema::create('student_info', function(Blueprint $table) {
-          $table->unsignedBigInteger('user_id');
+          $table->unsignedBigInteger('user_id')->primary();
           $table->integer('school_year');
         });
 
