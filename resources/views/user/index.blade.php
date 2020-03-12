@@ -8,7 +8,9 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th>Voornaam</th>
+                    <th>Tussenvoegsel</th>
+                    <th>Achternaam</th>
                     <th>E-mail</th>
                     <th></th>
                 </tr>
@@ -17,7 +19,9 @@
                 @foreach ($aUsers as $User)
                     <tr>
                         <td>{{$User->id}}</td>
-                        <td>{{$User->name}}</td>
+                        <td>{{$User->firstname}}</td>
+                        <td>{{$User->middlename}}</td>
+                        <td>{{$User->lastname}}</td>
                         <td>{{$User->email}}</td>
                         <td>
                             <a href="{{ route('user.edit', $User->id) }}" class="btn btn-primary">Bewerken</a>

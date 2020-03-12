@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\User;
+use \App\StudentInfo;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -34,6 +35,41 @@ class UserController extends Controller
           ]);
         }
         return view("user/update_user", ["oUser" => $oUser] );
+    }
+
+    public function updateStudent(Request $request, $iId) {
+      $oUser = User::where([
+        'id' => $iId,
+        'role' => 'student'
+      ])->first();
+
+      if (is_null($oUser)) {
+        return redirect()->route('user.index');
+      }
+
+      $request->validate([
+        'firstname' => ['required', 'string', 'max:50'],
+        'middlename'=>['nullable', 'string', 'max:50'],
+        'lastname' => ['required', 'string', 'max:50'],
+        'phone'=>['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
+        'schoolyear'=> ['required','integer', 'max:4', 'min:1'],
+        'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email,' . $oUser->id],
+        "role" => "required|in:student,admin",
+      ]);
+
+      $oUser->firstname = $request->firstname;
+      $oUser->middlename = $request->middlename;
+      $oUser->lastname = $request->lastname;
+      $oUser->phone = $request->phone;
+      $oUser->email =  $request->email;
+      $oUser->role = $request->role;
+
+      $oStudentInfo = StudentInfo::find($iId);
+      $oStudentInfo->school_year = $request->schoolyear;
+      $oUser->save();
+      $oStudentInfo->save();
+
+      return redirect()->route('user.index');
     }
 
     /**

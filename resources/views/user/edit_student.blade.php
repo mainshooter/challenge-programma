@@ -9,7 +9,7 @@
                     <div class="card-body">
                         @component('component/formError')
                         @endcomponent
-                        <form method="POST" action="{{ route('user.edit.post', $oUser->id) }}">
+                        <form method="POST" action="{{ route('user.update.student.post', $oUser->id) }}">
                             @csrf
 
                             <div class="form-group row">
@@ -64,7 +64,7 @@
                                 <label for="schoolyear" class="col-md-4 col-form-label text-md-right">Studiejaar *</label>
 
                                 <div class="col-md-2">
-                                    <input type="number" class="form-control @error('schoolyear') is-invalid @enderror" name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') ? old('schoolyear') : $oUser->studentInfo->school_year }}" required>
+                                    <input type="number" class="form-control @error('schoolyear') is-invalid @enderror" name="schoolyear" min="1" max="4" step="1" value="{{ old('schoolyear') ? old('schoolyear') : $oUser->studentInfo->school_year }}" required>
                                 </div>
                             </div>
 
@@ -89,10 +89,6 @@
                                     <div>
                                         <input id="role" type="radio" name="role" value="student" required {{$oUser->role == 'student' ? 'checked' : ''}}>
                                         <label for="role" class="col-md-4 col-form-label text-md-right">Student</label>
-                                    </div>
-                                    <div>
-                                        <input id="role" type="radio" name="role" value="company" required {{$oUser->role == 'company' ? 'checked' : ''}}>
-                                        <label for="role" class="col-md-4 col-form-label text-md-right">Bedrijf</label>
                                     </div>
                                     <div>
                                         <input id="role" type="radio" name="role" value="admin" required {{$oUser->role == 'admin' ? 'checked' : ''}}>

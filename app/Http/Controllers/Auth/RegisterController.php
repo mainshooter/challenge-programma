@@ -66,6 +66,7 @@ class RegisterController extends Controller
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
 
+
       $oUser = new User();
       $oUser->firstname = $request->firstname;
       $oUser->middlename = $request->middlename;
