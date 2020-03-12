@@ -19,6 +19,11 @@ class RefactorRegister extends Migration
         Schema::table('users', function(Blueprint $table) {
           $table->boolean('is_accepted');
           $table->string('phone');
+          $table->dropColumn('name');
+          $table->dropColumn('role');
+          $table->string('firstname');
+          $table->string('middlename')->nullable();
+          $table->string('lastname');
         });
 
         Schema::create('company_info', function(Blueprint $table) {
@@ -37,11 +42,15 @@ class RefactorRegister extends Migration
         });
 
         Schema::table('company_info', function(Blueprint $table) {
-          $table->foreign('user_id')->references('id')->on('users');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('student_info', function(Blueprint $table) {
-          $table->foreign('user_id')->references('id')->on('users');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
+        Schema::table('users', function(Blueprint $table) {
+          $table->enum('role', ['admin', 'student', 'company']);
         });
     }
 

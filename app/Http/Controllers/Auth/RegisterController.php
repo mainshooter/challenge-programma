@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
 use App\Http\Controllers\Controller;
-use App\Company;
+use App\User;
+use App\StudentInfo;
+use App\CompanyInfo;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class CompanyRegisterController extends Controller
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -48,38 +50,47 @@ class CompanyRegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function createStudentPage(Request $request)
     {
-      return view('auth/register/register_company');
+        return view('auth/register/register_students');
     }
 
-    public function create(Request $request) {
+    public function createStudent(Request $request) {
       $request->validate([
         'firstname' => ['required', 'string', 'max:50'],
-        'prefix'=>['nullable', 'string', 'max:50'],
+        'middlename'=>['nullable', 'string', 'max:50'],
         'lastname' => ['required', 'string', 'max:50'],
-        'companyname' => ['required', 'string', 'max:50'],
-        'address' => ['required', 'string', 'max:60'],
-        'postal_code' => ['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i', 'max:10'],
         'phone'=>['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
-        'email' => ['required', 'string', 'email', 'max:50', 'unique:company,email'],
+        'schoolyear'=>['required','integer', 'max:10'],
+        'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
 
-      $oCompany = new Company();
+      $oUser = new User();
+      $oUser->firstname = $request->firstname;
+      $oUser->middlename = $request->middlename;
+      $oUser->lastname = $request->lastname;
+      $oUser->phone = $request->phone;
+      $oUser->email =  $request->email;
+      $oUser->password = Hash::make($request->password);
+      $oUser->is_accepted = 0;
+      $oUser->role = 'student';
+      $oUser->save();
 
-      $oCompany->firstname = $request->firstname;
-      $oCompany->prefix = $request->prefix;
-      $oCompany->lastname = $request->lastname;
-      $oCompany->companyname = $request->companyname;
-      $oCompany->address = $request->address;
-      $oCompany->postalcode = $request->postal_code;
-      $oCompany->phone = $request->phone;
-      $oCompany->email =  $request->email;
-      $oCompany->password = Hash::make($request->password);
 
-      $oCompany->save();
+      $oStudentInfo = new StudentInfo();
+      $oStudentInfo->school_year = $request->schoolyear;
+      $oStudentInfo->user_id = $oUser->id;
+      $oStudentInfo->save();
 
       return redirect()->route('home');
     }
+
+    public function createCompany(Request $request) {
+      return redirect()->route('home');
+    }
 }
+
+
+
+?>
