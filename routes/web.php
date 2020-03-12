@@ -27,8 +27,8 @@ Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
     Route::get('student', 'RegisterController@createStudentPage')->name('register.student');
     Route::post('student', 'RegisterController@createStudent')->name('register.student.post');
-    // Route::get('company', 'CompanyRegisterController@index')->name('register.company');
-    // Route::post('company', 'CompanyRegisterController@create')->name('register.company.post');
+    Route::get('company', 'RegisterController@createCompanyPage')->name('register.company');
+    Route::post('company', 'RegisterController@createCompany')->name('register.company.post');
   });
 });
 

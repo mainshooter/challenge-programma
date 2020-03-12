@@ -68,7 +68,7 @@
                                 <a class="dropdown-item" href="{{ route('register.student') }}">
                                     Studenten
                                 </a>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('register.company') }}">
                                     Bedrijven
                                 </a>
                             </div>

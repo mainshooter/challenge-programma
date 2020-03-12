@@ -52,7 +52,7 @@ class RegisterController extends Controller
      */
     public function createStudentPage(Request $request)
     {
-        return view('auth/register/register_students');
+        return view('auth/register/register_student');
     }
 
     public function createStudent(Request $request) {
@@ -86,7 +86,47 @@ class RegisterController extends Controller
       return redirect()->route('home');
     }
 
+    public function createCompanyPage(Request $request) {
+      return view('auth/register/register_company');
+    }
+
     public function createCompany(Request $request) {
+      $request->validate([
+        'company_name' => 'required|string|max:50',
+        'firstname' => 'required|string|max:50',
+        'middlename'=> 'nullable|string|max:50',
+        'lastname' => 'required|string|max:50',
+        'phone'=> ['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
+        'email' => 'required|string|email|max:50|unique:users,email',
+        'password' => 'required|string|min:8|confirmed',
+        'street' => 'required|max:255',
+        'city' => 'required|max:255',
+        'house_number' => 'required|integer',
+        'house_number_addition' => 'nullable|max:1',
+        'zipcode' => 'required|max:6|min:6|regex:/^\d{4}[a-z]{2}$/i',
+      ]);
+
+      $oUser = new User();
+      $oUser->firstname = $request->firstname;
+      $oUser->middlename = $request->middlename;
+      $oUser->lastname = $request->lastname;
+      $oUser->phone = $request->phone;
+      $oUser->email =  $request->email;
+      $oUser->password = Hash::make($request->password);
+      $oUser->is_accepted = 0;
+      $oUser->role = 'company';
+      $oUser->save();
+
+      $oCompanyInfo = new CompanyInfo();
+      $oCompanyInfo->company_name = $request->company_name;
+      $oCompanyInfo->street = $request->street;
+      $oCompanyInfo->city = $request->city;
+      $oCompanyInfo->house_number = $request->house_number;
+      $oCompanyInfo->house_number_addition = $request->house_number_addition;
+      $oCompanyInfo->zipcode = $request->zipcode;
+      $oCompanyInfo->user_id = $oUser->id;
+      $oCompanyInfo->save();
+
       return redirect()->route('home');
     }
 }
