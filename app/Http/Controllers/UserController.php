@@ -35,7 +35,9 @@ class UserController extends Controller
             'oUser' => $oUser,
           ]);
         }
-        return view("user/update_user", ["oUser" => $oUser] );
+        else {
+          return view("user/edit_admin", ["oUser" => $oUser] );
+        }
     }
 
     public function updateStudent(Request $request, $iId) {
@@ -119,27 +121,29 @@ class UserController extends Controller
       return redirect()->route('user.index');
     }
 
-    /**
-     * Saves a user on post request for new changes
-     * @param  Request $request
-     * @param  int  $iId        The ID of the user
-     */
-    public function edit(Request $request, $iId) {
-      $validatedData = $request->validate([
-          "name" => "required|Max:255",
-          "email" => "required|email",
-          "role" => "required|in:student,admin,company",
-      ]);
-
-      $oUser = User::find($iId);
+    public function updateAdmin(Request $request, $iId) {
+      $oUser = User::where([
+        'id' => $iId,
+        'role' => 'admin'
+      ])->first();
 
       if (is_null($oUser)) {
         return redirect()->route('user.index');
       }
 
-      $oUser->name = $request->get('name');
-      $oUser->email = $request->get('email');
-      $oUser->role = $request->get('role');
+      $request->validate([
+        'firstname' => 'required|string|max:50',
+        'middlename'=> 'nullable|string|max:50',
+        'lastname' => 'required|string|max:50',
+        'phone'=> ['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
+        'email' => 'required|string|email|max:50|unique:users,email,' . $oUser->id,
+      ]);
+
+      $oUser->firstname = $request->firstname;
+      $oUser->middlename = $request->middlename;
+      $oUser->lastname = $request->lastname;
+      $oUser->phone = $request->phone;
+      $oUser->email =  $request->email;
 
       $oUser->save();
 
