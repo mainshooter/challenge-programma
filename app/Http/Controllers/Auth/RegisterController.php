@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-
+use Session;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\StudentInfo;
@@ -84,6 +84,8 @@ class RegisterController extends Controller
       $oStudentInfo->user_id = $oUser->id;
       $oStudentInfo->save();
 
+      Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
+
       return redirect()->route('home');
     }
 
@@ -127,6 +129,8 @@ class RegisterController extends Controller
       $oCompanyInfo->zipcode = $request->zipcode;
       $oCompanyInfo->user_id = $oUser->id;
       $oCompanyInfo->save();
+
+      Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
 
       return redirect()->route('home');
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\User;
 use \App\StudentInfo;
 use \App\CompanyInfo;
+use Session;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -180,6 +181,8 @@ class UserController extends Controller
 
         $oUser->delete();
 
+        Session::flash('message', 'Gebruiker is verwijderd');
+
         return redirect()->route("user.not.accepted.overview");
     }
 
@@ -193,6 +196,8 @@ class UserController extends Controller
         $oUser->save();
 
         Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
+
+        Session::flash('message', 'Gebruiker is geaccepteerd');
 
         return redirect()->route("user.not.accepted.overview");
     }
