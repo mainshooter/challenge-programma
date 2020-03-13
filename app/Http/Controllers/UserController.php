@@ -150,11 +150,29 @@ class UserController extends Controller
       return redirect()->route('user.index');
     }
 
-    public function notAcceptedStudentsOverview(Request $request) {
+    public function notAcceptedUserOverview(Request $request) {
         $aUsers = User::All()->where('is_accepted', 0);
         return view("user/accept", [
             'aUsers' => $aUsers
         ]);
+    }
+
+    public function details(Request $request, $iId) {
+      $oUser = User::find($iId);
+      if (is_null($oUser)) {
+        return redirect()->route('user.index');
+      }
+
+      if ($oUser->role == 'company') {
+        return view('user/details/company', [
+          'oUser' => $oUser
+        ]);
+      }
+      else if ($oUser->role == 'student') {
+        return view('user/details/student', [
+          'oUser' => $oUser
+        ]);
+      }
     }
 
     public function deleteUser(Request $request, $iId) {
