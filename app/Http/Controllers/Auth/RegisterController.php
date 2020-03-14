@@ -85,7 +85,6 @@ class RegisterController extends Controller
       $oStudentInfo->save();
 
       Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
-
       return redirect()->route('home');
     }
 
@@ -131,7 +130,6 @@ class RegisterController extends Controller
       $oCompanyInfo->save();
 
       Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
-
       return redirect()->route('home');
     }
 }

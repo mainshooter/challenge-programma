@@ -175,14 +175,12 @@ class UserController extends Controller
         ]);
       }
     }
-
     public function deleteUser(Request $request, $iId) {
         $oUser = User::find($iId);
 
         $oUser->delete();
 
         Session::flash('message', 'Gebruiker is verwijderd');
-
         return redirect()->route("user.not.accepted.overview");
     }
 
@@ -198,7 +196,6 @@ class UserController extends Controller
         Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
 
         Session::flash('message', 'Gebruiker is geaccepteerd');
-
         return redirect()->route("user.not.accepted.overview");
     }
 }
