@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Page;
 
-class Cms extends Controller
+class CmsController extends Controller
 {
     /**
      * Presents a table with all pages
