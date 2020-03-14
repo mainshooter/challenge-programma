@@ -17,7 +17,7 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
+Route::get("page/{any}", "CmsController@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
@@ -25,10 +25,10 @@ Auth::routes();
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
-    Route::get('student', 'StudentRegisterController@index')->name('register.student');
-    Route::post('student', 'StudentRegisterController@create')->name('register.student.post');
-    Route::get('company', 'CompanyRegisterController@index')->name('register.company');
-    Route::post('company', 'CompanyRegisterController@create')->name('register.company.post');
+    Route::get('student', 'RegisterController@createStudentPage')->name('register.student');
+    Route::post('student', 'RegisterController@createStudent')->name('register.student.post');
+    Route::get('company', 'RegisterController@createCompanyPage')->name('register.company');
+    Route::post('company', 'RegisterController@createCompany')->name('register.company.post');
   });
 });
 
@@ -44,28 +44,28 @@ Route::middleware('role:admin')->group(function () {
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
     });
     Route::prefix("user")->group(function() {
-            Route::get("/", "UserController@index")->name("user.index");
-            Route::get("update/{id}", "UserController@editPage")->name("user.edit");
-            Route::post('update/{id}', 'UserController@edit')->name('user.edit.post');
+      Route::get("/", "UserController@index")->name("user.index");
+      Route::get('edit/{id}', 'UserController@editPage')->name('user.edit');
+      Route::post('update/student/{id}', 'UserController@updateStudent')->name('user.update.student.post');
+      Route::post('update/company/{id}', 'UserController@updateCompany')->name('user.update.company.post');
+      Route::post('update/admin/{id}', 'UserController@updateAdmin')->name('user.update.admin.post');
+      Route::get('accept-users', 'UserController@notAcceptedStudentsOverview')->name('user.not.accepted.overview');
+      Route::get('delete-user/{id}', 'UserController@deleteUser')->name('user.delete');
+      Route::get('accept-user/{id}', 'UserController@acceptUser')->name('user.accept');
     });
     Route::prefix('image')->group(function() {
       Route::get('/', 'ImageController@index')->name('image.index');
       Route::post('/store', 'ImageController@store')->name('image.store.post');
     });
     Route::prefix('cms')->group(function() {
-        Route::get('/', "Cms@index")->name("cms.index");
-        Route::get('create', "Cms@createPage")->name("cms.create");
-        Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
-        Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
+      Route::get('/', "CmsController@index")->name("cms.index");
+      Route::get('create', "CmsController@createPage")->name("cms.create");
+      Route::get('edit/{id}', "CmsController@editPage")->name("cms.edit");
+      Route::get('delete/{id}', "CmsController@delete")->name('cms.delete');
 
-        Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
-        Route::post('create', "Cms@create")->name("cms.create.post");
-        });
-        Route::prefix("new-student")->group(function() {
-            Route::get("/", "NewStudentController@index")->name("newstudent.index");
-            Route::get("delete/{id}", "NewStudentController@delete")->name("newstudent.delete");
-            Route::get("accept/{id}", "NewStudentController@accept")->name("newstudent.accept");
-        });
+      Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
+      Route::post('create', "CmsController@create")->name("cms.create.post");
+      });
     });
 });
 
