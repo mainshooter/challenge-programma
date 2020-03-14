@@ -85,4 +85,11 @@ class EventController extends Controller
       $oEvent = Event::find($iId);
       return response()->json($oEvent);
     }
+
+    public function join($iId){
+        $oStudent = Student::find($iId);
+
+
+    }
+
 }

@@ -29,7 +29,10 @@
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+            @if(Auth::user()->role == 'student')
+                <a type="button" class="btn btn-primary modal-join">Aanmelden</a>
+            @endif
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
         </div>
       </div>
     </div>
@@ -67,6 +70,8 @@
           let modalStart = modal.querySelector('.modal-start-time');
           let modalEnd = modal.querySelector('.modal-end-time');
           let modalPoint = modal.querySelector('.modal-point');
+          let modalJoin = modal.querySelector('.modal-join');
+          let eventId = event.event.id;
           fetch("/agenda/detail/" + event.event.id)
             .then(response => {
               return response.json();
@@ -79,13 +84,12 @@
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
-              console.log(data);
+              modalJoin.href =
             });
           $('#event-modal').modal('show');
         }
       });
       calender.render();
     });
-
   </script>
 @endsection
