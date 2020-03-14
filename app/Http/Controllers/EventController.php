@@ -92,7 +92,6 @@ class EventController extends Controller
       return response()->json($oEvent);
     }
 
-
     public function delete(Request $request, $iId){
         $oEvents = Event::find($iId);
         $oEvents->delete();

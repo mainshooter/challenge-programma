@@ -62,7 +62,7 @@
                     <td>{{$oEvent->zipcode}}</td>
                     <td>{{$oEvent->points}}</td>
                     <td>
-                          <a href=" " class="btn btn-primary">Bewerk</a>
+                          <a href="#" class="btn btn-primary">Bewerk</a>
                           <a href="#" class="btn btn-success">Details</a>
                           <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                     </td>
