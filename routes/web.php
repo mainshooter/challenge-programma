@@ -32,6 +32,14 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
+Route::middleware('role:student')->group(function() {
+    Route::prefix('profile')->group(function() {
+        Route::get('/', 'ProfileController@index')->name('profile.index');
+        Route::get('delete/{id}', 'ProfileController@delete')->name('profile.delete');
+        Route::get('terminate/{id}', 'ProfileController@terminate')->name('profile.terminate');
+    });
+});
+
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
     Route::get('/', function(){

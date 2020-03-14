@@ -11,3 +11,4 @@ class CompanyInfo extends Model
     public $primaryKey = 'user_id';
     public $timestamps = false;
 }
+
