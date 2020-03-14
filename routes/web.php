@@ -17,7 +17,7 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
-Route::get("page/{any}", "Cms@viewPage")->name('cms.view')->where("any", ".*");
+Route::get("page/{any}", "CmsController@viewPage")->name('cms.view')->where("any", ".*");
 
 Route::get('reviews', "ReviewController@index");
 
@@ -57,13 +57,13 @@ Route::middleware('role:admin')->group(function () {
       Route::post('/store', 'ImageController@store')->name('image.store.post');
     });
     Route::prefix('cms')->group(function() {
-      Route::get('/', "Cms@index")->name("cms.index");
-      Route::get('create', "Cms@createPage")->name("cms.create");
-      Route::get('edit/{id}', "Cms@editPage")->name("cms.edit");
-      Route::get('delete/{id}', "Cms@delete")->name('cms.delete');
+      Route::get('/', "CmsController@index")->name("cms.index");
+      Route::get('create', "CmsController@createPage")->name("cms.create");
+      Route::get('edit/{id}', "CmsController@editPage")->name("cms.edit");
+      Route::get('delete/{id}', "CmsController@delete")->name('cms.delete');
 
-      Route::post("edit/{id}", 'Cms@edit')->name('cms.edit.post');
-      Route::post('create', "Cms@create")->name("cms.create.post");
+      Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
+      Route::post('create', "CmsController@create")->name("cms.create.post");
       });
     });
 });
