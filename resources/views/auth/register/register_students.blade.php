@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registreren Bedrijf') }}</div>
+                <div class="card-header">{{ __('Registreren Student') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register.company.post') }}">
+                    <form method="POST" action="{{ route('register.student.post') }}">
                         @csrf
 
                         {{-- voornaam --}}
@@ -60,61 +60,13 @@
                             </div>
                         </div>
 
-                        {{-- bedrijfsnaam --}}
-                        <div class="form-group row">
-                            <label for="companyname" class="col-md-4 col-form-label text-md-right">{{ __('Bedrijfsnaam *') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="companyname" type="text" class="form-control @error('companyname') is-invalid @enderror"
-                                    name="companyname" value="{{ old('companyname') }}" required autocomplete="companyname" autofocus>
-
-                                @error('companyname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- adres --}}
-                        <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam en huisnummer *') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                                name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- postcode --}}
-                        <div class="form-group row">
-                            <label for="postal_code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode *') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror"
-                                    name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
-
-                                @error('postal_code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         {{-- telefoon --}}
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer *') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoonnummer') }}</label>
 
                             <div class="col-md-3">
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus required>
+                                    name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -123,6 +75,26 @@
                                 @enderror
                             </div>
                         </div>
+
+                        {{-- leerjaar --}}
+                        <div class="form-group row">
+                            <label for="schoolyear" class="col-md-4 col-form-label text-md-right">{{ __('Studiejaar') }}</label>
+
+                            <div class="col-md-2">
+                                <input id="schoolyear" type="number" class="form-control @error('schoolyear') is-invalid @enderror"
+                                    name="schoolyear" value="1" min="1" max="4" step="1" value="{{ old('schoolyear') }}" required >
+                            </div>
+                        </div>
+
+                        {{-- certificaat --}}
+                        {{-- <div class="form-group row">
+                            <label for="cert-checkbox" class="col-md-4 col-form-label text-md-right">{{ __('Certificaat') }}</label>
+
+                            <div class="col-md-2">
+                                <input id="cert-checkbox" type="checkbox" class="align-bottom @error('cert-checkbox') is-invalid @enderror"
+                                    name="cert-checkbox" value="{{ old('cert-checkbox') }}"  >
+                            </div>
+                        </div> --}}
 
                         {{-- email --}}
                         <div class="form-group row">

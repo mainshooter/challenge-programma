@@ -15,7 +15,7 @@ class ImageController
 
     public function index() {
         $aImages = Image::all();
-        return view('image/image', ['images', $aImages]);
+        return view('Image/image', ['images', $aImages]);
     }
 
     public function store(Request $request) {

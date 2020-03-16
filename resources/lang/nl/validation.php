@@ -155,7 +155,5 @@ return [
       'event_house_number' => 'evenement huisnummer',
       'event_house_number_addition' => 'evenement huisnummer toevoegingen',
       'event_zipcode' => 'evenement postcode',
-      'zipcode' => 'postcode',
-      'phone' => 'Telefoon'
     ],
 ];

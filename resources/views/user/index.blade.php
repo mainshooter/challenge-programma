@@ -8,25 +8,19 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Voornaam</th>
-                    <th>Tussenvoegsel</th>
-                    <th>Achternaam</th>
+                    <th>Name</th>
                     <th>E-mail</th>
-                    <th>Role</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($aUsers as $oUser)
+                @foreach ($aUsers as $User)
                     <tr>
-                        <td>{{$oUser->id}}</td>
-                        <td>{{$oUser->firstname}}</td>
-                        <td>{{$oUser->middlename}}</td>
-                        <td>{{$oUser->lastname}}</td>
-                        <td>{{$oUser->email}}</td>
-                        <td>{{ $oUser->role }}</td>
+                        <td>{{$User->id}}</td>
+                        <td>{{$User->name}}</td>
+                        <td>{{$User->email}}</td>
                         <td>
-                            <a href="{{ route('user.edit', $oUser->id) }}" class="btn btn-primary">Bewerken</a>
+                            <a href="{{ route('user.edit', $User->id) }}" class="btn btn-primary">Bewerken</a>
                             <!-- Sprint 2 <a href="#">Verwijderen</a>-->
                         </td>
                     </tr>

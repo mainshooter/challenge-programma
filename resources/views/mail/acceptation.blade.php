@@ -6,7 +6,7 @@
 
 <body>
 <div>
-    Beste {{ $oUser->firstname }},
+    Beste {{ $oUser->name }},
     <br>
     <br>
     Hierbij ontvangt u een bevestigingsmail van de acceptatie van uw inschrijving.
