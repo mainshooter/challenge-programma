@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Event;
+use Auth;
 
 class EventController extends Controller
 {
@@ -12,9 +13,10 @@ class EventController extends Controller
      * @param  Request $request
      */
     public function index(Request $request) {
-      $aEvents = Event::all();
+      $aEventsAccepted = Event::all()->where('is_accepted', true);
+      $aEventsOpen = Event::all()->where('is_accepted', false);
       return view('event/index', [
-        "aEvents" => $aEvents,
+        "aEventsAccepted" => $aEventsAccepted, "aEventsOpen" => $aEventsOpen
       ]);
     }
 
@@ -57,6 +59,10 @@ class EventController extends Controller
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
 
+      if(Auth::user()->role == 'admin'){
+          $oEvent->is_accepted = true;
+      }
+
       $oEvent->save();
 
       return redirect()->route('event.index');
@@ -84,5 +90,12 @@ class EventController extends Controller
     public function agendaDetails(Request $request, $iId) {
       $oEvent = Event::find($iId);
       return response()->json($oEvent);
+    }
+
+    public function delete(Request $request, $iId){
+        $oEvents = Event::find($iId);
+        $oEvents->delete();
+
+        return redirect()->route('event.index');
     }
 }
