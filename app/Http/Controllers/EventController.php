@@ -118,9 +118,15 @@ class EventController extends Controller
       if (is_null($oEvent)) {
         return redirect()->route('event.agenda');
       }
+      $oUser = Auth::user();
+      if (!$oEvent->students->contains($oUser)) {
+        $oEvent->students()->save($oUser);
+        Session::flash('message', 'U bent toegevoegd aan het event');
+      }
+      else {
+        Session::flash('message', 'U bent al toegevoegd aan het event');
+      }
 
-      $oEvent->students()->save(Auth::user());
-      Session::flash('message', 'U bent toegevoegd aan het event');
       return redirect()->route('event.agenda');
     }
 }
