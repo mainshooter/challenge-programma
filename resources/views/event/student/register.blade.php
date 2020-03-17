@@ -29,6 +29,7 @@
               </ul>
               <div class="card-body">
                 <form method="post" action="{{ route('event.register.student.post', $oEvent->id) }}">
+                  @csrf
                   <input type="submit" class="btn btn-primary col-12" value="Inschrijven">
                 </form>
               </div>
