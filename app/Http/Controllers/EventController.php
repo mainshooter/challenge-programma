@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Event;
 use Auth;
+use Session;
 
 class EventController extends Controller
 {
@@ -118,6 +119,8 @@ class EventController extends Controller
         return redirect()->route('event.agenda');
       }
 
-      
+      $oEvent->students()->save(Auth::user());
+      Session::flash('message', 'U bent toegevoegd aan het event');
+      return redirect()->route('event.agenda');
     }
 }
