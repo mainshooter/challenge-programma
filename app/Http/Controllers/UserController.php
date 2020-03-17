@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\User;
 use \App\StudentInfo;
 use \App\CompanyInfo;
+use Session;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -150,18 +151,36 @@ class UserController extends Controller
       return redirect()->route('user.index');
     }
 
-    public function notAcceptedStudentsOverview(Request $request) {
+    public function notAcceptedUserOverview(Request $request) {
         $aUsers = User::All()->where('is_accepted', 0);
         return view("user/accept", [
             'aUsers' => $aUsers
         ]);
     }
 
+    public function details(Request $request, $iId) {
+      $oUser = User::find($iId);
+      if (is_null($oUser)) {
+        return redirect()->route('user.index');
+      }
+
+      if ($oUser->role == 'company') {
+        return view('user/details/company', [
+          'oUser' => $oUser
+        ]);
+      }
+      else if ($oUser->role == 'student') {
+        return view('user/details/student', [
+          'oUser' => $oUser
+        ]);
+      }
+    }
     public function deleteUser(Request $request, $iId) {
         $oUser = User::find($iId);
 
         $oUser->delete();
 
+        Session::flash('message', 'Gebruiker is verwijderd');
         return redirect()->route("user.not.accepted.overview");
     }
 
@@ -176,6 +195,7 @@ class UserController extends Controller
 
         Mail::to($oUser->email)->send(new AcceptatieMail($oUser));
 
+        Session::flash('message', 'Gebruiker is geaccepteerd');
         return redirect()->route("user.not.accepted.overview");
     }
 }

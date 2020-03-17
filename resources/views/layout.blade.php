@@ -98,6 +98,15 @@
     </nav>
 
     <div class="content-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              @if(Session::has('message'))
+                  <p class="alert alert-info">{{ Session::get('message') }}</p>
+              @endif
+            </div>
+          </div>
+        </div>
         @yield ('content')
     </div>
 
