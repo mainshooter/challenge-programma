@@ -98,4 +98,10 @@ class EventController extends Controller
 
         return redirect()->route('event.index');
     }
+
+    public function details(Request $request, $iId){
+        $oEvent = Event::find($iId);
+
+        return view('event.details', ['oEvent' => $oEvent]);
+    }
 }

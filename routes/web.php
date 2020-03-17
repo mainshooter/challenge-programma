@@ -42,6 +42,7 @@ Route::middleware('role:admin')->group(function () {
       Route::get('create', 'EventController@createPage')->name('event.create');
       Route::post('create', 'EventController@create')->name('event.create.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
+      Route::get("details/{id}", "EventController@details")->name("event.details");
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
@@ -69,6 +70,7 @@ Route::middleware('role:admin')->group(function () {
       });
     });
 });
+
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
