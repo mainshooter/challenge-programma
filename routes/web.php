@@ -32,6 +32,13 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
+Route::middleware('role:student')->group(function() {
+  Route::prefix('student')->group(function() {
+    Route::get('/event/register/{id}', "EventController@studentRegisterPage")->name('event.register.student');
+    Route::post('/event/register/{id}', "EventController@studentRegister")->name('event.register.student.post');
+  });
+});
+
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
     Route::get('/', function(){

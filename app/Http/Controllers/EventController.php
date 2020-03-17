@@ -92,10 +92,32 @@ class EventController extends Controller
       return response()->json($oEvent);
     }
 
-    public function delete(Request $request, $iId){
+    public function delete(Request $request, $iId) {
         $oEvents = Event::find($iId);
         $oEvents->delete();
 
         return redirect()->route('event.index');
+    }
+
+    public function studentRegisterPage(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.agenda');
+      }
+
+      return view('event/student/register', [
+        'oEvent' => $oEvent
+      ]);
+    }
+
+    public function studentRegister(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.agenda');
+      }
+
+      
     }
 }
