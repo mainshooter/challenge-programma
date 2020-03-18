@@ -95,6 +95,7 @@ class EventController extends Controller
         'event_zipcode' => 'required|max:6|min:6|regex:/^\d{4}[a-z]{2}$/i',
       ]);
 
+      $oEvent = Event::find($iId);
       if (is_null($oEvent)) {
         return redirect()->route('event.index');
       }
@@ -109,12 +110,6 @@ class EventController extends Controller
       $oEvent->zipcode = $request->event_zipcode;
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
-
-      $oEvent = Event::find($iId);
-
-      if (is_null($oEvent)) {
-        return redirect()->route('event.index');
-      }
 
       $oEvent->save();
 

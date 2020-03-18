@@ -32,7 +32,7 @@
           </div>
           <div class="form-group">
             <label>Eind datum en tijd</label>
-            <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') ? old('event_end_date_time') : $oEvent-event_end_date_time >}}">
+            <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') ? old('event_end_date_time') : $oEvent->event_end_date_time }}">
           </div>
         </div>
         <div class="col-6">
