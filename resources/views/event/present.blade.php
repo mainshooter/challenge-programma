@@ -25,7 +25,11 @@
                   <td>{{ $oUser->middlename }}</td>
                   <td>{{ $oUser->lastname }}</td>
                   <td>
-                    <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}">
+                    @if ($oUser->pivot->was_present == true)
+                      <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}" checked>
+                    @else
+                      <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}">
+                    @endif
                   </td>
                 </tr>
               @endforeach

@@ -144,7 +144,7 @@ class EventController extends Controller
 
     public function present(Request $request, $iId) {
       $request->validate([
-        "present_user" => "required|exists:users,id",
+        "present_user" => "exists:users,id",
       ]);
       $oEvent = Event::find($iId);
 
@@ -156,11 +156,12 @@ class EventController extends Controller
         $oEvent->students()->updateExistingPivot($oUser, [
           'was_present' => false,
         ]);
-        if (in_array($oUser->id, $request->present_user)) {
+        if (is_array($request->present_user) && in_array($oUser->id, $request->present_user)) {
           $oEvent->students()->updateExistingPivot($oUser, [
             'was_present' => true,
           ]);
         }
       }
+      return redirect()->back();
     }
 }
