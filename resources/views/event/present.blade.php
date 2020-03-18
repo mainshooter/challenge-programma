@@ -5,7 +5,10 @@
     <div class="row">
       <div class="col-12">
         <h1>Aanwezigheid afvinken event {{ $oEvent->name }}</h1>
+        @component('component/formError')
+        @endcomponent
         <form method="post">
+          @csrf
           <table class="table">
             <thead>
               <tr>

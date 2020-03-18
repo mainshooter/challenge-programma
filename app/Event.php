@@ -10,6 +10,6 @@ class Event extends Model
     public $timestamps = false;
 
     public function students() {
-      return $this->belongsToMany('App\User', 'student_event','event_id', 'student_id');
+      return $this->belongsToMany('App\User', 'student_event','event_id', 'student_id')->withPivot('was_present');
     }
 }

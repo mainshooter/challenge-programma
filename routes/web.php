@@ -49,7 +49,8 @@ Route::middleware('role:admin')->group(function () {
       Route::get('create', 'EventController@createPage')->name('event.create');
       Route::post('create', 'EventController@create')->name('event.create.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
-      Route::get('presents/{id}', "EventController@presentPage")->name('event.present');
+      Route::get('present/{id}', "EventController@presentPage")->name('event.present');
+      Route::post('present/{id}', "EventController@present")->name('event.present.page');
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");

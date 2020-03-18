@@ -141,4 +141,27 @@ class EventController extends Controller
         'oEvent' => $oEvent
       ]);
     }
+
+    public function present(Request $request, $iId) {
+      $request->validate([
+        "present_user" => "required|exists:users,id",
+      ]);
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->back();
+      }
+
+      foreach($oEvent->students as $oUser) {
+        $oEvent->students()->save($oUser, [
+          'was_present' => false,
+        ]);
+        // if (in_array($oUser->id, $request->present_user)) {
+        //   $oEvent->students()->save($oUser, [
+        //     'was_present' => true,
+        //   ]);
+        // }
+        $oEvent->save();
+      }
+    }
 }
