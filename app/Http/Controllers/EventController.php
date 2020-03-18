@@ -156,12 +156,11 @@ class EventController extends Controller
         $oEvent->students()->updateExistingPivot($oUser, [
           'was_present' => false,
         ]);
-        // if (in_array($oUser->id, $request->present_user)) {
-        //   $oEvent->students()->save($oUser, [
-        //     'was_present' => true,
-        //   ]);
-        // }
-        $oEvent->save();
+        if (in_array($oUser->id, $request->present_user)) {
+          $oEvent->students()->updateExistingPivot($oUser, [
+            'was_present' => true,
+          ]);
+        }
       }
     }
 }
