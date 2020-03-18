@@ -153,7 +153,7 @@ class EventController extends Controller
       }
 
       foreach($oEvent->students as $oUser) {
-        $oEvent->students()->save($oUser, [
+        $oEvent->students()->updateExistingPivot($oUser, [
           'was_present' => false,
         ]);
         // if (in_array($oUser->id, $request->present_user)) {
