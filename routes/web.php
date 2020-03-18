@@ -43,6 +43,7 @@ Route::middleware('role:admin')->group(function () {
       Route::post('create', 'EventController@create')->name('event.create.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
       Route::get("details/{id}", "EventController@details")->name("event.details");
+      Route::get("accept/{id}", "EventController@accept")->name("event.accept");
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");

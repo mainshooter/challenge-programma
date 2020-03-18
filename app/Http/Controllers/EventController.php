@@ -104,4 +104,11 @@ class EventController extends Controller
 
         return view('event.details', ['oEvent' => $oEvent]);
     }
+
+    public function accept(Request $request, $iId){
+        $oEvent = Event::find($iId);
+        $oEvent->is_accepted = true;
+        $oEvent->save();
+        return redirect()->route('event.index');
+    }
 }
