@@ -18,7 +18,7 @@
             <th>Adres</th>
             <th>Postcode</th>
             <th>Punten</th>
-            {{--<th></th>--}}
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,10 +30,10 @@
               <td>{{$oEvent->street}} {{$oEvent->house_number}}, {{$oEvent->city}}</td>
               <td>{{$oEvent->zipcode}}</td>
               <td>{{$oEvent->points}}</td>
-          {{--    <td>
-                <a href="#" class="btn btn-primary">Bewerk</a>
+              <td>
+                <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
                 <a href="#" class="btn btn-danger">Verwijder</a>
-              </td>--}}
+              </td>
             </tr>
           @endforeach
         </tbody>
@@ -62,8 +62,8 @@
                     <td>{{$oEvent->zipcode}}</td>
                     <td>{{$oEvent->points}}</td>
                     <td>
-                          <a href="#" class="btn btn-primary">Bewerk</a>
-                          <a href="#" class="btn btn-success">Details</a>
+                          <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
+                          <a href="#" class="btn btn-info">Details</a>
                           <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                     </td>
                 </tr>
