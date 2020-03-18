@@ -129,4 +129,16 @@ class EventController extends Controller
 
       return redirect()->route('event.agenda');
     }
+
+    public function presentPage(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.index');
+      }
+
+      return view('event/present', [
+        'oEvent' => $oEvent
+      ]);
+    }
 }
