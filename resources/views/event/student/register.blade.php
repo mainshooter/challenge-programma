@@ -24,8 +24,8 @@
                 </p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Begin tijd: {{ date('d-M-y H:i', strtotime($oEvent->event_start_date_time)) }}</li>
-                <li class="list-group-item">Eind tijd: {{ date('d-M-y H:i', strtotime($oEvent->event_end_date_time)) }}</li>
+                <li class="list-group-item">Begin tijd: {{ $oEvent->event_start_date_time }}</li>
+                <li class="list-group-item">Eind tijd: {{ $oEvent->event_end_date_time }}</li>
               </ul>
               <div class="card-body">
                 <form method="post" action="{{ route('event.register.student.post', $oEvent->id) }}">
