@@ -32,6 +32,14 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
+Route::middleware('role:student')->group(function () {
+    Route::prefix('student')->group(function() {
+        Route::get('/', function() {
+            return view('profile.index');
+        });
+    });
+});
+
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
     Route::get('/', function(){
