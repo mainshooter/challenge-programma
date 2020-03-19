@@ -13,7 +13,7 @@
                 <div class="card-header">Evenement details</div>
                 <div class="card-body">
                     <h2>Evenement naam: {{$oEvent->name}}</h2>
-                    <h5>Aanvrager: Zetten nadat de relatie is gemaakt</h5>
+                    <h5>Aanvrager: <a href="{{ route('user.details', $oEvent->organiser->id) }}">{{ $oEvent->organiser->firstname }} {{ $oEvent->organiser->middlename }} {{ $oEvent->organiser->lastname }}</a></h5>
 
                     <br>
                     <h6>Start datum: {{$oEvent->event_start_date_time}}</h6>

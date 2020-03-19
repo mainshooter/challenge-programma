@@ -58,6 +58,7 @@ class EventController extends Controller
       $oEvent->zipcode = $request->event_zipcode;
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
+      $oEvent->user_id = Auth::user()->id;
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;

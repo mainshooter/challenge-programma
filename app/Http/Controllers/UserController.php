@@ -174,6 +174,11 @@ class UserController extends Controller
           'oUser' => $oUser
         ]);
       }
+      else {
+        return view('user/details/admin', [
+          'oUser' => $oUser,
+        ]);
+      }
     }
     public function deleteUser(Request $request, $iId) {
         $oUser = User::find($iId);

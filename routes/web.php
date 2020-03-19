@@ -54,7 +54,7 @@ Route::middleware('role:admin')->group(function () {
       Route::get('accept-users', 'UserController@notAcceptedUserOverview')->name('user.not.accepted.overview');
       Route::get('delete-user/{id}', 'UserController@deleteUser')->name('user.delete');
       Route::get('accept-user/{id}', 'UserController@acceptUser')->name('user.accept');
-      Route::get('details,{id}', 'UserController@details')->name('user.details');
+      Route::get('details/{id}', 'UserController@details')->name('user.details');
     });
     Route::prefix('image')->group(function() {
       Route::get('/', 'ImageController@index')->name('image.index');
