@@ -7,14 +7,13 @@ function setSelectedIndex(){
 
     let url = window.location.href;
     url = url.split("/").pop();
-    console.log(url);
-    if(url == 'hoog'){
+    if(url == 'ratingsHighLow'){
         selectedBox.selectedIndex = 1;
     }
-    else if(url == 'laag'){
+    else if(url == 'ratingsLowHigh'){
         selectedBox.selectedIndex = 2;
     }
-    else if(url == 'review'){
+    else if(url == 'reviews'){
         selectedBox.selectedIndex = 0;
     }
 }

@@ -21,7 +21,7 @@ class ReviewController extends Controller
         return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating]);
     }
 
-    public function hoog()
+    public function ratingsHighLow()
     {
         error_log('yeet');
         $aReviews = Review::orderBy('rating', 'desc')->get();
@@ -35,7 +35,7 @@ class ReviewController extends Controller
         return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating]);
     }
 
-    public function laag()
+    public function ratingsLowHigh()
     {
         $aReviews = Review::orderBy('rating', 'asc')->get();
         $nRating = 0;

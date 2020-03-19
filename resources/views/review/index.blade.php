@@ -22,10 +22,10 @@
                         <option value="{{ route('reviews.index') }}">
                             Relevantie
                         </option>
-                        <option value="{{ route('reviews.hoog') }}">
+                        <option value="{{ route('reviews.ratingsHighLow') }}">
                             Review hoog - laag
                         </option>
-                        <option value="{{ route('reviews.laag') }}">
+                        <option value="{{ route('reviews.ratingsLowHigh') }}">
                             Review laag - hoog
                         </option>
                     </select>

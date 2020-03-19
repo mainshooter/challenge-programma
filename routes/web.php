@@ -23,8 +23,8 @@ Auth::routes();
 
 Route::prefix("reviews")->group(function() {
     Route::get('/', 'ReviewController@index')->name('reviews.index');
-    Route::get('hoog', 'ReviewController@hoog')->name('reviews.hoog');
-    Route::get('laag', 'ReviewController@laag')->name('reviews.laag');
+    Route::get('ratingsHighLow', 'ReviewController@ratingsHighLow')->name('reviews.ratingsHighLow');
+    Route::get('ratingsLowHigh', 'ReviewController@ratingsLowHigh')->name('reviews.ratingsLowHigh');
 });
 
 Route::namespace('Auth')->group(function() {
