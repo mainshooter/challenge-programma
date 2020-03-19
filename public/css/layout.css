@@ -91,3 +91,7 @@ body{
 .no-max-width {
   max-width: unset !important;
 }
+
+.btn.btn-primary a {
+  color: #fff;
+}

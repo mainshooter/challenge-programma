@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Event;
 use Auth;
+use Session;
 
 class EventController extends Controller
 {
@@ -92,7 +93,7 @@ class EventController extends Controller
       return response()->json($oEvent);
     }
 
-    public function delete(Request $request, $iId){
+    public function delete(Request $request, $iId) {
         $oEvents = Event::find($iId);
         $oEvents->delete();
 
@@ -110,5 +111,35 @@ class EventController extends Controller
         $oEvent->is_accepted = true;
         $oEvent->save();
         return redirect()->route('event.index');
+    }
+
+    public function studentRegisterPage(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.agenda');
+      }
+
+      return view('event/student/register', [
+        'oEvent' => $oEvent
+      ]);
+    }
+
+    public function studentRegister(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.agenda');
+      }
+      $oUser = Auth::user();
+      if (!$oEvent->students->contains($oUser)) {
+        $oEvent->students()->save($oUser);
+        Session::flash('message', 'U bent toegevoegd aan het event');
+      }
+      else {
+        Session::flash('message', 'U bent al toegevoegd aan het event');
+      }
+
+      return redirect()->route('event.agenda');
     }
 }
