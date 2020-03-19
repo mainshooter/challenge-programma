@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use \App\Event;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StudentEventRegister;
 
 class EventController extends Controller
 {
@@ -121,6 +123,7 @@ class EventController extends Controller
       $oUser = Auth::user();
       if (!$oEvent->students->contains($oUser)) {
         $oEvent->students()->save($oUser);
+        Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
         Session::flash('message', 'U bent toegevoegd aan het event');
       }
       else {
