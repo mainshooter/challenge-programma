@@ -30,7 +30,7 @@
               <td>{{$oEvent->street}} {{$oEvent->house_number}}, {{$oEvent->city}}</td>
               <td>{{$oEvent->zipcode}}</td>
               <td>{{$oEvent->points}}</td>
-              <td><a href="{{route('event.details', $oEvent->id)}}" class="btn btn-success">Details</a>
+              <td><a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
               <a href="#" class="btn btn-danger">Verwijder</a> </td>
             </tr>
           @endforeach
@@ -63,7 +63,7 @@
 {{--
                           <a href="#" class="btn btn-primary">Bewerk</a>
 --}}
-                          <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-success">Details</a>
+                          <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
                           <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                     </td>
                 </tr>

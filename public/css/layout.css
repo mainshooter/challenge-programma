@@ -9,6 +9,10 @@ body{
     min-height: 100vh;
 }
 
+.eventDetailCard{
+    text-align: center;
+}
+
 .main {
   min-height: 100%;
   margin-top: 2em;
