@@ -108,6 +108,11 @@ class EventController extends Controller
 
     public function accept(Request $request, $iId){
         $oEvent = Event::find($iId);
+
+        if (is_null($oEvent)) {
+          return redirect()->back();
+        }
+
         $oEvent->is_accepted = true;
         $oEvent->save();
         return redirect()->route('event.index');
