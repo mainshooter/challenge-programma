@@ -39,6 +39,12 @@ Route::middleware('role:student')->group(function() {
   });
 });
 
+Route::middleware('role:company')->group(function() {
+  Route::prefix('bedrijf')->group(function() {
+    Route::get('review/add', 'ReviewController@addReviewPage')->name('review.add');
+  });
+});
+
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
     Route::get('/', function(){
