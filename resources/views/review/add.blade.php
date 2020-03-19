@@ -8,7 +8,7 @@
         <h1>Review achterlaten</h1>
         <div class="form-group">
           <label>Aantal sterren</label>
-          <input type="number" name="review_stars" class="form-control" min="1" max="5" step="0.5">
+          <input type="number" name="review_stars" class="form-control" min="1" max="10" step="0.5">
         </div>
         <div class="form-group">
           <label>Uw review</label>
