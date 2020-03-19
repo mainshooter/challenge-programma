@@ -92,6 +92,6 @@ body{
   max-width: unset !important;
 }
 
-.btn.btn-primary a {
+.btn.btn-primary a, .btn.btn-primary a:hover {
   color: #fff;
 }
