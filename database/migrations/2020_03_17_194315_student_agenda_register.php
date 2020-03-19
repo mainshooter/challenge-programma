@@ -36,7 +36,7 @@ class StudentAgendaRegister extends Migration
     public function down()
     {
         Schema::drop('student_agenda');
-        Schema::table('event'. function(Blueprint $table) {
+        Schema::table('event', function(Blueprint $table) {
           $table->increments('id')->change();
         });
     }
