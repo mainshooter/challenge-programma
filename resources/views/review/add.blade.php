@@ -4,7 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form method="post" class="form">
+      <form method="post" class="form editer-form">
+          @csrf
         <h1>Review achterlaten</h1>
         <div class="form-group">
           <label>Aantal sterren</label>
@@ -14,14 +15,16 @@
           <label>Uw review</label>
           <div id="editor">
           </div>
+
         </div>
-        <input type="hidden" name="page_content"/>
+          <input type="hidden" name="page_content">
         <input type="submit" class="btn btn-primary">
       </form>
     </div>
   </div>
 </div>
 @endsection
+
 @section('head')
 
   <!-- Main Quill library -->
