@@ -38,7 +38,7 @@
                     <p>{{$avgRating}} / 10</p>
                     <br>
                     @if (Auth::user() && Auth::user()->role == 'company')
-                      <a href="#" class="btn btn-primary">Review toevoegen</a>
+                      <a href="{{ route('review.add') }}" class="btn btn-primary">Review toevoegen</a>
                     @endif
                 </div>
             </div>
