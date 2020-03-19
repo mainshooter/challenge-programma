@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-
+use Session;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\StudentInfo;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
         'firstname' => ['required', 'string', 'max:50'],
         'middlename'=>['nullable', 'string', 'max:50'],
         'lastname' => ['required', 'string', 'max:50'],
-        'phone'=>['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
+        'phone'=>['required','regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
         'schoolyear'=>['required','integer', 'max:10'],
         'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -84,6 +84,7 @@ class RegisterController extends Controller
       $oStudentInfo->user_id = $oUser->id;
       $oStudentInfo->save();
 
+      Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
       return redirect()->route('home');
     }
 
@@ -97,7 +98,7 @@ class RegisterController extends Controller
         'firstname' => 'required|string|max:50',
         'middlename'=> 'nullable|string|max:50',
         'lastname' => 'required|string|max:50',
-        'phone'=> ['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
+        'phone'=> ['required', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
         'email' => 'required|string|email|max:50|unique:users,email',
         'password' => 'required|string|min:8|confirmed',
         'street' => 'required|max:255',
@@ -128,6 +129,7 @@ class RegisterController extends Controller
       $oCompanyInfo->user_id = $oUser->id;
       $oCompanyInfo->save();
 
+      Session::flash('message', 'Uw Registratie was succesvol. U ontvangt een bericht zodra uw account is goedgekeurd');
       return redirect()->route('home');
     }
 }

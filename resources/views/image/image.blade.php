@@ -6,9 +6,6 @@
         <div class="jumbotron">
           @component('component/formError')
           @endcomponent
-            @if(Session::has('message'))
-                  <p class="alert alert-info">{{Session::get('message')}} </p>
-              @endif
             <form action="{{ route('image.store.post') }}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
