@@ -11,7 +11,7 @@
         <br>
         Hierbij ontvangt u een bevestigingsmail van uw inschrijving van {{ $oEvent->name }}.
         <br>
-        De gegevens van het evenement, zijn alsvolgd:
+        De gegevens van het evenement, zijn als volgt:
         <ul>
           <li>Aantal punten: {{ $oEvent->points }}</li>
           <li>Start tijd: {{ date('d-M-y H:i', strtotime($oEvent->event_start_date_time)) }}</li>
