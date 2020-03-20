@@ -62,7 +62,7 @@ class RegisterController extends Controller
         'lastname' => ['required', 'string', 'max:50'],
         'phone'=>['required','regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
         'schoolyear'=>['required','integer', 'max:10'],
-        'schoolyear'=>['required'],
+        'pointsDecision'=>['required'],
         'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
@@ -77,7 +77,7 @@ class RegisterController extends Controller
       $oUser->is_accepted = 0;
       $oUser->role = 'student';
       $oUser->save();
-      
+
       $oStudentInfo = new StudentInfo();
       $oStudentInfo->school_year = $request->schoolyear;
       $oStudentInfo->points_decision = $request->pointsDecision;

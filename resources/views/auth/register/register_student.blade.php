@@ -69,8 +69,8 @@
                             <label for="pointsDecision" class="col-md-4 col-form-label text-md-right">VSR of Certificaat*</label>
                             <div class="col-md-3">
                                 <select class="form-control @error('pointsDecision') is-invalid @enderror" name="pointsDecision" value="{{ old('pointsDecision') }}" required>
-                                <option value="VSR">VSR</option>
-                                <option value="Certificaat">Certificaat</option>
+                                <option value="vsr">VSR</option>
+                                <option value="certificaat">Certificaat</option>
                                 </select>
                             </div>
                         </div>
