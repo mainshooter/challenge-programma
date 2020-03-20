@@ -132,7 +132,10 @@ class EventController extends Controller
 
     public function details(Request $request, $iId){
         $oEvent = Event::find($iId);
-
-        return view('event.details', ['oEvent' => $oEvent]);
+        if (is_null($oEvent)) {
+            abort(404);
+        }else{
+            return view('event.details', ['oEvent' => $oEvent]);
+        }
     }
 }
