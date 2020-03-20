@@ -12,7 +12,7 @@
                     <nav class="nav flex-column">
                         <a class="nav-link" href="{{ route('user.index') }}">Gebruikersbeheer</a>
                         <a class="nav-link" href="{{ route('user.not.accepted.overview') }}">Accepteren Gebruikers</a>
-                        <a class="nav-link" href="{{ route('event.index') }}">Aanmaken evenement</a>
+                        <a class="nav-link" href="{{ route('event.index') }}"> Evenementenbeheer</a>
                         <a class="nav-link" href="{{ route('cms.index') }}">CMS</a>
                         <a class="nav-link" href="{{ route('image.index')  }}">Carousel</a>
                     </nav>
