@@ -54,6 +54,8 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
       Route::post('create', 'EventController@create')->name('event.create.post');
+      Route::get('edit/{id}', 'EventController@editPage')->name('event.edit');
+      Route::post('edit/{id}', 'EventController@edit')->name('event.edit.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
       Route::get('present/{id}', "EventController@presentPage")->name('event.present');
       Route::post('present/{id}', "EventController@present")->name('event.present.page');

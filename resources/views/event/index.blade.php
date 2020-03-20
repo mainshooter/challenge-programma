@@ -34,6 +34,7 @@
                 <a href="{{ route('event.present', $oEvent->id) }}" class="btn btn-success">Aanwezigheid</a>
                 <a href="#" class="btn btn-primary">Bewerk</a>
                 <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
+                <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
               </td>
             </tr>
           @endforeach
@@ -63,8 +64,8 @@
                     <td>{{$oEvent->zipcode}}</td>
                     <td>{{$oEvent->points}}</td>
                     <td>
-                      <a href="#" class="btn btn-primary">Bewerk</a>
-                      <a href="{{ route('event.present', $oEvent->id) }}" class="btn btn-success">Aanwezigheid</a>
+                      <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
+                      <a href="#" class="btn btn-info">Details</a>
                       <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                     </td>
                 </tr>
