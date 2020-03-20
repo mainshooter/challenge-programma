@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12">
         <button type="button" class="btn btn-primary">
-          <a href="{{ URL::previous() }}">Terug</a>
+          <a href="{{ route('event.index') }}">Terug</a>
         </button>
         <h1>Aanwezigheid afvinken event {{ $oEvent->name }}</h1>
         @component('component/formError')
