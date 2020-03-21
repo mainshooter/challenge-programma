@@ -31,6 +31,11 @@ class AddCompanyReview extends Migration
     public function down()
     {
         Schema::table('review', function (Blueprint $table) {
+            $table->string('name_company');
+            $table->string('name_reviewer');
+        });
+
+        Schema::table('review', function (Blueprint $table) {
             $table->dropColumn('user_id');
         });
     }
