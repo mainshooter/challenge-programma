@@ -14,7 +14,7 @@ class AddPointsDecisionToStudent extends Migration
     public function up()
     {
         Schema::table('student_info', function (Blueprint $table) {
-                $table->string('points_decision');
+            $table->enum('points_decision', ['vsr', 'certificaat']);
         });
     }
 
