@@ -30,11 +30,11 @@ class ReviewController extends Controller {
             'review_stars' => 'required|integer',
         ]);
         $sContent = $request->page_content;
-        $oUser = User::find(Auth::user()->id);
+        $oUser = Auth::user();
         $oReview = new Review();
         $oReview->body = $sContent;
         $oReview->rating = $request->review_stars;
-        $oReview->user()->associate($oUser);
+        $oReview->company()->associate($oUser);
         $oReview->save();
         return redirect()->route("event.index");
     }

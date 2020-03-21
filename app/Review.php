@@ -8,8 +8,8 @@ class Review extends Model
 {
     protected $table = "review";
 
-    public function user(){
-      return  $this->belongsTo(User::class);
+    public function company(){
+      return  $this->belongsTo(User::class, 'user_id');
     }
 
 }
