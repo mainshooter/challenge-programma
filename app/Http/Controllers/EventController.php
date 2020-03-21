@@ -155,8 +155,11 @@ class EventController extends Controller
 
     public function details(Request $request, $iId){
         $oEvent = Event::find($iId);
-
-        return view('event.details', ['oEvent' => $oEvent]);
+        if (is_null($oEvent)) {
+            abort(404);
+        }else{
+            return view('event.details', ['oEvent' => $oEvent]);
+        }
     }
 
     public function accept(Request $request, $iId){
@@ -200,14 +203,5 @@ class EventController extends Controller
       }
 
       return redirect()->route('event.agenda');
-    }
-
-    public function details(Request $request, $iId){
-        $oEvent = Event::find($iId);
-        if (is_null($oEvent)) {
-            abort(404);
-        }else{
-            return view('event.details', ['oEvent' => $oEvent]);
-        }
     }
 }
