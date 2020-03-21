@@ -20,7 +20,7 @@ class ProfileController extends Controller
     }
 
     public function terminate(Request $request) {
-        $oUser = User::find(Auth::user()->id);
+        $oUser = Auth::user();
 
         Auth::logout();
 
