@@ -173,13 +173,13 @@ class EventController extends Controller
       }
       $oUser = Auth::user();
       if (!$oEvent->students->contains($oUser)) {
-        if (is_null($oEvent->max_students) || $oEvent->max_students < $oEvent->students->count() || $oEvent->max_students === 0) {
+        if (is_null($oEvent->max_students) || $oEvent->max_students > $oEvent->students->count() || $oEvent->max_students === 0) {
           $oEvent->students()->save($oUser);
           Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
           Session::flash('message', 'U bent toegevoegd aan het event');
         }
         else {
-          Session::flask('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
+          Session::flash('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
         }
       }
       else {
