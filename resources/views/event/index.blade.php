@@ -33,6 +33,7 @@
               <td>{{ $oEvent->points }}</td>
               <td>{{ $oEvent->max_students }}</td>
               <td>
+                <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
                 <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
                 <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
               </td>
@@ -65,9 +66,9 @@
                 <td>{{$oEvent->zipcode}}</td>
                 <td>{{$oEvent->points}}</td>
                 <td>
-                      <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
-                      <a href="#" class="btn btn-info">Details</a>
-                      <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
+                    <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                    <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
+                    <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                 </td>
               </tr>
             @endforeach
