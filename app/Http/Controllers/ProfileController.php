@@ -9,8 +9,7 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(Request $request) {
-        $oUser = User::find(Auth::user()->id);
-        return view('profile/index', ["oUser" => $oUser]);
+        return view('profile/index');
     }
 
     public function terminatePage(Request $request) {
@@ -18,11 +17,13 @@ class ProfileController extends Controller
         return view("profile/terminate", ["oUser" => $oUser]);
     }
 
-    public function terminate(Request $request, $iId) {
-        $oUser = User::find($iId);
+    public function terminate(Request $request) {
+        $oUser = User::find(Auth::user()->id);
 
-        $oUser->delete();
+        Auth::logout();
 
-        return redirect()->route('profile.index');
+        if($oUser->delete()) {
+            return redirect()->route('profile.index')->with('global', 'Je ben uitgeschreven.');
+        }
     }
 }

@@ -16,7 +16,7 @@
                     </tr>
                     </thead>
                 </table>
-                <td><a href="{{ route('profile.terminate', $oUser->id)}}" class="btn btn-danger">Uitschrijven</a>
+                <td><a href="{{ route('profile.terminate')}}" class="btn btn-danger">Uitschrijven</a>
             </div>
             <div class="col-2"></div>
         </div>
