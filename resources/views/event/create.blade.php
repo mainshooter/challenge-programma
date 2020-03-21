@@ -15,49 +15,53 @@
         @csrf
         <div class="col-6">
           <div class="form-group">
-            <label>Naam</label>
-            <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}">
+            <label>Naam *</label>
+            <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" required>
           </div>
           <div class="form-group">
-            <label>Omschrijving</label>
-            <textarea name="event_description" class="form-control">{{ old('event_description') }}</textarea>
+            <label>Omschrijving *</label>
+            <textarea name="event_description" class="form-control" required>{{ old('event_description') }}</textarea>
           </div>
           <div class="form-group">
-            <label>Punten</label>
-            <input type="number" name="event_points" class="form-control" value="{{ old('event_points') }}">
+            <label>Punten *</label>
+            <input type="number" name="event_points" class="form-control" value="{{ old('event_points') }}" required>
           </div>
           <div class="form-group">
-            <label>Start datum en tijd</label>
-            <input name="event_start_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_start_date_time') }}">
+            <label>Maximaal aantal studenten</label>
+            <input type="number" name="event_max_students" class="form-control" value="{{ old('event_max_students') }}">
           </div>
           <div class="form-group">
-            <label>Eind datum en tijd</label>
-            <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') }}">
+            <label>Start datum en tijd *</label>
+            <input name="event_start_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_start_date_time') }}" required>
+          </div>
+          <div class="form-group">
+            <label>Eind datum en tijd *</label>
+            <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') }}" required>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
-            <label>Straat</label>
-            <input type="text" name="event_straat" class="form-control" value="{{ old('event_straat') }}">
+            <label>Straat *</label>
+            <input type="text" name="event_straat" class="form-control" value="{{ old('event_straat') }}" required>
           </div>
           <div class="form-group">
-            <label>Plaats</label>
-            <input type="text" name="event_city" class="form-control" value="{{ old('event_city') }}">
+            <label>Plaats *</label>
+            <input type="text" name="event_city" class="form-control" value="{{ old('event_city') }}" required>
           </div>
           <div class="row">
             <div class="col-12">
-              <label>Huisnummer + toevoeging</label>
+              <label>Huisnummer* + toevoeging</label>
             </div>
             <div class="col-8">
-              <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control" value="{{ old('event_house_number') }}">
+              <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control" value="{{ old('event_house_number') }}" required>
             </div>
             <div class="col-4">
               <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control" value="{{ old('event_house_number_addition') }}">
             </div>
           </div>
           <div class="form-group">
-            <label>Postcode</label>
-            <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}">
+            <label>Postcode *</label>
+            <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}" required>
           </div>
         </div>
           <input type="submit" class="btn btn-primary" value="Toevoegen">
