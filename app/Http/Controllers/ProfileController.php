@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Event;
 use Auth;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class ProfileController extends Controller
 {
     public function index(Request $request) {
-        return view('profile/index');
+        $oUser = Auth::user();
+        $aEvents = Event::all()->where(students.contains($oUser));
+
+        return view('profile/index', ["aEvents" => $aEvents]);
     }
 
     public function terminatePage(Request $request) {
-        $oUser = User::find(Auth::user()->id);
-        return view("profile/terminate", ["oUser" => $oUser]);
+        return view("profile/terminate");
     }
 
     public function terminate(Request $request) {
@@ -23,7 +27,8 @@ class ProfileController extends Controller
         Auth::logout();
 
         if($oUser->delete()) {
-            return redirect()->route('profile.index')->with('global', 'Je ben uitgeschreven.');
+            Session::flash('message', 'Je bent uitgeschreven');
+            return redirect()->route('profile.index');
         }
     }
 }
