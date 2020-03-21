@@ -42,6 +42,7 @@ Route::middleware('role:student')->group(function() {
 Route::middleware('role:company')->group(function() {
   Route::prefix('bedrijf')->group(function() {
     Route::get('review/add', 'ReviewController@addReviewPage')->name('review.add');
+    Route::post('review/add', 'ReviewController@addReview')->name('review.add.post');
   });
 });
 

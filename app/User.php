@@ -45,4 +45,8 @@ class User extends Authenticatable
       return $this->hasOne('App\StudentInfo', 'user_id', 'id');
     }
 
+    public function review(){
+        return $this->hasMany('App\Review');
+    }
+
 }
