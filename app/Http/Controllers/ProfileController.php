@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use http\Message;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -13,7 +15,7 @@ class ProfileController extends Controller
     }
 
     public function terminatePage(Request $request) {
-        $oUser = User::find(Auth::user()->id);
+        $oUser = Auth::user();
         return view("profile/terminate", ["oUser" => $oUser]);
     }
 
@@ -23,7 +25,8 @@ class ProfileController extends Controller
         Auth::logout();
 
         if($oUser->delete()) {
-            return redirect()->route('profile.index')->with('global', 'Je ben uitgeschreven.');
+            Session::flash('message', 'Je bent uitgeschreven');
+            return redirect()->route('profile.index');
         }
     }
 }

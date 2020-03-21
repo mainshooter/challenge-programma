@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <label>Weet je zeker dat je wilt uitschrijven?</label>
+                <h1>Weet je zeker dat je wilt uitschrijven?</h1>
                 <a href="{{ route('profile.terminate.post', $oUser->id)}}" class="btn btn-danger">Uitschrijven</a>
             </div>
             <div class="col-2"></div>
