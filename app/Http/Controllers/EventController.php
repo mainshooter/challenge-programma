@@ -40,6 +40,7 @@ class EventController extends Controller
         'event_name' => 'required|max:255',
         'event_description' => 'required',
         'event_points' => 'required|integer',
+        'event_max_students' => 'nullable|integer|min:0',
         'event_start_date_time' => 'required|date_format:Y/m/d H:i',
         'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
         'event_straat' => 'required|max:255',
@@ -54,6 +55,7 @@ class EventController extends Controller
       $oEvent->name = $request->event_name;
       $oEvent->description = $request->event_description;
       $oEvent->points = $request->event_points;
+      $oEvent->max_students = $request->event_max_students;
       $oEvent->street = $request->event_straat;
       $oEvent->city = $request->event_city;
       $oEvent->house_number = $request->event_house_number;
@@ -88,6 +90,7 @@ class EventController extends Controller
         'event_name' => 'required|max:255',
         'event_description' => 'required',
         'event_points' => 'required|integer',
+        'event_max_students' => 'nullable|integer|min:0',
         'event_start_date_time' => 'required|date_format:Y/m/d H:i',
         'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
         'event_straat' => 'required|max:255',
@@ -105,6 +108,7 @@ class EventController extends Controller
       $oEvent->name = $request->event_name;
       $oEvent->description = $request->event_description;
       $oEvent->points = $request->event_points;
+      $oEvent->max_students = $request->event_max_students;
       $oEvent->street = $request->event_straat;
       $oEvent->city = $request->event_city;
       $oEvent->house_number = $request->event_house_number;
@@ -169,9 +173,14 @@ class EventController extends Controller
       }
       $oUser = Auth::user();
       if (!$oEvent->students->contains($oUser)) {
-        $oEvent->students()->save($oUser);
-        Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
-        Session::flash('message', 'U bent toegevoegd aan het event');
+        if (is_null($oEvent->max_students) || $oEvent->max_students < $oEvent->students->count() || $oEvent->max_students === 0) {
+          $oEvent->students()->save($oUser);
+          Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
+          Session::flash('message', 'U bent toegevoegd aan het event');
+        }
+        else {
+          Session::flask('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
+        }
       }
       else {
         Session::flash('message', 'U bent al toegevoegd aan het event');
