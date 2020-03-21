@@ -15,9 +15,8 @@
           <label>Uw review</label>
           <div id="editor">
           </div>
-
         </div>
-          <input type="hidden" name="page_content">
+        <input type="hidden" name="page_content"/>
         <input type="submit" class="btn btn-primary">
       </form>
     </div>

@@ -55,7 +55,10 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
       Route::post('create', 'EventController@create')->name('event.create.post');
+      Route::get('edit/{id}', 'EventController@editPage')->name('event.edit');
+      Route::post('edit/{id}', 'EventController@edit')->name('event.edit.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
+      Route::get("details/{id}", "EventController@details")->name("event.details");
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
@@ -66,7 +69,7 @@ Route::middleware('role:admin')->group(function () {
       Route::get('accept-users', 'UserController@notAcceptedUserOverview')->name('user.not.accepted.overview');
       Route::get('delete-user/{id}', 'UserController@deleteUser')->name('user.delete');
       Route::get('accept-user/{id}', 'UserController@acceptUser')->name('user.accept');
-      Route::get('details,{id}', 'UserController@details')->name('user.details');
+      Route::get('details/{id}', 'UserController@details')->name('user.details');
     });
     Route::prefix('image')->group(function() {
       Route::get('/', 'ImageController@index')->name('image.index');
@@ -83,6 +86,7 @@ Route::middleware('role:admin')->group(function () {
       });
     });
 });
+
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
