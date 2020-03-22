@@ -28,5 +28,9 @@ class ProfileController extends Controller
             Session::flash('message', 'Je bent uitgeschreven');
             return redirect()->route('profile.index');
         }
+        else {
+            Session::flash('message', 'Je kan helaas niet uitschrijven, neem contact op met de systeem administrator');
+            return view("profile/terminate");
+        }
     }
 }
