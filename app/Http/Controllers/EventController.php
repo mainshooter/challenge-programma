@@ -153,6 +153,26 @@ class EventController extends Controller
         return redirect()->route('event.index');
     }
 
+    public function details(Request $request, $iId){
+        $oEvent = Event::find($iId);
+        if (is_null($oEvent)) {
+            return redirect()->route('event.index');
+        }else{
+            return view('event.details', ['oEvent' => $oEvent]);
+        }
+    }
+
+    public function accept(Request $request, $iId){
+
+        $oEvent = Event::find($iId);
+        if (is_null($oEvent)) {
+            return redirect()->route('event.index');
+        }
+        $oEvent->is_accepted = true;
+        $oEvent->save();
+        return redirect()->route('event.index');
+    }
+
     public function studentRegisterPage(Request $request, $iId) {
       $oEvent = Event::find($iId);
 
@@ -187,14 +207,5 @@ class EventController extends Controller
       }
 
       return redirect()->route('event.agenda');
-    }
-
-    public function details(Request $request, $iId){
-        $oEvent = Event::find($iId);
-        if (is_null($oEvent)) {
-            abort(404);
-        }else{
-            return view('event.details', ['oEvent' => $oEvent]);
-        }
     }
 }
