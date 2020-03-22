@@ -10,4 +10,8 @@ class CompanyInfo extends Model
     public $incrementing = false;
     public $primaryKey = 'user_id';
     public $timestamps = false;
+
+    public function company() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

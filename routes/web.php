@@ -61,6 +61,7 @@ Route::middleware('role:admin')->group(function () {
       Route::get('present/{id}', "EventController@presentPage")->name('event.present');
       Route::post('present/{id}', "EventController@present")->name('event.present.page');
       Route::get("details/{id}", "EventController@details")->name("event.details");
+      Route::get("accept/{id}", "EventController@accept")->name("event.accept");
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
