@@ -20,5 +20,22 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
+        DB::table('users')->insert([
+          'firstname' => 'HBO',
+          'lastname' => 'Avans',
+          'phone' => '0885257500',
+          'is_accepted' => true,
+          'email' => 'avans'.'@gmail.com',
+          'password' => bcrypt('avans'),
+          'role' => 'company',
+        ]);
+        DB::table('company_info')->insert([
+          'user_id' => 2,
+          'company_name' => 'Avans',
+          'street' => 'Onderwijs boulevard',
+          'city' => 'Den Bosch',
+          'house_number' => 215,
+          'zipcode' => '5223DE',
+        ]);
     }
 }
