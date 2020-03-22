@@ -193,13 +193,13 @@ class EventController extends Controller
       }
       $oUser = Auth::user();
       if (!$oEvent->students->contains($oUser)) {
-        if (is_null($oEvent->max_students) || $oEvent->max_students < $oEvent->students->count() || $oEvent->max_students === 0) {
+        if (is_null($oEvent->max_students) || $oEvent->max_students > $oEvent->students->count() || $oEvent->max_students === 0) {
           $oEvent->students()->save($oUser);
           Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
           Session::flash('message', 'U bent toegevoegd aan het event');
         }
         else {
-          Session::flask('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
+          Session::flash('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
         }
       }
       else {
@@ -207,5 +207,49 @@ class EventController extends Controller
       }
 
       return redirect()->route('event.agenda');
+    }
+
+    public function presentPage(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.index');
+      }
+
+      return view('event/present', [
+        'oEvent' => $oEvent
+      ]);
+    }
+
+    public function present(Request $request, $iId) {
+      $request->validate([
+        "present_user" => "exists:users,id",
+      ]);
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->back();
+      }
+
+      foreach($oEvent->students as $oUser) {
+        $oEvent->students()->updateExistingPivot($oUser, [
+          'was_present' => false,
+        ]);
+        if (is_array($request->present_user) && in_array($oUser->id, $request->present_user)) {
+          $oEvent->students()->updateExistingPivot($oUser, [
+            'was_present' => true,
+          ]);
+        }
+      }
+      return redirect()->back();
+    }
+
+    public function details(Request $request, $iId){
+        $oEvent = Event::find($iId);
+        if (is_null($oEvent)) {
+            abort(404);
+        }else{
+            return view('event.details', ['oEvent' => $oEvent]);
+        }
     }
 }
