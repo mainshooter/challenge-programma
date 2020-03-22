@@ -1,7 +1,7 @@
 @extends('layout')
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/homepage.css') }}" >
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reviewPage.css') }}">
 @endsection
 @section('content')
     <div class="row">
