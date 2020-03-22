@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$oReview->name_company}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{$oReview->name_reviewer}}</h6>
-                            <p class="card-text">{{$oReview->body}}</p>
+                            <p class="card-text">{!! $oReview->body !!}</p>
                             <p class="card-footer">{{$oReview->rating}} / 10</p>
                         </div>
                     </div>
