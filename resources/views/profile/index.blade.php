@@ -5,14 +5,15 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <label>Studentlabel</label>
-                <label>Volgende Evenementen:</label>
+                <h1>Volgende Evenementen:</h1>
                 <table class="table table-dark">
                     <p/>
                     <thead>
                     <tr>
-                        <th>Bedrijf</th>
-                        <th>datum</th>
+                        <th>Bedrijfsnaam</th>
+                        <th>Begindatum</th>
+                        <th>Einddatum</th>
+                        <th>Naar Detail pagina</th>
                     </tr>
                     </thead>
                     <tbody>
