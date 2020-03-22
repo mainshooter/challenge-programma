@@ -9,6 +9,10 @@ body{
     min-height: 100vh;
 }
 
+.eventDetailCard{
+    text-align: center;
+}
+
 .main {
   min-height: 100%;
   margin-top: 2em;
@@ -90,4 +94,8 @@ body{
 
 .no-max-width {
   max-width: unset !important;
+}
+
+.btn.btn-primary a, .btn.btn-primary a:hover {
+  color: #fff;
 }

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <table class="table">
+            <table class="table sorting-table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>#</th>
