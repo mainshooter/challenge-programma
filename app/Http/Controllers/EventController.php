@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StudentEventRegister;
+use App\Mail\AcceptEvent;
 
 class EventController extends Controller
 {
@@ -166,6 +167,7 @@ class EventController extends Controller
 
         $oEvent->is_accepted = true;
         $oEvent->save();
+        Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
         return redirect()->route('event.index');
     }
 

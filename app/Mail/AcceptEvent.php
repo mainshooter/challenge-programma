@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use \App\Event;
 
 class AcceptEvent extends Mailable
 {
@@ -16,7 +17,7 @@ class AcceptEvent extends Mailable
      *
      * @return void
      */
-    public function __construct(User $oEvent)
+    public function __construct(Event $oEvent)
     {
         $this->oEvent = $oEvent;
     }

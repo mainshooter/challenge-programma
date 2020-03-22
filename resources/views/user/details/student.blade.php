@@ -10,10 +10,10 @@
                     <div class="card-body">
                       <h4>NAW</h4>
                       <ul class="list-unstyled">
-                        <li>Voornaam {{ $oUser->firstname }}</li>
-                        <li>Tussenvoegsel {{ $oUser->middlename }}</li>
-                        <li>Achternaam {{ $oUser->lastname }}</li>
-                        <li>Leerjaar {{ $oUser->studentInfo->school_year }}</li>
+                        <li>Voornaam: {{ $oUser->firstname }}</li>
+                        <li>Tussenvoegsel: {{ $oUser->middlename }}</li>
+                        <li>Achternaam: {{ $oUser->lastname }}</li>
+                        <li>Leerjaar: {{ $oUser->studentInfo->school_year }}</li>
                       </ul>
 
                       <h4>Contact gegevens</h4>
