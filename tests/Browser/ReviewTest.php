@@ -21,4 +21,10 @@ class ReviewTest extends DuskTestCase
                 ->assertSee('Wat bedrijven denken over het Challenge programma');
         });
     }
+
+    public function CreateReviewTest() {
+      $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'avans@gmail.com')->first());
+      });
+    }
 }

@@ -243,13 +243,4 @@ class EventController extends Controller
       }
       return redirect()->back();
     }
-
-    public function details(Request $request, $iId){
-        $oEvent = Event::find($iId);
-        if (is_null($oEvent)) {
-            abort(404);
-        }else{
-            return view('event.details', ['oEvent' => $oEvent]);
-        }
-    }
 }
