@@ -24,6 +24,11 @@
                     <h5>Beschrijving:</h5>
                     <h6>{{$oEvent->description}}</h6>
                 </div>
+                @if($oEvent->is_accepted == 0)
+                <div class="card-footer">
+                    <a href="{{ route('event.accept', $oEvent->id)}}" class="btn btn-success">Evenement accepteren</a>
+                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -58,7 +58,10 @@ Route::middleware('role:admin')->group(function () {
       Route::get('edit/{id}', 'EventController@editPage')->name('event.edit');
       Route::post('edit/{id}', 'EventController@edit')->name('event.edit.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");
+      Route::get('present/{id}', "EventController@presentPage")->name('event.present');
+      Route::post('present/{id}', "EventController@present")->name('event.present.page');
       Route::get("details/{id}", "EventController@details")->name("event.details");
+      Route::get("accept/{id}", "EventController@accept")->name("event.accept");
     });
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
