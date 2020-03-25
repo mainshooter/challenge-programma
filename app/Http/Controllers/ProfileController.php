@@ -16,6 +16,15 @@ class ProfileController extends Controller
         return view('profile/index', ["oUser" => $oUser]);
     }
 
+    public function details(Request $request){
+        $oUser = Auth::user();
+        if (is_null($oUser)) {
+            return redirect()->route('profile.index');
+        }else{
+            return view('profile.details', ['oUser' => $oUser]);
+        }
+    }
+
     public function terminatePage(Request $request) {
         $oUser = Auth::user();
         return view("profile/terminate", ["oUser" => $oUser]);

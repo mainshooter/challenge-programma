@@ -22,7 +22,7 @@
                         <td>{{$oEvent->event_start_date_time}}</td>
                         <td>{{$oEvent->event_end_date_time}}</td>
                         <td>
-                            <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                            <a href="{{route('profile.details', $oEvent->id)}}" class="btn btn-info">Details</a>
                         </td>
                         @endforeach
                     </tbody>
