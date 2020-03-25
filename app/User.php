@@ -45,4 +45,8 @@ class User extends Authenticatable
       return $this->hasOne('App\StudentInfo', 'user_id', 'id');
     }
 
+    public function events() {
+        return $this->belongsToMany('App\Event', 'student_event','event_id', 'student_id');
+    }
+
 }
