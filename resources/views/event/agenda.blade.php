@@ -41,7 +41,7 @@
   </div>
 
   <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="event-modal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Evenement toevoegen</h5>
@@ -50,38 +50,40 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="form">
+          <form class="form row">
             @csrf
-            <div class="alert alert-danger display-none">
+            <div class="alert alert-danger display-none col-12">
               <ul>
               </ul>
             </div>
-            <div class="alert alert-info display-none"></div>
-            <div class="form-group">
-              <label>Naam *</label>
-              <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" required>
+            <div class="alert alert-info display-none col-12"></div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>Naam *</label>
+                <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" required>
+              </div>
+              <div class="form-group">
+                <label>Omschrijving *</label>
+                <textarea name="event_description" class="form-control" required>{{ old('event_description') }}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Punten *</label>
+                <input type="number" name="event_points" class="form-control" value="{{ old('event_points') }}" required>
+              </div>
+              <div class="form-group">
+                <label>Maximaal aantal studenten</label>
+                <input type="number" name="event_max_students" class="form-control" value="{{ old('event_max_students') }}">
+              </div>
+              <div class="form-group">
+                <label>Start datum en tijd *</label>
+                <input name="event_start_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_start_date_time') }}" required>
+              </div>
+              <div class="form-group">
+                <label>Eind datum en tijd *</label>
+                <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') }}" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Omschrijving *</label>
-              <textarea name="event_description" class="form-control" required>{{ old('event_description') }}</textarea>
-            </div>
-            <div class="form-group">
-              <label>Punten *</label>
-              <input type="number" name="event_points" class="form-control" value="{{ old('event_points') }}" required>
-            </div>
-            <div class="form-group">
-              <label>Maximaal aantal studenten</label>
-              <input type="number" name="event_max_students" class="form-control" value="{{ old('event_max_students') }}">
-            </div>
-            <div class="form-group">
-              <label>Start datum en tijd *</label>
-              <input name="event_start_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_start_date_time') }}" required>
-            </div>
-            <div class="form-group">
-              <label>Eind datum en tijd *</label>
-              <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') }}" required>
-            </div>
-            <div class="col-12">
+            <div class="col-6">
               <div class="form-group">
                 <label>Straat *</label>
                 <input type="text" name="event_straat" class="form-control" value="{{ old('event_straat') }}" required>
@@ -146,6 +148,8 @@
         @if(Auth::user())
         dateClick: (date, jsEvent, view) => {
           let createEventModal = document.querySelector("#create-event-modal");
+          let form = createEventModal.querySelector('form');
+          form.reset();
           let clickedDate = date.dateStr;
           clickedDate = clickedDate.replace("-", "/");
           clickedDate = clickedDate.replace("-", "/");
@@ -155,7 +159,6 @@
           jQuery('.form_datetime').datetimepicker('nl');
           $('.form_datetime').datetimepicker();
           createEventModal.querySelector("input[type=submit]").addEventListener('click', (event) => {
-            let form = createEventModal.querySelector('form');
             event.preventDefault();
             let agendaCreateEvent = new AgendaCreateEvent(form, "{{ route('event.create.ajax.post') }}", createEventModal);
             agendaCreateEvent.validate();
