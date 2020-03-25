@@ -56,7 +56,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       let calenderElement = document.querySelector('#calendar');
       let calender = new FullCalendar.Calendar(calenderElement, {
-        plugins: ['dayGrid'],
+        plugins: ['dayGrid', 'interaction'],
         height: 'parent',
         locale: 'nl',
         defaultView: 'dayGridMonth',
@@ -64,6 +64,11 @@
         eventLimit: false,
         businessHours: true,
         events: JSON.parse('{!! $sEvents !!}'),
+        @if(Auth::user())
+        dateClick: (date, jsEvent, view) => {
+          console.log(date);
+        },
+        @endif
         eventClick: (event) => {
           let modal = document.querySelector('#event-modal');
           let modalTitle = modal.querySelector('.modal-title');
