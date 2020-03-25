@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StudentEventRegister;
+use App\Mail\AcceptEvent;
 
 class EventController extends Controller
 {
@@ -63,6 +64,7 @@ class EventController extends Controller
       $oEvent->zipcode = $request->event_zipcode;
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
+      $oEvent->user_id = Auth::user()->id;
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
@@ -148,8 +150,24 @@ class EventController extends Controller
 
     public function delete(Request $request, $iId) {
         $oEvents = Event::find($iId);
-        $oEvents->delete();
 
+        if (!is_null($oEvent)) {
+          $oEvents->delete();
+        }
+
+        return redirect()->route('event.index');
+    }
+
+    public function accept(Request $request, $iId){
+        $oEvent = Event::find($iId);
+
+        if (is_null($oEvent)) {
+          return redirect()->back();
+        }
+
+        $oEvent->is_accepted = true;
+        $oEvent->save();
+        Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
         return redirect()->route('event.index');
     }
 
@@ -160,17 +178,6 @@ class EventController extends Controller
         }else{
             return view('event.details', ['oEvent' => $oEvent]);
         }
-    }
-
-    public function accept(Request $request, $iId){
-
-        $oEvent = Event::find($iId);
-        if (is_null($oEvent)) {
-            return redirect()->route('event.index');
-        }
-        $oEvent->is_accepted = true;
-        $oEvent->save();
-        return redirect()->route('event.index');
     }
 
     public function studentRegisterPage(Request $request, $iId) {
