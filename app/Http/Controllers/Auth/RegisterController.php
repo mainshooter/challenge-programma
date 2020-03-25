@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rule;
 use Session;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -62,10 +63,10 @@ class RegisterController extends Controller
         'lastname' => ['required', 'string', 'max:50'],
         'phone'=>['required','regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10','max:13'],
         'schoolyear'=>['required','integer', 'max:10'],
+        'pointsDecision'=>['required', Rule::in(['vsr', 'certificaat'])],
         'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ]);
-
 
       $oUser = new User();
       $oUser->firstname = $request->firstname;
@@ -78,9 +79,9 @@ class RegisterController extends Controller
       $oUser->role = 'student';
       $oUser->save();
 
-
       $oStudentInfo = new StudentInfo();
       $oStudentInfo->school_year = $request->schoolyear;
+      $oStudentInfo->points_decision = $request->pointsDecision;
       $oStudentInfo->user_id = $oUser->id;
       $oStudentInfo->save();
 
@@ -134,6 +135,3 @@ class RegisterController extends Controller
     }
 }
 
-
-
-?>
