@@ -53,4 +53,19 @@ class User extends Authenticatable
         return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
     }
 
+    public function getRole(){
+        switch($this->role){
+            case "company":
+                return "Bedrijf";
+                break;
+            case "student":
+                return "Student";
+                break;
+            case "admin":
+                return "Admin";
+                break;
+        }
+
+    }
+
 }
