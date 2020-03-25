@@ -39,6 +39,11 @@ Route::middleware('role:student')->group(function() {
       Route::post('register/{id}', "EventController@studentRegister")->name('event.register.student.post');
       Route::post('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
     });
+      Route::prefix('profile')->group(function() {
+        Route::get('/', "ProfileController@index")->name('profile.index');
+        Route::get('terminate', 'ProfileController@terminatePage')->name('profile.terminate');
+        Route::get('terminate/{id}', 'ProfileController@terminate')->name('profile.terminate.post');
+      });
   });
 });
 
