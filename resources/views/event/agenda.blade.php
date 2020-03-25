@@ -50,7 +50,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="post" class="form" action="">
+          <form class="form">
+            @csrf
+            <div class="alert alert-danger display-none">
+              <ul>
+              </ul>
+            </div>
+            <div class="alert alert-info display-none"></div>
             <div class="form-group">
               <label>Naam *</label>
               <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" required>
@@ -75,39 +81,40 @@
               <label>Eind datum en tijd *</label>
               <input name="event_end_date_time" type="text" readonly class="form-control form_datetime" value="{{ old('event_end_date_time') }}" required>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label>Straat *</label>
-              <input type="text" name="event_straat" class="form-control" value="{{ old('event_straat') }}" required>
-            </div>
-            <div class="form-group">
-              <label>Plaats *</label>
-              <input type="text" name="event_city" class="form-control" value="{{ old('event_city') }}" required>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <label>Huisnummer* + toevoeging</label>
+            <div class="col-12">
+              <div class="form-group">
+                <label>Straat *</label>
+                <input type="text" name="event_straat" class="form-control" value="{{ old('event_straat') }}" required>
               </div>
-              <div class="col-8">
-                <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control" value="{{ old('event_house_number') }}" required>
+              <div class="form-group">
+                <label>Plaats *</label>
+                <input type="text" name="event_city" class="form-control" value="{{ old('event_city') }}" required>
               </div>
-              <div class="col-4">
-                <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control" value="{{ old('event_house_number_addition') }}">
+              <div class="row">
+                <div class="col-12">
+                  <label>Huisnummer* + toevoeging</label>
+                </div>
+                <div class="col-8">
+                  <input type="number" name="event_house_number" placeholder="Huisnummer" class="form-control" value="{{ old('event_house_number') }}" required>
+                </div>
+                <div class="col-4">
+                  <input type="text" name="event_house_number_addition" placeholder="Toevoegen" class="form-control" value="{{ old('event_house_number_addition') }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Postcode *</label>
+                <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}" required>
               </div>
             </div>
-            <div class="form-group">
-              <label>Postcode *</label>
-              <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}" required>
-            </div>
-            <input type="submit" class="btn btn-primary" value="Indienen">
+          <input type="submit" class="btn btn-primary" value="Indienen">
           </form>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
         </div>
       </div>
-    </div>
   </div>
+</div>
 @endsection
 
 @section('head')
@@ -115,6 +122,7 @@
   <link href='{{ asset("calendar/daygrid/main.css") }}' rel='stylesheet' />
   <link href='{{ asset("calendar/timegrid/main.css") }}' rel='stylesheet' />
   <link href='{{ asset("calendar/list/main.css") }}' rel='stylesheet' />
+  <script src="{{ asset('js/AgendaCreateEvent.js') }}" defer></script>
   <script src='{{ asset("calendar/core/main.js") }}' defer></script>
   <script src='{{ asset("calendar/core/locales-all.js") }}' defer></script>
   <script src='{{ asset("calendar/interaction/main.js") }}' defer></script>
@@ -137,12 +145,21 @@
         events: JSON.parse('{!! $sEvents !!}'),
         @if(Auth::user())
         dateClick: (date, jsEvent, view) => {
+          let createEventModal = document.querySelector("#create-event-modal");
           let clickedDate = date.dateStr;
-          document.querySelector("input[name=event_start_date_time]").value = clickedDate;
-          document.querySelector("input[name=event_end_date_time]").value = clickedDate;
+          clickedDate = clickedDate.replace("-", "/");
+          clickedDate = clickedDate.replace("-", "/");
+          createEventModal.querySelector("input[name=event_start_date_time]").value = clickedDate;
+          createEventModal.querySelector("input[name=event_end_date_time]").value = clickedDate;
           $('#create-event-modal').modal('show');
           jQuery('.form_datetime').datetimepicker('nl');
           $('.form_datetime').datetimepicker();
+          createEventModal.querySelector("input[type=submit]").addEventListener('click', (event) => {
+            let form = createEventModal.querySelector('form');
+            event.preventDefault();
+            let agendaCreateEvent = new AgendaCreateEvent(form, "{{ route('event.create.ajax.post') }}", createEventModal);
+            agendaCreateEvent.validate();
+          });
         },
         @endif
         eventClick: (event) => {
