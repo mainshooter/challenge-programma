@@ -17,7 +17,7 @@
                 </h2>
                 <div class="float-right" >
                     <label >Sorteren op:</label>
-                    <select class="form-control" id="selectedBox"  onchange="location = this.value;">
+                    <select class="form-control" id="selectedBox"  onchange="setPageURL(this)">
                         <option value="{{ route('reviews.index') }}">
                             Relevantie
                         </option>
