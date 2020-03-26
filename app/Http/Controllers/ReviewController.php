@@ -23,7 +23,6 @@ class ReviewController extends Controller
 
     public function ratingsHighLow()
     {
-        error_log('yeet');
         $aReviews = Review::orderBy('rating', 'desc')->get();
         $nRating = 0;
         if (count($aReviews) > 0) {
