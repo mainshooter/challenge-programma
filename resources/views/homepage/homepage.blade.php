@@ -1,7 +1,7 @@
 @extends('layout')
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/homepage.css') }}" >
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reviewPage.css') }}">
 @endsection
 @section('content')
     <div class="row">
@@ -48,9 +48,9 @@
                 <div class="col-md-3 col-centered">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{$oReview->name_company}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$oReview->name_reviewer}}</h6>
-                            <p class="card-text">{{$oReview->body}}</p>
+                            <h5 class="card-title">{{$oReview->company->companyInfo->company_name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$oReview->company->getFullNameAttribute()}}</h6>
+                            <div class="cardtext">{!! $oReview->body !!}</div>
                             <p class="card-footer">{{$oReview->rating}} / 10</p>
                         </div>
                     </div>

@@ -45,4 +45,12 @@ class User extends Authenticatable
       return $this->hasOne('App\StudentInfo', 'user_id', 'id');
     }
 
+    public function review(){
+        return $this->hasMany('App\Review');
+    }
+
+    public function getFullNameAttribute(){
+        return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
+    }
+
 }
