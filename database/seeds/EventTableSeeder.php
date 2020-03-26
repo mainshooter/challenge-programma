@@ -18,7 +18,7 @@ class EventTableSeeder extends Seeder
           'street' => 'Onderwijs boulevard',
           'city' => 'Den Bosch',
           'house_number' => 215,
-          'zip_code' => '5223DE',
+          'zipcode' => '5223DE',
           'event_start_date_time' => '2020-03-26 00:00:00',
           'event_end_date_time' => '2020-03-27 00:00:00',
           'is_accepted' => true,
