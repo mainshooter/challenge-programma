@@ -28,8 +28,18 @@ class ReserveringTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/event')
-                ->Clicklink('Details')
-                ->assertSee('Evenement details');
+                    ->Clicklink('Details')
+                    ->assertSee('Evenement details');
+        });
+    }
+
+    public function testAcceptEvent(){
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/admin/event')
+                    ->Clicklink('Details')
+                    ->Clicklink('Evenement accepteren')
+                    ->assertSee('Goedgekeurde evenementen');
         });
     }
 }
