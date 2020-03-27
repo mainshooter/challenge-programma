@@ -46,7 +46,6 @@
                     @if(Auth::check())
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
-
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Beheer</a>
                             </li>
