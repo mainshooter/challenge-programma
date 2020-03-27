@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StudentEventRegister;
+use App\Mail\AcceptEvent;
 
 class EventController extends Controller
 {
@@ -63,6 +64,7 @@ class EventController extends Controller
       $oEvent->zipcode = $request->event_zipcode;
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
+      $oEvent->user_id = Auth::user()->id;
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
@@ -148,9 +150,34 @@ class EventController extends Controller
 
     public function delete(Request $request, $iId) {
         $oEvents = Event::find($iId);
-        $oEvents->delete();
+
+        if (!is_null($oEvent)) {
+          $oEvents->delete();
+        }
 
         return redirect()->route('event.index');
+    }
+
+    public function accept(Request $request, $iId){
+        $oEvent = Event::find($iId);
+
+        if (is_null($oEvent)) {
+          return redirect()->back();
+        }
+
+        $oEvent->is_accepted = true;
+        $oEvent->save();
+        Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
+        return redirect()->route('event.index');
+    }
+
+    public function details(Request $request, $iId){
+        $oEvent = Event::find($iId);
+        if (is_null($oEvent)) {
+            return redirect()->route('event.index');
+        }else{
+            return view('event.details', ['oEvent' => $oEvent]);
+        }
     }
 
     public function studentRegisterPage(Request $request, $iId) {
@@ -173,13 +200,13 @@ class EventController extends Controller
       }
       $oUser = Auth::user();
       if (!$oEvent->students->contains($oUser)) {
-        if (is_null($oEvent->max_students) || $oEvent->max_students < $oEvent->students->count() || $oEvent->max_students === 0) {
+        if (is_null($oEvent->max_students) || $oEvent->max_students > $oEvent->students->count() || $oEvent->max_students === 0) {
           $oEvent->students()->save($oUser);
           Mail::to($oUser->email)->send(new StudentEventRegister($oEvent, $oUser));
           Session::flash('message', 'U bent toegevoegd aan het event');
         }
         else {
-          Session::flask('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
+          Session::flash('message', 'Het maximum van het aantal studenten voor dit evenement is bereikt.');
         }
       }
       else {
@@ -189,12 +216,38 @@ class EventController extends Controller
       return redirect()->route('event.agenda');
     }
 
-    public function details(Request $request, $iId){
-        $oEvent = Event::find($iId);
-        if (is_null($oEvent)) {
-            abort(404);
-        }else{
-            return view('event.details', ['oEvent' => $oEvent]);
+    public function presentPage(Request $request, $iId) {
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->route('event.index');
+      }
+
+      return view('event/present', [
+        'oEvent' => $oEvent
+      ]);
+    }
+
+    public function present(Request $request, $iId) {
+      $request->validate([
+        "present_user" => "exists:users,id",
+      ]);
+      $oEvent = Event::find($iId);
+
+      if (is_null($oEvent)) {
+        return redirect()->back();
+      }
+
+      foreach($oEvent->students as $oUser) {
+        $oEvent->students()->updateExistingPivot($oUser, [
+          'was_present' => false,
+        ]);
+        if (is_array($request->present_user) && in_array($oUser->id, $request->present_user)) {
+          $oEvent->students()->updateExistingPivot($oUser, [
+            'was_present' => true,
+          ]);
         }
+      }
+      return redirect()->back();
     }
 }

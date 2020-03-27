@@ -46,9 +46,13 @@
                     @if(Auth::check())
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
-
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Beheer</a>
+                            </li>
+                        @endif
+                        @if($role == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile.index') }}">Profiel</a>
                             </li>
                         @endif
                     @endif

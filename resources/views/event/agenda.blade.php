@@ -85,7 +85,9 @@
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
-              studentSignup.href = "/student/event/register/" + data.id;
+              try {
+                studentSignup.href = "/student/event/register/" + data.id;
+              } catch (e) {}
             });
           $('#event-modal').modal('show');
         }
