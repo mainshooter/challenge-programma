@@ -16,11 +16,6 @@ class ProfileController extends Controller
         return view('profile/index', ["oUser" => $oUser]);
     }
 
-    public function details(Request $request){
-        $oUser = Auth::user();
-        return redirect()->route('event/event.details', ['oUser' => $oUser]);
-    }
-
     public function terminatePage(Request $request) {
         $oUser = Auth::user();
         return view("profile/terminate", ["oUser" => $oUser]);
