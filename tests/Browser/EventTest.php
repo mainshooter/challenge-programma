@@ -51,4 +51,16 @@ class EventTest extends DuskTestCase
         $browser->assertSee('Event toevoegen');
       });
     }
+
+    /** @test */
+    public function testStudentPresent() {
+      $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
+        $browser->visit('/admin/event/');
+        $browser->press('Aanwezigheid');
+        $browser->check('present_user[]');
+        $browser->press('Opslaan');
+        $browser->assertChecked('present_user[]');
+      });
+    }
 }
