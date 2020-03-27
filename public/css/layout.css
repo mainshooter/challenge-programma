@@ -99,3 +99,6 @@ body{
 .btn.btn-primary a, .btn.btn-primary a:hover, .btn.btn-success a, .btn.btn-success a:hover {
   color: #fff !important;
 }
+.display-none {
+  display: none;
+}
