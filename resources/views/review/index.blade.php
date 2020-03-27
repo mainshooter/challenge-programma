@@ -19,8 +19,8 @@
                                 <div class="card mx-auto">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$review->company->companyInfo->company_name}}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">{{$review->company->getFullNameAttribute()}}</h6>
-                                        <p class="card-text body-text">{!! $review->body !!}</p>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{$review->company->fullname}}</h6>
+                                        <div class="cardtext">{!! $review->body !!}</div>
                                         <p class="card-text">{{$review->rating}} / 10</p>
                                     </div>
                                 </div>
