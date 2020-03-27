@@ -135,8 +135,14 @@
                 <div class="col-xs-6 col-md-3">
                 </div>
                 <div class="col-xs-6 col-md-3">
-                    <h6>Links</h6>
+                    <h6>Contact informatie</h6>
                     <ul class="footer-links">
+                        <li>Challenge programma</li>
+                        <li>Challengeprogramma.bdk.denbosch@avans.nl</li>
+                        <br>
+                        <li>Onderwijsboulevard 215</li>
+                        <li>5223DE 'S-Hertogenbosch</li>
+                        <hr>
                         <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>
