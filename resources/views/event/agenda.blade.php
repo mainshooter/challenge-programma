@@ -108,7 +108,9 @@
                 <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}" required>
               </div>
             </div>
-          <input type="submit" class="btn btn-primary" value="Indienen">
+            <div class="col-4">
+              <input type="submit" class="btn btn-primary" value="Indienen">
+            </div>
           </form>
         </div>
       </div>
