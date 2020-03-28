@@ -25,7 +25,7 @@
                             <td>{{$oUser->prefix}}</td>
                             <td>{{$oUser->lastname}}</td>
                             <td>{{$oUser->email}}</td>
-                            <td>{{$oUser->getDutchRoleAttribute()}}</td>
+                            <td>{{$oUser->dutchRole()}}</td>
                             <td>
                                 <a href="{{ route('user.details', $oUser->id) }}" class="btn btn-info">Details</a>
                                 <a href="{{ route('user.accept', $oUser->id) }}" id="accept" class="btn btn-success">Accepteren</a>
