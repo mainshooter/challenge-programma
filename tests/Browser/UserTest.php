@@ -19,7 +19,7 @@ class UserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
             $browser->visit('/admin/user')
-                    ->assertSee('Name');
+                    ->assertSee('Voornaam');
         });
     }
 }

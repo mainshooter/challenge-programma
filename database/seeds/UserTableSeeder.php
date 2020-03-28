@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
             'lastname' => 'admin',
             'phone' => '0612365874',
             'is_accepted' => true,
-            'email' => 'admin'.'@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
           'lastname' => 'Avans',
           'phone' => '0885257500',
           'is_accepted' => true,
-          'email' => 'avans'.'@gmail.com',
+          'email' => 'avans@gmail.com',
           'password' => bcrypt('avans'),
           'role' => 'company',
         ]);
@@ -36,6 +36,20 @@ class UserTableSeeder extends Seeder
           'city' => 'Den Bosch',
           'house_number' => 215,
           'zipcode' => '5223DE',
+        ]);
+        DB::table('users')->insert([
+          'firstname' => 'student',
+          'lastname' => 'student',
+          'phone' => '0625859658',
+          'is_accepted' => true,
+          'email' => 'student@gmail.com',
+          'password' => bcrypt('student'),
+          'role' => 'student',
+        ]);
+        DB::table('student_info')->insert([
+          'user_id' => 3,
+          'school_year' => 1,
+          'points_decision' => 'vsr',
         ]);
     }
 }

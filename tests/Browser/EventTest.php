@@ -31,6 +31,7 @@ class EventTest extends DuskTestCase
         $browser->type('event_name', 'Mijn geweldige event');
         $browser->type('event_description', 'Lorem ipsum da set a mon');
         $browser->type('event_points', 3);
+        $browser->type('event_max_students', 1);
         $browser->type('event_straat', 'Onderwijs boulevard');
         $browser->type('event_city', 'Den Bosch');
         $browser->type('event_house_number', '214');
@@ -48,6 +49,18 @@ class EventTest extends DuskTestCase
 
         $browser->click("input[type=submit]");
         $browser->assertSee('Event toevoegen');
+      });
+    }
+
+    /** @test */
+    public function testStudentPresent() {
+      $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
+        $browser->visit('/admin/event/');
+        $browser->press('Aanwezigheid');
+        $browser->check('present_user[]');
+        $browser->press('Opslaan');
+        $browser->assertChecked('present_user[]');
       });
     }
 }
