@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ use Session;
 class ProfileController extends Controller
 {
     public function index(Request $request) {
-        return view('profile/index');
+        $oUser = Auth::user();
+        return view('profile/index', ["oUser" => $oUser]);
     }
 
     public function terminatePage(Request $request) {
