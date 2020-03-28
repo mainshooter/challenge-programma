@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('head')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/profilepage.css') }}">
+@endsection
+
 @section('content')
     <div class="container no-max-width">
         <div class="row">
