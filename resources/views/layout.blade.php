@@ -142,7 +142,7 @@
                     <h6>Contact informatie</h6>
                     <ul class="footer-links">
                         <li>Challenge programma</li>
-                        <li>Challengeprogramma.bdk.denbosch@avans.nl</li>
+                        <li><a href="mailto:Challengeprogramma.bdk.denbosch@avans.nl">Challengeprogramma.bdk.denbosch@avans.nl</a></li>
                         <br>
                         <li>Onderwijsboulevard 215</li>
                         <li>5223DE 'S-Hertogenbosch</li>
