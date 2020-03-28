@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
             'lastname' => 'admin',
             'phone' => '0612365874',
             'is_accepted' => true,
-            'email' => 'admin'.'@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
@@ -29,6 +29,16 @@ class UserTableSeeder extends Seeder
             'email' => 'bedrijf'.'@gmail.com',
             'password' => bcrypt('bedrijf'),
             'role' => 'company',
+          ])
+
+        DB::table('users')->insert([
+          'firstname' => 'student',
+          'lastname' => 'student',
+          'phone' => '0625859658',
+          'is_accepted' => true,
+          'email' => 'student@gmail.com',
+          'password' => bcrypt('student'),
+          'role' => 'student',
         ]);
     }
 }
