@@ -17,17 +17,14 @@ class ProfileController extends Controller
     {
         $oUser = Auth::user();
 
-        // alle student_info event rows van deze student/user
-        $allEvents = StudentEvent::where('student_id', '=', $oUser->id)->get();
-        $points_decision = (StudentInfo::find($oUser->id))->points_decision;
-
+        $allEvents = StudentEvent::where('student_id', '=', $oUser->id)->get(); //was present
+        $points_decision = $oUser->studentInfo->points_decision;
         $points = 0;
         foreach ($allEvents as $studentEvent) { //studentEvent contains event_id 
-            $eventId = $studentEvent->event_id;
-            $event = Event::find($eventId);
-            
             if($studentEvent->was_present){
-                $points += $event->points;
+                foreach($oUser->events as $event){
+                    $points += $event->points;
+                }
             }
         }
         
