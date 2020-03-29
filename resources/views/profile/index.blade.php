@@ -27,6 +27,31 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <h1>Evenementen die jij aan het organiseren bent:</h1>
+                <table class="table table-dark">
+                    <p/>
+                    <thead>
+                    <tr>
+                        <th>Evenement</th>
+                        <th>Begindatum</th>
+                        <th>Einddatum</th>
+                        <th>Status</th>
+                        <th>Maximale studenten</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($oUser->events as $oEvent)
+                        @if($oEvent->user_id == Auth::User()->id)
+                        <td>{{$oEvent->name}}</td>
+                        <td>{{$oEvent->event_start_date_time}}</td>
+                        <td>{{$oEvent->event_end_date_time}}</td>
+                        <td>{{$oEvent->event_status}}</td>
+                        <td>{{$oEvent->max_students}}</td>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
                 <button type="button" class="btn btn-danger">
                   <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
                 </button>

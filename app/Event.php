@@ -23,4 +23,12 @@ class Event extends Model
     public function getEventEndDateTimeAttribute($value) {
       return date('Y/m/d H:i', strtotime($value));
     }
+
+    public function getEventStatusAttribute($value) {
+        if($value == 0)
+            return 'Evenement niet geaccepteerd';
+
+        else
+            return 'Evenement is geaccepteerd';
+    }
 }
