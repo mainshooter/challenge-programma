@@ -31,6 +31,7 @@ class EventTest extends DuskTestCase
         $browser->type('event_name', 'Mijn geweldige event');
         $browser->type('event_description', 'Lorem ipsum da set a mon');
         $browser->type('event_points', 3);
+        $browser->type('event_max_students', 1);
         $browser->type('event_straat', 'Onderwijs boulevard');
         $browser->type('event_city', 'Den Bosch');
         $browser->type('event_house_number', '214');

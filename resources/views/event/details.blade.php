@@ -7,9 +7,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-
         <div class="col-12 detailContainer">
+            @if(Auth()->user()->role == 'admin')
             <a href="{{ route('event.index')}}" class="btn btn-primary">Terug naar overzicht</a>
+
+            @elseif(Auth()->user()->role == 'student')
+                <a href="{{ route('profile.index')}}" class="btn btn-primary">Terug naar overzicht</a>
+            @endif
             <div class="card">
                 <div class="card-header">Evenement details</div>
                 <div class="card-body">

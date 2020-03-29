@@ -96,9 +96,13 @@ body{
   max-width: unset !important;
 }
 
-.btn.btn-primary a, .btn.btn-primary a:hover, .btn.btn-success a, .btn.btn-success a:hover {
+.btn.btn-primary a, .btn.btn-primary a:hover, .btn.btn-success a, .btn.btn-success a:hover, .btn.btn-danger a, .btn.btn-danger a:hover {
   color: #fff !important;
 }
 .display-none {
   display: none;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
 }

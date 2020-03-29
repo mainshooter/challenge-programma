@@ -45,7 +45,11 @@ class User extends Authenticatable
       return $this->hasOne('App\StudentInfo', 'user_id', 'id');
     }
 
-    public function review(){
+    public function events() {
+        return $this->belongsToMany('App\Event', 'student_event','student_id', 'event_id');
+    }
+
+    public function review() {
         return $this->hasMany('App\Review');
     }
 
