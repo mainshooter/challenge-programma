@@ -11,8 +11,6 @@ Niels van Daalen
 
 Onyi Lam
 
-Jasper Mooren
-
 Peter Romijn
 
 Lars Versteeg
