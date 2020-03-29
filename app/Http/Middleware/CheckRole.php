@@ -29,9 +29,6 @@ class CheckRole
           }
         }
 
-
-        dd($role);
-
         return redirect('home');
     }
 }
