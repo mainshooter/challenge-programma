@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ use Session;
 class ProfileController extends Controller
 {
     public function index(Request $request) {
-        return view('profile/index');
+        $oUser = Auth::user();
+        return view('profile/index', ["oUser" => $oUser]);
     }
 
     public function terminatePage(Request $request) {
@@ -25,12 +27,10 @@ class ProfileController extends Controller
         Auth::logout();
 
         if($oUser->delete()) {
-            Session::flash('message', 'Je bent uitgeschreven');
-            return redirect()->route('profile.index');
+            return redirect()->route('login')->with('message', 'Je bent uitgeschreven');
         }
         else {
-            Session::flash('message', 'Je kan helaas niet uitschrijven, neem contact op met de systeem administrator');
-            return view("profile/terminate");
+            return view("profile/terminate")->with('message', 'Je kan helaas niet uitschrijven, neem contact op met de systeem administrator');
         }
     }
 }

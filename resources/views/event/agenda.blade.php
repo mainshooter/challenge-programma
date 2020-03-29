@@ -108,15 +108,14 @@
                 <input type="text" name="event_zipcode" class="form-control" placeholder="1234CR" value="{{ old('event_zipcode') }}" required>
               </div>
             </div>
-          <input type="submit" class="btn btn-primary" value="Indienen">
+            <div class="col-4">
+              <input type="submit" class="btn btn-primary" value="Indienen">
+            </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-        </div>
       </div>
+    </div>
   </div>
-</div>
 @endsection
 
 @section('head')
@@ -146,24 +145,24 @@
         businessHours: false,
         events: JSON.parse('{!! $sEvents !!}'),
         @if(Auth::user())
-        dateClick: (date, jsEvent, view) => {
-          let createEventModal = document.querySelector("#create-event-modal");
-          let form = createEventModal.querySelector('form');
-          form.reset();
-          let clickedDate = date.dateStr;
-          clickedDate = clickedDate.replace("-", "/");
-          clickedDate = clickedDate.replace("-", "/");
-          createEventModal.querySelector("input[name=event_start_date_time]").value = clickedDate;
-          createEventModal.querySelector("input[name=event_end_date_time]").value = clickedDate;
-          $('#create-event-modal').modal('show');
-          jQuery('.form_datetime').datetimepicker('nl');
-          $('.form_datetime').datetimepicker();
-          createEventModal.querySelector("input[type=submit]").addEventListener('click', (event) => {
-            event.preventDefault();
-            let agendaCreateEvent = new AgendaCreateEvent(form, "{{ route('event.create.ajax.post') }}", createEventModal);
-            agendaCreateEvent.validate();
-          });
-        },
+          dateClick: (date, jsEvent, view) => {
+            let createEventModal = document.querySelector("#create-event-modal");
+            let form = createEventModal.querySelector('form');
+            form.reset();
+            let clickedDate = date.dateStr;
+            clickedDate = clickedDate.replace("-", "/");
+            clickedDate = clickedDate.replace("-", "/");
+            createEventModal.querySelector("input[name=event_start_date_time]").value = clickedDate;
+            createEventModal.querySelector("input[name=event_end_date_time]").value = clickedDate;
+            $('#create-event-modal').modal('show');
+            jQuery('.form_datetime').datetimepicker('nl');
+            $('.form_datetime').datetimepicker();
+            createEventModal.querySelector("input[type=submit]").addEventListener('click', (event) => {
+              event.preventDefault();
+              let agendaCreateEvent = new AgendaCreateEvent(form, "{{ route('event.create.ajax.post') }}", createEventModal);
+              agendaCreateEvent.validate();
+            });
+          },
         @endif
         eventClick: (event) => {
           let modal = document.querySelector('#event-modal');
