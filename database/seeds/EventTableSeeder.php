@@ -24,5 +24,18 @@ class EventTableSeeder extends Seeder
           'is_accepted' => true,
           'user_id' => 1,
         ]);
+        DB::table('event')->insert([
+          'name' => 'Sprint 3 review',
+          'description' => 'Sprint 2 review om te kijken of ons product naar wens is',
+          'points' => 3,
+          'street' => 'Onderwijs boulevard',
+          'city' => 'Den Bosch',
+          'house_number' => 215,
+          'zipcode' => '5223DE',
+          'event_start_date_time' => '2020-04-20 00:00:00',
+          'event_end_date_time' => '2020-04-21 00:00:00',
+          'is_accepted' => false,
+          'user_id' => 3,
+        ]);
     }
 }
