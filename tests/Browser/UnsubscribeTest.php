@@ -9,18 +9,15 @@ use \App\User;
 
 class UnsubscribeTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
+
+    /** @test */
+    public function testUnsubscribe()
     {
         $this->browse(function (Browser $browser) {
           $browser->loginAs(User::where('email', 'uitschrijven@gmail.com')->first());
           $browser->visit('/student/profile');
-          $browser->click('Uitschrijven');
-          $browser->click('Uitschrijven');
+          $browser->Clicklink('Uitschrijven');
+          $browser->click("input[type=submit]");
           $browser->assertSee('Je bent uitgeschreven');
         });
     }
