@@ -16,7 +16,8 @@ class UnsubscribeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
           $browser->loginAs(User::where('email', 'uitschrijven@gmail.com')->first());
           $browser->visit('/student/profile');
-          $browser->Clicklink('Uitschrijven');
+          $browser->clickLink('Uitschrijven');
+          $browser->click(".btn-danger a");
           $browser->click("input[type=submit]");
           $browser->assertSee('Je bent uitgeschreven');
         });
