@@ -27,7 +27,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                <td><a href="{{ route('profile.terminate')}}" class="btn btn-danger">Uitschrijven</a>
+                <button type="button" class="btn btn-danger">
+                  <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
+                </button>
             </div>
             <div class="col-2"></div>
         </div>
