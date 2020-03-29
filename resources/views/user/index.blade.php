@@ -24,7 +24,7 @@
                         <td>{{$oUser->middlename}}</td>
                         <td>{{$oUser->lastname}}</td>
                         <td>{{$oUser->email}}</td>
-                        <td>{{ $oUser->dutchRole() }}</td>
+                        <td>{{ $oUser->dutch_role }}</td>
                         <td>
                             <a href="{{ route('user.edit', $oUser->id) }}" class="btn btn-primary">Bewerken</a>
                             <!-- Sprint 2 <a href="#">Verwijderen</a>-->

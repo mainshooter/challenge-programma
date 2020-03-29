@@ -53,10 +53,6 @@ class User extends Authenticatable
         return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
     }
 
-    public function dutchRole(){
-        return $this->getDutchRoleAttribute();
-    }
-
     public function getDutchRoleAttribute(){
         switch($this->role){
             case "company":
@@ -67,5 +63,4 @@ class User extends Authenticatable
                 return "Admin";
         }
     }
-
 }
