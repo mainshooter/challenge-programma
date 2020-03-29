@@ -46,7 +46,7 @@ class AgendaCreateEvent {
           window.scrollTo(0, 0);
           try {
             setTimeout(() => {
-              this.modalContainer.remove();
+              $('#create-event-modal').modal('hide');
             }, 5000)
           } catch (e) {}
         }
