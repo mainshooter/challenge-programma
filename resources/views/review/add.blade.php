@@ -17,7 +17,7 @@
           </div>
         </div>
         <input type="hidden" name="page_content"/>
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" value="Toevoegen" class="btn btn-primary">
       </form>
     </div>
   </div>

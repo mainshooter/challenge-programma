@@ -32,6 +32,12 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
+Route::middleware('role:admin|student|company')->group(function() {
+  Route::prefix('event')->group(function() {
+    Route::post('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
+  });
+});
+
 Route::middleware('role:student')->group(function() {
   Route::prefix('student')->group(function() {
       Route::prefix('profile')->group(function() {
@@ -42,7 +48,6 @@ Route::middleware('role:student')->group(function() {
     Route::prefix('event')->group(function() {
       Route::get('register/{id}', "EventController@studentRegisterPage")->name('event.register.student');
       Route::post('register/{id}', "EventController@studentRegister")->name('event.register.student.post');
-      Route::post('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
     });
   });
 });
@@ -51,9 +56,6 @@ Route::middleware('role:company')->group(function() {
   Route::prefix('bedrijf')->group(function() {
     Route::get('review/add', 'ReviewController@addReviewPage')->name('review.add');
     Route::post('review/add', 'ReviewController@addReview')->name('review.add.post');
-    Route::prefix('event')->group(function() {
-      Route::any('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
-    });
   });
 });
 
@@ -66,7 +68,6 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
       Route::post('create', 'EventController@create')->name('event.create.post');
-      Route::any('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
       Route::get('edit/{id}', 'EventController@editPage')->name('event.edit');
       Route::post('edit/{id}', 'EventController@edit')->name('event.edit.post');
       Route::get("delete/{id}", "EventController@delete")->name("event.delete");

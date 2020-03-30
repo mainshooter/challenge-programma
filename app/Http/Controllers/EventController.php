@@ -73,6 +73,9 @@ class EventController extends Controller
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
       }
+      else {
+        $oEvent->is_accepted = false;
+      }
 
       $oEvent->save();
 

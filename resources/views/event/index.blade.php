@@ -9,7 +9,7 @@
         Event toevoegen
       </a>
         <h2>Goedgekeurde evenementen</h2>
-      <table class="table">
+      <table class="table aproved-events">
         <thead>
           <tr>
             <th>#</th>
@@ -36,7 +36,7 @@
                 <button type="button" class="btn btn-success">
                   <a href="{{ route('event.present', $oEvent->id) }}" >Aanwezigheid</a>
                 </button>
-                <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info event-details">Details</a>
                 <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
                 <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
               </td>
@@ -46,7 +46,7 @@
       </table>
 
         <h2>Openstaande evenementen</h2>
-        <table class="table">
+        <table class="table open-events">
             <thead>
               <tr>
                 <th>#</th>
@@ -70,7 +70,7 @@
                 <td>{{$oEvent->points}}</td>
                 <td>{{ $oEvent->max_students }}</td>
                 <td>
-                    <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                    <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info event-details">Details</a>
                     <a href="{{ route('event.edit', $oEvent->id) }}" class="btn btn-primary">Bewerk</a>
                     <a href="{{ route('event.delete', $oEvent->id) }}" class="btn btn-danger">Verwijder</a>
                 </td>
