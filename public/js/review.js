@@ -1,6 +1,12 @@
 
 window.onload = function () {
     setSelectedIndex();
+
+    let element = document.getElementById('selectedBox');
+
+    element.addEventListener('change', (e) => {
+        this.setPageURL(e.target);
+    });
 };
 
 function setSelectedIndex() {
