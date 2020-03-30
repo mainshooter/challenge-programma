@@ -49,7 +49,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{$oReview->company->companyInfo->company_name}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$oReview->company->getFullNameAttribute()}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $oReview->company->fullname }}</h6>
                             <div class="cardtext">{!! $oReview->body !!}</div>
                             <p class="card-footer">{{$oReview->rating}} / 10</p>
                         </div>

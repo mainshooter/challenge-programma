@@ -6,7 +6,10 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <h1>Weet je zeker dat je wilt uitschrijven?</h1>
-                <a href="{{ route('profile.terminate.post', $oUser->id)}}" class="btn btn-danger">Uitschrijven</a>
+                <form method="post">
+                  @csrf
+                  <input type="submit" class="btn btn-danger" value="Uitschrijven">
+                </form>
             </div>
             <div class="col-2"></div>
         </div>

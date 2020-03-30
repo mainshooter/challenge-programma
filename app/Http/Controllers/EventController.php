@@ -9,6 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StudentEventRegister;
 use App\Mail\AcceptEvent;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -30,6 +31,57 @@ class EventController extends Controller
      */
     public function createPage(Request $request) {
       return view("event/create");
+    }
+
+    public function ajaxCreate(Request $request) {
+      $oValidator = Validator::make($request->all(), [
+        'event_name' => 'required|max:255',
+        'event_description' => 'required',
+        'event_points' => 'required|integer',
+        'event_max_students' => 'nullable|integer|min:0',
+        'event_start_date_time' => 'required|date_format:Y/m/d H:i',
+        'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
+        'event_straat' => 'required|max:255',
+        'event_city' => 'required|max:255',
+        'event_house_number' => 'required|integer',
+        'event_house_number_addition' => 'nullable|max:1',
+        'event_zipcode' => 'required|max:6|min:6|regex:/^\d{4}[a-z]{2}$/i',
+      ]);
+
+      if ($oValidator->fails()) {
+        return response()->json([
+          'status' => false,
+          'errors' => $oValidator->errors()->all(),
+        ]);
+      }
+
+      $oEvent = new Event();
+
+      $oEvent->name = $request->event_name;
+      $oEvent->description = $request->event_description;
+      $oEvent->points = $request->event_points;
+      $oEvent->max_students = $request->event_max_students;
+      $oEvent->street = $request->event_straat;
+      $oEvent->city = $request->event_city;
+      $oEvent->house_number = $request->event_house_number;
+      $oEvent->house_number_addition = $request->event_house_number_addition;
+      $oEvent->zipcode = $request->event_zipcode;
+      $oEvent->event_start_date_time = $request->event_start_date_time;
+      $oEvent->event_end_date_time = $request->event_end_date_time;
+      $oEvent->user_id = Auth::user()->id;
+
+      if(Auth::user()->role == 'admin'){
+          $oEvent->is_accepted = true;
+      }
+      else {
+        $oEvent->is_accepted = false;
+      }
+
+      $oEvent->save();
+
+      return response()->json([
+        'status' => true,
+      ]);
     }
 
     /**

@@ -36,15 +36,23 @@ Route::namespace('Auth')->group(function() {
   });
 });
 
+Route::middleware('role:admin|student|company')->group(function() {
+  Route::prefix('event')->group(function() {
+    Route::post('add-ajax', 'EventController@ajaxCreate')->name('event.create.ajax.post');
+  });
+});
+
 Route::middleware('role:student')->group(function() {
   Route::prefix('student')->group(function() {
       Route::prefix('profile')->group(function() {
           Route::get('/', "ProfileController@index")->name('profile.index');
           Route::get('terminate', 'ProfileController@terminatePage')->name('profile.terminate');
-          Route::get('terminate/{id}', 'ProfileController@terminate')->name('profile.terminate.post');
+          Route::post('terminate', 'ProfileController@terminate')->name('profile.terminate.post');
       });
-    Route::get('/event/register/{id}', "EventController@studentRegisterPage")->name('event.register.student');
-    Route::post('/event/register/{id}', "EventController@studentRegister")->name('event.register.student.post');
+    Route::prefix('event')->group(function() {
+      Route::get('register/{id}', "EventController@studentRegisterPage")->name('event.register.student');
+      Route::post('register/{id}', "EventController@studentRegister")->name('event.register.student.post');
+    });
   });
 });
 
@@ -99,6 +107,7 @@ Route::middleware('role:admin')->group(function () {
     });
 });
 
+Route::get("details/{id}", "EventController@details")->name("event.details");
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
