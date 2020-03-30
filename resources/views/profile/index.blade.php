@@ -22,6 +22,7 @@
                 </thead>
                 <tbody>
                     @foreach($oUser->events as $oEvent)
+
                     <td>{{$oEvent->name}}</td>
                     <td>{{$oEvent->event_start_date_time}}</td>
                     <td>{{$oEvent->event_end_date_time}}</td>
@@ -31,7 +32,9 @@
                     @endforeach
                 </tbody>
             </table>
-            <td><a href="{{ route('profile.terminate')}}" class="btn btn-danger">Uitschrijven</a>
+            <button type="button" class="btn btn-danger">
+                <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
+            </button>
         </div>
         <div class="col-2"></div>
     </div>

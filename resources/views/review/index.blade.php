@@ -19,7 +19,7 @@
                                 <div class="card mx-auto">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$review->company->companyInfo->company_name}}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">{{$review->company->getFullNameAttribute()}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{$review->company->fullname}}</h6>
                                         <div class="cardtext">{!! $review->body !!}</div>
                                         <p class="card-text">{{$review->rating}} / 10</p>
                                     </div>
@@ -38,7 +38,9 @@
                     <p>{{$avgRating}} / 10</p>
                     <br>
                     @if (Auth::user() && Auth::user()->role == 'company')
-                      <a href="{{ route('review.add') }}" class="btn btn-primary">Review toevoegen</a>
+                      <button type="button" class="btn btn-primary">
+                        <a href="{{ route('review.add') }}">Review toevoegen</a>
+                      </button>
                     @endif
                 </div>
             </div>

@@ -37,7 +37,7 @@ class ReserveringTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/event')
-                    ->Clicklink('Details')
+                    ->click('.open-events .event-details')
                     ->Clicklink('Evenement accepteren')
                     ->assertSee('Goedgekeurde evenementen');
         });

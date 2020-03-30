@@ -43,12 +43,11 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        if ($oUser->delete()) {
-            Session::flash('message', 'Je bent uitgeschreven');
-            return redirect()->route('profile.index');
-        } else {
-            Session::flash('message', 'Je kan helaas niet uitschrijven, neem contact op met de systeem administrator');
-            return view("profile/terminate");
+        if($oUser->delete()) {
+            return redirect()->route('login')->with('message', 'Je bent uitgeschreven');
+        }
+        else {
+            return view("profile/terminate")->with('message', 'Je kan helaas niet uitschrijven, neem contact op met de systeem administrator');
         }
     }
 }
