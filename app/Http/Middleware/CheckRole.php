@@ -21,10 +21,13 @@ class CheckRole
           return redirect('login');
         }
 
-        if(auth()->user()->role == $role){
-            return $next($request);
-        }
+        $aRoles = explode("|", $role);
 
+        foreach ($aRoles as $sRole) {
+          if(auth()->user()->role == $sRole){
+              return $next($request);
+          }
+        }
 
         return redirect('home');
     }
