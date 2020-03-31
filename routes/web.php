@@ -23,8 +23,7 @@ Auth::routes();
 
 Route::prefix("reviews")->group(function() {
     Route::get('/', 'ReviewController@index')->name('reviews.index');
-    Route::get('ratingsHighLow', 'ReviewController@ratingsHighLow')->name('reviews.ratingsHighLow');
-    Route::get('ratingsLowHigh', 'ReviewController@ratingsLowHigh')->name('reviews.ratingsLowHigh');
+    Route::post('/', 'ReviewController@index');
 });
 
 Route::namespace('Auth')->group(function() {
