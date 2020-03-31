@@ -17,10 +17,10 @@ class ProfileController extends Controller
     {
         $oUser = Auth::user();
 
-        $allEvents = StudentEvent::where('student_id', '=', $oUser->id)->get(); //was present
-        $points_decision = $oUser->studentInfo->points_decision;
-        $points = 0;
-        foreach ($allEvents as $studentEvent) { //studentEvent contains event_id 
+        $aAllEvents = StudentEvent::where('student_id', '=', $oUser->id)->get(); //was present
+        $sPoints_decision = $oUser->studentInfo->points_decision;
+        $iPoints = 0;
+        foreach ($aAllEvents as $studentEvent) { //studentEvent contains event_id 
             if($studentEvent->was_present){
                 foreach($oUser->events as $event){
                     $points += $event->points;
@@ -28,7 +28,7 @@ class ProfileController extends Controller
             }
         }
         
-        return view('profile/index', ["oUser" => $oUser,'pointsType' => $points_decision, 'points' => $points]);
+        return view('profile/index', ["oUser" => $oUser, 'sPoints_decision' => $sPoints_decision, 'iPoints' => $iPoints]);
     }
 
     public function terminatePage(Request $request)

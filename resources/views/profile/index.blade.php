@@ -60,10 +60,10 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    {{ $pointsType }}
+                                    {{ $sPoints_decision }}
                                 </td>
                                 <td>
-                                    {{ $points }}
+                                    {{ $iPoints }}
                                 </td>
                             </tr>
                         </tbody>
