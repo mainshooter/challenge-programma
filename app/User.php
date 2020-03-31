@@ -48,6 +48,9 @@ class User extends Authenticatable
     public function events() {
         return $this->belongsToMany('App\Event', 'student_event','student_id', 'event_id');
     }
+    public function organisingEvents() {
+        return $this->hasMany('App\Event', 'user_id');
+    }
 
     public function review() {
         return $this->hasMany('App\Review');
@@ -56,5 +59,15 @@ class User extends Authenticatable
     public function getFullNameAttribute(){
         return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
     }
-}
 
+    public function getDutchRoleAttribute(){
+        switch($this->role){
+            case "company":
+                return "Bedrijf";
+            case "student":
+                return "Student";
+            case "admin":
+                return "Admin";
+        }
+    }
+}
