@@ -20,7 +20,6 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
-        
         DB::table('users')->insert([
           'firstname' => 'HBO',
           'lastname' => 'Avans',
@@ -29,14 +28,6 @@ class UserTableSeeder extends Seeder
           'email' => 'avans@gmail.com',
           'password' => bcrypt('avans'),
           'role' => 'company',
-        ]);
-        DB::table('company_info')->insert([
-          'user_id' => 2,
-          'company_name' => 'Avans',
-          'street' => 'Onderwijs boulevard',
-          'city' => 'Den Bosch',
-          'house_number' => 215,
-          'zipcode' => '5223DE',
         ]);
         DB::table('users')->insert([
           'firstname' => 'student',
@@ -47,12 +38,6 @@ class UserTableSeeder extends Seeder
           'password' => bcrypt('student'),
           'role' => 'student',
         ]);
-
-      DB::table('student_info')->insert([
-          'user_id' => 3,
-          'school_year' => 1,
-          'points_decision' => 'vsr',
-      ]);                               
         DB::table('users')->insert([
           'firstname' => 'Uitschrijven',
           'lastname' => 'student',
@@ -61,6 +46,20 @@ class UserTableSeeder extends Seeder
           'email' => 'uitschrijven@gmail.com',
           'password' => bcrypt('student'),
           'role' => 'student',
+        ]);
+        DB::table('company_info')->insert([
+          'user_id' => 2,
+          'company_name' => 'Avans',
+          'street' => 'Onderwijs boulevard',
+          'city' => 'Den Bosch',
+          'house_number' => 215,
+          'zipcode' => '5223DE',
+        ]);
+
+        DB::table('student_info')->insert([
+            'user_id' => 3,
+            'school_year' => 1,
+            'points_decision' => 'vsr',
         ]);
         DB::table('student_info')->insert([
           'school_year' => 1,

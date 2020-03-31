@@ -38,7 +38,6 @@
         </div>
         <div class="col-2"></div>
     </div>
-
     <div class='row justify-content-center'>
         <div class="col-md-4 ">
             <div class="card">
@@ -60,7 +59,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    {{ $sPoints_decision }}
+                                    {{ $oUser->studentInfo->points_decision }}
                                 </td>
                                 <td>
                                     {{ $iPoints }}

@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
 
     public function events() {
-        return $this->belongsToMany('App\Event', 'student_event','student_id', 'event_id');
+        return $this->belongsToMany('App\Event', 'student_event','student_id', 'event_id')->withPivot('was_present');
     }
 
     public function review() {
@@ -57,4 +57,3 @@ class User extends Authenticatable
         return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
     }
 }
-
