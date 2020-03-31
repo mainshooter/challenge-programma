@@ -8,11 +8,11 @@
           @csrf
         <h1>Review achterlaten</h1>
         <div class="form-group">
-          <label>Aantal sterren</label>
+          <label>Geef een cijfer*</label>
           <input type="number" name="review_stars" class="form-control" min="1" max="10" step="0.5">
         </div>
         <div class="form-group">
-          <label>Uw review</label>
+          <label>Uw review*</label>
           <div id="editor">
           </div>
         </div>

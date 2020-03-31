@@ -59,5 +59,15 @@ class User extends Authenticatable
     public function getFullNameAttribute(){
         return ucfirst($this->firstname) . ' ' . $this->middlename . ' ' . ucfirst($this->lastname);
     }
-}
 
+    public function getDutchRoleAttribute(){
+        switch($this->role){
+            case "company":
+                return "Bedrijf";
+            case "student":
+                return "Student";
+            case "admin":
+                return "Admin";
+        }
+    }
+}

@@ -201,10 +201,10 @@ class EventController extends Controller
     }
 
     public function delete(Request $request, $iId) {
-        $oEvents = Event::find($iId);
-
-        if (!is_null($oEvents)) {
-          $oEvents->delete();
+        $oEvent = Event::find($iId);
+      
+        if (!is_null($oEvent)) {
+          $oEvent->delete();
         }
 
         return redirect()->route('event.index');
