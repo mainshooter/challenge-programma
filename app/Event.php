@@ -25,7 +25,7 @@ class Event extends Model
     }
 
     public function getEventStatusAttribute($value) {
-        if($value == 0)
+        if($value == true)
             return 'Evenement niet geaccepteerd';
 
         else

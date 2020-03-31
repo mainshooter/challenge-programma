@@ -18,12 +18,14 @@
                     </thead>
                     <tbody>
                     @foreach($oUser->events as $oEvent)
-                        <td>{{$oEvent->name}}</td>
-                        <td>{{$oEvent->event_start_date_time}}</td>
-                        <td>{{$oEvent->event_end_date_time}}</td>
-                        <td>
-                            <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
-                        </td>
+                        <tr>
+                            <td>{{$oEvent->name}}</td>
+                            <td>{{$oEvent->event_start_date_time}}</td>
+                            <td>{{$oEvent->event_end_date_time}}</td>
+                            <td>
+                                <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -41,13 +43,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($oUser->events as $oEvent)
-                        @if($oEvent->user_id == Auth::User()->id)
-                        <td>{{$oEvent->name}}</td>
-                        <td>{{$oEvent->event_start_date_time}}</td>
-                        <td>{{$oEvent->event_end_date_time}}</td>
-                        <td>{{$oEvent->event_status}}</td>
-                        <td>{{$oEvent->max_students}}</td>
+                    @foreach($aEvents as $oEvent)
+                        @if($oEvent->organiser->id == Auth::user()->id)
+                            <tr>
+                                <td>{{$oEvent->name}}</td>
+                                <td>{{$oEvent->event_start_date_time}}</td>
+                                <td>{{$oEvent->event_end_date_time}}</td>
+                                <td>{{$oEvent->event_status}}</td>
+                                <td>{{$oEvent->max_students}}</td>
+                            </tr>
                         @endif
                     @endforeach
                     </tbody>

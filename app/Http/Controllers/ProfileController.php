@@ -13,7 +13,8 @@ class ProfileController extends Controller
 {
     public function index(Request $request) {
         $oUser = Auth::user();
-        return view('profile/index', ["oUser" => $oUser]);
+        $aEvents = Event::all()->where("user_id", $oUser->id);
+        return view('profile/index', ["oUser" => $oUser, "aEvents" => $aEvents]);
     }
 
     public function terminatePage(Request $request) {
@@ -23,7 +24,13 @@ class ProfileController extends Controller
 
     public function terminate(Request $request) {
         $oUser = Auth::user();
+        $aEvents = Event::all()->where("user_id", $oUser->id);
 
+        $oAdmin = User::find(1);
+        foreach($aEvents as $oEvent) {
+            $oEvent->organiser()->updateExistingPivot($oEvent, ['user_id' => 1,
+                ]);
+        }
         Auth::logout();
 
         if($oUser->delete()) {

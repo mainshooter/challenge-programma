@@ -18,12 +18,12 @@ class StudentAgendaRegister extends Migration
         });
 
         Schema::create('student_event', function(Blueprint $table) {
-          $table->unsignedBigInteger('student_id');
+          $table->unsignedBigInteger('student_id')->unsigned()->nullable();
           $table->unsignedBigInteger('event_id');
         });
 
         Schema::table('student_event', function(Blueprint $table) {
-          $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+          $table->foreign('student_id')->references('id')->on('users');
           $table->foreign('event_id')->references('id')->on('event');
         });
     }
