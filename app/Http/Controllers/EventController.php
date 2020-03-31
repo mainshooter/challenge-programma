@@ -202,7 +202,7 @@ class EventController extends Controller
 
     public function delete(Request $request, $iId) {
         $oEvent = Event::find($iId);
-
+      
         if (!is_null($oEvent)) {
           $oEvent->delete();
         }

@@ -18,8 +18,9 @@
                 <div class="card-header">Evenement details</div>
                 <div class="card-body">
                     <h2>Evenement naam: {{$oEvent->name}}</h2>
+                    @if($oEvent->organiser != null)
                     <h5>Aanvrager: <a href="{{ route('user.details', $oEvent->organiser->id) }}">{{ $oEvent->organiser->firstname }} {{ $oEvent->organiser->middlename }} {{ $oEvent->organiser->lastname }}</a></h5>
-
+                    @endif
                     <br>
                     <h6>Start datum: {{$oEvent->event_start_date_time}}</h6>
                     <h6>Eind datum: {{$oEvent->event_end_date_time}}</h6>
