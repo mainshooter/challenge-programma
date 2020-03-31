@@ -22,21 +22,21 @@
                 </thead>
                 <tbody>
                     @foreach($oUser->events as $oEvent)
-                        <tr>
-                            <td>{{$oEvent->name}}</td>
-                            <td>{{$oEvent->event_start_date_time}}</td>
-                            <td>{{$oEvent->event_end_date_time}}</td>
-                            <td>
-                                <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    <tr>
+                        <td>{{$oEvent->name}}</td>
+                        <td>{{$oEvent->event_start_date_time}}</td>
+                        <td>{{$oEvent->event_end_date_time}}</td>
+                        <td>
+                            <a href="{{route('event.details', $oEvent->id)}}" class="btn btn-info">Details</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             <h1>Evenementen die jij aan het organiseren bent:</h1>
-                <table class="table table-dark">
-                    <p/>
-                    <thead>
+            <table class="table table-dark">
+
+                <thead>
                     <tr>
                         <th>Evenement</th>
                         <th>Begindatum</th>
@@ -44,21 +44,21 @@
                         <th>Status</th>
                         <th>Maximale studenten</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     @foreach($oUser->organisingEvents as $oEvent)
-                        @if($oEvent->organiser->id == Auth::user()->id)
-                            <tr>
-                                <td>{{$oEvent->name}}</td>
-                                <td>{{$oEvent->event_start_date_time}}</td>
-                                <td>{{$oEvent->event_end_date_time}}</td>
-                                <td>{{$oEvent->event_status}}</td>
-                                <td>{{$oEvent->max_students}}</td>
-                            </tr>
-                        @endif
+                    @if($oEvent->organiser->id == Auth::user()->id)
+                    <tr>
+                        <td>{{$oEvent->name}}</td>
+                        <td>{{$oEvent->event_start_date_time}}</td>
+                        <td>{{$oEvent->event_end_date_time}}</td>
+                        <td>{{$oEvent->event_status}}</td>
+                        <td>{{$oEvent->max_students}}</td>
+                    </tr>
+                    @endif
                     @endforeach
-                    </tbody>
-                        </table>
+                </tbody>
+            </table>
             <button type="button" class="btn btn-danger">
                 <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
             </button>
