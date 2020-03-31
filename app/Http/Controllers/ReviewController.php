@@ -7,24 +7,38 @@ use App\Review;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class ReviewController extends Controller {
-    public function index() {
-        $aReviews = Review::all();
+class ReviewController extends Controller
+{
+
+    public function index(Request $request)
+    {
+        $sSortType = $request->selectSort;
+
+        if ($sSortType == "highlow") {
+            $aReviews = Review::orderBy('rating', 'desc')->get();
+        } else if ($sSortType == 'lowhigh') {
+            $aReviews = Review::orderBy('rating', 'asc')->get();
+        } else {
+            $aReviews = Review::all();
+        }
+
         $nRating = 0;
-        if(count($aReviews) > 0){
-            foreach($aReviews as $review){
+        if (count($aReviews) > 0) {
+            foreach ($aReviews as $review) {
                 $nRating += $review->rating;
             }
-            $nRating = round($nRating/count($aReviews));
+            $nRating = round($nRating / count($aReviews));
         }
-        return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating]);
+        return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating, 'sSortType'=> $sSortType]);
     }
 
-    public function addReviewPage() {
-      return view('review/add');
+    public function addReviewPage()
+    {
+        return view('review/add');
     }
 
-    public function addReview(Request $request) {
+    public function addReview(Request $request)
+    {
         $validateData = $request->validate([
             'page_content' => 'required|max:255',
             'review_stars' => 'required|integer',

@@ -19,9 +19,12 @@ Route::get('homepage', 'HomepageController@index');
 
 Route::get("page/{any}", "CmsController@viewPage")->name('cms.view')->where("any", ".*");
 
-Route::get('reviews', "ReviewController@index");
-
 Auth::routes();
+
+Route::prefix("reviews")->group(function() {
+    Route::get('/', 'ReviewController@index')->name('reviews.index');
+    Route::post('/', 'ReviewController@index');
+});
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
