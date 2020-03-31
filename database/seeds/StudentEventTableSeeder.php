@@ -12,12 +12,8 @@ class StudentEventTableSeeder extends Seeder
     public function run()
     {
         DB::table('student_event')->insert([
-            'student_id' => 3,
-            'event_id' => 1,
-        ]);
-        DB::table('student_event')->insert([
-            'student_id' => 3,
-            'event_id' => 2,
+          'student_id' => 4,
+          'event_id' => 1,
         ]);
     }
 }
