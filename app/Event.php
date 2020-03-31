@@ -25,10 +25,12 @@ class Event extends Model
     }
 
     public function getEventStatusAttribute($value) {
-        if($value == true)
+        if($value == true) {
             return 'Evenement niet geaccepteerd';
+        }
 
-        else
+        else {
             return 'Evenement is geaccepteerd';
+        }
     }
 }
