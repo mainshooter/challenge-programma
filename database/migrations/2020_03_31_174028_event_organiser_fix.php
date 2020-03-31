@@ -15,6 +15,7 @@ class EventOrganiserFix extends Migration
     {
         Schema::table('event', function(Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable()->change();
+            $table->dropForeign('event_user_id_foreign');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
