@@ -43,7 +43,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($aEvents as $oEvent)
+                    @foreach($oUser->organisingEvents as $oEvent)
                         @if($oEvent->organiser->id == Auth::user()->id)
                             <tr>
                                 <td>{{$oEvent->name}}</td>
