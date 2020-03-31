@@ -26,11 +26,6 @@ class ProfileController extends Controller
         $oUser = Auth::user();
         $aEvents = Event::all()->where("user_id", $oUser->id);
 
-        $oAdmin = User::find(1);
-        foreach($aEvents as $oEvent) {
-            $oEvent->organiser()->updateExistingPivot($oEvent, ['user_id' => 1,
-                ]);
-        }
         Auth::logout();
 
         if($oUser->delete()) {
