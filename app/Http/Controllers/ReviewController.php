@@ -12,10 +12,11 @@ class ReviewController extends Controller
 
     public function index(Request $request)
     {
-        $sortType = $request->selectSort;
-        if ($sortType == 'highLow') {
+        $sSortType = $request->selectSort;
+
+        if ($sSortType == "highlow") {
             $aReviews = Review::orderBy('rating', 'desc')->get();
-        } else if ($sortType == 'lowHigh') {
+        } else if ($sSortType == 'lowhigh') {
             $aReviews = Review::orderBy('rating', 'asc')->get();
         } else {
             $aReviews = Review::all();
@@ -28,7 +29,7 @@ class ReviewController extends Controller
             }
             $nRating = round($nRating / count($aReviews));
         }
-        return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating, 'sortType'=> $sortType]);
+        return view('review/index', ['aReviews' => $aReviews, 'avgRating' => $nRating, 'sSortType'=> $sSortType]);
     }
 
     public function addReviewPage()

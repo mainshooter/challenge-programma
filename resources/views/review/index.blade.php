@@ -18,7 +18,7 @@
                 <div class="float-right">
                     <form method="post">
                         @csrf
-                        <label id="selectLabel" class="{{$sortType}}">Sorteren op:</label>
+                        <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
                         <select name="selectSort" class="form-control" id="selectBox">
                             <option value="none">
                                 Relevantie
