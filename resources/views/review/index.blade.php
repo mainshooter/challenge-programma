@@ -32,8 +32,6 @@
                         </select>
                     </form>
                 </div>
-
-                <H2>Wat bedrijven denken over het Challenge programma</H2>
                 <br>
                 <div class="row">
                     @foreach($aReviews as $review)
