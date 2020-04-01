@@ -67,15 +67,24 @@ class UserTableSeeder extends Seeder
           'zipcode' => '5223DE',
         ]);
 
+        DB::table('company_info')->insert([
+          'user_id' => 3,
+          'company_name' => 'Avans',
+          'street' => 'Onderwijs boulevard',
+          'city' => 'Den Bosch',
+          'house_number' => 215,
+          'zipcode' => '5223DE',
+        ]);
+
         DB::table('student_info')->insert([
-            'user_id' => 3,
+            'user_id' => 4,
             'school_year' => 1,
             'points_decision' => 'vsr',
         ]);
         DB::table('student_info')->insert([
           'school_year' => 1,
           'points_decision' => 'vsr',
-          'user_id' => 4,
+          'user_id' => 5,
         ]);
     }
 }
