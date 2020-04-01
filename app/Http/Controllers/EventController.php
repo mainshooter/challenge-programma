@@ -181,7 +181,7 @@ class EventController extends Controller
      * @param  Request $request
      */
     public function agenda(Request $request) {
-      $aEvents = Event::all();
+      $aEvents = Event::all()->where('is_accepted', true);
       $aEvents = eventToAgendaItems($aEvents);
       $sEvents = json_encode($aEvents);
       return view('event/agenda', [
@@ -202,7 +202,7 @@ class EventController extends Controller
 
     public function delete(Request $request, $iId) {
         $oEvent = Event::find($iId);
-      
+
         if (!is_null($oEvent)) {
           $oEvent->delete();
         }
