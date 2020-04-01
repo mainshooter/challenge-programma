@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\StudentEvent;
 use App\User;
+use App\StudentInfo;
 use Auth;
 use Illuminate\Http\Request;
 use http\Message;
@@ -11,17 +13,29 @@ use Session;
 
 class ProfileController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $oUser = Auth::user();
-        return view('profile/index', ["oUser" => $oUser]);
+
+        $aAllEvents = $oUser->events;
+        $iPoints = 0;
+        foreach ($aAllEvents as $oEvent) { //studentEvent contains event_id
+            if($oEvent->pivot->was_present) {
+              $iPoints += $oEvent->points;
+            }
+        }
+
+        return view('profile/index', ["oUser" => $oUser, 'iPoints' => $iPoints]);
     }
 
-    public function terminatePage(Request $request) {
+    public function terminatePage(Request $request)
+    {
         $oUser = Auth::user();
         return view("profile/terminate", ["oUser" => $oUser]);
     }
 
-    public function terminate(Request $request) {
+    public function terminate(Request $request)
+    {
         $oUser = Auth::user();
 
         Auth::logout();
