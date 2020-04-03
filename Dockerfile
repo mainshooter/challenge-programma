@@ -25,4 +25,4 @@ RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite
 RUN service apache2 restart
 
-ENTRYPOINT php /var/www/html/artisan migrate && apachectl -D FOREGROUND
+ENTRYPOINT php /var/www/html/artisan migrate --force && apachectl -D FOREGROUND
