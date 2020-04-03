@@ -21,6 +21,8 @@ USER root
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+RUN php /var/www/html/artisan storage:link
+
 RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite
 RUN service apache2 restart
