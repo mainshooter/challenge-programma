@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         require_once __DIR__ . '/../../bootstrap/helpers/slugify_function.php';
         require_once __DIR__ . '/../../bootstrap/helpers/eventToAgenda_function.php';
+        if(config('app.env') === 'production') {
+          \URL::forceScheme('https');
+        }
     }
 }
