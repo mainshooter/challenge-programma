@@ -1,6 +1,6 @@
 
 pipeline:
-  publish_master:
+  publish_develop:
     image: plugins/docker
     registry: 10.10.0.1:5000
     repo: 10.10.0.1:5000/challangeprogramma
