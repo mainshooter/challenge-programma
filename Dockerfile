@@ -24,7 +24,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN php /var/www/html/artisan storage:link
 
 RUN chown -R www-data:www-data /var/www/
-RUN a2enmod rewrite
+RUN a2enmod rewrite && a2enmod expires
 RUN service apache2 restart
 
 ENTRYPOINT php /var/www/html/artisan migrate --force && apachectl -D FOREGROUND
