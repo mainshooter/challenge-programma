@@ -1,6 +1,6 @@
 FROM php:7.2-apache
 
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
 RUN apt-get update
 RUN apt-get install -y libmcrypt-dev openssl libzip-dev
