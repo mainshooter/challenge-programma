@@ -1,6 +1,6 @@
 # Challange programma
 
-## Authors
+## Authors - Groep I
 Rico Bender
 
 Rinaldo Boejé
