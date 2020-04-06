@@ -7,7 +7,7 @@ addAssignees: false
 # A list of reviewers to be added to pull requests (GitHub user name)
 reviewers: 
   - peter-4A5A
-  - 2IkBender
+  - IkBender
   - Versteeg0
   - onyilam10
 
