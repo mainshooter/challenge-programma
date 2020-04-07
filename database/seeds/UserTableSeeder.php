@@ -12,8 +12,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'firstname' => 'admin',
-            'lastname' => 'admin',
+            'firstname' => encrypt('admin'),
+            'lastname' => encrypt('admin'),
             'phone' => '0612365874',
             'is_accepted' => true,
             'email' => 'admin@gmail.com',
@@ -22,8 +22,8 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'firstname' => 'bedrijf',
-            'lastname' => 'bedrijf',
+            'firstname' => encrypt('bedrijf'),
+            'lastname' => encrypt('bedrijf'),
             'phone' => '0612365874',
             'is_accepted' => false,
             'email' => 'bedrijf'.'@gmail.com',
@@ -32,8 +32,8 @@ class UserTableSeeder extends Seeder
           ]);
 
         DB::table('users')->insert([
-          'firstname' => 'HBO',
-          'lastname' => 'Avans',
+          'firstname' => encrypt('HBO'),
+          'lastname' => encrypt('Avans'),
           'phone' => '0885257500',
           'is_accepted' => true,
           'email' => 'avans@gmail.com',
@@ -41,8 +41,8 @@ class UserTableSeeder extends Seeder
           'role' => 'company',
         ]);
         DB::table('users')->insert([
-          'firstname' => 'student',
-          'lastname' => 'student',
+          'firstname' => encrypt('student'),
+          'lastname' => encrypt('student'),
           'phone' => '0625859658',
           'is_accepted' => true,
           'email' => 'student@gmail.com',
@@ -50,8 +50,8 @@ class UserTableSeeder extends Seeder
           'role' => 'student',
         ]);
         DB::table('users')->insert([
-          'firstname' => 'Uitschrijven',
-          'lastname' => 'student',
+          'firstname' => encrypt('Uitschrijven'),
+          'lastname' => encrypt('student'),
           'phone' => '0638576398',
           'is_accepted' => true,
           'email' => 'uitschrijven@gmail.com',
