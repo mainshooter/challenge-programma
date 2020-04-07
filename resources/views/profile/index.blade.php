@@ -11,7 +11,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <h1>Volgende Evenementen:</h1>
-            <table class="table table-dark">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Bedrijfsnaam</th>
@@ -34,7 +34,7 @@
                 </tbody>
             </table>
             <h1>Evenementen die jij aan het organiseren bent:</h1>
-            <table class="table table-dark">
+            <table class="table">
 
                 <thead>
                     <tr>
