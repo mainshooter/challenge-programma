@@ -17,6 +17,8 @@ Route::get('home', 'HomepageController@index')->name('home');
 
 Route::get('homepage', 'HomepageController@index');
 
+Route::get('photoalbum', 'PhotoalbumController@index')->name('photoalbum.index');
+
 Route::get("page/{any}", "CmsController@viewPage")->name('cms.view')->where("any", ".*");
 
 Auth::routes();
