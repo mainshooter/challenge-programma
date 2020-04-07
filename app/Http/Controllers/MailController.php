@@ -33,7 +33,7 @@ class MailController extends Controller {
     else {
       $aUsers = User::where('role', $sRole)->get();
     }
-    // dd($sSubject);
+    
     foreach ($aUsers as $oUser) {
       Mail::to($oUser->email)->queue(new MailToUser($sSubject, $sText));
     }
@@ -41,5 +41,4 @@ class MailController extends Controller {
     Session::flash('message', 'De mails zijn verstuurd');
     return redirect()->route('mail.create');
   }
-
 }

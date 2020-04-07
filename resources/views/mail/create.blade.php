@@ -29,7 +29,6 @@
             <div id="editor"></div>
             <input type="hidden" name="page_content">
           </div>
-
           <input type="submit" name="" value="Mail verzenden" class="btn btn-primary">
         </form>
       </div>
