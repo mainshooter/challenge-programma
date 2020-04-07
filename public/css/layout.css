@@ -116,3 +116,8 @@ body{
   font-size: 1.4em;
   border-radius: 2%;
 }
+.btn.btn--default, .btn.btn--brand {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
