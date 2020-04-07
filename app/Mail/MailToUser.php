@@ -18,8 +18,8 @@ class MailToUser extends Mailable
      */
     public function __construct(string $sSubject, string $sText)
     {
-        $this->sSubject = $sSubject;
-        $this->sText = $sText;
+        $this->subject = $sSubject;
+        $this->view = $sText;
     }
 
     /**
@@ -30,9 +30,8 @@ class MailToUser extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_USERNAME'))
-                    ->subject($this->sSubject)
                     ->view('mail/sendmail', [
-                      'sText' => $this->sText,
+                      'sText' => $this->view,
                     ]);
     }
 }

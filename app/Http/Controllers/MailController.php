@@ -33,9 +33,9 @@ class MailController extends Controller {
     else {
       $aUsers = User::where('role', $sRole)->get();
     }
-
+    // dd($sSubject);
     foreach ($aUsers as $oUser) {
-      Mail::to($oUser->email)->send(new MailToUser($sSubject, $sText));
+      Mail::to($oUser->email)->queue(new MailToUser($sSubject, $sText));
     }
 
     Session::flash('message', 'De mails zijn verstuurd');
