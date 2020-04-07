@@ -106,3 +106,10 @@ body{
 .table > tbody > tr > td {
     vertical-align: middle;
 }
+
+.btn.btn--default, .btn.btn--brand {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
