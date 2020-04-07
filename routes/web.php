@@ -106,6 +106,7 @@ Route::middleware('role:admin')->group(function () {
     });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
+      Route::post('/create', 'MailController@create')->name('mail.create.post');
     });
 });
 

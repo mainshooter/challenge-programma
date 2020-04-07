@@ -7,7 +7,10 @@
     </button>
     <div class="row">
       <div class="col-12">
+        @component('component/formError')
+        @endcomponent
         <form method="post" class="editer-form">
+          @csrf
           <div class="form-group">
             <label>Onderwerp *</label>
             <input type="text" name="mail_subject" class="form-control">
