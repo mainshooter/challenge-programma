@@ -17,13 +17,23 @@ class MailController extends Controller {
   public function create(Request $request) {
     $request->validate([
       'mail_subject' => 'required|min:3|string',
-      'page_content' => 'required|min:3|string'
+      'page_content' => 'required|min:3|string',
+      'mail_user_role' => 'required|in:admin,company,student,all',
     ]);
 
+    $sRole = $request->mail_user_role;
     $sSubject = $request->mail_subject;
     $sText = $request->page_content;
 
-    $aUsers = User::all();
+    $aUsers = [];
+
+    if ($sRole == 'all') {
+      $aUsers = User::all();
+    }
+    else {
+      $aUsers = User::where('role', $sRole)->get();
+    }
+
     foreach ($aUsers as $oUser) {
       Mail::to($oUser->email)->send(new MailToUser($sSubject, $sText));
     }
