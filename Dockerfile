@@ -37,6 +37,7 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 RUN php /var/www/html/artisan storage:link
+RUN php /var/www/html/artisan vendor:publish --tag=public --force
 
 RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite && a2enmod expires
