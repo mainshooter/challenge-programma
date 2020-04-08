@@ -40,9 +40,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('photoalbum.index') }}">Fotoalbum</a>
+                    </li>
+
                     @if(Auth::check())
                         <?php $role = Auth::user()->role; ?>
                         @if($role == 'admin')
