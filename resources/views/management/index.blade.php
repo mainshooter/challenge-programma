@@ -5,20 +5,28 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container management-menu">
         <div class="row">
-            <div class="col-12" align="center">
-                <div class="menuDiv" >
-                    <nav class="nav flex-column">
-                        <a class="nav-link" href="{{ route('user.index') }}">Gebruikersbeheer</a>
-                        <a class="nav-link" href="{{ route('user.not.accepted.overview') }}">Accepteren Gebruikers</a>
-                        <a class="nav-link" href="{{ route('event.index') }}"> Evenementenbeheer</a>
-                        <a class="nav-link" href="{{ route('cms.index') }}">CMS</a>
-                        <a class="nav-link" href="{{ route('image.index')  }}">Carousel</a>
-                    </nav>
-                </div>
-
-            </div>
+          <div class="col">
+            <a class="nav-link" href="{{ route('user.index') }}">Gebruikersbeheer</a>
+          </div>
+          <div class="col">
+            <a class="nav-link" href="{{ route('user.not.accepted.overview') }}">Accepteren Gebruikers</a>
+          </div>
+          <div class="col">
+            <a class="nav-link" href="{{ route('event.index') }}"> Evenementenbeheer</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a class="nav-link" href="{{ route('cms.index') }}">CMS</a>
+          </div>
+          <div class="col">
+            <a class="nav-link" href="{{ route('mail.create') }}">Mail versturen</a>
+          </div>
+          <div class="col">
+            <a class="nav-link" href="{{ route('image.index')  }}">Carousel</a>
+          </div>
         </div>
     </div>
 @endsection

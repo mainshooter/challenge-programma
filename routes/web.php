@@ -66,7 +66,7 @@ Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
     Route::get('/', function(){
       return view('management.index');
-    });
+    })->name('management.index');
     Route::prefix("event")->group(function() {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
@@ -105,6 +105,9 @@ Route::middleware('role:admin')->group(function () {
       Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
       Route::post('create', "CmsController@create")->name("cms.create.post");
       });
+    });
+    Route::prefix('mail')->group(function() {
+      Route::get('/create', 'MailController@createPage')->name('mail.create');
     });
 });
 
