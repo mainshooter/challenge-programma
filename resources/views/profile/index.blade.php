@@ -59,15 +59,12 @@
                     @endforeach
                 </tbody>
             </table>
-            <button type="button" class="btn btn-danger">
-                <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
-            </button>
         </div>
         <div class="col-2"></div>
     </div>
     <div class='row justify-content-center'>
         <div class="col-md-4 ">
-            <div class="card">
+            <div class="card m-4">
                 <div class="card-header">
                     Behaalde punten (certificaat/vsr)
                 </div>
@@ -97,6 +94,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-danger m-4">
+            <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
+        </button>
     </div>
 </div>
 @endsection
