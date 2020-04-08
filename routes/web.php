@@ -104,8 +104,15 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/', 'ImageController@index')->name('image.index');
       Route::post('/store', 'ImageController@store')->name('image.store.post');
     });
+    Route::prefix('photoalbum')->group(function() {
+        Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
+        Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
+        Route::get('edit', 'PhotoalbumController@editPage')->name('photoalbum.edit');
+        Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
+    });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
+      Route::post('/create', 'MailController@create')->name('mail.create.post');
     });
   });
 });
