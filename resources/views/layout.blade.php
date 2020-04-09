@@ -50,13 +50,13 @@
                     </li>
 
                     @if(Auth::check())
-                        <?php $role = Auth::user()->role; ?>
-                        @if($role == 'admin')
+                        <?php $sRole = Auth::user()->role; ?>
+                        @if($sRole == 'admin' || $sRole == 'content-writer')
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">Beheer</a>
+                                <a class="nav-link" href="{{ route('management.index') }}">Beheer</a>
                             </li>
                         @endif
-                        @if($role == 'student')
+                        @if($sRole == 'student')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.index') }}">Profiel</a>
                             </li>
