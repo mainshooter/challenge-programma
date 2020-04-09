@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
+use Auth;
 
 class UserController extends Controller
 {
@@ -232,5 +233,15 @@ class UserController extends Controller
 
         Session::flash('message', 'De gebruiker is succesvol aangemaakt. ');
         return redirect()->route('user.index');
+    }
+  
+    public function management() {
+        $sRole = Auth::user()->role;
+        switch ($sRole) {
+          case 'admin':
+            return view('management/admin');
+          case 'content-writer':
+            return view('management/content-writer');
+        }
     }
 }
