@@ -13,7 +13,7 @@ class ContentWriterRole extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE `users` CHANGE `role` `role` ENUM('admin','student','company','content-writer') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;");
+      DB::statement("ALTER TABLE `users` CHANGE `role` `role` ENUM('admin','student','company','content-writer') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;");
     }
 
     /**

@@ -7,17 +7,28 @@
     </button>
     <div class="row">
       <div class="col-12">
+        @component('component/formError')
+        @endcomponent
         <form method="post" class="editer-form">
+          @csrf
           <div class="form-group">
             <label>Onderwerp *</label>
             <input type="text" name="mail_subject" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Gebruikers *</label>
+            <select name="mail_user_role" class="form-control">
+              <option value="all">Iedereen</option>
+              <option value="admin">Admin's</option>
+              <option value="student">Studenten</option>
+              <option value="company">Bedrijven</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Tekst *</label>
             <div id="editor"></div>
             <input type="hidden" name="page_content">
           </div>
-
           <input type="submit" name="" value="Mail verzenden" class="btn btn-primary">
         </form>
       </div>

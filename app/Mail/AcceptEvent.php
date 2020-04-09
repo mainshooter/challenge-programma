@@ -29,7 +29,7 @@ class AcceptEvent extends Mailable
      */
     public function build()
     {
-      return $this->from('challenge-programma@peter-romijn.nl')
+      return $this->from(env('MAIL_USERNAME'))
                   ->subject('Evenement is goed gekeurd - Challenge programma')
                   ->view('mail/event/accept', [
                     'oEvent' => $this->oEvent,

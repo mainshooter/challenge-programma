@@ -31,7 +31,7 @@ class StudentEventRegister extends Mailable
      */
     public function build()
     {
-      return $this->from('challenge-programma@peter-romijn.nl')
+      return $this->from(env('MAIL_USERNAME'))
                   ->subject('Acceptatie Challenge programma')
                   ->view('mail/event/register')
                   ->with([
