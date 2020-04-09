@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-    <h2 class="row justify-content-center">Tijdline</h2>
+    <h2 class="row justify-content-center">Tijdlijn</h2>
     <div class="row justify-content-center">
         @foreach ($aPhotoalbum as $album)
         <div class="col-md-8 p-4">
