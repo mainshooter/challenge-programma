@@ -5,8 +5,9 @@
 @section('content')
 
 <div class="container">
+    <h2 class="row justify-content-center">Tijdline</h2>
     <div class="row justify-content-center">
-        @foreach ($oPhotoalbum as $album)
+        @foreach ($aPhotoalbum as $album)
         <div class="col-md-8 p-4">
             <div class="card">
                 <div class="card-header">

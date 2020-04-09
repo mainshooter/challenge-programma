@@ -9,9 +9,9 @@ class PhotoalbumController extends Controller
 {
     public function index()
     {
-        $oPhotoalbum = Photoalbum::all();
+        $aPhotoalbum = Photoalbum::all();
 
-        return view('photoalbum.index', ['oPhotoalbum' => $oPhotoalbum]);
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum]);
     }
 
     public function createPhotoalbumPage(Request $request)
