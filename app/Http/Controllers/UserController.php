@@ -9,6 +9,7 @@ use \App\CompanyInfo;
 use Session;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
+use Auth;
 
 class UserController extends Controller
 {
@@ -202,5 +203,15 @@ class UserController extends Controller
 
         Session::flash('message', 'Gebruiker is geaccepteerd');
         return redirect()->route("user.not.accepted.overview");
+    }
+
+    public function management() {
+        $sRole = Auth::user()->role;
+        switch ($sRole) {
+          case 'admin':
+            return view('management/admin');
+          case 'content-writer':
+            return view('management/content-writer');
+        }
     }
 }
