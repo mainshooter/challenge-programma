@@ -41,6 +41,19 @@ Route::middleware('role:admin|student|company')->group(function() {
   });
 });
 
+Route::middleware('role:admin|content-writer')->group(function() {
+  Route::get('/management', "UserController@management")->name('management.index');
+  Route::prefix('cms')->group(function() {
+    Route::get('/', "CmsController@index")->name("cms.index");
+    Route::get('create', "CmsController@createPage")->name("cms.create");
+    Route::get('edit/{id}', "CmsController@editPage")->name("cms.edit");
+    Route::get('delete/{id}', "CmsController@delete")->name('cms.delete');
+
+    Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
+    Route::post('create', "CmsController@create")->name("cms.create.post");
+  });
+});
+
 Route::middleware('role:student')->group(function() {
   Route::prefix('student')->group(function() {
       Route::prefix('profile')->group(function() {
@@ -64,9 +77,6 @@ Route::middleware('role:company')->group(function() {
 
 Route::middleware('role:admin')->group(function () {
   Route::prefix('admin')->group(function() {
-    Route::get('/', function(){
-      return view('management.index');
-    })->name('management.index');
     Route::prefix("event")->group(function() {
       Route::get('/', 'EventController@index')->name('event.index');
       Route::get('create', 'EventController@createPage')->name('event.create');
@@ -100,21 +110,11 @@ Route::middleware('role:admin')->group(function () {
         Route::get('edit', 'PhotoalbumController@editPage')->name('photoalbum.edit');
         Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
     });
-
-    Route::prefix('cms')->group(function() {
-      Route::get('/', "CmsController@index")->name("cms.index");
-      Route::get('create', "CmsController@createPage")->name("cms.create");
-      Route::get('edit/{id}', "CmsController@editPage")->name("cms.edit");
-      Route::get('delete/{id}', "CmsController@delete")->name('cms.delete');
-
-      Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
-      Route::post('create', "CmsController@create")->name("cms.create.post");
-      });
-    });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
       Route::post('/create', 'MailController@create')->name('mail.create.post');
     });
+  });
 });
 
 Route::get("details/{id}", "EventController@details")->name("event.details");
