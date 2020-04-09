@@ -19,7 +19,7 @@ class PhotoalbumController extends Controller
     public function create(Request $request) {
         $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description'=>['required', 'string', 'max:50'],
+            'description'=>['required', 'string'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
