@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 
 class PhotoalbumController extends Controller
 {
-    public function index(){
-        return view('photoalbum.index');
+    public function index()
+    {
+        $oPhotoalbum = Photoalbum::all();
+
+        return view('photoalbum.index', ['oPhotoalbum' => $oPhotoalbum]);
     }
 
     public function createPhotoalbumPage(Request $request)
@@ -16,10 +19,11 @@ class PhotoalbumController extends Controller
         return view('photoalbum.create');
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description'=>['required', 'string', 'max:50'],
+            'description' => ['required', 'string', 'max:50'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
@@ -30,7 +34,8 @@ class PhotoalbumController extends Controller
         return view('photoalbum.edit');
     }
 
-    public function editPage() {
+    public function editPage()
+    {
         return view('photoalbum.index');
     }
 }
