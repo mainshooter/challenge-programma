@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photoalbum;
 use Illuminate\Http\Request;
+use LinkedinShare;
 
 class PhotoalbumController extends Controller
 {
@@ -32,5 +33,10 @@ class PhotoalbumController extends Controller
 
     public function editPage() {
         return view('photoalbum.index');
+    }
+
+    public function publish() {
+      // LinkedinShare::shareNone("My code", "Lorem ipsum");
+      return view('photoalbum.index');
     }
 }
