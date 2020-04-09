@@ -34,9 +34,4 @@ class PhotoalbumController extends Controller
     public function editPage() {
         return view('photoalbum.index');
     }
-
-    public function publish() {
-      // LinkedinShare::shareNone("My code", "Lorem ipsum");
-      return view('photoalbum.index');
-    }
 }
