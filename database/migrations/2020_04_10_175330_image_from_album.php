@@ -13,9 +13,10 @@ class ImageFromAlbum extends Migration
      */
     public function up()
     {
-        Schema::table('image_from_album', function (Blueprint $table) {
+        Schema::create('image_from_album', function (Blueprint $table) {
             $table->increments("id");
             $table->string('path');
+            $table->integer('photoalbum_id')->unsigned();
             $table->foreign('photoalbum_id')->references('id')->on('photoalbum')->onDelete('cascade');
         });
     }
