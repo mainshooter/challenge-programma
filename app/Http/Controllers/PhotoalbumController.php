@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photoalbum;
 use Illuminate\Http\Request;
+use LinkedinShare;
 
 class PhotoalbumController extends Controller
 {

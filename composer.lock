@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c87ad838720a05a87925ddaef0e835ab",
+    "content-hash": "3eea9b9b02110de87b235edd03f8bb6b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1284,6 +1284,58 @@
                 "storage"
             ],
             "time": "2020-03-08T18:53:20+00:00"
+        },
+        {
+            "name": "lightit/linkedin-share",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Light-it-labs/laravel-linkedin-share.git",
+                "reference": "ca2f8942cd6834bfae60d81b4ef4a03264820a08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Light-it-labs/laravel-linkedin-share/zipball/ca2f8942cd6834bfae60d81b4ef4a03264820a08",
+                "reference": "ca2f8942cd6834bfae60d81b4ef4a03264820a08",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lightit\\LinkedinShare\\LinkedinShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "LinkedinShare": "Lightit\\LinkedinShare\\Facades\\LinkedinShare"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lightit\\LinkedinShare\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alan Brande",
+                    "email": "alanbrande@lightit.io"
+                }
+            ],
+            "description": "This package allows you to easily share content on Likedin, using the v2 API.",
+            "keywords": [
+                "linkedin",
+                "linkedin API v2",
+                "linkedin share"
+            ],
+            "time": "2019-03-01T18:15:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5749,7 +5801,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "lightit/linkedin-share": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
