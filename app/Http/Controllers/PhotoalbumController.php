@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photoalbum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PhotoalbumController extends Controller
 {
@@ -30,6 +31,11 @@ class PhotoalbumController extends Controller
         $oPhotoalbum->title = $request->title;
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
+
+        $sPath =  public_path() .  '/storage/photoalbum/' . $request->title;
+        if (!File::isDirectory($sPath)) {
+            File::makeDirectory($sPath, 0777, true, true);
+        }
 
         return view('photoalbum.edit');
     }

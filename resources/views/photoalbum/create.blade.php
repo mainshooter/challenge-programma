@@ -18,9 +18,9 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="description" class="col-md-4 col-form-label text-md-right">beschrijving van Evenement</label>
+                                <label for="description" class="col-md-4 col-form-label text-md-right">Beschrijving van evenement</label>
                                 <div class="col-md-6">
-                                    <textarea class="form-control" name="description" value="{{ old('description') }}" autocomplete="description" autofocus></textarea>
+                                    <textarea class="form-control" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
                                 </div>
                             </div>
 
