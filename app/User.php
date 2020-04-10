@@ -76,6 +76,8 @@ class User extends Authenticatable
                 return "Student";
             case "admin":
                 return "Admin";
+            case "content-writer":
+                return "Content writer";
         }
     }
 }
