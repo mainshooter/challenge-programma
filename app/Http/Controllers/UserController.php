@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\User;
 use \App\StudentInfo;
 use \App\CompanyInfo;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use \App\Mail\AcceptatieMail;
 use Illuminate\Support\Facades\Mail;
@@ -205,6 +206,35 @@ class UserController extends Controller
         return redirect()->route("user.not.accepted.overview");
     }
 
+    public function createPage(){
+        return view('user.create.create_user');
+    }
+
+    public function createUser(Request $request){
+        $request->validate([
+            'firstname' => 'required|string|max:50',
+            'middlename'=> 'nullable|string|max:50',
+            'lastname' => 'required|string|max:50',
+            'phone'=> ['nullable', 'regex:/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/', 'min:10', 'max:13'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $oUser = new User();
+        $oUser->firstname = $request->firstname;
+        $oUser->middlename = $request->middlename;
+        $oUser->lastname = $request->lastname;
+        $oUser->phone = $request->phone;
+        $oUser->email =  $request->email;
+        $oUser->password = Hash::make($request->password);
+        $oUser->is_accepted = 1;
+        $oUser->role = $request->role;
+        $oUser->save();
+
+        Session::flash('message', 'De gebruiker is succesvol aangemaakt. ');
+        return redirect()->route('user.index');
+    }
+  
     public function management() {
         $sRole = Auth::user()->role;
         switch ($sRole) {
