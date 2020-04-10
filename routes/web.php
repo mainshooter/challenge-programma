@@ -26,9 +26,7 @@ Route::prefix("reviews")->group(function() {
     Route::post('/', 'ReviewController@index');
 });
 
-Route::prefix('photoalbum')->group(function () {
-  Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
-});
+
 
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
@@ -112,7 +110,8 @@ Route::middleware('role:admin')->group(function () {
     });
     Route::prefix('photoalbum')->group(function() {
         Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
-        Route::get('edit', 'PhotoalbumController@editPage')->name('photoalbum.edit');
+        Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
+
         Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
     });
     Route::prefix('mail')->group(function() {
@@ -126,3 +125,7 @@ Route::get("details/{id}", "EventController@details")->name("event.details");
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
+
+Route::prefix('photoalbum')->group(function () {
+Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
+});

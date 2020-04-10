@@ -37,11 +37,12 @@ class PhotoalbumController extends Controller
             File::makeDirectory($sPath, 0777, true, true);
         }
 
-        return view('photoalbum.edit');
+        
+        return view('photoalbum.edit', ['oPhotoalbum' => $oPhotoalbum->id ]);
     }
 
     public function editPage()
     {
-        return view('photoalbum.index');
+        return view('photoalbum.edit');
     }
 }
