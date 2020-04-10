@@ -128,3 +128,8 @@
     font-size: 25px;
     margin-top: 20px
 }
+
+.image-tile-background {
+    background: url('https://picsum.photos/300') no-repeat center top; 
+    background-size: cover;
+}

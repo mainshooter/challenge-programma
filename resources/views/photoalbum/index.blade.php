@@ -17,12 +17,10 @@
                     <h5 class="p-2">{{$album->description}}</h5>
                     <div class="widget-container">
                         <div class="widget row image-tile">
-                            <div class="tile col-md-5"
-                                style="background: url('https://picsum.photos/300') no-repeat center top; background-size: cover;">
+                            <div class="tile col-md-5 image-tile-background">
                                 <p>{{$album->description}}</p>
                             </div>
-                            <div class="tile col-md-5"
-                                style="background: url('https://picsum.photos/400') no-repeat center top; background-size: cover;">
+                            <div class="tile col-md-5 image-tile-background">
                                 <p>{{$album->description}}</p>
                             </div>
                             <div class="tile more-images col-md-2">
