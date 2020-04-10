@@ -26,6 +26,10 @@ Route::prefix("reviews")->group(function() {
     Route::post('/', 'ReviewController@index');
 });
 
+Route::prefix('photoalbum')->group(function () {
+  Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
+});
+
 Route::namespace('Auth')->group(function() {
   Route::prefix('register')->group(function() {
     Route::get('student', 'RegisterController@createStudentPage')->name('register.student');
@@ -107,10 +111,10 @@ Route::middleware('role:admin')->group(function () {
       Route::post('/store', 'ImageController@store')->name('image.store.post');
     });
     Route::prefix('photoalbum')->group(function() {
-        Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
         Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
         Route::get('edit', 'PhotoalbumController@editPage')->name('photoalbum.edit');
         Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
+        Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
     });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');

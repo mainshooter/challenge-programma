@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Photoalbum;
 use Illuminate\Http\Request;
+use LinkedinShare;
 
 class PhotoalbumController extends Controller
 {
-    public function index(){
-        return view('photoalbum.index');
+    public function index()
+    {
+        $aPhotoalbum = Photoalbum::all();
+
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum]);
     }
 
     public function createPhotoalbumPage(Request $request)
@@ -16,10 +20,11 @@ class PhotoalbumController extends Controller
         return view('photoalbum.create');
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description'=>['required', 'string', 'max:50'],
+            'description'=>['required', 'string'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
@@ -30,7 +35,8 @@ class PhotoalbumController extends Controller
         return view('photoalbum.edit');
     }
 
-    public function editPage() {
+    public function editPage()
+    {
         return view('photoalbum.index');
     }
 }
