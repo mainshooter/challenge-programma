@@ -14,7 +14,7 @@ class CmsTest extends DuskTestCase
     {
       $this->browse(function (Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit('/admin/cms')
+        $browser->visit('/cms')
                 ->clickLink('Akkoord');
         $browser->clickLink("Pagina toevoegen");
         $browser->value("input[name=page_title]", "Test pagina");
@@ -29,7 +29,7 @@ class CmsTest extends DuskTestCase
     public function testEdit() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit('/admin/cms');
+        $browser->visit('/cms');
         $browser->clickLink("Bewerk");
         $sCurrentTitle = $browser->value('input[name=page_title]');
         $sNewTitle = $sCurrentTitle . "2";
@@ -43,7 +43,7 @@ class CmsTest extends DuskTestCase
     public function testVisit() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit('/admin/cms');
+        $browser->visit('/cms');
         $browser->clickLink("Bekijk");
         $browser->assertSee("Test pagina2");
       });
@@ -53,7 +53,7 @@ class CmsTest extends DuskTestCase
     public function testDelete() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit("/admin/cms");
+        $browser->visit("/cms");
         $browser->clickLink("Verwijder");
         $browser->assertSee("Pagina toevoegen");
       });

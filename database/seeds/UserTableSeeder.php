@@ -96,7 +96,7 @@ class UserTableSeeder extends Seeder
         DB::table('student_info')->insert([
           'school_year' => 1,
           'points_decision' => 'vsr',
-          'user_id' => 5,
+          'user_id' => 6,
         ]);
     }
 }
