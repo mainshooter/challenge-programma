@@ -33,6 +33,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <a href="{{ route('user.create') }}" class="btn btn-primary">Gebruiker aanmaken</a>
         </div>
     </div>
 </div>
