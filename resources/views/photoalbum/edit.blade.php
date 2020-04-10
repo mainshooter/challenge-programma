@@ -8,8 +8,8 @@
         <form action="{{ route('photoalbum.store.post', $oPhotoalbum->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="filepath">Foto uploaden</label>
-                <input type="file" name="filepath" class="form-control-file" id="filepath">
+                <label for="path">Foto uploaden</label>
+                <input type="file" name="path" class="form-control-file" id="path">
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-md">Opslaan</button>
         </form>

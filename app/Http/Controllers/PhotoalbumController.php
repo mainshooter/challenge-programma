@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Photoalbum;
+use App\ImageFromAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -48,6 +49,20 @@ class PhotoalbumController extends Controller
     }
 
     public function storePhoto(Request $request, $iId){
+        $this->validate($request, [
+            'path' => 'image|max:10000'
+        ]);
 
+        $oAlbum = Photoalbum::find($iId);
+
+        $oImage = new ImageFromAlbum();
+
+        $oUpload = $request->file('path');
+        $sPath = $oUpload->store('public/photoalbum/'.$oAlbum->title);
+        $oImage->path = $sPath;
+        $oImage->photoalbum_id = $iId;
+        $oImage->save();
+
+        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
     }
 }
