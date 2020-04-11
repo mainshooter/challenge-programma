@@ -50,7 +50,8 @@ class PhotoalbumController extends Controller
 
     public function storePhoto(Request $request, $iId){
         $this->validate($request, [
-            'path' => 'image|max:10000'
+            'path' => 'image|max:10000',
+            'page_content' => 'string|nullable|min:1',
         ]);
 
         $oAlbum = Photoalbum::find($iId);
