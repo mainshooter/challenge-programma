@@ -26,7 +26,8 @@ class ReviewTest extends DuskTestCase
     public function CreateReviewTest() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'avans@gmail.com')->first());
-        $browser->visit('/reviews');
+        $browser->visit('/reviews')
+                ->clickLink('Akkoord');
         $browser->press('Review toevoegen');
         $browser->type('review_stars', 8);
         $browser->type('.ql-editor', 'Het evenement dat is georganiseerd was echt leuk! We hebben ook nieuwe dingen geleerd van de studenten');

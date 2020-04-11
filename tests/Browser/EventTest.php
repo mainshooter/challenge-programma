@@ -26,7 +26,8 @@ class EventTest extends DuskTestCase
     public function testCreate() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit('/admin/event');
+        $browser->visit('/admin/event')
+                ->clickLink('Akkoord');
         $browser->clickLink('Event toevoegen');
         $browser->type('event_name', 'Mijn geweldige event');
         $browser->type('event_description', 'Lorem ipsum da set a mon');
