@@ -15,7 +15,8 @@ class RegisterStudentTest extends DuskTestCase
      */
     public function testRegister(){
       $this->browse(function (Browser $browser) {
-          $browser->visit('/register/student');
+          $browser->visit('/register/student')
+                  ->clickLink('Akkoord');
           $browser->value("input[name=firstname]", "Henk");
           $browser->value("input[name=lastname]", "Gelens");
           $browser->value("input[name=phone]", "0612345678");

@@ -18,8 +18,8 @@ class AcceptUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
-            $browser->visit('/admin')
-                    ->clickLink('Accepteren Gebruikers')
+            $browser->visit('/admin/user/accept-users')
+                    ->clickLink('Akkoord')
                     ->clickLink('Accepteren')
                     ->assertSee('Gebruikers accepteren of weigeren');
         });

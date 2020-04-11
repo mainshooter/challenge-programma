@@ -114,6 +114,7 @@ Route::middleware('role:admin')->group(function () {
         Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
 
         Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
+        Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
     });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
