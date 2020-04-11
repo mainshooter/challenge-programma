@@ -28,5 +28,10 @@
             <a class="nav-link" href="{{ route('image.index')  }}">Carousel</a>
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <a class="nav-link" href="{{ route('photoalbum.overview') }}">Foto album</a>
+          </div>
+        </div>
     </div>
 @endsection

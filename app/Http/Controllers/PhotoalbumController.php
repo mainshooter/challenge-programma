@@ -16,6 +16,11 @@ class PhotoalbumController extends Controller
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum]);
     }
 
+    public function overview() {
+      $aPhotoalbums = Photoalbum::all();
+      return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
+    }
+
     public function createPhotoalbumPage(Request $request)
     {
         return view('photoalbum.create');
@@ -48,6 +53,12 @@ class PhotoalbumController extends Controller
         return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
     }
 
+    public function storePhotoPage(Request $request, Photoalbum $oPhotoalbum) {
+      return view('photoalbum/photo/create', [
+        'oPhotoalbum' => $oPhotoalbum,
+      ]);
+    }
+
     public function storePhoto(Request $request, $iId){
         $this->validate($request, [
             'path' => 'image|max:10000',
@@ -55,6 +66,10 @@ class PhotoalbumController extends Controller
         ]);
 
         $oAlbum = Photoalbum::find($iId);
+
+        if (is_null($oAlbum)) {
+          return redirect()->route('photoalbum.index');
+        }
 
         $oImage = new ImageFromAlbum();
 
