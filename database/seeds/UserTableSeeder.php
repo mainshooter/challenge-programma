@@ -50,15 +50,15 @@ class UserTableSeeder extends Seeder
           'role' => 'student',
         ]);
 
-        // DB::table('users')->insert([
-        //     'firstname' => encrypt('content'),
-        //     'lastname' => encrypt('writer'),
-        //     'phone' => '0612365874',
-        //     'is_accepted' => true,
-        //     'email' => 'content@gmail.com',
-        //     'password' => bcrypt('content'),
-        //     'role' => 'content-writer',
-        // ]);
+        DB::table('users')->insert([
+            'firstname' => encrypt('content'),
+            'lastname' => encrypt('writer'),
+            'phone' => '0612365874',
+            'is_accepted' => true,
+            'email' => 'content@gmail.com',
+            'password' => bcrypt('content'),
+            'role' => 'content-writer',
+        ]);
 
         DB::table('users')->insert([
           'firstname' => encrypt('Uitschrijven'),
