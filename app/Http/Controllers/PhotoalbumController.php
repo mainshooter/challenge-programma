@@ -33,7 +33,7 @@ class PhotoalbumController extends Controller
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
 
-        $sPath =  public_path() .  '/storage/photoalbum/' . $request->title;
+        $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;
         if (!File::isDirectory($sPath)) {
             File::makeDirectory($sPath, 0777, true, true);
         }
@@ -44,8 +44,15 @@ class PhotoalbumController extends Controller
     public function editPage($iId)
     {
         $oAlbum = Photoalbum::find($iId);
-
-        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
+        $allImages = ImageFromAlbum::all();
+        $aImages = [];
+        foreach($allImages as $image){
+            if($image->photoalbum_id == $iId){
+                $image->path = str_replace('public','/storage',$image->path);
+                $aImages[] = $image;
+            }
+        }
+        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
     }
 
     public function storePhoto(Request $request, $iId){
@@ -58,11 +65,11 @@ class PhotoalbumController extends Controller
         $oImage = new ImageFromAlbum();
 
         $oUpload = $request->file('path');
-        $sPath = $oUpload->store('public/photoalbum/'.$oAlbum->title);
+        $sPath = $oUpload->store('public/photoalbum/' . $iId);
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
         $oImage->save();
 
-        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
+        return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id] );    
     }
 }
