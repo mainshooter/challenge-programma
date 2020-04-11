@@ -28,8 +28,6 @@ class ImageFromAlbum extends Migration
      */
     public function down()
     {
-        Schema::table('image_from_album', function (Blueprint $table) {
-            //
-        });
+      Schema::drop('image_from_album');
     }
 }
