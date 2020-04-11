@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Photoalbum;
 use Illuminate\Http\Request;
 use LinkedinShare;
+use Session;
 
 class PhotoalbumController extends Controller
 {
@@ -37,6 +38,11 @@ class PhotoalbumController extends Controller
 
     public function editPage()
     {
+        return view('photoalbum.index');
+    }
+
+    public function delete() {
+        Session::flash('message', "De foto's zijn verwijdert!");
         return view('photoalbum.index');
     }
 }
