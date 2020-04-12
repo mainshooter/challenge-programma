@@ -42,7 +42,8 @@ class PhotoalbumController extends Controller
         if (!File::isDirectory($sPath)) {
             File::makeDirectory($sPath, 0777, true, true);
         }
-
+        
+        Session::flash('message', 'Fotoalbum is aangemaakt');
         return redirect()->route('photoalbum.edit', ['id' => $oPhotoalbum->id] );
     }
 
