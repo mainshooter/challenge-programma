@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="col">
                 <a class="nav-link" href="{{ route('photoalbum.create') }}">Fotoalbum</a>
             </div>
         </div>
