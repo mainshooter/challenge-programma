@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="row justify-content-center">Album {{ $oPhotoalbum->title}} bewerken</h2>
+    <h2 class="row justify-content-center">Album bewerken</h2>
 
     <div class="row">
         <div class="col">
@@ -34,7 +34,7 @@
         <table class="p-4 col table table-hover text-nowrap table-responsive">
             <thead>
                 <tr>
-                    <th scope="col">Foto's</th>
+                    <th scope="col">{{ $oPhotoalbum->title}} Foto's</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
