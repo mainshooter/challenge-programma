@@ -14,13 +14,12 @@
                 <label for="path">Foto uploaden</label>
                 <input type="file" name="path" class="form-control-file" id="path" required>
             </div>
-            <button type="submit" name="submit" onclick="clearInput(this)" class="btn btn-primary btn-md">Opslaan</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-md">Opslaan</button>
         </form>
     </div>
 
     @foreach ($aImages as $image)
     <div class="row justify-content-center">
-    
       <img src="{{$image->path}}">
     </div>
     @endforeach

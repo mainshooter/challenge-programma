@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use LinkedinShare;
 use Illuminate\Support\Facades\File;
 use Auth;
+use Session;
 
 class PhotoalbumController extends Controller
 {
@@ -64,16 +65,20 @@ class PhotoalbumController extends Controller
             'path' => 'image|max:10000'
         ]);
 
-        $oAlbum = Photoalbum::find($iId);
-
         $oImage = new ImageFromAlbum();
-
+        $oAlbum = Photoalbum::find($iId);
         $oUpload = $request->file('path');
+
+        if(is_null($oAlbum)){
+            return redirect()->route('photoalbum.index');
+        }
+
         $sPath = $oUpload->store('public/photoalbum/' . $iId);
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
         $oImage->save();
 
+        Session::flash('message', "Uw foto is succesvol opgeslagen.");
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id] );    
     }
 }
