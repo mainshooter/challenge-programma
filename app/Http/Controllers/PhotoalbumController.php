@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Photoalbum;
 use Illuminate\Http\Request;
 use LinkedinShare;
+use Session;
 
 class PhotoalbumController extends Controller
 {
@@ -32,6 +33,7 @@ class PhotoalbumController extends Controller
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
 
+        Session::flash('message', 'Fotoalbum is aangemaakt');
         return view('photoalbum.edit');
     }
 
