@@ -33,6 +33,7 @@ class PhotoalbumController extends Controller
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
 
+        Session::flash('message', 'Fotoalbum is aangemaakt');
         return view('photoalbum.edit');
     }
 
