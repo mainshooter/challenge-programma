@@ -1,6 +1,5 @@
 @extends('layout')
 @section('head')
-<script src="{{ asset('js/photoalbum.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css')}}">
 @endsection
 
@@ -19,7 +18,7 @@
                         <form action="{{ route('photoalbum.store.post', $oPhotoalbum->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
-                            @if(count($aImages)<1) <label>Uw fotoalbum is nog leeg, voeg snel foto's toe!</label>
+                            @if(count($aImages)<1) <label>Uw fotoalbum is leeg, voeg snel foto's toe!</label>
                                 @endif
                                 <div class="form-group">
                                     <input type="file" name="path" class="form-control-file" id="path" required>
@@ -32,8 +31,7 @@
         </div>
 
         @if(count($aImages)>0)
-        <table style="margin: auto; width: 50% !important;"
-            class="p-4 col table table-hover text-nowrap table-responsive">
+        <table class="p-4 col table table-hover text-nowrap table-responsive">
             <thead>
                 <tr>
                     <th scope="col">Foto's</th>
