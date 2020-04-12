@@ -1,10 +1,12 @@
 @extends('layout')
-
+@section('head')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css')}}">
+@endsection
 @section('content')
 
 <div class="container">
     @guest
-    @elseif(Auth::user()->getDutchRoleAttribute() == 'Admin' || Auth::user()->getDutchRoleAttribute() == 'Content writer')
+    @elseif($oUser->dutch_role == 'Admin' || $oUser->dutch_role == 'Content writer')
     <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
     @endif
     <h2 class="row justify-content-center">Tijdlijn</h2>

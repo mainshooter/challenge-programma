@@ -7,6 +7,7 @@ use App\ImageFromAlbum;
 use Illuminate\Http\Request;
 use LinkedinShare;
 use Illuminate\Support\Facades\File;
+use Auth;
 
 class PhotoalbumController extends Controller
 {
@@ -14,7 +15,9 @@ class PhotoalbumController extends Controller
     {
         $aPhotoalbum = Photoalbum::all();
 
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum]);
+        $oUser = Auth::user();
+
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
     public function createPhotoalbumPage(Request $request)
