@@ -82,4 +82,9 @@ class PhotoalbumController extends Controller
         Session::flash('message', "Uw foto is succesvol opgeslagen.");
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id] );    
     }
+
+    public function delete() {
+        Session::flash('message', "De foto's zijn verwijdert!");
+        return view('photoalbum.index');
+    }
 }
