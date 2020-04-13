@@ -57,7 +57,7 @@ class PhotoalbumController extends Controller
         $aImages = [];
         foreach ($allImages as $image) {
             if ($image->photoalbum_id == $iId) {
-                $image->path = '/storage'.$image->path;
+                $image->path = '/storage' . $image->path;
                 $aImages[] = $image;
             }
         }
