@@ -103,7 +103,7 @@ class PhotoalbumController extends Controller
                 $oImage->delete();
             }
         }
-
+        Session::flash('message', "De foto is verwijdert!");
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
 }
