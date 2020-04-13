@@ -57,7 +57,7 @@ class PhotoalbumController extends Controller
         $aImages = [];
         foreach ($allImages as $image) {
             if ($image->photoalbum_id == $iId) {
-                $image->path = str_replace('public', '/storage', $image->path);
+                $image->path = '/storage'.$image->path;
                 $aImages[] = $image;
             }
         }
@@ -78,7 +78,8 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        $sPath = $oUpload->store('public/photoalbum/' . $iId);
+        $oUpload->store('public/photoalbum/' . $iId);
+        $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
         $oImage->save();
@@ -95,15 +96,15 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        $sPath = public_path() . str_replace('public', '\storage', $oImage->path);
+        $sPath =  $oImage->path;
 
-        if (File::exists($sPath)) {
-            File::delete($sPath);
-            if (!File::exists($sPath)) {
+        if (Storage::disk('public')->exists($sPath)) {
+            Storage::disk('public')->delete($sPath);
+            if (!Storage::disk('public')->exists($sPath)) {
                 $oImage->delete();
+                Session::flash('message', "De foto is verwijdert!");
             }
         }
-        Session::flash('message', "De foto is verwijdert!");
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
 }
