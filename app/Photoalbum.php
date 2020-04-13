@@ -8,4 +8,9 @@ class Photoalbum extends Model
 {
     protected $table = 'photoalbum';
     public $timestamps = false;
+
+    public function photos()
+    {
+        return $this->hasMany(ImageFromAlbum::class);
+    }
 }

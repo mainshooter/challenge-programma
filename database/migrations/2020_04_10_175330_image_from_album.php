@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PhotoalbumTable extends Migration
+class ImageFromAlbum extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class PhotoalbumTable extends Migration
      */
     public function up()
     {
-        Schema::create('photoalbum', function(Blueprint $table) {
+        Schema::create('image_from_album', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string('title');
-            $table->string('description');
+            $table->string('path');
+            $table->bigInteger('photoalbum_id')->nullable()->unsigned();
+            $table->foreign('photoalbum_id')->references('id')->on('photoalbum')->onDelete('cascade');
         });
     }
 
@@ -27,6 +28,6 @@ class PhotoalbumTable extends Migration
      */
     public function down()
     {
-        Schema::drop("page");
+        Schema::dropIfExists('image_from_album');
     }
 }
