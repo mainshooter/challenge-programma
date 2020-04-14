@@ -123,4 +123,14 @@ class PhotoalbumController extends Controller
         'oImage' => $oImage,
       ]);
     }
+
+    public function editPhoto(Request $request, ImageFromAlbum $oImage) {
+      $this->validate($request, [
+          'page_content' => 'string|nullable|min:1',
+      ]);
+
+      $oImage->description = $request->page_content;
+      $oImage->save();
+      return redirect()->route('photoalbum.edit', $oImage->photoalbum);
+    }
 }

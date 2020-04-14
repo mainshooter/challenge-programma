@@ -9,6 +9,7 @@
         </a>
         <h1>Bewerken van foto omschrijving</h1>
         <form class="form editer-form" method="post">
+          @csrf
           <div class="form-group">
             <label>Omschrijving bewerken</label>
             <div id="editor">
