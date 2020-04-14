@@ -50,4 +50,4 @@ RUN php artisan view:clear
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
-ENTRYPOINT php /var/www/html/artisan migrate:fresh --seed --force && apachectl -D FOREGROUND
+ENTRYPOINT php /var/www/html/artisan migrate --seed --force && apachectl -D FOREGROUND
