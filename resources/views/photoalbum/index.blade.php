@@ -21,12 +21,13 @@
                         <h5 class="p-2">{{$album->description}}</h5>
                         <div class="widget-container">
                             <div class="widget row image-tile">
+                                @foreach($album->photos as $oPhoto)
                                 <div class="tile col-md-5 image-tile-background">
+                                    <img src="{{$oPhoto->path}}">
                                     <p>{{$album->description}}</p>
                                 </div>
-                                <div class="tile col-md-5 image-tile-background">
-                                    <p>{{$album->description}}</p>
-                                </div>
+                                @endforeach
+
                                 <div class="tile more-images col-md-2">
                                     <div class="images-number">10+</div>
                                     Foto's
