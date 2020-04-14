@@ -41,15 +41,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($aImages as $image)
+                @foreach ($aImages as $oImage)
                 <tr>
                     <td>
-                        <img class="img-thumbnail rounded mx-auto d-block" src="{{$image->path}}">
+                        <img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->path}}">
                     </td>
                     <td>
-                        <a class="btn btn-danger btn-md" href=" {{ route('photoalbum.delete.photo', $image->id)}}">
-                          Verwijderen
-                        </a>
+                      <a class="btn btn-primary" href="{{ route('photoalbum.photo.create', $oImage) }}">
+                        Bewerken
+                      </a>
+                      <a class="btn btn-danger btn-md" href=" {{ route('photoalbum.delete.photo', $oImage->id)}}">
+                        Verwijderen
+                      </a>
                     </td>
                 </tr>
                 @endforeach

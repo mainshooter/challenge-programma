@@ -117,4 +117,10 @@ class PhotoalbumController extends Controller
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
+
+    public function editPhotoPage(ImageFromAlbum $oImage) {
+      return view('photoalbum.photo.edit', [
+        'oImage' => $oImage,
+      ]);
+    }
 }

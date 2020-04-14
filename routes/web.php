@@ -62,6 +62,9 @@ Route::middleware('role:admin|content-writer')->group(function() {
 
       Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
       Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
+
+      Route::get('photo/{oImage}', 'PhotoalbumController@editPhotoPage')->name('photoalbum.photo.create');
+      Route::post('photo/{oImage}', 'PhotoalbumController@editPhoto')->name('photoalbum.photo.create.post');
   });
 });
 
