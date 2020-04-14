@@ -133,3 +133,8 @@
     background: url('https://picsum.photos/300') no-repeat center top; 
     background-size: cover;
 }
+
+table {
+    margin: auto; 
+    width: 50% !important;
+}
