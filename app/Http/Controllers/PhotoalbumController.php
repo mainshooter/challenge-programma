@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Photoalbum;
 use App\ImageFromAlbum;
 use Illuminate\Http\Request;
+use LinkedinShare;
 use Illuminate\Support\Facades\File;
+use Auth;
+use Session;
 
 class PhotoalbumController extends Controller
 {
@@ -13,7 +16,9 @@ class PhotoalbumController extends Controller
     {
         $aPhotoalbum = Photoalbum::all();
 
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum]);
+        $oUser = Auth::user();
+
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
     public function overview() {
@@ -38,25 +43,27 @@ class PhotoalbumController extends Controller
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
 
-        $sPath =  public_path() .  '/storage/photoalbum/' . $request->title;
+        $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;
         if (!File::isDirectory($sPath)) {
             File::makeDirectory($sPath, 0777, true, true);
         }
 
+        Session::flash('message', 'Fotoalbum is aangemaakt');
         return redirect()->route('photoalbum.edit', ['id' => $oPhotoalbum->id] );
     }
 
     public function editPage($iId)
     {
         $oAlbum = Photoalbum::find($iId);
-
-        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
-    }
-
-    public function storePhotoPage(Request $request, Photoalbum $oPhotoalbum) {
-      return view('photoalbum/photo/create', [
-        'oPhotoalbum' => $oPhotoalbum,
-      ]);
+        $allImages = ImageFromAlbum::all();
+        $aImages = [];
+        foreach($allImages as $image){
+            if($image->photoalbum_id == $iId){
+                $image->path = str_replace('public','/storage',$image->path);
+                $aImages[] = $image;
+            }
+        }
+        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
     }
 
     public function storePhoto(Request $request, $iId){
@@ -65,20 +72,25 @@ class PhotoalbumController extends Controller
             'page_content' => 'string|nullable|min:1',
         ]);
 
+        $oImage = new ImageFromAlbum();
         $oAlbum = Photoalbum::find($iId);
+        $oUpload = $request->file('path');
 
-        if (is_null($oAlbum)) {
-          return redirect()->route('photoalbum.index');
+        if(is_null($oAlbum)){
+            return redirect()->route('photoalbum.index');
         }
 
-        $oImage = new ImageFromAlbum();
-
-        $oUpload = $request->file('path');
-        $sPath = $oUpload->store('public/photoalbum/'.$oAlbum->title);
+        $sPath = $oUpload->store('public/photoalbum/' . $iId);
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
         $oImage->save();
 
-        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum]);
+        Session::flash('message', "Uw foto is succesvol opgeslagen.");
+        return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id] );
+    }
+
+    public function delete() {
+        Session::flash('message', "De foto's zijn verwijdert!");
+        return view('photoalbum.index');
     }
 }

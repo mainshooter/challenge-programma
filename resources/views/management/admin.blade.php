@@ -29,9 +29,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            <a class="nav-link" href="{{ route('photoalbum.overview') }}">Foto album</a>
-          </div>
+            <div class="col">
+                <a class="nav-link" href="{{ route('photoalbum.create') }}">Fotoalbum</a>
+            </div>
         </div>
     </div>
 @endsection

@@ -50,6 +50,6 @@ class ReviewController extends Controller
         $oReview->rating = $request->review_stars;
         $oReview->company()->associate($oUser);
         $oReview->save();
-        return redirect()->route("event.index");
+        return redirect()->route("reviews.index");
     }
 }
