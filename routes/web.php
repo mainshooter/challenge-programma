@@ -54,6 +54,15 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
     Route::post('create', "CmsController@create")->name("cms.create.post");
   });
+  Route::prefix('photoalbum')->group(function() {
+      Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
+      Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
+      Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
+      Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
+
+      Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
+      Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
+  });
 });
 
 Route::middleware('role:student')->group(function() {
@@ -108,14 +117,7 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/', 'ImageController@index')->name('image.index');
       Route::post('/store', 'ImageController@store')->name('image.store.post');
     });
-    Route::prefix('photoalbum')->group(function() {
-        Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
-        Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
-        Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
 
-        Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
-        Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
-    });
     Route::prefix('mail')->group(function() {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
       Route::post('/create', 'MailController@create')->name('mail.create.post');
