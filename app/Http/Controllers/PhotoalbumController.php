@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 use LinkedinShare;
 use Illuminate\Support\Facades\File;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 use Session;
+
+
 
 class PhotoalbumController extends Controller
 {
@@ -35,7 +38,7 @@ class PhotoalbumController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description'=>['required', 'string'],
+            'description' => ['required', 'string'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
@@ -49,24 +52,23 @@ class PhotoalbumController extends Controller
         }
 
         Session::flash('message', 'Fotoalbum is aangemaakt');
-        return redirect()->route('photoalbum.edit', ['id' => $oPhotoalbum->id] );
+        return redirect()->route('photoalbum.edit', ['id' => $oPhotoalbum->id]);
     }
 
     public function editPage($iId)
     {
         $oAlbum = Photoalbum::find($iId);
-        $allImages = ImageFromAlbum::all();
-        $aImages = [];
-        foreach($allImages as $image){
-            if($image->photoalbum_id == $iId){
-                $image->path = str_replace('public','/storage',$image->path);
-                $aImages[] = $image;
-            }
+        $aImages = $oAlbum->photos;
+
+        foreach ($aImages as $image) {
+            $image->path = '/storage' . $image->path;
         }
+
         return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
     }
 
-    public function storePhoto(Request $request, $iId){
+    public function storePhoto(Request $request, $iId)
+    {
         $this->validate($request, [
             'path' => 'image|max:10000',
             'page_content' => 'string|nullable|min:1',
@@ -76,21 +78,42 @@ class PhotoalbumController extends Controller
         $oAlbum = Photoalbum::find($iId);
         $oUpload = $request->file('path');
 
-        if(is_null($oAlbum)){
+        if (is_null($oAlbum)) {
             return redirect()->route('photoalbum.index');
         }
 
-        $sPath = $oUpload->store('public/photoalbum/' . $iId);
+        Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
+        $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
         $oImage->save();
 
         Session::flash('message', "Uw foto is succesvol opgeslagen.");
-        return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id] );
+        return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 
-    public function delete() {
-        Session::flash('message', "De foto's zijn verwijdert!");
-        return view('photoalbum.index');
+    public function deletePhoto(Request $request, $iId)
+    {
+        $oImage = ImageFromAlbum::find($iId);
+
+        if (is_null($oImage)) {
+            return redirect()->route('photoalbum.index');
+        }
+
+        $sPath =  $oImage->path;
+
+        if (Storage::disk('public')->exists($sPath)) {
+            Storage::disk('public')->delete($sPath);
+            if (!Storage::disk('public')->exists($sPath)) {
+                $oImage->delete();
+                Session::flash('message', "De foto is verwijdert!");
+            }
+        }
+        else{
+            $oImage->delete();
+            Session::flash('message', "De foto is verwijdert!");
+        }
+
+        return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
 }
