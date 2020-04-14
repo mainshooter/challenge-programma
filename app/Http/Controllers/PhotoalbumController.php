@@ -53,14 +53,12 @@ class PhotoalbumController extends Controller
     public function editPage($iId)
     {
         $oAlbum = Photoalbum::find($iId);
-        $allImages = ImageFromAlbum::all();
-        $aImages = [];
-        foreach ($allImages as $image) {
-            if ($image->photoalbum_id == $iId) {
-                $image->path = '/storage' . $image->path;
-                $aImages[] = $image;
-            }
+        $aImages = $oAlbum->photos;
+
+        foreach ($aImages as $image) {
+            $image->path = '/storage' . $image->path;
         }
+
         return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
     }
 
@@ -78,7 +76,7 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        $oUpload->store('public/photoalbum/' . $iId);
+        Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
         $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
@@ -105,6 +103,11 @@ class PhotoalbumController extends Controller
                 Session::flash('message', "De foto is verwijdert!");
             }
         }
+        else{
+            $oImage->delete();
+            Session::flash('message', "De foto is verwijdert!");
+        }
+
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
 }

@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="container">
-    @guest
-    @elseif($oUser->dutch_role == 'Admin' || $oUser->dutch_role == 'Content writer')
+    @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
     <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
     @endif
+
     <h2 class="row justify-content-center">Tijdlijn</h2>
     <div class="row justify-content-center">
         @foreach ($aPhotoalbum as $album)
@@ -18,8 +18,10 @@
                     <h5 class="m-0">{{$album->title}} - Bedrijfsnaam, 07-04-2020 </h5>
                 </div>
                 <div class="card-body">
+                    @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
                     <a class="btn btn-primary float-right"
                         href="{{route('photoalbum.edit', ['id' => $album->id])}}">Bewerken</a>
+                    @endif
                     <h5 class="p-2">{{$album->description}}</h5>
                     <div class="widget-container">
                         <div class="widget row image-tile">
