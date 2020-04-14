@@ -14,7 +14,7 @@ class PhotoText extends Migration
     public function up()
     {
         Schema::table('image_from_album', function(Blueprint $table) {
-          $table->text('description');
+          $table->text('description')->nullable();
         });
     }
 

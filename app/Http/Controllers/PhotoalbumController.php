@@ -86,6 +86,7 @@ class PhotoalbumController extends Controller
         $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
         $oImage->path = $sPath;
         $oImage->photoalbum_id = $iId;
+        $oImage->description = $request->page_content;
         $oImage->save();
 
         Session::flash('message', "Uw foto is succesvol opgeslagen.");
