@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a href="{{ URL::previous() }}" class="btn btn-primary">Terug</a>
+                <a href="{{route('user.index')}}" class="btn btn-primary">Terug</a>
 
                 <div class="card">
                     <div class="card-header">Gebruiker aanmaken</div>
