@@ -47,8 +47,9 @@ RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite && a2enmod expires
 RUN service apache2 restart
 
+RUN php artisan config:cache
+RUN php artisan view:clear
+
 RUN chown 755 /var/www/html/bootstrap/cache
 
-RUN php /var/www/html/artisan queue:restart
-
-ENTRYPOINT php /var/www/html/artisan migrate --force && php /var/www/html/artisan view:clear --force && php /var/www/html/artisan config:cache --force && apachectl -D FOREGROUND
+ENTRYPOINT php /var/www/html/artisan migrate --force && apachectl -D FOREGROUND
