@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <a href="{{route('user.index')}}" class="btn btn-primary">Terug</a>
                 <div class="card">
                     <div class="card-header">Admin Wijzigen</div>
                     <div class="card-body">
