@@ -56,4 +56,4 @@ RUN php artisan view:clear
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
-ENTRYPOINT php /var/www/html/artisan config:clear && php /var/www/html/artisan config:cache && php /var/www/html/artisan migrate --force && "/usr/bin/supervisord -c /var/www/html/supervisord.conf -n
+ENTRYPOINT php /var/www/html/artisan config:clear && php /var/www/html/artisan config:cache && php /var/www/html/artisan migrate --force && /usr/bin/supervisord -c /var/www/html/supervisord.conf -n
