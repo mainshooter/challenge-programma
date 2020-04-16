@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\File;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use App\Event;
 
 
 
 class PhotoalbumController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $aPhotoalbum = Photoalbum::all();
 
         $oUser = Auth::user();
@@ -24,21 +24,24 @@ class PhotoalbumController extends Controller
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
-    public function createPhotoalbumPage(Request $request)
-    {
-        return view('photoalbum.create');
+    public function createPhotoalbumPage(Request $request) {
+        $aEvents = Event::where('is_accepted', true)->get();
+        return view('photoalbum.create', [
+          'aEvents' => $aEvents,
+        ]);
     }
 
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
         $request->validate([
             'title' => ['required', 'string', 'max:50'],
             'description' => ['required', 'string'],
+            'event' => ['nullable', 'exists:event,id'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
         $oPhotoalbum->title = $request->title;
         $oPhotoalbum->description = $request->description;
+        $oPhotoalbum->event_id = $request->event;
         $oPhotoalbum->save();
 
         $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;
@@ -50,8 +53,7 @@ class PhotoalbumController extends Controller
         return redirect()->route('photoalbum.edit', ['id' => $oPhotoalbum->id]);
     }
 
-    public function editPage($iId)
-    {
+    public function editPage($iId) {
         $oAlbum = Photoalbum::find($iId);
         $aImages = $oAlbum->photos;
 
@@ -62,8 +64,7 @@ class PhotoalbumController extends Controller
         return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
     }
 
-    public function storePhoto(Request $request, $iId)
-    {
+    public function storePhoto(Request $request, $iId) {
         $this->validate($request, [
             'path' => 'image|max:10000'
         ]);
@@ -86,8 +87,7 @@ class PhotoalbumController extends Controller
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 
-    public function deletePhoto(Request $request, $iId)
-    {
+    public function deletePhoto(Request $request, $iId) {
         $oImage = ImageFromAlbum::find($iId);
 
         if (is_null($oImage)) {

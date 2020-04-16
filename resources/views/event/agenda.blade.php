@@ -34,6 +34,7 @@
               <a href="">Inschrijven</a>
             </button>
           @endif
+          <a href="" id="event_photoalbum">Fotoalbum</a>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
         </div>
       </div>
@@ -173,6 +174,7 @@
           let modalEnd = modal.querySelector('.modal-end-time');
           let modalPoint = modal.querySelector('.modal-point');
           let studentSignup = modal.querySelector('.student-signup a');
+          let photoalbumBtn = modal.querySelector('#event_photoalbum');
           fetch("/agenda/detail/" + event.event.id)
             .then(response => {
               return response.json();
@@ -185,6 +187,10 @@
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
+              console.log(data);
+              if (data.photoalbum_id) {
+                photoalbumBtn.href= "/photoalbum/" + data.photoalbum_id;
+              }
               try {
                 studentSignup.href = "/student/event/register/" + data.id;
               } catch (e) {}

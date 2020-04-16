@@ -13,9 +13,9 @@ class LinkEventToAlbum extends Migration
      */
     public function up()
     {
-        Schema::table('photoalbum', function (Blueprint $table) {
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('event');
+        Schema::table('event', function (Blueprint $table) {
+            $table->unsignedBigInteger('photoalbum_id')->nullable();
+            $table->foreign('photoalbum_id')->references('id')->on('photoalbum');
         });
     }
 
@@ -26,8 +26,8 @@ class LinkEventToAlbum extends Migration
      */
     public function down()
     {
-        Schema::table('photoalbum', function (Blueprint $table) {
-            $table->dropColumn('event_id');
+        Schema::table('event', function (Blueprint $table) {
+            $table->dropColumn('photoalbum_id');
         });
     }
 }
