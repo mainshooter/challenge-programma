@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
         libzip-dev \
         libonig-dev \
         graphviz \
+        cron \
+        supervisor \
 
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
@@ -36,6 +38,8 @@ RUN composer install
 USER root
 
 COPY ./crontab /etc/crontab
+RUN chmod 0644 /etc/crontab
+RUN service cron start
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -52,4 +56,4 @@ RUN php artisan view:clear
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
-ENTRYPOINT php /var/www/html/artisan migrate --force && apachectl -D FOREGROUND
+ENTRYPOINT php /var/www/html/artisan config:clear && php /var/www/html/artisan config:cache && php /var/www/html/artisan migrate --force && /usr/bin/supervisord -c /var/www/html/supervisord.conf -n
