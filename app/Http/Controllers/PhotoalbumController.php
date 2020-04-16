@@ -110,4 +110,28 @@ class PhotoalbumController extends Controller
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
+
+    public function orderByDateAsc()
+    {
+        $aPhotoalbum = Photoalbum::all()
+                        ->join('image_from_album', 'photoalbum.id', '=', 'image_from_album.photoalbum_id')
+                        ->join('image', 'image_from_album.id', '=', 'image.id')
+                        ->orderBy('image.created_at', 'asc');
+
+        $oUser = Auth::user();
+
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
+    }
+
+    public function orderByDateDesc()
+    {
+        $aPhotoalbum = Photoalbum::all()
+                        ->join('image_from_album', 'photoalbum.id', '=', 'image_from_album.photoalbum_id')
+                        ->join('image', 'image_from_album.id', '=', 'image.id')
+                        ->orderBy('image.created_at', 'desc');
+
+        $oUser = Auth::user();
+
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
+    }
 }

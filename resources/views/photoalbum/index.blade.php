@@ -11,6 +11,10 @@
 
     <h2 class="row justify-content-center">Tijdlijn</h2>
     <div class="row justify-content-center">
+        <a class="btn btn-primary float-right mx-1" href="{{ route('photoalbum.orderAsc')}}">Oudste eerst</a>
+        <a class="btn btn-primary float-right mx-1" href="{{ route('photoalbum.orderDesc')}}">Nieuwste eerst</a>
+    </div>
+    <div class="row justify-content-center">
         @foreach ($aPhotoalbum as $album)
         <div class="col-md-8 p-4">
             <div class="card">

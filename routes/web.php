@@ -55,6 +55,9 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::post('create', "CmsController@create")->name("cms.create.post");
   });
   Route::prefix('photoalbum')->group(function() {
+      Route::get('', 'PhotoalbumController@orderByDateAsc')->name('photoalbum.orderAsc');
+      Route::get('', 'PhotoalbumController@orderByDateDesc')->name('photoalbum.orderDesc');
+
       Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
       Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
       Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
