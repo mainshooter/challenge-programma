@@ -32,8 +32,7 @@
         </div>
       </div>
       <div class="col-7">
-        @if(count($aImages)>0)
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>{{ $oPhotoalbum->title}} Foto's</th>
@@ -58,7 +57,6 @@
                 @endforeach
             </tbody>
         </table>
-        @endif
       </div>
     </div>
 </div>
