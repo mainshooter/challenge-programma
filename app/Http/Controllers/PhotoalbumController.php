@@ -25,7 +25,7 @@ class PhotoalbumController extends Controller
     }
 
     public function createPhotoalbumPage(Request $request) {
-        $aEvents = Event::where('is_accepted', true)->get();
+        $aEvents = Event::where('is_accepted', true)->where('photoalbum_id', NULL)->get();
         return view('photoalbum.create', [
           'aEvents' => $aEvents,
         ]);
@@ -114,9 +114,5 @@ class PhotoalbumController extends Controller
         }
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
-    }
-
-    public function view() {
-
     }
 }

@@ -34,7 +34,8 @@
               <a href="">Inschrijven</a>
             </button>
           @endif
-          <a href="" id="event_photoalbum">Fotoalbum</a>
+          <div class="event-photoalbum-container">
+          </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
         </div>
       </div>
@@ -174,12 +175,13 @@
           let modalEnd = modal.querySelector('.modal-end-time');
           let modalPoint = modal.querySelector('.modal-point');
           let studentSignup = modal.querySelector('.student-signup a');
-          let photoalbumBtn = modal.querySelector('#event_photoalbum');
+          let photoalbumContainer = modal.querySelector('.event-photoalbum-container');
           fetch("/agenda/detail/" + event.event.id)
             .then(response => {
               return response.json();
             })
             .then(data => {
+              photoalbumContainer.innerHtml = "";
               let housenumberAdditionString = data.house_number_addition ? data.house_number_addition : " ";
               modalTitle.innerText = data.name;
               modalDescription.innerText = data.description;
@@ -187,9 +189,12 @@
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
-              console.log(data);
               if (data.photoalbum_id) {
-                photoalbumBtn.href= "/photoalbum/" + data.photoalbum_id;
+                let link = document.createElement('a');
+                link.setAttribute("href", '/photoalbum/view/' + data.photoalbum_id);
+                link.classList.add('btn', 'btn-info');
+                link.innerText = "Fotoalbum bekijken";
+                photoalbumContainer.appendChild(link);
               }
               try {
                 studentSignup.href = "/student/event/register/" + data.id;
