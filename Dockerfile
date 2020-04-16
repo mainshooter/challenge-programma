@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
         libonig-dev \
         graphviz \
         cron \
+        supervisor \
 
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
@@ -55,4 +56,4 @@ RUN php artisan view:clear
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
-ENTRYPOINT php /var/www/html/artisan config:clear && php /var/www/html/artisan config:cache && php /var/www/html/artisan migrate --force && apachectl -D FOREGROUND
+ENTRYPOINT php /var/www/html/artisan config:clear && php /var/www/html/artisan config:cache && php /var/www/html/artisan migrate --force && "/usr/bin/supervisord -c /var/www/html/supervisord.conf -n
