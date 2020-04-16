@@ -55,13 +55,17 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::post('create', "CmsController@create")->name("cms.create.post");
   });
   Route::prefix('photoalbum')->group(function() {
-      Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
-      Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
-      Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
-      Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
+    Route::get('overview', 'PhotoalbumController@overview')->name('photoalbum.overview');
+    Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
+    Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
+    Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.post');
+    Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
 
-      Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
-      Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
+    Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
+    Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
+
+    Route::get('photo/{oImage}', 'PhotoalbumController@editPhotoPage')->name('photoalbum.photo.create');
+    Route::post('photo/{oImage}', 'PhotoalbumController@editPhoto')->name('photoalbum.photo.create.post');
   });
 });
 
@@ -131,5 +135,5 @@ Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
 
 Route::prefix('photoalbum')->group(function () {
-Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
+  Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
 });
