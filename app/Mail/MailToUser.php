@@ -29,8 +29,7 @@ class MailToUser extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'))
-                    ->view('mail/sendmail', [
+        return $this->view('mail/sendmail', [
                       'sText' => $this->view,
                     ]);
     }
