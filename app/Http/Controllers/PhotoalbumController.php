@@ -63,8 +63,12 @@ class PhotoalbumController extends Controller
         foreach ($aImages as $image) {
             $image->path = '/storage' . $image->path;
         }
-
-        return view('photoalbum.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
+        if ($aImages->isEmpty()) {
+          return view('photoalbum.edit.edit-no-photos', ['oPhotoalbum' => $oAlbum]);
+        }
+        else {
+          return view('photoalbum.edit.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
+        }
     }
 
     public function storePhoto(Request $request, $iId)
