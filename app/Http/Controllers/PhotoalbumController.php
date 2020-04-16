@@ -41,8 +41,13 @@ class PhotoalbumController extends Controller
         $oPhotoalbum = new Photoalbum();
         $oPhotoalbum->title = $request->title;
         $oPhotoalbum->description = $request->description;
-        $oPhotoalbum->event_id = $request->event;
         $oPhotoalbum->save();
+
+        $oEvent = Event::find($request->event);
+        if (!is_null($oEvent)) {
+          $oEvent->photoalbum_id = $oPhotoalbum->id;
+          $oEvent->save();
+        }
 
         $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;
         if (!File::isDirectory($sPath)) {
@@ -109,5 +114,9 @@ class PhotoalbumController extends Controller
         }
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
+    }
+
+    public function view() {
+
     }
 }
