@@ -18,7 +18,7 @@ class PhotoalbumController extends Controller
     public function index()
     {
         $aPhotoalbum = Photoalbum::all();
-
+        
         $oUser = Auth::user();
 
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
