@@ -4,10 +4,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <a href="{{route('user.index')}}" class="btn btn-primary">Terug</a>
+
                 <div class="card">
                     <div class="card-header">Gebruiker aanmaken</div>
 
                     <div class="card-body">
+                        @component('component/formError')
+                        @endcomponent
                         <form method="POST" action="{{ route('user.create.post') }}">
                             @csrf
                             <div class="form-group row">
