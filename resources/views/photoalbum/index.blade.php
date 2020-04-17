@@ -27,11 +27,13 @@
                             <div class="widget row image-tile">
                                 @if(!empty($album->photos))
                                     @foreach($album->photos as $oPhoto)
+
                                         <div class="tile col-md-5">
                                             <img src="{{Storage::url($oPhoto->path)}}"/>
                                             <p>{{$album->description}}</p>
                                         </div>
                                         @break($loop->index == 1)
+
                                     @endforeach
                                 @endif
                                 <div class="tile more-images col-md-2">
