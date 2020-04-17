@@ -24,10 +24,9 @@ class PhotoalbumController extends Controller
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
-    public function overview()
-    {
-        $aPhotoalbums = Photoalbum::all();
-        return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
+    public function overview() {
+      $aPhotoalbums = Photoalbum::all();
+      return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
     }
 
     public function createPhotoalbumPage(Request $request)
@@ -73,6 +72,10 @@ class PhotoalbumController extends Controller
 
     public function storePhoto(Request $request, $iId)
     {
+        $this->validate($request, [
+            'path' => 'image|max:10000'
+        ]);
+
         $oImage = new ImageFromAlbum();
         $oAlbum = Photoalbum::find($iId);
 
@@ -127,23 +130,5 @@ class PhotoalbumController extends Controller
         }
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
-    }
-
-    public function editPhotoPage(ImageFromAlbum $oImage)
-    {
-        return view('photoalbum.photo.edit', [
-            'oImage' => $oImage,
-        ]);
-    }
-
-    public function editPhoto(Request $request, ImageFromAlbum $oImage)
-    {
-        $this->validate($request, [
-            'page_content' => 'string|nullable|min:1',
-        ]);
-
-        $oImage->description = $request->page_content;
-        $oImage->save();
-        return redirect()->route('photoalbum.edit', $oImage->photoalbum);
     }
 }
