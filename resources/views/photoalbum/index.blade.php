@@ -10,8 +10,8 @@
     <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
     @endif
     <h2 class="row justify-content-center">Tijdlijn</h2>
-        <div class="row justify-content-center">
-            @foreach ($aPhotoalbum as $album)
+        <div class="row justify-content-center">@foreach ($aPhotoalbum as $album)
+
             <div class="col-md-8 p-4">
                 <div class="card">
                     <div class="card-header">
@@ -27,13 +27,10 @@
                             <div class="widget row image-tile">
                                 @if(!empty($album->photos))
                                     @foreach($album->photos as $oPhoto)
-
-                                        <div class="tile col-md-5">
-                                            <img src="{{Storage::url($oPhoto->path)}}"/>
-                                            <p>{{$album->description}}</p>
+                                        <div class="col-md-5">
+                                            <img class="img-thumbnail rounded mx-auto d-block" src="{{Storage::url($oPhoto->path)}}">
                                         </div>
                                         @break($loop->index == 1)
-
                                     @endforeach
                                 @endif
                                 <div class="tile more-images col-md-2">
@@ -41,11 +38,14 @@
                                     Foto's
                                 </div>
                             </div>
+                            <a class="btn btn-primary float-left"
+                               href="{{route('photoalbum.photos', ['id' => $album->id])}}">Foto's bekijken</a>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
+
         </div>
 </div>
 
