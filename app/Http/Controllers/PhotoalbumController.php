@@ -24,9 +24,10 @@ class PhotoalbumController extends Controller
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
-    public function overview() {
-      $aPhotoalbums = Photoalbum::all();
-      return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
+    public function overview()
+    {
+        $aPhotoalbums = Photoalbum::all();
+        return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
     }
 
     public function createPhotoalbumPage(Request $request)
@@ -64,36 +65,43 @@ class PhotoalbumController extends Controller
             $image->path = '/storage' . $image->path;
         }
         if ($aImages->isEmpty()) {
-          return view('photoalbum.edit.edit-no-photos', ['oPhotoalbum' => $oAlbum]);
-        }
-        else {
-          return view('photoalbum.edit.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
+            return view('photoalbum.edit.edit-no-photos', ['oPhotoalbum' => $oAlbum]);
+        } else {
+            return view('photoalbum.edit.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
         }
     }
 
     public function storePhoto(Request $request, $iId)
     {
-        $this->validate($request, [
-            'path' => 'image|max:10000',
-            'page_content' => 'string|nullable|min:1',
-        ]);
-
         $oImage = new ImageFromAlbum();
         $oAlbum = Photoalbum::find($iId);
-        $oUpload = $request->file('path');
 
         if (is_null($oAlbum)) {
             return redirect()->route('photoalbum.index');
         }
 
-        Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
-        $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
-        $oImage->path = $sPath;
-        $oImage->photoalbum_id = $iId;
-        $oImage->description = $request->page_content;
-        $oImage->save();
+        if (!$request->has('albumtitle')) {
+            $oUpload = $request->file('path');
 
-        Session::flash('message', "Uw foto is succesvol opgeslagen.");
+            $this->validate($request, [
+                'path' => 'image|max:10000',
+                'page_content' => 'string|nullable|min:1',
+            ]);
+
+            Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
+            $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
+            $oImage->path = $sPath;
+            $oImage->photoalbum_id = $iId;
+            $oImage->description = $request->page_content;
+            $oImage->save();
+
+            Session::flash('message', "Uw foto is succesvol opgeslagen.");
+        } else {
+            $oAlbum->title = $request->albumtitle;
+            $oAlbum->save();
+            Session::flash('message', "Album titel is succesvol opgeslagen.");
+        }
+
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 
@@ -113,8 +121,7 @@ class PhotoalbumController extends Controller
                 $oImage->delete();
                 Session::flash('message', "De foto is verwijdert!");
             }
-        }
-        else{
+        } else {
             $oImage->delete();
             Session::flash('message', "De foto is verwijdert!");
         }
@@ -122,19 +129,21 @@ class PhotoalbumController extends Controller
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
 
-    public function editPhotoPage(ImageFromAlbum $oImage) {
-      return view('photoalbum.photo.edit', [
-        'oImage' => $oImage,
-      ]);
+    public function editPhotoPage(ImageFromAlbum $oImage)
+    {
+        return view('photoalbum.photo.edit', [
+            'oImage' => $oImage,
+        ]);
     }
 
-    public function editPhoto(Request $request, ImageFromAlbum $oImage) {
-      $this->validate($request, [
-          'page_content' => 'string|nullable|min:1',
-      ]);
+    public function editPhoto(Request $request, ImageFromAlbum $oImage)
+    {
+        $this->validate($request, [
+            'page_content' => 'string|nullable|min:1',
+        ]);
 
-      $oImage->description = $request->page_content;
-      $oImage->save();
-      return redirect()->route('photoalbum.edit', $oImage->photoalbum);
+        $oImage->description = $request->page_content;
+        $oImage->save();
+        return redirect()->route('photoalbum.edit', $oImage->photoalbum);
     }
 }
