@@ -24,9 +24,10 @@ class PhotoalbumController extends Controller
         return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
     }
 
-    public function overview() {
-      $aPhotoalbums = Photoalbum::all();
-      return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
+    public function overview()
+    {
+        $aPhotoalbums = Photoalbum::all();
+        return view('photoalbum.overview', ['aPhotoalbums' => $aPhotoalbums]);
     }
 
     public function createPhotoalbumPage(Request $request)
@@ -73,7 +74,8 @@ class PhotoalbumController extends Controller
     public function storePhoto(Request $request, $iId)
     {
         $this->validate($request, [
-            'path' => 'image|max:10000'
+            'path' => 'image|max:10000',
+            'page_content' => 'string|nullable|min:1',
         ]);
 
         $oImage = new ImageFromAlbum();
@@ -83,28 +85,30 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        if (!$request->has('albumtitle')) {
-            $oUpload = $request->file('path');
+        $oUpload = $request->file('path');
+        Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
+        $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
+        $oImage->path = $sPath;
+        $oImage->photoalbum_id = $iId;
+        $oImage->description = $request->page_content;
+        $oImage->save();
 
-            $this->validate($request, [
-                'path' => 'image|max:10000',
-                'page_content' => 'string|nullable|min:1',
-            ]);
+        Session::flash('message', "Uw foto is succesvol opgeslagen.");
 
-            Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
-            $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
-            $oImage->path = $sPath;
-            $oImage->photoalbum_id = $iId;
-            $oImage->description = $request->page_content;
-            $oImage->save();
+        return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
+    }
 
-            Session::flash('message', "Uw foto is succesvol opgeslagen.");
-        } else {
-            $oAlbum->title = $request->albumtitle;
-            $oAlbum->save();
-            Session::flash('message', "Album titel is succesvol opgeslagen.");
+    public function editAlbum(Request $request, $iId)
+    {
+        $oAlbum = Photoalbum::find($iId);
+
+        if (is_null($oAlbum)) {
+            return redirect()->route('photoalbum.index');
         }
 
+        $oAlbum->title = $request->albumtitle;
+        $oAlbum->save();
+        Session::flash('message', "Album titel is succesvol opgeslagen.");
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 

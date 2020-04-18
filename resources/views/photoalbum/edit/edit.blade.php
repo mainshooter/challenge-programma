@@ -10,7 +10,7 @@
 					Album instellingen
 				</div>
 				<div class="card-body">
-					<form action="{{ route('photoalbum.store.photo', $oPhotoalbum->id) }}" method='post'>
+					<form action="{{ route('photoalbum.edit.album', $oPhotoalbum->id) }}" method='post'>
 						@csrf
 						<div class="form-group row">
 							<label for="albumtitle" class="col-md-4 col-form-label text-md-right">Album titel</label>
