@@ -6,7 +6,7 @@
 
 <div class="container">
     @guest
-    @elseif($oUser->dutch_role == 'Admin' || $oUser->dutch_role == 'Content writer')
+    @elseif($oUser->role == 'Admin' || $oUser->role == 'Content writer')
     <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
     @endif
     <h2 class="row justify-content-center">Tijdlijn</h2>
@@ -25,14 +25,12 @@
                         <h5 class="p-2">{{$album->description}}</h5>
                         <div class="widget-container">
                             <div class="widget row image-tile">
-                                @if(!empty($album->photos))
                                     @foreach($album->photos as $oPhoto)
                                         <div class="col-md-5">
                                             <img class="img-thumbnail rounded mx-auto d-block" src="{{Storage::url($oPhoto->path)}}">
                                         </div>
                                         @break($loop->index == 1)
                                     @endforeach
-                                @endif
                                 <div class="tile more-images col-md-2">
                                     <div class="images-number">{{count($album->photos)}}</div>
                                     Foto's
