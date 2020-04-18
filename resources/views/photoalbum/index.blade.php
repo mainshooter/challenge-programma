@@ -5,10 +5,6 @@
 @section('content')
 
 <div class="container">
-    @guest
-    @elseif($oUser->role == 'Admin' || $oUser->role == 'Content writer')
-    <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
-    @endif
     <h2 class="row justify-content-center">Tijdlijn</h2>
         <div class="row justify-content-center">
             @foreach ($aPhotoalbum as $album)
