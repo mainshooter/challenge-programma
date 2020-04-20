@@ -9,6 +9,24 @@
     <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
     @endif
 
+    <div class="float-right">
+        <form method="post">
+            @csrf
+            <label id="selectLabel" class="{{$oSortType}}">Sorteren op:</label>
+            <select name="selectSort" class="form-control" id="selectBox">
+                <option value="none">
+                    Relevantie
+                </option>
+                <option value="dateHigh">
+                    Sorteeer op hoogste datum
+                </option>
+                <option value="dateLow">
+                    Sorteer op oudste datum
+                </option>
+            </select>
+        </form>
+    </div>
+
     <h2 class="row justify-content-center">Tijdlijn</h2>
     <div class="row justify-content-center">
         @foreach ($aPhotoalbum as $album)

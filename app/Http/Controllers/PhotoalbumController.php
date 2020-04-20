@@ -15,13 +15,23 @@ use Session;
 
 class PhotoalbumController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $aPhotoalbum = Photoalbum::all();
+        $oSortType = $request->selectSort;
+
+        if($oSortType == "dateHigh") {
+            $aPhotoalbum = Photoalbum::orderBy('date', 'desc')->get();
+        }
+        else if($oSortType == "dateLow") {
+            $aPhotoalbum = Photoalbum::orderBy('date', 'asc')->get();
+        }
+        else {
+            $aPhotoalbum = Photoalbum::all();
+        }
 
         $oUser = Auth::user();
 
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser, 'oSortType' => $oSortType]);
     }
 
     public function overview()
