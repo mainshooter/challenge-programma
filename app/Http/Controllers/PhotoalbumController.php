@@ -66,11 +66,10 @@ class PhotoalbumController extends Controller
 
     public function editPage($iId) {
         $oAlbum = Photoalbum::find($iId);
-        $aImages = $oAlbum->photos;
 
         $aEvents = Event::where('is_accepted', true)->where('photoalbum_id', NULL)->get();
 
-        if ($aImages->isEmpty()) {
+        if ($oAlbum->photos->isEmpty()) {
             return view('photoalbum.edit.edit-no-photos',
             [
               'oPhotoalbum' => $oAlbum,
@@ -79,7 +78,6 @@ class PhotoalbumController extends Controller
         } else {
             return view('photoalbum.edit.edit', [
               'oPhotoalbum' => $oAlbum,
-              'aImages' => $aImages,
               'aEvents' => $aEvents,
             ]);
         }

@@ -84,7 +84,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($aImages as $oImage)
+					@foreach ($oPhotoalbum->photos as $oImage)
 					<tr>
 						<td>
 							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
