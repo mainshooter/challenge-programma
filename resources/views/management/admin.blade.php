@@ -30,7 +30,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a class="nav-link" href="{{ route('photoalbum.create') }}">Fotoalbum</a>
+                <a class="nav-link" href="{{ route('photoalbum.overview') }}">Fotoalbum</a>
             </div>
         </div>
     </div>
