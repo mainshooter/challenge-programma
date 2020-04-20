@@ -30,7 +30,7 @@ class PhotoalbumController extends Controller
           'aEvents' => $aEvents,
         ]);
     }
-    
+
     public function overview()
     {
         $aPhotoalbums = Photoalbum::all();
@@ -68,13 +68,24 @@ class PhotoalbumController extends Controller
         $oAlbum = Photoalbum::find($iId);
         $aImages = $oAlbum->photos;
 
+        $aEvents = Event::where('is_accepted', true)->where('photoalbum_id', NULL)->get();
+
         foreach ($aImages as $image) {
             $image->path = '/storage' . $image->path;
         }
+
         if ($aImages->isEmpty()) {
-            return view('photoalbum.edit.edit-no-photos', ['oPhotoalbum' => $oAlbum]);
+            return view('photoalbum.edit.edit-no-photos',
+            [
+              'oPhotoalbum' => $oAlbum,
+              'aEvents' => $aEvents,
+            ]);
         } else {
-            return view('photoalbum.edit.edit', ['oPhotoalbum' => $oAlbum, 'aImages' => $aImages]);
+            return view('photoalbum.edit.edit', [
+              'oPhotoalbum' => $oAlbum,
+              'aImages' => $aImages,
+              'aEvents' => $aEvents,
+            ]);
         }
     }
 
@@ -106,14 +117,30 @@ class PhotoalbumController extends Controller
 
     public function editAlbum(Request $request, $iId)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string'],
+            'event' => ['nullable', 'exists:event,id'],
+        ]);
         $oAlbum = Photoalbum::find($iId);
 
         if (is_null($oAlbum)) {
             return redirect()->route('photoalbum.index');
         }
 
-        $oAlbum->title = $request->albumtitle;
+        $oAlbum->title = $request->title;
         $oAlbum->save();
+
+        $oEvent = Event::find($request->event);
+        if (!is_null($oEvent)) {
+          $oEvent->photoalbum_id = $oAlbum->id;
+          $oEvent->save();
+        }
+        else {
+          $oAlbum->event->photoalbum_id = null;
+          $oAlbum->event->save();
+        }
+
         Session::flash('message', "Album titel is succesvol opgeslagen.");
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }

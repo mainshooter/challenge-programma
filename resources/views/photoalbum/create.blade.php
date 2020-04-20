@@ -27,7 +27,8 @@
                                   @foreach($aEvents as $oEvent)
                                     <option value="{{ $oEvent->id }}">{{ $oEvent->name }}</option>
                                   @endforeach
-                                </select>                              </div>
+                                </select>
+                              </div>
                             </div>
 
                             <div class="form-group row">
