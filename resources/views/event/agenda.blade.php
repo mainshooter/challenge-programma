@@ -191,7 +191,7 @@
               modalPoint.innerText = "Punt: " + data.points;
               if (data.photoalbum_id) {
                 let link = document.createElement('a');
-                link.setAttribute("href", '/photoalbum/view/' + data.photoalbum_id);
+                link.setAttribute("href", '/photoalbum/photos/' + data.photoalbum_id);
                 link.classList.add('btn', 'btn-info');
                 link.innerText = "Fotoalbum bekijken";
                 photoalbumContainer.appendChild(link);

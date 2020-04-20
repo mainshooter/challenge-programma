@@ -87,7 +87,7 @@
 					@foreach ($aImages as $oImage)
 					<tr>
 						<td>
-							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->path}}">
+							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
 						</td>
 						<td>
 							<a class="btn btn-primary" href="{{ route('photoalbum.photo.create', $oImage) }}">

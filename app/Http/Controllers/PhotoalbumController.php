@@ -57,7 +57,7 @@ class PhotoalbumController extends Controller
 
         $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;
         if (!File::isDirectory($sPath)) {
-            File::makeDirectory($sPath, 0777, true, true);
+            File::makeDirectory($sPath, 0755, true, true);
         }
 
         Session::flash('message', 'Fotoalbum is aangemaakt');
@@ -69,10 +69,6 @@ class PhotoalbumController extends Controller
         $aImages = $oAlbum->photos;
 
         $aEvents = Event::where('is_accepted', true)->where('photoalbum_id', NULL)->get();
-
-        foreach ($aImages as $image) {
-            $image->path = '/storage' . $image->path;
-        }
 
         if ($aImages->isEmpty()) {
             return view('photoalbum.edit.edit-no-photos',
@@ -166,5 +162,27 @@ class PhotoalbumController extends Controller
         }
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
+    }
+
+    public function editPhotoPage(ImageFromAlbum $oImage) {
+      return view('photoalbum.photo.edit', [
+        'oImage' => $oImage,
+      ]);
+    }
+
+    public function editPhoto(Request $request, ImageFromAlbum $oImage) {
+      $this->validate($request, [
+          'page_content' => 'string|nullable|min:1',
+      ]);
+
+      $oImage->description = $request->page_content;
+      $oImage->save();
+      return redirect()->route('photoalbum.edit', $oImage->photoalbum);
+    }
+
+    public function photoCollection(Request $request, $iId) {
+        $oAlbum = Photoalbum::find($iId);
+
+        return view('photoalbum.photos', ['oAlbum' => $oAlbum]);
     }
 }
