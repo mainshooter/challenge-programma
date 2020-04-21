@@ -19,19 +19,16 @@ class PhotoalbumController extends Controller
     {
         $oSortType = $request->selectSort;
 
-        if($oSortType == "dateHigh") {
-            $aPhotoalbum = Photoalbum::orderBy('date', 'desc')->get();
+        if($oSortType == "dateNew") {
+            $aPhotoalbum = Photoalbum::groupBy('date', 'desc')->get();
         }
-        else if($oSortType == "dateLow") {
-            $aPhotoalbum = Photoalbum::orderBy('date', 'asc')->get();
+        else if($oSortType == "dateOld") {
+            $aPhotoalbum = Photoalbum::groupBy('date', 'asc')->get();
         }
         else {
             $aPhotoalbum = Photoalbum::all();
         }
-
-        $oUser = Auth::user();
-
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser, 'oSortType' => $oSortType]);
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oSortType' => $oSortType]);
     }
 
     public function overview()
@@ -55,6 +52,7 @@ class PhotoalbumController extends Controller
         $oPhotoalbum = new Photoalbum();
         $oPhotoalbum->title = $request->title;
         $oPhotoalbum->description = $request->description;
+        $oPhotoalbum->date = $request->date;
         $oPhotoalbum->save();
 
         $sPath =  public_path() .  '/storage/photoalbum/' . $oPhotoalbum->id;

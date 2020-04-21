@@ -24,6 +24,11 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label>Datum</label>
+                                <input name="date" type="date" value="{{ old('date') }}" required>
+                            </div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <input type="submit" class="btn btn-primary" value="Aanmaken"/>

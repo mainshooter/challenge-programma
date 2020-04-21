@@ -17,10 +17,10 @@
                 <option value="none">
                     Relevantie
                 </option>
-                <option value="dateHigh">
-                    Sorteeer op hoogste datum
+                <option value="dateNew">
+                    Sorteeer op nieuwste datum
                 </option>
-                <option value="dateLow">
+                <option value="dateOld">
                     Sorteer op oudste datum
                 </option>
             </select>
@@ -33,7 +33,7 @@
         <div class="col-md-8 p-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="m-0">{{$album->title}} - Bedrijfsnaam, 07-04-2020 </h5>
+                    <h5 class="m-0">{{$album->title}} - Bedrijfsnaam, {{$album->date}} </h5>
                 </div>
                 <div class="card-body">
                     @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
