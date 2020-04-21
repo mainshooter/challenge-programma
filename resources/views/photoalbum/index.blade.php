@@ -6,6 +6,13 @@
 
 <div class="container">
     <h2 class="row justify-content-center">Tijdlijn</h2>
+    <div class="row justify-content-center">
+        @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
+            <button type="button" class="btn btn-primary">
+                <a href="{{ route('photoalbum.create') }}">Fotoalbum toevoegen</a>
+            </button>
+        @endif
+    </div>
         <div class="row justify-content-center">
             @foreach ($aPhotoalbum as $album)
             <div class="col-md-8 p-4">
