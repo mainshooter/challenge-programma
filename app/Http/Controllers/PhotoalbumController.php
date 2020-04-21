@@ -135,4 +135,26 @@ class PhotoalbumController extends Controller
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
     }
+
+    public function editPhotoPage(ImageFromAlbum $oImage) {
+      return view('photoalbum.photo.edit', [
+        'oImage' => $oImage,
+      ]);
+    }
+
+    public function editPhoto(Request $request, ImageFromAlbum $oImage) {
+      $this->validate($request, [
+          'page_content' => 'string|nullable|min:1',
+      ]);
+
+      $oImage->description = $request->page_content;
+      $oImage->save();
+      return redirect()->route('photoalbum.edit', $oImage->photoalbum);
+    }
+
+    public function photoCollection(Request $request, $iId) {
+        $oAlbum = Photoalbum::find($iId);
+
+        return view('photoalbum.photos', ['oAlbum' => $oAlbum]);
+    }
 }
