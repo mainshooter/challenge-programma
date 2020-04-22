@@ -183,4 +183,34 @@ class PhotoalbumController extends Controller
 
         return view('photoalbum.photos', ['oAlbum' => $oAlbum]);
     }
+
+    public function publishPrepare(Request $request, $iId) {
+      $oAlbum = Photoalbum::find($iId);
+      if ($oAlbum->is_published == true) {
+        return redirect()->route('photoalbum.edit', $oAlbum);
+      }
+      if (env('LINKEDIN_SHARE_CLIENT_ID', false)) {
+        $request->session()->put('album-id', $oAlbum->id);
+        return redirect()->route('linkedin.login');
+      }
+
+      return redirect()->route('photoalbum.edit', $oAlbum);
+    }
+
+    public function publish(Request $request) {
+      if ($request->session()->exists('album-id') && $request->session()->exists('linkedin-token')) {
+        $sToken = $request->session()->pull('linkedin-token');
+        $iAlbumId = $request->session()->pull('album-id');
+        $oAlbum = Photoalbum::find($iAlbumId);
+        $oAlbum->is_published = true;
+        $sText = $oAlbum->description . ' bekijk hier het fotoalbum ' . route('photoalbum.photos', $oAlbum->id);
+        $bResult = LinkedinShare::shareNone($sToken, $sText, 'token');
+        dd($bResult);
+        $oAlbum->save();
+
+        return redirect()->route('photoalbum.edit', $oAlbum);
+      }
+
+      return redirect()->route('photoalbum.index');
+    }
 }
