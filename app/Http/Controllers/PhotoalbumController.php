@@ -130,12 +130,12 @@ class PhotoalbumController extends Controller
           $oEvent->photoalbum_id = $oAlbum->id;
           $oEvent->save();
         }
-        else {
+        else if (!is_null($oAlbum->event)) {
           $oAlbum->event->photoalbum_id = null;
           $oAlbum->event->save();
         }
 
-        Session::flash('message', "Album titel is succesvol opgeslagen.");
+        Session::flash('message', "Album instellingen zijn succesvol opgeslagen.");
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 
