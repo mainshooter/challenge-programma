@@ -82,7 +82,7 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>{{ $oPhotoalbum->title}} Foto's</th>
+						<th>Foto's</th>
 						<th></th>
 					</tr>
 				</thead>
