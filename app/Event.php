@@ -16,6 +16,10 @@ class Event extends Model
       return $this->belongsToMany('App\User', 'student_event','event_id', 'student_id')->withPivot('was_present');
     }
 
+    public function photoalbum() {
+      return $this->belongsTo('App\Photoalbum');
+    }
+
     public function getEventStartDateTimeAttribute($value) {
       return date('Y/m/d H:i', strtotime($value));
     }

@@ -6,7 +6,7 @@
         @foreach ($oAlbum->photos as $oPhoto)
             <div class="col-md-12">
                 <div class="card">
-                    <img class="img-thumbnail rounded mx-auto d-block" src="{{Storage::url($oPhoto->path)}}">
+                    <img class="img-thumbnail rounded mx-auto d-block" src="{{Storage::url($oPhoto->path)}}" />
                         {!! $oPhoto->description !!}
                 </div>
             </div>

@@ -58,10 +58,10 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::get('overview', 'PhotoalbumController@overview')->name('photoalbum.overview');
     Route::get('create', 'PhotoalbumController@createPhotoalbumPage')->name('photoalbum.create');
     Route::get('edit/{id}', 'PhotoalbumController@editPage')->name('photoalbum.edit');
-    
+
     Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.photo');
     Route::post('edit/album/{id}', 'PhotoalbumController@editAlbum')->name('photoalbum.edit.album');
-    
+
     Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
 
     Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
@@ -69,8 +69,6 @@ Route::middleware('role:admin|content-writer')->group(function() {
 
     Route::get('photo/{oImage}', 'PhotoalbumController@editPhotoPage')->name('photoalbum.photo.create');
     Route::post('photo/{oImage}', 'PhotoalbumController@editPhoto')->name('photoalbum.photo.create.post');
-
-    Route::get('photos/{id}', 'PhotoalbumController@photoCollection')->name('photoalbum.photos');
   });
 });
 
@@ -138,6 +136,8 @@ Route::get("details/{id}", "EventController@details")->name("event.details");
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
+
+Route::get('photos/{id}', 'PhotoalbumController@photoCollection')->name('photoalbum.photos');
 
 Route::prefix('photoalbum')->group(function () {
   Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');

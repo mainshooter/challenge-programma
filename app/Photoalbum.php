@@ -13,4 +13,12 @@ class Photoalbum extends Model
     {
         return $this->hasMany(ImageFromAlbum::class);
     }
+
+    public function event() {
+      return $this->hasOne('App\Event');
+    }
+
+    public function getEventIdAttribute() {
+      return $this->event()->get()->event_id;
+    }
 }

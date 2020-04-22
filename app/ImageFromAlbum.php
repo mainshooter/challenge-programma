@@ -13,4 +13,8 @@ class ImageFromAlbum extends Model
     {
         return $this->belongsTo(Photoalbum::class);
     }
+
+    public function getImageSrcAttribute() {
+      return '/storage/' . $this->path;
+    }
 }
