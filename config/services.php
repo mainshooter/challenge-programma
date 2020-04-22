@@ -16,8 +16,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('main.mail.samebestserver.nl'),
-        'secret' => env('KeiMooiOmTeMailenwistjedatal?'),
+        'domain' => '',
+        'secret' => '',
     ],
 
     'postmark' => [
@@ -30,9 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'linkedin' => [
-      'client_id' => env('LINKEDIN_SHARE_CLIENT_ID'),
-      'client_secret' => env('LINKEDIN_SHARE_CLIENT_SECRET'),
-      'redirect' => 'https://challenge-programma.samebestserver.nl/callback',
+      'client_id' => env('LINKEDIN_CLIENT_ID'),
+      'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+      'redirect' => env('LINKEDIN_URI'),
     ],
 
 ];
