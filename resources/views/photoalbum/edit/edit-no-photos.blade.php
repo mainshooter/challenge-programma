@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="description" class="col-md-4 col-form-label text-md-right">Beschrijving van evenement *</label>
                         <div class="col-md-6">
-                            <textarea class="form-control" name="description" required autocomplete="description" autofocus>{{ old('description') ? old('description') : $oPhotoalbum->description }}</textarea>
+                            <textarea class="form-control" name="description" required autocomplete="description">{{ old('description') ? old('description') : $oPhotoalbum->description }}</textarea>
                         </div>
                     </div>
 
