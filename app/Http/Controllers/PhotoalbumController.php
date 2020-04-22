@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Photoalbum;
 use App\ImageFromAlbum;
 use Illuminate\Http\Request;
-use LinkedinShare;
 use Illuminate\Support\Facades\File;
 use Auth;
 use Illuminate\Support\Facades\Storage;
