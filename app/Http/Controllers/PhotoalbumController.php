@@ -213,7 +213,7 @@ class PhotoalbumController extends Controller
                   "Content-Type"  => "application/json",
                   "x-li-format"   => "json"
               ],
-              'owner' => 'urn:li:organization:43351756',
+              'owner' => 'urn:li:organization:' . env('LINKEDIN_PROFILE_ID'),
               'content' => [
                 'title' => $oAlbum->title,
                 'subject' => $oAlbum->title,
