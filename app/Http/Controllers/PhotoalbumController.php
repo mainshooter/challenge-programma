@@ -189,7 +189,7 @@ class PhotoalbumController extends Controller
       if ($oAlbum->is_published == true) {
         return redirect()->route('photoalbum.edit', $oAlbum);
       }
-      if (env('LINKEDIN_SHARE_CLIENT_ID', false)) {
+      if (env('LINKEDIN_PROFILE_ID', false)) {
         $request->session()->put('album-id', $oAlbum->id);
         return redirect()->route('linkedin.login');
       }
@@ -225,7 +225,7 @@ class PhotoalbumController extends Controller
           $oAlbum->save();
           Session::flash('message', "Album is gepubliceerd");
         } catch (\Exception $e) {
-          Session::flash('error', 'Het is niet gelukt het album te publiseren naar linkedin');
+          Session::flash('error', 'Het is niet gelukt het album te publiseren naar linkedin ' . $e->getMessage());
         }
 
         return redirect()->route('photoalbum.edit', $oAlbum);
