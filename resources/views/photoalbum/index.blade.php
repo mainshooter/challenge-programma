@@ -8,7 +8,7 @@
 <div class="container">
     <div class="float-right">
         @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
-            <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
+            <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuw album toevoegen</a>
         @endif
         <br>
         <form method="post">
