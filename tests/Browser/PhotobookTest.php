@@ -65,7 +65,7 @@ class PhotobookTest extends DuskTestCase
                 ->value("input[name=title]","Admin test fotoalbum")
                 ->value("textarea[name=description]","Admin test fotoalbum")
                 ->click("input[type=submit]")
-                ->attach('image', public_path('storage/CnUcBvZyz5a9XYOkprXO2i8VabwQI5rBVULjKwGt.png'))
+                ->attach('image', public_path('storage/testImage.png'))
                 ->click("input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
         });
