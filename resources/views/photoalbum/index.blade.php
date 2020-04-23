@@ -1,15 +1,16 @@
 @extends('layout')
 @section('head')
+<script src="{{ asset('js/review.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css')}}">
 @endsection
 @section('content')
 
 <div class="container">
-    @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
-    <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
-    @endif
-
     <div class="float-right">
+        @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
+            <a href="{{ route('photoalbum.create')}}" class="btn btn-primary float-right">Nieuwe album toevoegen</a>
+        @endif
+        <br>
         <form method="post">
             @csrf
             <label id="selectLabel" class="{{$oSortType}}">Sorteren op:</label>
@@ -18,7 +19,7 @@
                     Relevantie
                 </option>
                 <option value="dateNew">
-                    Sorteeer op nieuwste datum
+                    Sorteer op nieuwste datum
                 </option>
                 <option value="dateOld">
                     Sorteer op oudste datum
@@ -26,6 +27,7 @@
             </select>
         </form>
     </div>
+        <br>
 
     <h2 class="row justify-content-center">Tijdlijn</h2>
     <div class="row justify-content-center">
@@ -33,7 +35,7 @@
         <div class="col-md-8 p-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="m-0">{{$album->title}} - Bedrijfsnaam, {{$album->date}} </h5>
+                    <h5 class="m-0">{{$album->title}} - {{$album->event->name}}, {{$album->date}} </h5>
                 </div>
                 <div class="card-body">
                     @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))

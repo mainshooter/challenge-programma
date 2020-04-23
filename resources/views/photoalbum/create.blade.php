@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Datum</label>
+                                <label  class="col-md-4 col-form-label text-md-right">Datum</label>
                                 <input name="date" type="date" value="{{ old('date') }}" required>
                             </div>
 
