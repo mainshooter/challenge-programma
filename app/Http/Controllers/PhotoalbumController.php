@@ -18,18 +18,18 @@ class PhotoalbumController extends Controller
 {
     public function index(Request $request)
     {
-        $oSortType = $request->selectSort;
+        $sSortType = $request->selectSort;
 
-        if($oSortType == "dateNew") {
+        if($sSortType == "dateNew") {
             $aPhotoalbum = Photoalbum::orderBy('date', 'desc')->get();
         }
-        else if($oSortType == "dateOld") {
+        else if($sSortType == "dateOld") {
             $aPhotoalbum = Photoalbum::orderBy('date', 'asc')->get();
         }
         else {
             $aPhotoalbum = Photoalbum::all();
         }
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oSortType' => $oSortType]);
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'sSortType' => $sSortType]);
     }
 
     public function createPhotoalbumPage(Request $request) {

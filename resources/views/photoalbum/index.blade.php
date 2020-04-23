@@ -13,7 +13,7 @@
         <br>
         <form method="post">
             @csrf
-            <label id="selectLabel" class="{{$oSortType}}">Sorteren op:</label>
+            <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
             <select name="selectSort" class="form-control" id="selectBox">
                 <option value="none">
                     Relevantie
