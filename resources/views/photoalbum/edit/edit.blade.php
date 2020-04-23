@@ -10,16 +10,41 @@
 					Album instellingen
 				</div>
 				<div class="card-body">
+					@component('component/formError')
+					@endcomponent
 					<form action="{{ route('photoalbum.edit.album', $oPhotoalbum->id) }}" method='post'>
 						@csrf
 						<div class="form-group row">
-							<label for="albumtitle" class="col-md-4 col-form-label text-md-right">Album titel</label>
+							<label for="title" class="col-md-4 col-form-label text-md-right">Album titel</label>
 
 							<div class="col-md-6">
-								<input id="albumtitle" type="text" class="form-control" name="albumtitle" required
-									autocomplete="albumtitle" value="{{$oPhotoalbum->title}}">
+								<input id="title" type="text" class="form-control" name="title" required
+									autocomplete="title" value="{{$oPhotoalbum->title}}">
 							</div>
 						</div>
+
+						<div class="form-group row">
+							<label class="col-md-4 col-form-label text-md-right">Evenement</label>
+							<div class="col-md-6">
+								<select class="form-control col-md-12" name="event">
+										<option value="">-----------</option>
+									@if ($oPhotoalbum->event)
+										<option value="{{ $oPhotoalbum->event->id }}" selected>{{ $oPhotoalbum->event->name }}</option>
+									@endif
+									@foreach($aEvents as $oEvent)
+											<option value="{{ $oEvent->id }}">{{ $oEvent->name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+								<label for="description" class="col-md-4 col-form-label text-md-right">Beschrijving van evenement *</label>
+								<div class="col-md-6">
+										<textarea class="form-control" name="description" required autocomplete="description">{{ old('description') ? old('description') : $oPhotoalbum->description }}</textarea>
+								</div>
+						</div>
+
 						<button type="submit" name="submit" class="btn btn-primary">Opslaan</button>
 					</form>
 				</div>
@@ -32,6 +57,8 @@
 				<div class="card-body">
 					<form action="{{ route('photoalbum.store.photo', $oPhotoalbum->id) }}" method="post"
 						enctype="multipart/form-data" class="form editer-form">
+						@component('component.formError')
+						@endcomponent
 						@csrf
 						<div class="form-group">
 							<input type="file" name="path" class="form-control-file" id="path" required>
@@ -57,10 +84,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($aImages as $oImage)
+					@foreach ($oPhotoalbum->photos as $oImage)
 					<tr>
 						<td>
-							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->path}}">
+							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
 						</td>
 						<td>
 							<a class="btn btn-primary" href="{{ route('photoalbum.photo.create', $oImage) }}">

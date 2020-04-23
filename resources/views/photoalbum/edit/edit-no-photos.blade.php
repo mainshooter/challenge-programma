@@ -6,6 +6,8 @@
 
     <div class="p-4 row justify-content-center">
         <div class="card">
+          @component('component/formError')
+          @endcomponent
             <div class="card-header">
                 Album instellingen
             </div>
@@ -13,13 +15,35 @@
                 <form action="{{ route('photoalbum.edit.album', $oPhotoalbum->id) }}" method='post'>
                     @csrf
                     <div class="form-group row">
-                        <label for="albumtitle" class="col-md-4 col-form-label text-md-right">Album titel</label>
+                        <label for="title" class="col-md-4 col-form-label text-md-right">Album titel</label>
 
                         <div class="col-md-6">
-                            <input id="albumtitle" type="text" class="form-control" name="albumtitle" required
-                                autocomplete="albumtitle" value="{{$oPhotoalbum->title}}">
+                            <input id="title" type="text" class="form-control" name="title" required
+                                autocomplete="title" value="{{$oPhotoalbum->title}}">
                         </div>
                     </div>
+
+                    <div class="form-group row">
+        							<label class="col-md-4 col-form-label text-md-right">Evenement</label>
+        							<div class="col-md-6">
+        								<select class="form-control col-md-12" name="event">
+        										<option value="">-----------</option>
+        									@if ($oPhotoalbum->event)
+        										<option value="{{ $oPhotoalbum->event->id }}" selected>{{ $oPhotoalbum->event->name }}</option>
+        									@endif
+        									@foreach($aEvents as $oEvent)
+        											<option value="{{ $oEvent->id }}">{{ $oEvent->name }}</option>
+        									@endforeach
+        								</select>
+        							</div>
+        						</div>
+                    <div class="form-group row">
+                        <label for="description" class="col-md-4 col-form-label text-md-right">Beschrijving van evenement *</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control" name="description" required autocomplete="description">{{ old('description') ? old('description') : $oPhotoalbum->description }}</textarea>
+                        </div>
+                    </div>
+
                     <button type="submit" name="submit" class="btn btn-primary">Opslaan</button>
                 </form>
             </div>
@@ -27,7 +51,7 @@
         <br>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="p-4 row justify-content-center">
         <div class="card">
             <div class="card-header">
                 Foto's toevoegen aan het album

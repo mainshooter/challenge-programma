@@ -137,6 +137,8 @@ Route::get("details/{id}", "EventController@details")->name("event.details");
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
 
+Route::get('photos/{id}', 'PhotoalbumController@photoCollection')->name('photoalbum.photos');
+
 Route::prefix('photoalbum')->group(function () {
   Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
   Route::post('/', 'PhotoalbumController@index');

@@ -7,7 +7,8 @@
         <a class="btn btn-primary" href="{{ route('photoalbum.edit', $oImage->photoalbum->id) }}">
           Terug
         </a>
-        <h1>Bewerken van foto omschrijving</h1>
+        <h1>Bewerken van foto omschrijving van foto</h1>
+        <img class="img-thumbnail rounded mx-auto d-block" src="{{ $oImage->image_src }}">
         <form class="form editer-form" method="post">
           @csrf
           <div class="form-group">
