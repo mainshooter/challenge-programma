@@ -56,4 +56,18 @@ class PhotobookTest extends DuskTestCase
                 ->assertSee("Fotoalbum is aangemaakt");
         });
     }
+
+    public function testUploadPhoto(){
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
+                ->clickLink("Fotoalbum toevoegen")
+                ->value("input[name=title]","Admin test fotoalbum")
+                ->value("textarea[name=description]","Admin test fotoalbum")
+                ->click("input[type=submit]")
+                ->attach('image', public_path('storage/CnUcBvZyz5a9XYOkprXO2i8VabwQI5rBVULjKwGt.png'))
+                ->click("input[name=submitPhoto]")
+                ->assertSee('Uw foto is succesvol opgeslagen.');
+        });
+    }
 }
