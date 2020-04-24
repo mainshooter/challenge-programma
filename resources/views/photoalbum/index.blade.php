@@ -35,7 +35,7 @@
         <div class="col-md-8 p-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="m-0">{{$album->title}} - @if(!is_null($album->event)){{$album->event->name}}@endif, {{$album->date}} </h5>
+                    <h5 class="m-0">{{$album->title}} - @if(!is_null($album->event)){{$album->event->name}}, {{$album->event->event_start_date_time}}@endif </h5>
                 </div>
                 <div class="card-body">
                     @if(Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'content-writer' ))
