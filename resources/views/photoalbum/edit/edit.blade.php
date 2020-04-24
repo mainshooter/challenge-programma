@@ -61,7 +61,7 @@
 						@endcomponent
 						@csrf
 						<div class="form-group">
-							<input type="file" name="path" class="form-control-file" id="path" required>
+							<input type="file" name="image" class="form-control-file" id="image" required>
 						</div>
 						<div class="form-group">
 							<label>Omschrijving</label>
@@ -70,7 +70,7 @@
 							<input type="hidden" name="page_content">
 						</div>
 
-						<button type="submit" name="submit" class="btn btn-primary">Opslaan</button>
+                            <input type="submit" name="submitPhoto" class="btn btn-primary" value="Opslaan">
 					</form>
 				</div>
 			</div>

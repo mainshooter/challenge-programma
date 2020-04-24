@@ -94,7 +94,7 @@ class PhotoalbumController extends Controller
 
     public function storePhoto(Request $request, $iId) {
         $this->validate($request, [
-            'path' => 'image|max:10000',
+            'image' => 'image|max:10000|required',
             'page_content' => 'string|nullable|min:1',
         ]);
 
@@ -105,7 +105,7 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        $oUpload = $request->file('path');
+        $oUpload = $request->file('image');
         Storage::disk('public')->put('/photoalbum/' . $iId, $oUpload);
         $sPath = '/photoalbum/' . $iId . '/' . $oUpload->hashName();
         $oImage->path = $sPath;
