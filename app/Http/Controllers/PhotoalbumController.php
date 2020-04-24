@@ -55,7 +55,6 @@ class PhotoalbumController extends Controller
         $oPhotoalbum = new Photoalbum();
         $oPhotoalbum->title = $request->title;
         $oPhotoalbum->description = $request->description;
-        $oPhotoalbum->date = $request->date;
         $oPhotoalbum->save();
 
         $oEvent = Event::find($request->event);
