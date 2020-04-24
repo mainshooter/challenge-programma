@@ -48,7 +48,7 @@
 						<button type="submit" name="submit" class="btn btn-primary">Opslaan</button>
 					</form>
 					@if ($oPhotoalbum->is_published == false)
-						<a href="{{ route('photoalbum.publish.prepare', $oPhotoalbum) }}" class="btn btn-primary">Album publiseren</a>
+						<a href="{{ route('photoalbum.publish.prepare', $oPhotoalbum) }}" class="btn btn-primary">Album publiseren naar Linkedin</a>
 					@endif
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 							<input type="hidden" name="page_content">
 						</div>
 
-                            <input type="submit" name="submitPhoto" class="btn btn-primary" value="Opslaan">
+            <input type="submit" name="submitPhoto" class="btn btn-primary" value="Opslaan">
 					</form>
 				</div>
 			</div>
