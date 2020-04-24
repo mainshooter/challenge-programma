@@ -18,11 +18,26 @@
                             </div>
 
                             <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">Evenement</label>
+                                <div class="col-md-6">
+
+                                    <select class="form-control col-md-12" name="event">
+                                        <option value="">-----------</option>
+                                        @foreach($aEvents as $oEvent)
+                                            <option value="{{ $oEvent->id }}">{{ $oEvent->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="description" class="col-md-4 col-form-label text-md-right">Beschrijving van evenement</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
                                 </div>
                             </div>
+
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
