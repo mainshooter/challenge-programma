@@ -21,10 +21,10 @@ class PhotoalbumController extends Controller
         $sSortType = $request->selectSort;
 
         if($sSortType == "dateNew") {
-            $aPhotoalbum = Photoalbum::orderBy('date', 'desc')->get();
+            $aPhotoalbum = Photoalbum::with('event')->get()->sortBy('event.event_start_date_time', null, true);
         }
         else if($sSortType == "dateOld") {
-            $aPhotoalbum = Photoalbum::orderBy('date', 'asc')->get();
+            $aPhotoalbum = Photoalbum::with('event')->get()->sortBy('event.event_start_date_time', null, false);
         }
         else {
             $aPhotoalbum = Photoalbum::all();
