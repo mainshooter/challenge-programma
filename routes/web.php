@@ -65,11 +65,14 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
 
     Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
-    Route::get('publish', 'PhotoalbumController@publish')->name('photoalbum.publish');
+    Route::get('publish/{id}/prepare', 'PhotoalbumController@publishPrepare')->name('photoalbum.publish.prepare');
+    Route::get('publish/execute', 'PhotoalbumController@publish')->name('photoalbum.publish.execute');
 
     Route::get('photo/{oImage}', 'PhotoalbumController@editPhotoPage')->name('photoalbum.photo.create');
     Route::post('photo/{oImage}', 'PhotoalbumController@editPhoto')->name('photoalbum.photo.create.post');
   });
+  Route::get('linkedin-login', 'Auth\LinkedinLoginController@loginLinkedin')->name('linkedin.login');
+  Route::get('/callback', 'Auth\LinkedinLoginController@loginLinkedinCallback')->name('linkedin.callback');
 });
 
 Route::middleware('role:student')->group(function() {
@@ -131,7 +134,6 @@ Route::middleware('role:admin')->group(function () {
     });
   });
 });
-
 Route::get("details/{id}", "EventController@details")->name("event.details");
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
