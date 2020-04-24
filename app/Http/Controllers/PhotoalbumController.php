@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Photoalbum;
 use App\ImageFromAlbum;
 use Illuminate\Http\Request;
-use LinkedinShare;
 use Illuminate\Support\Facades\File;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
 use App\Event;
+use GuzzleHttp\Client;
 
 
 
@@ -182,5 +182,55 @@ class PhotoalbumController extends Controller
         $oAlbum = Photoalbum::find($iId);
 
         return view('photoalbum.photos', ['oAlbum' => $oAlbum]);
+    }
+
+    public function publishPrepare(Request $request, $iId) {
+      $oAlbum = Photoalbum::find($iId);
+      if ($oAlbum->is_published == true) {
+        return redirect()->route('photoalbum.edit', $oAlbum);
+      }
+      if (env('LINKEDIN_PROFILE_ID', false)) {
+        $request->session()->put('album-id', $oAlbum->id);
+        return redirect()->route('linkedin.login');
+      }
+
+      return redirect()->route('photoalbum.edit', $oAlbum);
+    }
+
+    public function publish(Request $request) {
+      if ($request->session()->exists('album-id') && $request->session()->exists('linkedin-token')) {
+        $sToken = $request->session()->pull('linkedin-token');
+        $iId = $request->session()->pull('album-id');
+        $oAlbum = Photoalbum::find($iId);
+        $oAlbum->is_published = true;
+        $sText = $oAlbum->description . ' bekijk hier het fotoalbum ' . route('photoalbum.photos', $oAlbum->id);
+        $sLink = route('photoalbum.photos', $oAlbum->id);
+        try {
+          $client = new Client(['base_uri' => 'https://api.linkedin.com']);
+          $response = $client->request('POST', '/v2/shares', [
+              'headers' => [
+                  "Authorization" => "Bearer " . $sToken,
+                  "Content-Type"  => "application/json",
+                  "x-li-format"   => "json"
+              ],
+              'owner' => 'urn:li:organization:' . env('LINKEDIN_PROFILE_ID'),
+              'content' => [
+                'title' => $oAlbum->title,
+                'subject' => $oAlbum->title,
+                'text' => [
+                  'text' => $sText,
+                ]
+              ]
+          ]);
+          $oAlbum->save();
+          Session::flash('message', "Album is gepubliceerd");
+        } catch (\Exception $e) {
+          Session::flash('error', 'Het is niet gelukt het album te publiseren naar linkedin ' . $e->getMessage());
+        }
+
+        return redirect()->route('photoalbum.edit', $oAlbum);
+      }
+
+      return redirect()->route('photoalbum.index');
     }
 }
