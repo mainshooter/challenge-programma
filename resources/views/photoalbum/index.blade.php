@@ -14,6 +14,9 @@
         @endif
     </div>
         <div class="row justify-content-center">
+            @if($aPhotoalbum->isEmpty())
+                <h5>Er zijn op het moment geen fotoalbums beschikbaar</h5>
+            @endif
             @foreach ($aPhotoalbum as $album)
             <div class="col-md-8 p-4">
                 <div class="card">
