@@ -1,6 +1,6 @@
 @extends('layout')
 @section('head')
-<script src="{{ asset('js/review.js') }}" defer></script>
+<script src="{{ asset('js/photobook.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css')}}">
 @endsection
 @section('content')
