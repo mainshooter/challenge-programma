@@ -39,13 +39,13 @@ class EventTest extends DuskTestCase
         $browser->type('event_zipcode', '4585XS');
 
         $browser->click('input[name="event_start_date_time"]');
-        $browser->waitFor('.xdsoft_datetimepicker:nth-of-type(2)');
-        $browser->click(".xdsoft_datetimepicker:nth-of-type(2) .xdsoft_today");
+        $browser->waitFor('.xdsoft_time[data-hour="12"]');
+        $browser->click('.xdsoft_time[data-hour="12"]');
         $browser->click("input[name=event_house_number]");
 
         $browser->click('input[name="event_end_date_time"]');
-        $browser->waitFor('.xdsoft_datetimepicker:nth-of-type(3)');
-        $browser->click(".xdsoft_datetimepicker:nth-of-type(3) .xdsoft_today");
+        $browser->waitFor('.xdsoft_datetimepicker:last-child .xdsoft_time[data-hour="15"]');
+        $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_time[data-hour="15"]');
         $browser->click("input[name=event_house_number]");
 
         $browser->click("input[type=submit]");
