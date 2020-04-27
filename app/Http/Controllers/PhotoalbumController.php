@@ -16,12 +16,20 @@ use GuzzleHttp\Client;
 
 class PhotoalbumController extends Controller
 {
-    public function index() {
-        $aPhotoalbum = Photoalbum::all();
+    public function index(Request $request)
+    {
+        $sSortType = $request->selectSort;
 
-        $oUser = Auth::user();
-
-        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'oUser' => $oUser]);
+        if($sSortType == "dateNew") {
+            $aPhotoalbum = Photoalbum::with('event')->get()->sortBy('event.event_start_date_time', null, true);
+        }
+        else if($sSortType == "dateOld") {
+            $aPhotoalbum = Photoalbum::with('event')->get()->sortBy('event.event_start_date_time', null, false);
+        }
+        else {
+            $aPhotoalbum = Photoalbum::all();
+        }
+        return view('photoalbum.index', ['aPhotoalbum' => $aPhotoalbum, 'sSortType' => $sSortType]);
     }
 
     public function createPhotoalbumPage(Request $request) {
