@@ -143,4 +143,5 @@ Route::get('photos/{id}', 'PhotoalbumController@photoCollection')->name('photoal
 
 Route::prefix('photoalbum')->group(function () {
   Route::get('/', 'PhotoalbumController@index')->name('photoalbum.index');
+  Route::post('/', 'PhotoalbumController@index');
 });
