@@ -71,6 +71,22 @@ class PhotobookTest extends DuskTestCase
         });
     }
 
+    public function testRemovePhoto()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
+                ->clickLink("Fotoalbum toevoegen")
+                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("textarea[name=description]", "Admin test fotoalbum")
+                ->click("input[type=submit]")
+                ->attach('image', public_path('storage/testImage.png'))
+                ->click("input[name=submitPhoto]")
+                ->clickLink("Verwijderen")
+                ->assertSee('De foto is verwijdert!');
+        });
+    }
+
     public function testAddTextToPhoto(){
         $this->browse(function (Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
