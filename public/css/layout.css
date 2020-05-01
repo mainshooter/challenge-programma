@@ -121,3 +121,14 @@ body{
     background-color: #007bff;
     border-color: #007bff;
 }
+
+.photoalbum-container .card {
+  margin-bottom: 1rem;
+}
+.photoalbum-container p {
+  font-size: 1.4em;
+  padding: 0.1rem 1.2rem;
+}
+.photoalbum-container .img-thumbnail {
+  border: none;
+}
