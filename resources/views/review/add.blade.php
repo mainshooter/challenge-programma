@@ -5,11 +5,13 @@
   <div class="row">
     <div class="col-12">
       <form method="post" class="form editer-form">
-          @csrf
+        @csrf
+        @component('component.formError')
+        @endcomponent
         <h1>Review achterlaten</h1>
         <div class="form-group">
           <label>Geef een cijfer*</label>
-          <input type="number" name="review_stars" class="form-control" min="1" max="10" step="0.5">
+          <input type="number" name="review_stars" class="form-control" min="1" max="10" step="0.5" value="{{ old('review_stars') ? old('review_stars') : '' }}">
         </div>
         <div class="form-group">
           <label>Uw review*</label>

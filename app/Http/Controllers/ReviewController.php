@@ -39,14 +39,13 @@ class ReviewController extends Controller
 
     public function addReview(Request $request)
     {
-        $validateData = $request->validate([
-            'page_content' => 'required|max:255',
+        $request->validate([
+            'page_content' => 'required|max:255|min:12',
             'review_stars' => 'required|integer',
         ]);
-        $sContent = $request->page_content;
         $oUser = Auth::user();
         $oReview = new Review();
-        $oReview->body = $sContent;
+        $oReview->body = $request->page_content;
         $oReview->rating = $request->review_stars;
         $oReview->company()->associate($oUser);
         $oReview->save();
