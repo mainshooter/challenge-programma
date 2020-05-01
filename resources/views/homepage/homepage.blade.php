@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div class="row">
-      @if (count($aImages) < 0)
+      @if (count($aImages) > 0)
         <div class="col-md-2"></div>
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
