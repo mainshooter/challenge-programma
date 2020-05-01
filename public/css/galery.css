@@ -89,7 +89,7 @@
 
 .image-tile .tile {
     border: 1px solid #fff;
-    height: 400px;
+    height: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -136,4 +136,11 @@
 
 table .img-thumbnail {
   max-width: 50%;
+}
+
+.photo-container {
+  margin-right: 0.3rem;
+}
+a, a:hover {
+  color: #fff;
 }

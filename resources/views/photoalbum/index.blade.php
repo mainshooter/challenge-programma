@@ -51,18 +51,22 @@
                         <h5 class="p-2">{{$oAlbum->description}}</h5>
                         <div class="widget-container">
                             <div class="widget row image-tile">
+                            <div class="row">
+                              <div class="col-10 photo-container">
                                 @foreach($oAlbum->photos as $oPhoto)
-                                    <div class="col-md-5">
-                                        <img class="img-thumbnail rounded mx-auto d-block" src="{{Storage::url($oPhoto->path)}}">
+                                    <div class="col-md-12">
+                                        <img class="img-thumbnail" src="{{Storage::url($oPhoto->path)}}">
                                     </div>
                                     @break($loop->index == 1)
                                 @endforeach
-                                <div class="tile more-images col-md-2">
-                                    <a href="{{route('photoalbum.photos', ['id' => $oAlbum->id])}}">
-                                      <div class="images-number">{{count($oAlbum->photos)}}</div>
-                                      Foto's
-                                    </a>
-                                </div>
+                              </div>
+                              <div class="tile more-images col-md-2">
+                                  <a href="{{route('photoalbum.photos', ['id' => $oAlbum->id])}}">
+                                    <div class="images-number">{{count($oAlbum->photos)}}</div>
+                                    Foto's
+                                  </a>
+                              </div>
+                            </div>
                             </div>
                             <a class="btn btn-primary float-left"
                                href="{{route('photoalbum.photos', ['id' => $oAlbum->id])}}">Foto's bekijken</a>
