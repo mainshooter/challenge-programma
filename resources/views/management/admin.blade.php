@@ -25,7 +25,7 @@
             <a class="nav-link" href="{{ route('mail.create') }}">Mail versturen</a>
           </div>
           <div class="col">
-            <a class="nav-link" href="{{ route('image.index')  }}">Carousel</a>
+            <a class="nav-link" href="{{ route('image.index')  }}">Carrousel</a>
           </div>
         </div>
         <div class="row">
