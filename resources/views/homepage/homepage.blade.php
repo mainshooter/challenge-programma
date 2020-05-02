@@ -9,24 +9,27 @@
         <div class="col-md-2"></div>
         <div id="carousel-homepage" class="carousel slide col-md-8" data-ride="carousel">
             <ol class="carousel-indicators">
-                @if(!is_null($oStartImage))
-                  <li data-target="#carousel-homepage" data-slide-to="0" class="active"></li>
-                @endif
-                @for($i = 1; $i < count($aImages) + 1; $i++)
-                  <li data-target="#carousel-homepage" data-slide-to="{{$i}}"></li>
+                @for($i = 0; $i < count($aImages); $i++)
+                  @if ($i == 0)
+                    <li data-target="#carousel-homepage" data-slide-to="{{$i}}" class="active"></li>
+                  @else
+                    <li data-target="#carousel-homepage" data-slide-to="{{$i}}"></li>
+                  @endif
                 @endfor
             </ol>
             <div class="carousel-inner" role="listbox">
-                @if(!is_null($oStartImage))
-                <div class="carousel-item active">
-                    <img src="{{Storage::url($oStartImage->filepath)}}" alt="First Slide">
-                </div>
+              @foreach($aImages as $iIndex => $oImage)
+                @if ($iIndex == 0)
+                  <div class="carousel-item active">
+                      <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
+                  </div>
+                @else
+                  <div class="carousel-item">
+                      <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
+                  </div>
                 @endif
-                @foreach($aImages as $oImage)
-                    <div class="carousel-item">
-                        <img src="{{Storage::url($oImage->filepath)}}" alt=""/>
-                    </div>
-                    @endforeach
+
+              @endforeach
             </div>
 
             <a class="carousel-control-prev" href="#carousel-homepage" role="button" data-slide="prev">
