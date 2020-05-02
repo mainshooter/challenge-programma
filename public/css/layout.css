@@ -122,6 +122,9 @@ body{
     border-color: #007bff;
 }
 
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  filter: drop-shadow( 0px 3px 5px rgba(0, 0, 0, 3.7));
+}
 .photoalbum-container .card {
   margin-bottom: 1rem;
 }
