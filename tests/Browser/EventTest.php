@@ -23,11 +23,43 @@ class EventTest extends DuskTestCase
         });
     }
 
+    public function testErrorCreate() {
+      $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
+        $browser->visit('/admin/event');
+        $browser->clickLink('Akkoord');
+        $browser->clickLink('Event toevoegen');
+        $browser->type('event_name', 'Mijn geweldige event');
+        $browser->type('event_description', 'Lorem ipsum da set a mon');
+        $browser->type('event_points', 3);
+        $browser->type('event_max_students', 1);
+        $browser->type('event_straat', 'Onderwijs boulevard');
+        $browser->type('event_city', 'Den Bosch');
+        $browser->type('event_house_number', '214');
+        $browser->type('event_zipcode', '4585');
+
+        $browser->click('input[name="event_start_date_time"]');
+        $browser->waitFor('.xdsoft_date[data-date="12"]');
+        $browser->click('.xdsoft_date[data-date="12"]');
+        $browser->click("input[name=event_house_number]");
+
+        $browser->click('input[name="event_end_date_time"]');
+        $browser->waitFor('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
+        $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
+        $browser->click("input[name=event_house_number]");
+
+        $browser->click("input[type=submit]");
+        $browser->assertSee('Het evenement postcode formaat is ongeldig.');
+      });
+    }
+
     public function testCreate() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
-        $browser->visit('/admin/event')
-                ->clickLink('Akkoord');
+        $browser->visit('/admin/event');
+        try {
+          $browser->clickLink('Akkoord');
+        } catch (\Exception $e) {}
         $browser->clickLink('Event toevoegen');
         $browser->type('event_name', 'Mijn geweldige event');
         $browser->type('event_description', 'Lorem ipsum da set a mon');
@@ -39,13 +71,13 @@ class EventTest extends DuskTestCase
         $browser->type('event_zipcode', '4585XS');
 
         $browser->click('input[name="event_start_date_time"]');
-        $browser->waitFor('.xdsoft_time[data-hour="12"]');
-        $browser->click('.xdsoft_time[data-hour="12"]');
+        $browser->waitFor('.xdsoft_date[data-date="12"]');
+        $browser->click('.xdsoft_date[data-date="12"]');
         $browser->click("input[name=event_house_number]");
 
         $browser->click('input[name="event_end_date_time"]');
-        $browser->waitFor('.xdsoft_datetimepicker:last-child .xdsoft_time[data-hour="15"]');
-        $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_time[data-hour="15"]');
+        $browser->waitFor('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
+        $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
         $browser->click("input[name=event_house_number]");
 
         $browser->click("input[type=submit]");
