@@ -189,13 +189,16 @@
               modalStart.innerText = "Start: " + new Date(data.event_start_date_time).toLocaleDateString() + " " + data.event_start_date_time.split(" ")[1];
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
-              if (data.photoalbum_id) {
-                let link = document.createElement('a');
-                link.setAttribute("href", '/photoalbum/photos/' + data.photoalbum_id);
-                link.classList.add('btn', 'btn-info');
-                link.innerText = "Fotoalbum bekijken";
-                photoalbumContainer.appendChild(link);
-              }
+                if (data.photoalbum_id) {
+                    if(!document.getElementById("link")){
+                        let link = document.createElement('a');
+                        link.id = "link";
+                        link.setAttribute("href", '/photos/' + data.photoalbum_id);
+                        link.classList.add('btn', 'btn-info');
+                        link.innerText = "Fotoalbum bekijken";
+                        photoalbumContainer.appendChild(link);
+                    }
+                }
               try {
                 studentSignup.href = "/student/event/register/" + data.id;
               } catch (e) {}
