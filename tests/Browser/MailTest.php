@@ -19,7 +19,46 @@ class MailTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/mail/create')
-                    ->clickLink("Akkoord");
+                ->clickLink("Akkoord");
+            $browser->value("input[name=mail_subject]", "Test");
+            $browser->value("input[name=page_content]", "Dit is voor een dusk test");
+            $browser->click("input[type=submit]");
+            $browser->assertSee("De mails zijn verstuurd");
+        });
+    }
+
+    public function testSendMailAdmin()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/admin/mail/create');
+            $browser->select('mail_user_role', 'admin');
+            $browser->value("input[name=mail_subject]", "Test");
+            $browser->value("input[name=page_content]", "Dit is voor een dusk test");
+            $browser->click("input[type=submit]");
+            $browser->assertSee("De mails zijn verstuurd");
+        });
+    }
+
+    public function testSendMailCompany()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/admin/mail/create');
+            $browser->select('mail_user_role', 'company');
+            $browser->value("input[name=mail_subject]", "Test");
+            $browser->value("input[name=page_content]", "Dit is voor een dusk test");
+            $browser->click("input[type=submit]");
+            $browser->assertSee("De mails zijn verstuurd");
+        });
+    }
+
+    public function testSendMailStudent()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/admin/mail/create');
+            $browser->select('mail_user_role', 'student');
             $browser->value("input[name=mail_subject]", "Test");
             $browser->value("input[name=page_content]", "Dit is voor een dusk test");
             $browser->click("input[type=submit]");
@@ -33,9 +72,6 @@ class MailTest extends DuskTestCase
       $this->browse(function (Browser $browser) {
           $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
           $browser->visit('/admin/mail/create');
-          try {
-            $browser->clickLink("Akkoord");
-          } catch (\Exception $e) {}
           $browser->click("input[type=submit]");
           $browser->assertSee("Het mail subject veld is verplicht.");
       });
