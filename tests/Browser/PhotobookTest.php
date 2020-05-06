@@ -44,6 +44,7 @@ class PhotobookTest extends DuskTestCase
                 ->assertSee("Foto's van Album");
         });
     }
+
     public function testAdminCreatePhotoalbum()
     {
         $this->browse(function (Browser $browser) {
@@ -57,6 +58,17 @@ class PhotobookTest extends DuskTestCase
         });
     }
 
+    public function testAdminFailedCreatePhotoalbum()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
+                ->clickLink("Fotoalbum toevoegen")
+                ->value("textarea[name=description]","Admin test fotoalbum")
+                ->click("input[type=submit]")
+                ->assertSee("Titel");
+        });
+    }
     public function testUploadPhoto(){
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());

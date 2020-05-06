@@ -26,6 +26,19 @@ class CmsTest extends DuskTestCase
     }
 
     /** @test */
+    public function testFailedCreate() {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
+            $browser->visit('/cms')
+                ->clickLink('Akkoord');
+            $browser->clickLink("Pagina toevoegen");
+            $browser->value("input[name=page_title]", "Test pagina");
+            $browser->value('.ql-editor', 'Leuke test content');
+            $browser->click("input[type=submit]");
+            $browser->assertSee("Title");
+        });
+    }
+    /** @test */
     public function testEdit() {
       $this->browse(function(Browser $browser) {
         $browser->loginAs(User::where('email', 'admin@gmail.com')->first());
