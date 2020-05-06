@@ -190,14 +190,16 @@
               modalEnd.innerText = "Eind: " + new Date(data.event_end_date_time).toLocaleDateString() + " " + data.event_end_date_time.split(" ")[1];
               modalPoint.innerText = "Punt: " + data.points;
                 if (data.photoalbum_id) {
-                    if(!document.getElementById("link")){
+                    if(document.getElementById("link")) {
+                        document.getElementById("link").remove();
+                    }
                         let link = document.createElement('a');
                         link.id = "link";
                         link.setAttribute("href", '/photos/' + data.photoalbum_id);
                         link.classList.add('btn', 'btn-info');
                         link.innerText = "Fotoalbum bekijken";
                         photoalbumContainer.appendChild(link);
-                    }
+
                 }
               try {
                 studentSignup.href = "/student/event/register/" + data.id;
