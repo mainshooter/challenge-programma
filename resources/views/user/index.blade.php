@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <a href="{{ route('user.create') }}" class="btn btn-primary">Gebruiker aanmaken</a>
             <table class="table sorting-table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -33,7 +34,7 @@
                 @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('user.create') }}" class="btn btn-primary">Gebruiker aanmaken</a>
+
         </div>
     </div>
 </div>
