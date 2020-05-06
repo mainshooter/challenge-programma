@@ -107,7 +107,6 @@ class PhotobookTest extends DuskTestCase
                 ->value("input[name=title]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
-
                 ->attach('image', public_path('storage/testImage.png'))
                 ->value("div[id=editor]", 'Mooie beschrijving')
                 ->click("input[name=submitPhoto]")
