@@ -27,46 +27,54 @@ class MailTest extends DuskTestCase
         });
     }
 
-    //mail failure admin
-    public function testFailSendMailAdmin()
+    public function testSendMailAdmin()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/mail/create');
-
+            try {
+                $browser->clickLink("Akkoord");
+            } catch (\Exception $e) {
+            }
             $browser->select('mail_user_role', 'admin');
+            $browser->value("input[name=mail_subject]", "Test");
             $browser->value("input[name=page_content]", "Dit is voor een dusk test");
             $browser->click("input[type=submit]");
-            $browser->assertSee("Het mail subject veld is verplicht.");
+            $browser->assertSee("De mails zijn verstuurd");
         });
     }
 
-    //mail failure company
-    public function testFailSendMailCompany()
+    public function testSendMailCompany()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/mail/create');
-
+            try {
+                $browser->clickLink("Akkoord");
+            } catch (\Exception $e) {
+            }
             $browser->select('mail_user_role', 'company');
+            $browser->value("input[name=mail_subject]", "Test");
             $browser->value("input[name=page_content]", "Dit is voor een dusk test");
             $browser->click("input[type=submit]");
-            $browser->assertSee("Het mail subject veld is verplicht.");
+            $browser->assertSee("De mails zijn verstuurd");
         });
     }
 
-
-    //mail failure students
-    public function testFailSendMailStudent()
+    public function testSendMailStudent()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/admin/mail/create');
-
+            try {
+                $browser->clickLink("Akkoord");
+            } catch (\Exception $e) {
+            }
             $browser->select('mail_user_role', 'student');
+            $browser->value("input[name=mail_subject]", "Test");
             $browser->value("input[name=page_content]", "Dit is voor een dusk test");
             $browser->click("input[type=submit]");
-            $browser->assertSee("Het mail subject veld is verplicht.");
+            $browser->assertSee("De mails zijn verstuurd");
         });
     }
 }
