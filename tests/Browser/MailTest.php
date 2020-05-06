@@ -77,4 +77,18 @@ class MailTest extends DuskTestCase
             $browser->assertSee("De mails zijn verstuurd");
         });
     }
+
+
+    /** @test */
+    public function sendMailTest() {
+      $this->browse(function (Browser $browser) {
+          $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+          $browser->visit('/admin/mail/create');
+          try {
+            $browser->clickLink("Akkoord");
+          } catch (\Exception $e) {}
+          $browser->click("input[type=submit]");
+          $browser->assertSee("Het mail subject veld is verplicht.");
+      });
+    }
 }
