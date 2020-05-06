@@ -31,6 +31,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www/html
 
+COPY ./php.ini /usr/local/etc/php/conf.d/upload.php.ini
+
 RUN mv /var/www/html/.env.docker /var/www/html/.env
 
 RUN composer install
