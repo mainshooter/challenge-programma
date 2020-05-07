@@ -43,6 +43,21 @@ class UserController extends Controller
         }
     }
 
+    public function deletePage($iId){
+        $oUser = User::find($iId);
+        return view('user/delete_user', [
+            'oUser' => $oUser
+        ]);
+    }
+
+    public function deleteExisting($iId){
+        $oUser = User::find($iId);
+        $oUser->delete();
+
+        Session::flash('message', 'Gebruiker is verwijderd');
+        return redirect()->route("user.index");
+    }
+
     public function updateStudent(Request $request, $iId) {
       $oUser = User::where([
         'id' => $iId,
@@ -234,7 +249,7 @@ class UserController extends Controller
         Session::flash('message', 'De gebruiker is succesvol aangemaakt. ');
         return redirect()->route('user.index');
     }
-  
+
     public function management() {
         $sRole = Auth::user()->role;
         switch ($sRole) {

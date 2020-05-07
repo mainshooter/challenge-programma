@@ -113,6 +113,8 @@ Route::middleware('role:admin')->group(function () {
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
       Route::get('edit/{id}', 'UserController@editPage')->name('user.edit');
+      Route::get('delete/{id}', 'UserController@deletePage')->name('user.deleteExistingPage');
+      Route::get('deleteExisting/{id}', 'UserController@deleteExisting')->name('user.deleteExisting');
       Route::post('update/student/{id}', 'UserController@updateStudent')->name('user.update.student.post');
       Route::post('update/company/{id}', 'UserController@updateCompany')->name('user.update.company.post');
       Route::post('update/admin/{id}', 'UserController@updateAdmin')->name('user.update.admin.post');
