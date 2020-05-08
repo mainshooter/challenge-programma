@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::setRoutes(new Illuminate\Routing\RouteCollection);
 Route::get('/', 'HomepageController@index');
 
 Route::get('home', 'HomepageController@index')->name('home');
@@ -56,6 +56,12 @@ Route::middleware('role:admin|content-writer')->group(function() {
   });
   Route::prefix('menu')->group(function() {
     Route::get('/', 'MenuController@index')->name('menu.index');
+    // Route::post('/addcustommenu', array('as' => 'haddcustommenu', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@addcustommenu'));
+    // Route::post('/deleteitemmenu', array('as' => 'hdeleteitemmenu', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@deleteitemmenu'));
+    // Route::post('/deletemenug', array('as' => 'hdeletemenug', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@deletemenug'));
+    // Route::post('/createnewmenu', array('as' => 'hcreatenewmenu', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@createnewmenu'));
+    // Route::post('/generatemenucontrol', array('as' => 'hgeneratemenucontrol', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@generatemenucontrol'));
+    // Route::post('/updateitem', array('as' => 'hupdateitem', 'uses' => '\App\Override\Harimayco\Menu\Controllers\MenuController@updateitem'));
   });
   Route::prefix('photoalbum')->group(function() {
     Route::get('overview', 'PhotoalbumController@overview')->name('photoalbum.overview');
