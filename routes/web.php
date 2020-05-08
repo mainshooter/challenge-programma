@@ -134,6 +134,9 @@ Route::middleware('role:admin')->group(function () {
       Route::get('/create', 'MailController@createPage')->name('mail.create');
       Route::post('/create', 'MailController@create')->name('mail.create.post');
     });
+    Route::prefix('review')->group(function() {
+      Route::get('/', 'ReviewController@overview')->name('review.overview');
+    });
   });
 });
 Route::get("details/{id}", "EventController@details")->name("event.details");
