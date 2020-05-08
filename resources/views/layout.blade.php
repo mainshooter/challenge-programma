@@ -32,17 +32,17 @@
 
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
-                  @foreach(Menu::get(1) as $menu)
-                    @if ($menu['child'])
+                  @foreach(Menu::get(1) as $aMenu)
+                    @if ($aMenu['child'])
                     <li class="nav-item dropdown">
-                      <a class="nav-link" href="{{ $menu['link'] }}">{{ $menu['label'] }}</a>
+                      <a class="nav-link" href="{{ $aMenu['link'] }}">{{ $aMenu['label'] }}</a>
                     </li>
                     @else
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ $menu['link'] }}">{{ $menu['label'] }}</a>
+                        <a class="nav-link" href="{{ $aMenu['link'] }}">{{ $aMenu['label'] }}</a>
                         <div class="dropdown-menu">
-                          @foreach($menu['child'] as $child)
-                            <a class="dropdown-item" href="{{ $child['link'] }}">{{ $child['label'] }}</a>
+                          @foreach($aMenu['child'] as $aChild)
+                            <a class="dropdown-item" href="{{ $aChild['link'] }}">{{ $aChild['label'] }}</a>
                           @endforeach
                         </div>
                       </li>
