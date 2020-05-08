@@ -52,6 +52,10 @@ class UserController extends Controller
 
     public function deleteExisting($iId){
         $oUser = User::find($iId);
+        if(Auth::user()->id == $iId){
+            Session::flash('message', 'Kan niet de gebruiker verwijderen waarmee je bent ingelogd');
+            return redirect()->route("user.index");
+        }
         $oUser->delete();
 
         Session::flash('message', 'Gebruiker is verwijderd');
