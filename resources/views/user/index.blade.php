@@ -30,6 +30,9 @@
                             <a href="{{ route('user.edit', $oUser->id) }}" class="btn btn-primary">Bewerken</a>
                             <!-- Sprint 2 <a href="#">Verwijderen</a>-->
                         </td>
+                        <td>
+                            <a href="{{ route('user.details', $oUser->id)}}" class="btn btn-info">Details</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
