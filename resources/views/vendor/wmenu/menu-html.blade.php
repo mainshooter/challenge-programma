@@ -13,18 +13,7 @@ $currentUrl = url()->current();
 
 						<div class="wrap">
 
-							<div class="manage-menus">
-								<form method="get" action="{{ $currentUrl }}">
-									<label for="menu" class="selected-menu">Select the menu you want to edit:</label>
-
-									{!! Menu::select('menu', $menulist) !!}
-
-									<span class="submit-btn">
-										<input type="submit" class="button-secondary" value="Choose">
-									</span>
-									<span class="add-new-menu-action"> or <a href="{{ $currentUrl }}?action=edit&menu=0">Create new menu</a>. </span>
-								</form>
-							</div>
+							<h1>Menu bewerken</h1>
 							<div id="nav-menus-frame">
 
 								@if(request()->has('menu')  && !empty(request()->input("menu")))
@@ -52,21 +41,7 @@ $currentUrl = url()->current();
 																	</label>
 																</p>
 
-																@if(!empty($roles))
-																<p id="menu-item-role_id-wrap">
-																	<label class="howto" for="custom-menu-item-name"> <span>Role</span>&nbsp;
-																		<select id="custom-menu-item-role" name="role">
-																			<option value="0">Select Role</option>
-																			@foreach($roles as $role)
-																				<option value="{{ $role->$role_pk }}">{{ ucfirst($role->$role_title_field) }}</option>
-																			@endforeach
-																		</select>
-																	</label>
-																</p>
-																@endif
-
 																<p class="button-controls">
-
 																	<a  href="#" onclick="addcustommenu()"  class="button-secondary submit-add-to-menu right"  >Add menu item</a>
 																	<span class="spinner" id="spincustomu"></span>
 																</p>
@@ -92,20 +67,10 @@ $currentUrl = url()->current();
 															<input name="menu-name" id="menu-name" type="text" class="menu-name regular-text menu-item-textbox" title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
 															<input type="hidden" id="idmenu" value="@if(isset($indmenu)){{$indmenu->id}}@endif" />
 														</label>
-
-														@if(request()->has('action'))
-														<div class="publishing-action">
-															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
-														</div>
-														@elseif(request()->has("menu"))
+														@if(request()->has("menu"))
 														<div class="publishing-action">
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
 															<span class="spinner" id="spincustomu2"></span>
-														</div>
-
-														@else
-														<div class="publishing-action">
-															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
 														</div>
 														@endif
 													</div>
@@ -114,18 +79,10 @@ $currentUrl = url()->current();
 													<div id="post-body-content">
 
 														@if(request()->has("menu"))
-														<h3>Menu Structure</h3>
-														<div class="drag-instructions post-body-plain" style="">
+														<h3>Menu Structuur</h3>
+														<div class="drag-instructions post-body-plain">
 															<p>
-																Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.
-															</p>
-														</div>
-
-														@else
-														<h3>Menu Creation</h3>
-														<div class="drag-instructions post-body-plain" style="">
-															<p>
-																Please enter the name and select "Create menu" button
+																Plaats het menu in de volgorde die je wilt. Klik op het pijltje naar beneden voor meer opties.
 															</p>
 														</div>
 														@endif
@@ -164,20 +121,6 @@ $currentUrl = url()->current();
 																		</label>
 																	</p>
 
-																	@if(!empty($roles))
-																	<p class="field-css-role description description-wide">
-																		<label for="edit-menu-item-role-{{$m->id}}"> Role
-																			<br>
-																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" name="role_menu_[{{$m->id}}]" >
-																				<option value="0">Select Role</option>
-																				@foreach($roles as $role)
-																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$role_pk }}">{{ ucwords($role->$role_title_field) }}</option>
-																				@endforeach
-																			</select>
-																		</label>
-																	</p>
-																	@endif
-
 																	<p class="field-move hide-if-no-js description description-wide">
 																		<label> <span>Move</span> <a href="{{ $currentUrl }}" class="menus-move-up" style="display: none;">Move up</a> <a href="{{ $currentUrl }}" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{ $currentUrl }}" class="menus-move-left" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-right" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-top" style="display: none;">Top</a> </label>
 																	</p>
@@ -205,22 +148,9 @@ $currentUrl = url()->current();
 												</div>
 												<div id="nav-menu-footer">
 													<div class="major-publishing-actions">
-
-														@if(request()->has('action'))
-														<div class="publishing-action">
-															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
-														</div>
-														@elseif(request()->has("menu"))
-														<span class="delete-action"> <a class="submitdelete deletion menu-delete" onclick="deletemenu()" href="javascript:void(9)">Delete menu</a> </span>
-														<div class="publishing-action">
-
+														@if(request()->has("menu"))
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
 															<span class="spinner" id="spincustomu2"></span>
-														</div>
-
-														@else
-														<div class="publishing-action">
-															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
 														</div>
 														@endif
 													</div>
