@@ -48,22 +48,6 @@
                       </li>
                       @endif
                     @endforeach
-                    <!-- regular navigation links -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/reviews">Reviews</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('photoalbum.index') }}">Fotoalbum</a>
-                    </li>
 
                     @if(Auth::check())
                         <?php $sRole = Auth::user()->role; ?>
