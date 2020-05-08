@@ -55,7 +55,7 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::post('create', "CmsController@create")->name("cms.create.post");
   });
   Route::prefix('menu')->group(function() {
-    Route::get('/', 'MenuController@index')->name('menu.index');
+    Route::get('/', 'MenuController@index')->name('menu.get');
   });
   Route::prefix('photoalbum')->group(function() {
     Route::get('overview', 'PhotoalbumController@overview')->name('photoalbum.overview');

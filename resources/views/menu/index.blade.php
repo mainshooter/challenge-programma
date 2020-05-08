@@ -1,9 +1,15 @@
 @extends('layout')
 
 @section('content')
-    {!! Menu::render() !!}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        {!! Menu::render() !!}
+      </div>
+    </div>
+  </div>
 @endsection
 
-@section('scripts')
+@section('head')
     {!! Menu::scripts() !!}
 @endsection
