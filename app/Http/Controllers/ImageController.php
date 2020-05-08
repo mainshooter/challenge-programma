@@ -22,8 +22,8 @@ class ImageController
         $this->validate($request, [
             'filepath' => 'image|max:10000'
         ]);
+        
         $oImage = new Image();
-
         $oUpload = $request->file('filepath');
         $sPath = $oUpload->store('public');
         $oImage->filepath = $sPath;
@@ -32,5 +32,4 @@ class ImageController
         Session::flash('message', 'Image is geupload!');
         return redirect()->route('image.index');
     }
-
 }

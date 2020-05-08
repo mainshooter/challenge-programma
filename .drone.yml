@@ -1,0 +1,13 @@
+
+pipeline:
+  publish_develop:
+    image: plugins/docker
+    registry: 10.10.0.1:5000
+    repo: 10.10.0.1:5000/challangeprogramma
+    insecure: true
+    tag: [ develop ]
+    when:
+      branch: develop
+      event: push
+    cache_from:
+    - "10.10.0.1:5000/challangeprogramma:develop"

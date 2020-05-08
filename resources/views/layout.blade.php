@@ -7,9 +7,13 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
     @yield ('head')
 
@@ -36,15 +40,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/reviews">Reviews</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('event.agenda') }}">Agenda</a>
                     </li>
-                    @if(Auth::check())
-                        <?php $role = Auth::user()->role; ?>
-                        @if($role == 'admin')
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('photoalbum.index') }}">Fotoalbum</a>
+                    </li>
+
+                    @if(Auth::check())
+                        <?php $sRole = Auth::user()->role; ?>
+                        @if($sRole == 'admin' || $sRole == 'content-writer')
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">Beheer</a>
+                                <a class="nav-link" href="{{ route('management.index') }}">Beheer</a>
+                            </li>
+                        @endif
+                        @if($sRole == 'student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile.index') }}">Profiel</a>
                             </li>
                         @endif
                     @endif
@@ -104,6 +118,9 @@
               @if(Session::has('message'))
                   <p class="alert alert-info">{{ Session::get('message') }}</p>
               @endif
+              @if(Session::has('error'))
+                <p class="alert alert-warning">{{ Session::get('error') }}</p>
+              @endif
             </div>
           </div>
         </div>
@@ -131,8 +148,14 @@
                 <div class="col-xs-6 col-md-3">
                 </div>
                 <div class="col-xs-6 col-md-3">
-                    <h6>Links</h6>
+                    <h6>Contact informatie</h6>
                     <ul class="footer-links">
+                        <li>Challenge programma</li>
+                        <li><a href="mailto:Challengeprogramma.bdk.denbosch@avans.nl">Challengeprogramma.bdk.denbosch@avans.nl</a></li>
+                        <br>
+                        <li>Onderwijsboulevard 215</li>
+                        <li>5223DE 'S-Hertogenbosch</li>
+                        <hr>
                         <li><a target="_blank" href="https://www.linkedin.com/company/challenge-programma-bdk">LinkedIn</a></li>
                     </ul>
                 </div>

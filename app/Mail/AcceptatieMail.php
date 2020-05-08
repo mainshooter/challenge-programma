@@ -37,8 +37,7 @@ class AcceptatieMail extends Mailable
      */
     public function build()
     {
-        return $this->from('challenge-programma@peter-romijn.nl')
-                    ->subject('Acceptatie Challenge programma')
+        return $this->subject('Acceptatie Challenge programma')
                     ->view('mail.acceptation');
     }
 }

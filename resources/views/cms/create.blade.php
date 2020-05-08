@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-primary">Terug</button>
       </a>
 
-      <form class="form cms-form" method="post">
+      <form class="form editer-form" method="post">
         @csrf
         <div class="form-group">
           <label>Title</label>

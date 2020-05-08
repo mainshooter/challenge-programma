@@ -8,12 +8,15 @@
     min-height: 259px;
 }
 
-.body-text{
+.cardtext{
     min-height: 120px;
 }
 
 .rating{
     text-align: center;
+}
+h2 {
+    padding: 15px;
 }
 
 .checked{

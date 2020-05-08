@@ -9,14 +9,9 @@ class HomepageController extends Controller
 {
     public function index(){
         $aImages = Image::all();
-        $oStartImage = null;
 
         if (count($aImages) > 3) {
           $aImages = $aImages->random(4);
-        }
-        if (count($aImages) > 1) {
-          $oStartImage = $aImages[0];
-          unset($aImages[0]);
         }
 
 
@@ -28,7 +23,6 @@ class HomepageController extends Controller
 
         return view('homepage.homepage', [
           'aImages' => $aImages,
-          'oStartImage' => $oStartImage,
           'aReviews' => $aReviews,
         ]);
     }
