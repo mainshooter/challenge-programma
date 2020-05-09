@@ -10,9 +10,7 @@ $currentUrl = url()->current();
 			<div id="wpcontent">
 				<div id="wpbody">
 					<div id="wpbody-content">
-
 						<div class="wrap">
-
 							<h1>Menu bewerken</h1>
 							<div id="nav-menus-frame">
 								<div id="menu-settings-column" class="metabox-holder">
@@ -21,7 +19,7 @@ $currentUrl = url()->current();
 										<div id="side-sortables" class="accordion-container">
 											<ul class="outer-border">
 												<li class="control-section accordion-section  open add-page" id="add-page">
-													<h3 class="accordion-section-title hndle" tabindex="0"> Custom Link <span class="screen-reader-text">Press return or enter to expand</span></h3>
+													<h3 class="accordion-section-title hndle" tabindex="0"> Eigen Link <span class="screen-reader-text">Press return or enter to expand</span></h3>
 													<div class="accordion-section-content ">
 														<div class="inside">
 															<div class="customlinkdiv" id="customlinkdiv">
@@ -56,12 +54,12 @@ $currentUrl = url()->current();
 											<div class="menu-edit ">
 												<div id="nav-menu-header">
 													<div class="major-publishing-actions">
-														<label class="menu-name-label howto open-label" for="menu-name"> <span>Name</span>
-															<input name="menu-name" id="menu-name" type="text" class="menu-name regular-text menu-item-textbox" title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
+														<label class="menu-name-label howto open-label" for="menu-name"> <span>Naam</span>
+															<input name="menu-name" id="menu-name" type="text" class="menu-name regular-text menu-item-textbox" title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif" readonly>
 															<input type="hidden" id="idmenu" value="@if(isset($indmenu)){{$indmenu->id}}@endif" />
 														</label>
 														<div class="publishing-action">
-															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
+															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Menu opslaan</a>
 															<span class="spinner" id="spincustomu2"></span>
 														</div>
 													</div>
@@ -135,7 +133,7 @@ $currentUrl = url()->current();
 												</div>
 												<div id="nav-menu-footer">
 													<div class="major-publishing-actions">
-															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
+															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Menu opslaan</a>
 															<span class="spinner" id="spincustomu2"></span>
 														</div>
 													</div>
