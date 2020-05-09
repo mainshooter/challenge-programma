@@ -29,17 +29,16 @@
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <img class= "CP navbar-brand" src="/images/LogoCP.png">
-
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
                   @foreach(Menu::get(1) as $aMenu)
-                    @if ($aMenu['child'])
-                    <li class="nav-item dropdown">
+                    @if (!$aMenu['child'])
+                    <li class="nav-item">
                       <a class="nav-link" href="{{ $aMenu['link'] }}">{{ $aMenu['label'] }}</a>
                     </li>
                     @else
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{ $aMenu['link'] }}">{{ $aMenu['label'] }}</a>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ $aMenu['link'] }}">{{ $aMenu['label'] }}</a>
                         <div class="dropdown-menu">
                           @foreach($aMenu['child'] as $aChild)
                             <a class="dropdown-item" href="{{ $aChild['link'] }}">{{ $aChild['label'] }}</a>
