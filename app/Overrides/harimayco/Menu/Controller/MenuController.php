@@ -12,21 +12,6 @@ use Harimayco\Menu\Models\MenuItems;
 class MenuController extends Controller
 {
 
-    public function deletemenug()
-    {
-        $menus = new MenuItems();
-        $getall = $menus->getall(request()->input("id"));
-        if (count($getall) == 0) {
-            $menudelete = Menus::find(request()->input("id"));
-            $menudelete->delete();
-
-            return json_encode(array("resp" => "you delete this item"));
-        } else {
-            return json_encode(array("resp" => "You have to delete all items first", "error" => 1));
-
-        }
-    }
-
     public function updateitem()
     {
         $arraydata = request()->input("arraydata");
@@ -61,7 +46,7 @@ class MenuController extends Controller
 
     public function generatemenucontrol()
     {
-        $menu = Menus::find(request()->input("idmenu"));
+        $menu = Menus::find(1);
         if (is_array(request()->input("arraydata"))) {
             foreach (request()->input("arraydata") as $value) {
 

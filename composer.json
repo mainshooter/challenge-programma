@@ -42,8 +42,7 @@
 
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Harimayco\\Menu\\Controllers\\":"Override\\Harimayco\\Menu\\Controllers\\"
+            "App\\": "app/"
         },
         "exclude-from-classmap": [
           "vendor/harimayco/Menu/Controllers/MenuController.php",
@@ -53,10 +52,7 @@
             "database/seeds",
             "database/factories"
         ],
-        "files": [
-          "app/Overrides/harimayco/Menu/Controller/MenuController.php",
-          "app/Overrides/harimayco/Menu/routes.php"
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {

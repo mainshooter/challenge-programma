@@ -15,12 +15,8 @@ $currentUrl = url()->current();
 
 							<h1>Menu bewerken</h1>
 							<div id="nav-menus-frame">
-
-								@if(request()->has('menu')  && !empty(request()->input("menu")))
 								<div id="menu-settings-column" class="metabox-holder">
-
 									<div class="clear"></div>
-
 									<form id="nav-menu-meta" action="" class="nav-menu-meta" method="post" enctype="multipart/form-data">
 										<div id="side-sortables" class="accordion-container">
 											<ul class="outer-border">
@@ -50,13 +46,10 @@ $currentUrl = url()->current();
 														</div>
 													</div>
 												</li>
-
 											</ul>
 										</div>
 									</form>
-
 								</div>
-								@endif
 								<div id="menu-management-liquid">
 									<div id="menu-management">
 										<form id="update-nav-menu" action="" method="post" enctype="multipart/form-data">
@@ -67,26 +60,20 @@ $currentUrl = url()->current();
 															<input name="menu-name" id="menu-name" type="text" class="menu-name regular-text menu-item-textbox" title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
 															<input type="hidden" id="idmenu" value="@if(isset($indmenu)){{$indmenu->id}}@endif" />
 														</label>
-														@if(request()->has("menu"))
 														<div class="publishing-action">
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
 															<span class="spinner" id="spincustomu2"></span>
 														</div>
-														@endif
 													</div>
 												</div>
 												<div id="post-body">
 													<div id="post-body-content">
-
-														@if(request()->has("menu"))
 														<h3>Menu Structuur</h3>
 														<div class="drag-instructions post-body-plain">
 															<p>
 																Plaats het menu in de volgorde die je wilt. Klik op het pijltje naar beneden voor meer opties.
 															</p>
 														</div>
-														@endif
-
 														<ul class="menu ui-sortable" id="menu-to-edit">
 															@if(isset($menus))
 															@foreach($menus as $m)
@@ -148,11 +135,9 @@ $currentUrl = url()->current();
 												</div>
 												<div id="nav-menu-footer">
 													<div class="major-publishing-actions">
-														@if(request()->has("menu"))
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
 															<span class="spinner" id="spincustomu2"></span>
 														</div>
-														@endif
 													</div>
 												</div>
 											</div>
