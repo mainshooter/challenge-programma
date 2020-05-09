@@ -35,6 +35,9 @@
             <div class="col">
                 <a class="nav-link" href="{{ route('menu.index') }}">Menu</a>
             </div>
+            <div class="col">
+              <a class="nav-link" href="{{ route('review.overview') }}">Reviews</a>
+            </div>
         </div>
     </div>
 @endsection

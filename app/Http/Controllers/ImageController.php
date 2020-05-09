@@ -15,14 +15,17 @@ class ImageController
 
     public function index() {
         $aImages = Image::all();
-        return view('image/image', ['images', $aImages]);
+
+        return view('image/image', [
+          'aImages' => $aImages
+        ]);
     }
 
     public function store(Request $request) {
         $this->validate($request, [
             'filepath' => 'image|max:10000'
         ]);
-        
+
         $oImage = new Image();
         $oUpload = $request->file('filepath');
         $sPath = $oUpload->store('public');
