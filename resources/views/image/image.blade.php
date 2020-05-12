@@ -33,7 +33,7 @@
                     <img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
                   </td>
                   <td>
-                    <a class="btn btn-danger" href="#">Verwijderen</a>
+                    <a class="btn btn-danger" href="{{ route('image.delete', $oImage->id)}}">Verwijderen</a>
                   </td>
                 </tr>
               @endforeach
@@ -42,4 +42,5 @@
         </div>
       </div>
     </div>
+</div>
 @endsection
