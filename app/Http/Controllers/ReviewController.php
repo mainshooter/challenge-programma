@@ -64,12 +64,12 @@ class ReviewController extends Controller
         return view("review.delete", ["oReview" => $oReview]);
     }
 
-    public function deleteReview(Request $request, $oReview) {
-        $oReviewDelete = $oReview;
+    public function deleteReview(Request $request, $iId) {
+        $oReviewDelete = Review::find($iId);
         if (!is_null($oReviewDelete)) {
             $oReviewDelete->delete();
         }
 
-        redirect()->route("reviews.index");
+        return redirect()->route("review.overview");
     }
 }
