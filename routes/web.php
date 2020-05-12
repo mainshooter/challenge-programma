@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::setRoutes(new Illuminate\Routing\RouteCollection);
 Route::get('/', 'HomepageController@index');
 
 Route::get('home', 'HomepageController@index')->name('home');
@@ -53,6 +53,13 @@ Route::middleware('role:admin|content-writer')->group(function() {
 
     Route::post("edit/{id}", 'CmsController@edit')->name('cms.edit.post');
     Route::post('create', "CmsController@create")->name("cms.create.post");
+  });
+  Route::prefix('menu')->group(function() {
+    Route::get('/', 'MenuController@index')->name('menu.index');
+    Route::post('/addcustommenu', '\App\Override\Harimayco\Menu\Controllers\MenuController@addcustommenu')->name('haddcustommenu');
+    Route::post('/deleteitemmenu', '\App\Override\Harimayco\Menu\Controllers\MenuController@deleteitemmenu')->name('hdeleteitemmenu');
+    Route::post('/generatemenucontrol', '\App\Override\Harimayco\Menu\Controllers\MenuController@generatemenucontrol')->name('hgeneratemenucontrol');
+    Route::post('/updateitem', '\App\Override\Harimayco\Menu\Controllers\MenuController@updateitem')->name('hupdateitem');
   });
   Route::prefix('photoalbum')->group(function() {
     Route::get('overview', 'PhotoalbumController@overview')->name('photoalbum.overview');
