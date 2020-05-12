@@ -23,7 +23,7 @@ function setSelectedIndex() {
 
 // char remaining code
 function updateCountdown() {
-    var remaining = 140 - jQuery('.message').text().length;
+    let remaining = 140 - jQuery('.message').text().length;
     jQuery('.countdown').text(remaining + ' resterende tekens.');
 }
 
