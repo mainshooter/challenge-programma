@@ -50,4 +50,6 @@ cd /etc/apache2/sites-available
 
 a2ensite challange-programma.nl.conf
 systemctl reload apache2
+
+echo "Mysql password of challangeprogramma is: '$mysqlPassword'"
 # c20221639fb6617fc4bd055832f30dD!
