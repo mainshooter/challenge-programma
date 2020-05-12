@@ -147,6 +147,17 @@ class PhotoalbumController extends Controller
         return redirect()->route('photoalbum.edit', ['id' => $oAlbum->id]);
     }
 
+    public function deleteAlbum(Request $request, Photoalbum $oPhotoalbum) {
+      $aPhotos = $oPhotoalbum->photos;
+      foreach ($aPhotos as $oPhoto) {
+        Storage::disk('public')->delete($oPhoto->path);
+        $oPhoto->delete();
+      }
+      $oPhotoalbum->delete();
+      Session::flash('message', "Fotoalbum is verwijderd");
+      return redirect()->route('photoalbum.overview');
+    }
+
     public function deletePhoto(Request $request, $iId) {
         $oImage = ImageFromAlbum::find($iId);
 
