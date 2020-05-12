@@ -134,6 +134,8 @@ Route::middleware('role:admin')->group(function () {
     });
     Route::prefix('review')->group(function() {
       Route::get('/', 'ReviewController@overview')->name('review.overview');
+      Route::get('delete-review/{id}', 'ReviewController@deletePage')->name('review.delete');
+      Route::post('delete-review/{id}', 'ReviewController@deleteReview')->name('review.delete.post');
     });
   });
 });

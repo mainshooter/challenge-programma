@@ -58,4 +58,18 @@ class ReviewController extends Controller
         $oReview->save();
         return redirect()->route("reviews.index");
     }
+
+    public function deletePage(request $request, $iId) {
+        $oReview = Review::find($iId);
+        return view("review.delete", ["oReview" => $oReview]);
+    }
+
+    public function deleteReview(Request $request, $oReview) {
+        $oReviewDelete = $oReview;
+        if (!is_null($oReviewDelete)) {
+            $oReviewDelete->delete();
+        }
+
+        redirect()->route("reviews.index");
+    }
 }
