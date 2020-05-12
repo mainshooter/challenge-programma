@@ -28,7 +28,7 @@
                         <td>{{ $oUser->dutch_role }}</td>
                         <td>
                             <a href="{{ route('user.edit', $oUser->id) }}" class="btn btn-primary">Bewerken</a>
-                            <!-- Sprint 2 <a href="#">Verwijderen</a>-->
+                            <a href="{{ route('user.deleteExistingPage', $oUser->id) }}" class="btn btn-danger">Verwijderen</a>
                         </td>
                     </tr>
                 @endforeach

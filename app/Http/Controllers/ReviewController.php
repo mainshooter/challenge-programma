@@ -37,6 +37,13 @@ class ReviewController extends Controller
         return view('review/add');
     }
 
+    public function overview() {
+      $aReviews = Review::all();
+      return view('review.overview', [
+        'aReviews' => $aReviews,
+      ]);
+    }
+
     public function addReview(Request $request)
     {
         $request->validate([
