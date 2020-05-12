@@ -17,6 +17,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
+        "pusher/pusher-php-server": "~3.0",
         "statikbe/laravel-cookie-consent": "^1.1"
     },
     "require-dev": {

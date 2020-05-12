@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Event;
+use App\Events;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
@@ -220,6 +221,7 @@ class EventController extends Controller
         $oEvent->is_accepted = true;
         $oEvent->save();
         Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
+        event(new NewAgendaEvent($oEvent));
         return redirect()->route('event.index');
     }
 
