@@ -135,3 +135,7 @@ body{
 .photoalbum-container .img-thumbnail {
   border: none;
 }
+.error-container {
+  text-align: center;
+  margin: 7% 0;
+}
