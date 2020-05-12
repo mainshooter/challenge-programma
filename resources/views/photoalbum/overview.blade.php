@@ -24,6 +24,9 @@
                   <button type="button" class="btn btn-info">
                     <a href="{{ route('photoalbum.edit', $oPhotoalbum->id) }}">Bewerken</a>
                   </button>
+                  <a class="btn btn-danger" href="{{ route('photoalbum.delete', $oPhotoalbum) }}">
+                    Verwijderen
+                  </a>
                 </td>
               </tr>
             @endforeach
