@@ -61,7 +61,7 @@ Route::middleware('role:admin|content-writer')->group(function() {
 
     Route::post('edit/{id}', 'PhotoalbumController@storePhoto')->name('photoalbum.store.photo');
     Route::post('edit/album/{id}', 'PhotoalbumController@editAlbum')->name('photoalbum.edit.album');
-
+    Route::get('delete/album/{oPhotoalbum}', 'PhotoalbumController@deleteAlbum')->name('photoalbum.delete');
     Route::get('delete/{id}', "PhotoalbumController@deletePhoto")->name('photoalbum.delete.photo');
 
     Route::post('create', 'PhotoalbumController@create')->name('photoalbum.create.post');
@@ -113,6 +113,8 @@ Route::middleware('role:admin')->group(function () {
     Route::prefix("user")->group(function() {
       Route::get("/", "UserController@index")->name("user.index");
       Route::get('edit/{id}', 'UserController@editPage')->name('user.edit');
+      Route::get('delete/{id}', 'UserController@deletePage')->name('user.deleteExistingPage');
+      Route::get('delete-existing/{id}', 'UserController@deleteExisting')->name('user.deleteExisting');
       Route::post('update/student/{id}', 'UserController@updateStudent')->name('user.update.student.post');
       Route::post('update/company/{id}', 'UserController@updateCompany')->name('user.update.company.post');
       Route::post('update/admin/{id}', 'UserController@updateAdmin')->name('user.update.admin.post');
@@ -126,6 +128,7 @@ Route::middleware('role:admin')->group(function () {
     Route::prefix('image')->group(function() {
       Route::get('/', 'ImageController@index')->name('image.index');
       Route::post('/store', 'ImageController@store')->name('image.store.post');
+      Route::get('delete/{id}', 'ImageController@delete')->name('image.delete');
     });
 
     Route::prefix('mail')->group(function() {
