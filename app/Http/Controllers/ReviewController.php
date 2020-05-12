@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Review;
+use App\Rules\ReviewChars;
 use App\User;
+
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
@@ -47,9 +49,10 @@ class ReviewController extends Controller
     public function addReview(Request $request)
     {
         $request->validate([
-            'page_content' => 'required|max:255|min:12',
+            'page_content' => ['required', 'min:12', new ReviewChars],
             'review_stars' => 'required|integer',
         ]);
+
         $oUser = Auth::user();
         $oReview = new Review();
         $oReview->body = $request->page_content;
