@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Photoalbum;
 use App\StudentEvent;
 use App\User;
 use App\StudentInfo;
@@ -16,9 +17,19 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $oUser = Auth::user();
-
         $aAllEvents = $oUser->events;
+
         $iPoints = 0;
+        $sSortType = $request->selectSort;
+
+        if($sSortType == "Actual") {
+            $aAllEvents = Array();
+            
+        }
+        else {
+            $aAllEvents = $oUser->events;
+        }
+
         foreach ($aAllEvents as $oEvent) { //studentEvent contains event_id
             if($oEvent->pivot->was_present) {
               $iPoints += $oEvent->points;

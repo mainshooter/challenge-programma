@@ -7,6 +7,21 @@
 
 @section('content')
 <div class="container no-max-width">
+    <div class="float-right">
+        <form method="post">
+            @csrf
+            <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
+            <select name="selectSort" class="form-control" id="selectBox">
+                <option value="Allemaal">
+                    Relevantie
+                </option>
+                <option value="Actueel">
+                    Sorteer op nieuwste datum
+                </option>
+            </select>
+        </form>
+    </div>
+    <br>
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
