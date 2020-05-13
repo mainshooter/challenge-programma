@@ -208,7 +208,7 @@ class PhotoalbumController extends Controller
       if ($oAlbum->is_published == true) {
         return redirect()->route('photoalbum.edit', $oAlbum);
       }
-      if (env('LINKEDIN_PROFILE_ID', false)) {
+      if (config('services.linkedin.profile_id')) {
         $request->session()->put('album-id', $oAlbum->id);
         return redirect()->route('linkedin.login');
       }
@@ -232,7 +232,7 @@ class PhotoalbumController extends Controller
                   "Content-Type"  => "application/json",
                   "x-li-format"   => "json"
               ],
-              'owner' => 'urn:li:organization:' . env('LINKEDIN_PROFILE_ID'),
+              'owner' => 'urn:li:organization:' . config('services.linkedin.profile_id'),
               'content' => [
                 'title' => $oAlbum->title,
                 'subject' => $oAlbum->title,
