@@ -49,7 +49,6 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN php /var/www/html/artisan storage:link
 RUN php /var/www/html/artisan vendor:publish --tag=public --force
 
-RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite && a2enmod expires
 RUN service apache2 restart
 
@@ -58,5 +57,7 @@ RUN php /var/www/html/artisan config:clear
 RUN php /var/www/html/artisan config:cache
 RUN php /var/www/html/artisan view:clear
 RUN php /var/www/html/artisan route:clear
+
+RUN chown -R www-data:www-data /var/www/
 
 ENTRYPOINT cd /var/www/html/ && php artisan migrate --force && /usr/bin/supervisord -c /var/www/html/supervisord.conf -n
