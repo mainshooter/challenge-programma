@@ -38,6 +38,10 @@ window.Echo = new Echo({
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: false,
-    wsHost: "5.200.21.222",
-    wsPost: 6001
+    wsHost: 'websocket.' + window.location.hostname,
+    wsPost: 80,
+    enabledTransports: ['ws'],
+    forceTLS: false,
+    disableStats: true,
+    useTLS: false,
 });

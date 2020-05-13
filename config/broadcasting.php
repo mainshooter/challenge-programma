@@ -35,10 +35,11 @@ return [
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
+            'host' => "127.0.0.1",
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'useTLS' => false,
-                'host' => "5.200.21.222",
+                'host' => "127.0.0.1",
                 'port' => 6001,
                 'scheme' => 'http',
             ],
