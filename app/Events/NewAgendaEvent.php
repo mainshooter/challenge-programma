@@ -9,9 +9,10 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use App\Event;
 
-class NewAgendaEvent implements ShouldBroadcast
+class NewAgendaEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,7 +22,7 @@ class NewAgendaEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(Event $oEvent)
+    public function __construct($oEvent)
     {
         $this->event = $oEvent;
     }
@@ -33,6 +34,12 @@ class NewAgendaEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('event.add');
+        return new Channel('event');
+    }
+
+    public function broadcastWith() {
+      // dd();
+
+      return ['event' => $this->event];
     }
 }

@@ -209,9 +209,10 @@
         }
       });
       calender.render();
-    });
-    Echo.channel('event.add').listen('NewAgendaEvent', e => {
-      console.log(e);
+      Echo.channel('event').listen('NewAgendaEvent', function(e) {
+        console.log(e);
+        calender.addEvent(e.event);
+      });
     });
   </script>
 @endsection
