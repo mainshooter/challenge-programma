@@ -38,8 +38,6 @@ class NewAgendaEvent implements ShouldBroadcastNow
     }
 
     public function broadcastWith() {
-      // dd();
-
       return ['event' => $this->event];
     }
 }

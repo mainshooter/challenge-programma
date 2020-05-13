@@ -220,11 +220,11 @@ class EventController extends Controller
           return redirect()->back();
         }
 
-        // $oEvent->is_accepted = true;
+        $oEvent->is_accepted = true;
         $oEvent->save();
-        // Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
+        Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
         event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
-        // return redirect()->route('event.index');
+        return redirect()->route('event.index');
     }
 
     public function details(Request $request, $iId){

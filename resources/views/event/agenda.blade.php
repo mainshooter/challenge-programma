@@ -210,7 +210,6 @@
       });
       calender.render();
       Echo.channel('event').listen('NewAgendaEvent', function(e) {
-        console.log(e);
         calender.addEvent(e.event);
       });
     });
