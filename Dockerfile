@@ -55,9 +55,4 @@ RUN service apache2 restart
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
-USER www-data
-
-RUN php /var/www/html/artisan config:cache
-RUN php /var/www/html/artisan view:clear
-
 ENTRYPOINT cd /var/www/html/ && php artisan config:clear && php artisan config:cache && php artisan view:clear && php artisan route:clear && php artisan migrate --force && /usr/bin/supervisord -c /var/www/html/supervisord.conf -n
