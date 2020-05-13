@@ -53,8 +53,8 @@ RUN chown -R www-data:www-data /var/www/
 RUN a2enmod rewrite && a2enmod expires
 RUN service apache2 restart
 
-RUN php artisan config:cache
-RUN php artisan view:clear
+RUN php /var/www/html/artisan config:cache
+RUN php /var/www/html/artisan view:clear
 
 RUN chown 755 /var/www/html/bootstrap/cache
 
