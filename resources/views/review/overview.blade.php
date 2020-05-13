@@ -23,7 +23,7 @@
                 <td>{!! $oReview->body !!}</td>
                 <td>{{ $oReview->rating }}</td>
                 <td>
-                  <a class="btn btn-danger" href="">Verwijderen</a>
+                  <a href="{{ route('review.delete', $oReview->id) }}" class="btn btn-danger">Verwijderen</a>
                 </td>
               </tr>
             @endforeach
