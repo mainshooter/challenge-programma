@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+@extends('mailtemplate')
 
-  </head>
-
-  <body>
+@section('content')
     <div>
       {!! $sText !!}
     </div>
-  </body>
-</html>
+@endsection

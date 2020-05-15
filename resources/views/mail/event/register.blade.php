@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+@extends('mailtemplate')
 
-  </head>
-
-  <body>
+@section('content')
     <div>
         Beste {{ $oUser->firstname }},
         <br>
@@ -30,5 +26,4 @@
         <br>
         Het Challenge programma
     </div>
-  </body>
-</html>
+@endsection
