@@ -20,3 +20,16 @@ function setSelectedIndex() {
         selectBox.selectedIndex = 0;
     }
 }
+
+// char remaining code
+function updateCountdown() {
+    let remaining = 140 - jQuery('.message').text().length;
+    jQuery('.countdown').text(remaining + ' resterende tekens.');
+}
+
+jQuery(document).ready(function ($) {
+    updateCountdown();
+    $('.message').change(updateCountdown);
+    $('.message').keyup(updateCountdown);
+});
+// end char remainign code
