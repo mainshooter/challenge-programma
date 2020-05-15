@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 use http\Message;
 use Session;
+use DateTime;
 
 class ProfileController extends Controller
 {
@@ -18,13 +19,19 @@ class ProfileController extends Controller
     {
         $oUser = Auth::user();
         $aAllEvents = $oUser->events;
+        $oNow = new DateTime();
 
         $iPoints = 0;
         $sSortType = $request->selectSort;
 
-        if($sSortType == "Actual") {
+        if($sSortType == "Actueel") {
             $aAllEvents = Array();
-
+            foreach($oUser->events as $oEvent) {
+                $oDate = new DateTime($oEvent->event_start_date_time);
+                if($oDate > $oNow) {
+                    $aAllEvents->push($oEvent);
+                }
+            }
         }
         else {
             $aAllEvents = $oUser->events;
@@ -35,8 +42,7 @@ class ProfileController extends Controller
               $iPoints += $oEvent->points;
             }
         }
-
-        return view('profile/index', ["oUser" => $oUser, 'iPoints' => $iPoints]);
+        return view('profile/index', ["oUser" => $oUser, 'iPoints' => $iPoints, "sSortType" => $sSortType, "aAllEvents" => $aAllEvents]);
     }
 
     public function terminatePage(Request $request)

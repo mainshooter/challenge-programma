@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('head')
+<script src="{{ asset('js/profile.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/profilePage.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
@@ -16,7 +17,7 @@
                     Relevantie
                 </option>
                 <option value="Actueel">
-                    Sorteer op nieuwste datum
+                    Sorteer op Actueel
                 </option>
             </select>
         </form>
@@ -36,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($oUser->events as $oEvent)
+                    @foreach($aAllEvents as $oEvent)
                     <tr>
                         <td>{{$oEvent->name}}</td>
                         <td>{{$oEvent->event_start_date_time}}</td>

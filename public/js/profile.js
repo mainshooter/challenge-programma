@@ -9,7 +9,7 @@ function setSelectedIndex() {
     let selectLabel = document.getElementById('selectLabel');
     let selectBox = document.getElementById('selectBox');
 
-    if (selectLabel.className == 'actual') {
+    if (selectLabel.className == 'Actueel') {
         selectBox.selectedIndex = 1;
     }
     else {
