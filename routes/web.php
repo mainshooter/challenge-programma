@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::setRoutes(new Illuminate\Routing\RouteCollection);
 Route::get('/', 'HomepageController@index');
 
 Route::get('home', 'HomepageController@index')->name('home');
