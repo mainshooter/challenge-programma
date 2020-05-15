@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @section('content')
 <div class="container">
   <div class="row">
@@ -15,11 +16,13 @@
         </div>
         <div class="form-group">
           <label>Uw review*</label>
-          <div id="editor">
+          <div id="editor" class="message">
           </div>
+          <br>
+          <span class="countdown"></span>
         </div>
         <input type="hidden" name="page_content"/>
-        <input type="submit" value="Toevoegen" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary"> Toevoegen</button>
       </form>
     </div>
   </div>
@@ -36,4 +39,6 @@
   <link href="{{ asset('css/quill.bubble.css') }}" rel="stylesheet">
 
   <script src="{{ asset('js/cmsEditor.js') }}" defer></script>
+
+  <script src="{{ asset('js/review.js') }}" defer></script>
 @endsection
