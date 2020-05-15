@@ -1,4 +1,4 @@
-@extends('mailtemplate')
+@extends('mail.template')
 
 @section('content')
     Beste {{ $oUser->firstname }},
