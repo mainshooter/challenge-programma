@@ -24,7 +24,7 @@ class ProfileController extends Controller
 
         if($sSortType == "Actual") {
             $aAllEvents = Array();
-            
+
         }
         else {
             $aAllEvents = $oUser->events;
