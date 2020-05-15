@@ -40,4 +40,15 @@ class UserTest extends DuskTestCase
                     ->assertSee("Gebruiker aanmaken");
         });
     }
+
+    //delete user test
+    public function testDeleteUser(){
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->first())
+                ->visit('/admin/user')
+                ->click('#delete-3')
+                ->clickLink('Verwijderen')
+                ->assertSee("Gebruiker is verwijderd");
+        });
+    }
 }
