@@ -73,6 +73,10 @@
                         @endif
                     @endif
                 </ul>
+                <form class="form-inline ml-auto">
+                    <input type="text" class="form-control mr-sm-2" placeholder="Search">
+                    <button type="submit" class="btn btn-outline-light">Search</button>
+                </form>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
