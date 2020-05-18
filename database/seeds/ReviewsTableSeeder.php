@@ -12,6 +12,12 @@ class ReviewsTableSeeder extends Seeder
     public function run()
     {
         DB::table('review')->insert([
+            'body' => "Deze review moet worden verwijderd.",
+            'rating' => 10,
+            'user_id' => 2,
+        ]);
+
+        DB::table('review')->insert([
             'body' => "Het Challenge programma is een goede studentenvereniging. We hebben samen een goede dag gehad en veel van elkaar geleerd.",
             'rating' => 8,
             'user_id' => 2,
@@ -34,6 +40,5 @@ class ReviewsTableSeeder extends Seeder
             'rating' => 6,
             'user_id' => 2,
         ]);
-
     }
 }
