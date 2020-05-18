@@ -150,6 +150,8 @@ Route::middleware('role:admin')->group(function () {
 });
 Route::get("details/{id}", "EventController@details")->name("event.details");
 
+Route::get('search', 'SearchController@index')->name('search.index');
+
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');
 
