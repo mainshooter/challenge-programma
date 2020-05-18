@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Event;
+use App\Events\NewAgendaEvent;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
@@ -72,6 +73,7 @@ class EventController extends Controller
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
       else {
         $oEvent->is_accepted = false;
@@ -120,6 +122,7 @@ class EventController extends Controller
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
 
       $oEvent->save();
@@ -220,6 +223,7 @@ class EventController extends Controller
         $oEvent->is_accepted = true;
         $oEvent->save();
         Mail::to($oEvent->organiser->email)->send(new AcceptEvent($oEvent));
+        event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
         return redirect()->route('event.index');
     }
 
