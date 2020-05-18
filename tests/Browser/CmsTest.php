@@ -20,7 +20,7 @@ class CmsTest extends DuskTestCase
         $browser->value("input[name=page_title]", "Test pagina");
         $browser->value("input[name=url_slug]", "test-pagina");
         $browser->value('.ql-editor', 'Leuke test content');
-        $browser->click("input[type=submit]");
+        $browser->click(".content-container input[type=submit]");
         $browser->assertSee("Pagina toevoegen");
       });
     }
@@ -33,7 +33,7 @@ class CmsTest extends DuskTestCase
             $browser->clickLink("Pagina toevoegen");
             $browser->value("input[name=page_title]", "Test pagina");
             $browser->value('.ql-editor', 'Leuke test content');
-            $browser->click("input[type=submit]");
+            $browser->click(".content-container input[type=submit]");
             $browser->assertSee("Title");
         });
     }
@@ -46,7 +46,7 @@ class CmsTest extends DuskTestCase
         $sCurrentTitle = $browser->value('input[name=page_title]');
         $sNewTitle = $sCurrentTitle . "2";
         $browser->value('input[name=page_title]', $sNewTitle);
-        $browser->click("input[type=submit]");
+        $browser->click(".content-container input[type=submit]");
         $browser->assertSee($sNewTitle);
       });
     }

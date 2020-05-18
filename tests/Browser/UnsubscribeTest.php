@@ -19,7 +19,7 @@ class UnsubscribeTest extends DuskTestCase
                   ->clickLink('Akkoord');
           $browser->clickLink('Uitschrijven');
           $browser->click(".btn-danger a");
-          $browser->click("input[type=submit]");
+          $browser->click(".content-container input[type=submit]");
           $browser->assertSee('Je bent uitgeschreven');
         });
     }

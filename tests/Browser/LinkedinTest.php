@@ -25,7 +25,7 @@ class LinkedinTest extends DuskTestCase
               ->value("textarea[name=description]","Admin test fotoalbum")
               ->click("input[type=submit]")
               ->attach('image', public_path('storage/testImage.png'))
-              ->click("input[name=submitPhoto]")
+              ->click(".content-container input[name=submitPhoto]")
               ->assertSee('Album publiceren naar Linkedin');
         });
     }

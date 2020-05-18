@@ -29,9 +29,9 @@ class PhotobookTest extends DuskTestCase
                 ->visit('/photoalbum')
                 ->clickLink("Akkoord")
                 ->clickLink('Fotoalbum toevoegen')
-                ->value("input[name=title]", "TestFotoalbum")
+                ->value("input[name=name]", "TestFotoalbum")
                 ->value("textarea[name=description]", "TestDescription")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->assertSee('Fotoalbum is aangemaakt');
         });
     }
@@ -50,9 +50,9 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->assertSee("Fotoalbum is aangemaakt");
         });
     }
@@ -64,7 +64,7 @@ class PhotobookTest extends DuskTestCase
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->assertSee("Titel");
         });
     }
@@ -74,11 +74,11 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
-                ->click("input[name=submitPhoto]")
+                ->click(".content-container input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
         });
     }
@@ -89,11 +89,11 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
-                ->click("input[name=submitPhoto]")
+                ->click(".content-container input[name=submitPhoto]")
                 ->clickLink("Verwijderen")
                 ->assertSee('De foto is verwijdert!');
         });
@@ -105,12 +105,12 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
                 ->value("div[id=editor]", 'Mooie beschrijving')
-                ->click("input[name=submitPhoto]")
+                ->click(".content-container input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
         });
     }
@@ -123,7 +123,7 @@ class PhotobookTest extends DuskTestCase
             $browser->visit('/photoalbum')
                 //album maken
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 //foto in album mikken
