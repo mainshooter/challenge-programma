@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h2 class="row justify-content-center">Album {{$oPhotoalbum->title}} bewerken</h2>
+	<h2 class="row justify-content-center">Album {{$oPhotoalbum->name}} bewerken</h2>
 	<div class="row p-4">
 		<div class="col-5">
 			<div class="card">
@@ -15,11 +15,11 @@
 					<form action="{{ route('photoalbum.edit.album', $oPhotoalbum->id) }}" method='post'>
 						@csrf
 						<div class="form-group row">
-							<label for="title" class="col-md-4 col-form-label text-md-right">Album titel</label>
+							<label for="name" class="col-md-4 col-form-label text-md-right">Album titel</label>
 
 							<div class="col-md-6">
-								<input id="title" type="text" class="form-control" name="title" required
-									autocomplete="title" value="{{$oPhotoalbum->title}}">
+								<input id="name" type="text" class="form-control" name="name" required
+									autocomplete="name" value="{{$oPhotoalbum->name}}">
 							</div>
 						</div>
 

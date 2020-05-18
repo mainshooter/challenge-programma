@@ -47,13 +47,13 @@ class PhotoalbumController extends Controller
 
     public function create(Request $request) {
         $request->validate([
-            'title' => ['required', 'string', 'max:50'],
+            'name' => ['required', 'string', 'max:50'],
             'description' => ['required', 'string'],
             'event' => ['nullable', 'exists:event,id'],
         ]);
 
         $oPhotoalbum = new Photoalbum();
-        $oPhotoalbum->title = $request->title;
+        $oPhotoalbum->name = $request->name;
         $oPhotoalbum->description = $request->description;
         $oPhotoalbum->save();
 
@@ -120,7 +120,7 @@ class PhotoalbumController extends Controller
     public function editAlbum(Request $request, $iId)
     {
         $request->validate([
-            'title' => ['required', 'string', 'max:50'],
+            'name' => ['required', 'string', 'max:50'],
             'description' => ['required', 'string'],
             'event' => ['nullable', 'exists:event,id'],
         ]);
@@ -130,7 +130,7 @@ class PhotoalbumController extends Controller
             return redirect()->route('photoalbum.index');
         }
 
-        $oAlbum->title = $request->title;
+        $oAlbum->name = $request->name;
         $oAlbum->save();
 
         $oEvent = Event::find($request->event);
@@ -234,8 +234,8 @@ class PhotoalbumController extends Controller
               ],
               'owner' => 'urn:li:organization:' . config('services.linkedin.profile_id'),
               'content' => [
-                'title' => $oAlbum->title,
-                'subject' => $oAlbum->title,
+                'name' => $oAlbum->name,
+                'subject' => $oAlbum->name,
                 'text' => [
                   'text' => $sText,
                 ]

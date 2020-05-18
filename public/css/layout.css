@@ -139,3 +139,7 @@ body{
   text-align: center;
   margin: 7% 0;
 }
+
+.search-results .card {
+  margin: 30px;
+}
