@@ -35,14 +35,6 @@ class PhotobookTest extends DuskTestCase
                 ->assertSee('Fotoalbum is aangemaakt');
         });
     }
-    public function testView()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/photoalbum')
-                ->clickLink("Foto's bekijken")
-                ->assertSee("Foto's van Album");
-        });
-    }
 
     public function testAdminCreatePhotoalbum()
     {
@@ -76,7 +68,7 @@ class PhotobookTest extends DuskTestCase
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
                 ->click(".content-container input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
@@ -91,7 +83,7 @@ class PhotobookTest extends DuskTestCase
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
                 ->click(".content-container input[name=submitPhoto]")
                 ->clickLink("Verwijderen")
@@ -107,11 +99,20 @@ class PhotobookTest extends DuskTestCase
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
                 ->value("div[id=editor]", 'Mooie beschrijving')
                 ->click(".content-container input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
+        });
+    }
+
+    public function testView()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/photoalbum')
+                ->clickLink("Foto's bekijken")
+                ->assertSee("Foto's van Album");
         });
     }
 
@@ -125,7 +126,7 @@ class PhotobookTest extends DuskTestCase
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("input[name=name]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
-                ->click("input[type=submit]")
+                ->click(".content-container input[type=submit]")
                 //foto in album mikken
                 ->attach('image', public_path('storage/testImage.png'))
                 ->value("div[id=editor]", 'Mooie beschrijving')
