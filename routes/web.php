@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'HomepageController@index');
 
 Route::get('home', 'HomepageController@index')->name('home');
@@ -151,6 +150,8 @@ Route::middleware('role:admin')->group(function () {
   });
 });
 Route::get("details/{id}", "EventController@details")->name("event.details");
+
+Route::get('search', 'SearchController@index')->name('search.index');
 
 Route::get('/agenda', 'EventController@agenda')->name('event.agenda');
 Route::get('/agenda/detail/{id}', 'EventController@agendaDetails')->name('event.details.api');

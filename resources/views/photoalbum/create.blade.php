@@ -11,9 +11,9 @@
                         <form method="POST" action="{{ route('photoalbum.create.post') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">Titel</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Titel</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="title" value="{{ old('title') }}" required autocomplete="titel" autofocus>
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" required autocomplete="titel" autofocus>
                                 </div>
                             </div>
 

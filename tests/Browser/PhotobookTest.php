@@ -18,7 +18,7 @@ class PhotobookTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/photoalbum')
-                    ->assertSee('Tijdlijn');
+                ->assertSee('Tijdlijn');
         });
     }
 
@@ -33,8 +33,7 @@ class PhotobookTest extends DuskTestCase
                 ->value("textarea[name=description]", "TestDescription")
                 ->click("input[type=submit]")
                 ->assertSee('Fotoalbum is aangemaakt');
-        } );
-
+        });
     }
     public function testView()
     {
@@ -51,8 +50,8 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]","Admin test fotoalbum")
-                ->value("textarea[name=description]","Admin test fotoalbum")
+                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->assertSee("Fotoalbum is aangemaakt");
         });
@@ -64,18 +63,19 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("textarea[name=description]","Admin test fotoalbum")
+                ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->assertSee("Titel");
         });
     }
-    public function testUploadPhoto(){
+    public function testUploadPhoto()
+    {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value("input[name=title]","Admin test fotoalbum")
-                ->value("textarea[name=description]","Admin test fotoalbum")
+                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("textarea[name=description]", "Admin test fotoalbum")
                 ->click("input[type=submit]")
                 ->attach('image', public_path('storage/testImage.png'))
                 ->click("input[name=submitPhoto]")
@@ -99,10 +99,11 @@ class PhotobookTest extends DuskTestCase
         });
     }
 
-    public function testAddTextToPhoto(){
+    public function testAddTextToPhoto()
+    {
         $this->browse(function (Browser $browser) {
-        $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
-        $browser->visit('/photoalbum')
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
                 ->value("input[name=title]", "Admin test fotoalbum")
                 ->value("textarea[name=description]", "Admin test fotoalbum")
@@ -111,6 +112,28 @@ class PhotobookTest extends DuskTestCase
                 ->value("div[id=editor]", 'Mooie beschrijving')
                 ->click("input[name=submitPhoto]")
                 ->assertSee('Uw foto is succesvol opgeslagen.');
+        });
+    }
+
+    //from the admin panel
+    public function testRemoveAlbum()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
+                //album maken
+                ->clickLink("Fotoalbum toevoegen")
+                ->value("input[name=title]", "Admin test fotoalbum")
+                ->value("textarea[name=description]", "Admin test fotoalbum")
+                ->click("input[type=submit]")
+                //foto in album mikken
+                ->attach('image', public_path('storage/testImage.png'))
+                ->value("div[id=editor]", 'Mooie beschrijving')
+                ->click("input[name=submitPhoto]");
+            $browser->visit('/photoalbum/overview')
+                //album verwijderen
+                ->clickLink('Verwijderen')
+                ->assertSee('Fotoalbum is verwijderd');
         });
     }
 }

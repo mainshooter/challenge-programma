@@ -71,6 +71,10 @@
                         @endif
                     @endif
                 </ul>
+                <form class="form-inline ml-auto" action="{{ route('search.index') }}">
+                    <input type="text" name="search" class="form-control mr-sm-2" placeholder="Zoeken" value="{{ request()->search }}">
+                    <input type="submit" class="btn btn-outline-light" value="Search">
+                </form>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
