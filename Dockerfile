@@ -42,6 +42,7 @@ RUN mv /var/www/html/.env.docker /var/www/html/.env
 
 RUN composer install
 RUN npm install
+RUN npm run prod
 
 USER root
 
