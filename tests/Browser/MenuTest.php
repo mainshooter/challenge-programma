@@ -70,9 +70,4 @@ class MenuTest extends DuskTestCase
             $browser->assertSee('challengeprogramma');
         });
     }
-
-    // // #406
-    // public function testAddSubMenu(){
-
-    // }
 }
