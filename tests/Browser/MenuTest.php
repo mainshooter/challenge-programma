@@ -30,7 +30,7 @@ class MenuTest extends DuskTestCase
             $browser->visit('/menu?menu=1')
                 ->value("input[name=url]", "facebook")
                 ->value("input[name=label]", "facebook")
-                ->clickLink('Add menu item')
+                ->clickLink('Menu item toevoegen')
                 ->script('location.reload();');
             $browser ->assertSee('facebook');
         });
@@ -39,10 +39,10 @@ class MenuTest extends DuskTestCase
     // #403
     public function testDeleteMenuItem(){
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::where('email', '')->First());
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/menu?menu=1')
                 ->clickLink(' Fotoalbum |4| ')
-                ->clickLink('Delete')
+                ->clickLink('Verwijderen')
                 ->acceptDialog()
                 ->assertPresent('#menutitletemp_4');
         });
@@ -51,7 +51,7 @@ class MenuTest extends DuskTestCase
     // #404
     public function testNavigateToMenuManagement(){
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::where('email', '')->First());
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/management')
                 ->clickLink('Menu')
                 ->assertSee('Menu bewerken');
@@ -65,7 +65,7 @@ class MenuTest extends DuskTestCase
             $browser->visit('/menu?menu=1')
                 ->value("input[name=url]", "challengeprogramma")
                 ->value("input[name=label]", "challengeprogramma")
-                ->clickLink('Add menu item')
+                ->clickLink('Menu item toevoegen')
                 ->script('location.reload();');
             $browser->assertSee('challengeprogramma');
         });
