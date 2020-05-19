@@ -1,8 +1,8 @@
 
 window.onload = function () {
     setSelectedIndex();
-    element = document.getElementById('selectBox').addEventListener('change', (e) => {
-        e.target.form.submit();
+    $('#selectBox').on('select2:select', function (e) {
+    e.target.form.submit();
     });
 };
 
@@ -11,12 +11,12 @@ function setSelectedIndex() {
     let selectBox = document.getElementById('selectBox');
 
     if (selectLabel.className == 'dateNew') {
-        selectBox.selectedIndex = 1;
+        $('selectBox').val(1);
     }
     else if (selectLabel.className == 'dateOld') {
-        selectBox.selectedIndex = 2;
+        $('selectBox').val(2);
     }
     else {
-        selectBox.selectedIndex = 0;
+        $('selectBox').val(0);
     }
 }
