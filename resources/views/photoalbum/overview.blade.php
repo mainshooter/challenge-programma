@@ -11,7 +11,7 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Titel</th>
+              <th>Naam</th>
               <th></th>
             </tr>
           </thead>
@@ -19,7 +19,7 @@
             @foreach($aPhotoalbums as $oPhotoalbum)
               <tr>
                 <td>{{ $oPhotoalbum->id }}</td>
-                <td>{{ $oPhotoalbum->title }}</td>
+                <td>{{ $oPhotoalbum->name }}</td>
                 <td>
                   <button type="button" class="btn btn-info">
                     <a href="{{ route('photoalbum.edit', $oPhotoalbum->id) }}">Bewerken</a>
