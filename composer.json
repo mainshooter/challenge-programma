@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "beyondcode/laravel-websockets": "^1.4",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
@@ -17,6 +18,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
+        "pusher/pusher-php-server": "~3.0",
         "statikbe/laravel-cookie-consent": "^1.1"
     },
     "require-dev": {
