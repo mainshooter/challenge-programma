@@ -33,13 +33,15 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
+          <a class="navbar-brand" href="#">
+            <img class="CP" src="/images/LogoCP.png">
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <img class= "CP navbar-brand" src="/images/LogoCP.png">
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
                   @foreach(Menu::get(1) as $aMenu)

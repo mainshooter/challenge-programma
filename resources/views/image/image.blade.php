@@ -21,24 +21,26 @@
           </div>
         </div>
         <div class="col-8">
-          <table class="table">
-            <thead>
-              <th>Afbeelding</th>
-              <th></th>
-            </thead>
-            <tbody>
-              @foreach($aImages as $oImage)
-                <tr>
-                  <td>
-                    <img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
-                  </td>
-                  <td>
-                    <a class="btn btn-danger" href="{{ route('image.delete', $oImage->id)}}">Verwijderen</a>
-                  </td>
-                </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <div class="responsive-table">
+            <table class="table">
+              <thead>
+                <th>Afbeelding</th>
+                <th></th>
+              </thead>
+              <tbody>
+                @foreach($aImages as $oImage)
+                  <tr>
+                    <td>
+                      <img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" href="{{ route('image.delete', $oImage->id)}}">Verwijderen</a>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
