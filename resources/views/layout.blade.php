@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!--
+  Challange programma
+  Ontwikkeld door:
+  - Rico Bender
+  - Onyi Lam
+  - Peter Romijn
+  - Lars Versteeg
+  - Liam bonthond
+  - Niels van Daalen
+ -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,13 +43,15 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
+          <a class="navbar-brand" href="#">
+            <img class="CP" src="/images/LogoCP.png">
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <img class= "CP navbar-brand" src="/images/LogoCP.png">
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
                   @foreach(Menu::get(1) as $aMenu)
@@ -75,7 +87,7 @@
                 </ul>
                 <form class="form-inline ml-auto" action="{{ route('search.index') }}">
                     <input type="text" name="search" class="form-control mr-sm-2" placeholder="Zoeken" value="{{ request()->search }}">
-                    <input type="submit" class="btn btn-outline-light" value="Search">
+                    <input type="submit" class="btn btn-outline-light search-button" value="Zoeken">
                 </form>
 
                 <!-- Right Side Of Navbar -->
