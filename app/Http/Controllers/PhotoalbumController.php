@@ -131,6 +131,7 @@ class PhotoalbumController extends Controller
         }
 
         $oAlbum->name = $request->name;
+        $oAlbum->description = $request->description;
         $oAlbum->save();
 
         $oEvent = Event::find($request->event);
