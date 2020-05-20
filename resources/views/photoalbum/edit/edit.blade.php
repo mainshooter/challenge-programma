@@ -4,7 +4,7 @@
 <div class="container">
 	<h2 class="row justify-content-center">Album {{$oPhotoalbum->name}} bewerken</h2>
 	<div class="row p-4">
-		<div class="col-5">
+		<div class="col-12 col-md-5">
 			<div class="card">
 				<div class="card-header">
 					Album instellingen
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-7">
+		<div class="col-12 col-md-7">
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
