@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12">
         <h1>Alle reviews</h1>
-        <div class="responsive-table">
+        <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>

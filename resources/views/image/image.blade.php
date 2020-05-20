@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="col-8">
-          <div class="responsive-table">
+          <div class="table-responsive">
             <table class="table">
               <thead>
                 <th>Afbeelding</th>

@@ -9,7 +9,7 @@
         Event toevoegen
       </a>
         <h2>Goedgekeurde evenementen</h2>
-      <div class="responsive-table">
+      <div class="table-responsive">
         <table class="table aproved-events">
           <thead>
             <tr>
@@ -48,7 +48,7 @@
       </div>
 
         <h2>Openstaande evenementen</h2>
-        <div class="responsive-table">
+        <div class="table-responsive">
           <table class="table open-events">
               <thead>
                 <tr>

@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-primary">
           <a href="{{ route('photoalbum.create') }}">Fotoalbum toevoegen</a>
         </button>
-        <div class="responsive-table">
+        <div class="table-responsive">
           <table class="table sorting-table">
             <thead>
               <tr>

@@ -11,7 +11,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <h1>Volgende Evenementen:</h1>
-            <div class="responsive-table">
+            <div class="table-responsive">
               <table class="table">
                   <thead>
                       <tr>
@@ -37,7 +37,7 @@
             </div>
             <h1>Evenementen die jij aan het organiseren bent:</h1>
             <div>
-            <div class="responsive-table">
+            <div class="table-responsive">
               <table class="table">
                   <thead>
                       <tr>
@@ -73,7 +73,7 @@
                     Behaalde punten (certificaat/vsr)
                 </div>
                 <div class="card-body">
-                    <div class="responsive-table">
+                    <div class="table-responsive">
                       <table class="table">
                           <thead>
                               <tr>

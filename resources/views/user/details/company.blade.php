@@ -7,7 +7,7 @@
                 <a href="{{ URL::previous() }}" class="btn btn-primary">Terug</a>
                 <h1>Evenementen van {{$oUser->firstname}} @if(!is_null($oUser->middlename)) {{$oUser->middlename}} @endif {{$oUser->lastname}}:</h1>
                 <div class="card">
-                  <div class="responsive-table">
+                  <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
