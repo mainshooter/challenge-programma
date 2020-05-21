@@ -48,7 +48,7 @@ class EventTest extends DuskTestCase
         $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
         $browser->click("input[name=event_house_number]");
 
-        $browser->click("input[type=submit]");
+        $browser->click(".content-container input[type=submit]");
         $browser->assertSee('Het evenement postcode formaat is ongeldig.');
       });
     }
@@ -77,7 +77,7 @@ class EventTest extends DuskTestCase
         $browser->click('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
         $browser->click("input[name=event_house_number]");
 
-        $browser->click("input[type=submit]");
+        $browser->click(".content-container input[type=submit]");
         $browser->assertSee('Event toevoegen');
       });
     }

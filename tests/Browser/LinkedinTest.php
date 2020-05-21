@@ -21,11 +21,11 @@ class LinkedinTest extends DuskTestCase
           $browser->visit('/photoalbum')
               ->clickLink('Akkoord')
               ->clickLink("Fotoalbum toevoegen")
-              ->value("input[name=title]","Test fotoalbum")
+              ->value("input[name=name]","Test fotoalbum")
               ->value("textarea[name=description]","Admin test fotoalbum")
-              ->click("input[type=submit]")
+              ->click(".content-container input[type=submit]")
               ->attach('image', public_path('storage/testImage.png'))
-              ->click("input[name=submitPhoto]")
+              ->click(".content-container input[name=submitPhoto]")
               ->assertSee('Album publiceren naar Linkedin');
         });
     }
