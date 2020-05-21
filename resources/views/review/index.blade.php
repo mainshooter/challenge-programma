@@ -15,24 +15,27 @@
                 <h2>
                     Wat bedrijven denken over het Challenge programma
                 </h2>
-                <div class="float-right">
-                    <form method="post">
-                        @csrf
-                        <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
-                        <select name="selectSort" class="form-control" id="selectBox">
-                            <option value="none">
-                                Relevantie
-                            </option>
-                            <option value="highlow">
-                                Review hoog - laag
-                            </option>
-                            <option value="lowhigh">
-                                Review laag - hoog
-                            </option>
-                        </select>
-                    </form>
-                </div>
                 <br>
+                <div class="row">
+                  <div class="col-9"></div>
+                  <div class="col-3">
+                      <form method="post">
+                          @csrf
+                          <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
+                          <select name="selectSort" class="form-control" id="selectBox">
+                              <option value="none">
+                                  Relevantie
+                              </option>
+                              <option value="highlow">
+                                  Review hoog - laag
+                              </option>
+                              <option value="lowhigh">
+                                  Review laag - hoog
+                              </option>
+                          </select>
+                      </form>
+                  </div>
+                </div>
                 <div class="row">
                     @foreach($aReviews as $review)
                     <div class="col-md-6 col-sm-12">
