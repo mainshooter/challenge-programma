@@ -18,7 +18,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-9 col-0"></div>
-                  <div class="col-md-3  col-12">
+                  <div class="col-md-3 col-12">
                       <form method="post">
                           @csrf
                           <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
