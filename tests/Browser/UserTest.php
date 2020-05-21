@@ -36,7 +36,7 @@ class UserTest extends DuskTestCase
                     ->value("input[name=email]", "Henkie@hotmail.com")
                     ->value("input[name=password]", "LeukWachtwoordIsDit!")
                     ->value("input[name=password_confirmation]", "LeukWachtwoordIsDit!")
-                    ->press("input[type=submit]")
+                    ->press(".content-container input[type=submit]")
                     ->assertSee("Gebruiker aanmaken");
         });
     }
@@ -50,5 +50,15 @@ class UserTest extends DuskTestCase
                 ->clickLink('Verwijderen')
                 ->assertSee("Gebruiker is verwijderd");
         });
+    }
+
+    /** @test */
+    public function testDetails() {
+      $this->browse(function(Browser $browser) {
+        $browser->loginAs(User::where('email', 'admin@gmail.com')->first())
+                ->visit('/admin/user')
+                ->clickLink('Details')
+                ->assertSee('details');
+      });
     }
 }
