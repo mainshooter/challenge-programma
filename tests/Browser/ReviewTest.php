@@ -37,6 +37,19 @@ class ReviewTest extends DuskTestCase
     }
 
     /** @test */
+    public function CreateReviewMaxCharTest() {
+        $this->browse(function(Browser $browser) {
+            $browser->loginAs(User::where('email', 'avans@gmail.com')->first());
+            $browser->visit('/reviews');
+            $browser->press('Review toevoegen');
+            $browser->type('review_stars', 8);
+            $browser->type('.ql-editor', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.');
+            $browser->press('Toevoegen');
+            $browser->assertSee('page content mag niet meer dan 140 karakters bevatten.');
+        });
+    }
+
+    /** @test */
     public function DeleteReviewTest() {
         $this->browse(function(Browser $browser) {
             $browser->loginAs(User::where('email', 'admin@gmail.com')->first());

@@ -131,6 +131,7 @@ class PhotoalbumController extends Controller
         }
 
         $oAlbum->name = $request->name;
+        $oAlbum->description = $request->description;
         $oAlbum->save();
 
         $oEvent = Event::find($request->event);
@@ -171,11 +172,11 @@ class PhotoalbumController extends Controller
             Storage::disk('public')->delete($sPath);
             if (!Storage::disk('public')->exists($sPath)) {
                 $oImage->delete();
-                Session::flash('message', "De foto is verwijdert!");
+                Session::flash('message', "De foto is verwijderd!");
             }
         } else {
             $oImage->delete();
-            Session::flash('message', "De foto is verwijdert!");
+            Session::flash('message', "De foto is verwijderd!");
         }
 
         return redirect()->route('photoalbum.edit', ['id' => $oImage->photoalbum_id]);
