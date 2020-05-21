@@ -24,7 +24,7 @@ class RegisterStudentTest extends DuskTestCase
           $browser->value("input[name=email]", "Henkie@hotmail.com");
           $browser->value("input[name=password]", "LeukWachtwoordIsDit!");
           $browser->value("input[name=password_confirmation]", "LeukWachtwoordIsDit!");
-          $browser->click("input[type=submit]");
+          $browser->click(".content-container input[type=submit]");
           $browser->assertSee('Wat mensen over ons zeggen:');
       });
     }
@@ -39,7 +39,7 @@ class RegisterStudentTest extends DuskTestCase
             $browser->value("input[name=email]", "Henkie@hotmail.com");
             $browser->value("input[name=password]", "LeukWachtwoordIsDit!");
             $browser->value("input[name=password_confirmation]", "LeukWachtwoordIsDit!");
-            $browser->click("input[type=submit]");
+            $browser->click(".content-container input[type=submit]");
             $browser->assertSee('email is al bezet');
         });
     }
@@ -58,7 +58,7 @@ class RegisterStudentTest extends DuskTestCase
             $browser->value("input[name=email]", "bedrijf@company.com");
             $browser->value("input[name=password]", "LeukWachtwoordIsDit!");
             $browser->value("input[name=password_confirmation]", "LeukWachtwoordIsDit!");
-            $browser->click("input[type=submit]");
+            $browser->click(".content-container input[type=submit]");
             $browser->assertSee('Wat mensen over ons zeggen:');
         });
     }
@@ -77,7 +77,7 @@ class RegisterStudentTest extends DuskTestCase
             $browser->value("input[name=email]", "bedrijf@company.com");
             $browser->value("input[name=password]", "LeukWachtwoordIsDit!");
             $browser->value("input[name=password_confirmation]", "LeukWachtwoordIsDit!");
-            $browser->click("input[type=submit]");
+            $browser->click(".content-container input[type=submit]");
             $browser->assertSee('email is al bezet');
         });
     }
