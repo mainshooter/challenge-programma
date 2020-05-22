@@ -10,7 +10,15 @@
             @foreach($aItemResults as $oItem)
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $oItem->name }}</h5>
+                  <h5 class="card-title">
+                    @if($sKey == 'event' && Auth::user() && Auth::user()->role == 'student')
+                      <a href="{{ route('event.register.student', $oItem->id) }}">{{ $oItem->name }}</a>
+                    @elseif($sKey == 'photoalbum')
+                      <a href="{{ route('photoalbum.photos', $oItem->id) }}">{{ $oItem->name }}</a>
+                    @else
+                      {{ $oItem->name }}
+                    @endif
+                  </h5>
                   <p class="card-text">{{ $oItem->description }}</p>
                 </div>
               </div>

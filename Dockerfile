@@ -26,6 +26,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install zip \
     && docker-php-source delete
 
+#Install nodejs
+RUN apt-get -y install curl gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
+RUN apt-get -y install nodejs
+
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -36,6 +41,8 @@ COPY ./php.ini /usr/local/etc/php/conf.d/upload.php.ini
 RUN mv /var/www/html/.env.docker /var/www/html/.env
 
 RUN composer install
+RUN npm install
+RUN npm run prod
 
 USER root
 

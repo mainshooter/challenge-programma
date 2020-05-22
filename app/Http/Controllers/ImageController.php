@@ -54,7 +54,7 @@ class ImageController
         }
 
         $oImage->delete();
-        Session::flash('message', "De foto is verwijdert!");
+        Session::flash('message', "De foto is verwijderd!");
 
         return redirect()->route('image.index');
     }
