@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <!--
-  Challange programma
+  Challenge programma
   Ontwikkeld door:
   - Rico Bender
   - Onyi Lam
   - Peter Romijn
   - Lars Versteeg
-  - Liam bonthond
+  - Liam Bonthond
   - Niels van Daalen
  -->
 <head>
