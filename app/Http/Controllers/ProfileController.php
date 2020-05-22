@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $iPoints = 0;
         $sSortType = $request->selectSort;
 
-        if($sSortType == "Actueel") {
+        if($sSortType == "futureevents") {
             $aAllEvents = Array();
             foreach($oUser->events as $oEvent) {
                 $oDate = new DateTime($oEvent->event_start_date_time);

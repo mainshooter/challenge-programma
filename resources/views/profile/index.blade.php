@@ -13,11 +13,11 @@
             @csrf
             <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
             <select name="selectSort" class="form-control" id="selectBox">
-                <option value="Allemaal">
-                    Relevantie
+                <option value="all">
+                    Alle evenementen
                 </option>
-                <option value="Actueel">
-                    Sorteer op Actueel
+                <option value="futureevents">
+                    Sorteer op toekomstige evenementen
                 </option>
             </select>
         </form>
