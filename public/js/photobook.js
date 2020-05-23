@@ -1,4 +1,3 @@
-
 window.onload = function () {
     setSelectedIndex();
     element = document.getElementById('selectBox').addEventListener('change', (e) => {
