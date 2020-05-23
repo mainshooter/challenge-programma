@@ -123,4 +123,10 @@
 <link href="{{ asset('css/quill.bubble.css') }}" rel="stylesheet">
 
 <script src="{{ asset('js/cmsEditor.js') }}" defer></script>
+
+<script defer>
+	$(document).ready(() => {
+		$('select').select2();
+	});
+</script>
 @endsection

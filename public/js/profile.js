@@ -9,11 +9,8 @@ function setSelectedIndex() {
     let selectLabel = document.getElementById('selectLabel');
     let selectBox = document.getElementById('selectBox');
 
-    if (selectLabel.className == 'dateNew') {
+    if (selectLabel.className == 'futureevents') {
         selectBox.selectedIndex = 1;
-    }
-    else if (selectLabel.className == 'dateOld') {
-        selectBox.selectedIndex = 2;
     }
     else {
         selectBox.selectedIndex = 0;
