@@ -27,7 +27,7 @@
         							<label class="col-md-4 col-form-label text-md-right">Evenement</label>
         							<div class="col-md-6">
         								<select class="form-control col-md-12" name="event">
-        										<option value="">-----------</option>
+        										<option value="">-------------------------</option>
         									@if ($oPhotoalbum->event)
         										<option value="{{ $oPhotoalbum->event->id }}" selected>{{ $oPhotoalbum->event->name }}</option>
         									@endif

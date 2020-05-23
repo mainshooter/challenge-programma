@@ -22,7 +22,7 @@
                                 <div class="col-md-6">
 
                                     <select class="form-control col-md-12 scale-select" name="event">
-                                        <option value="">-----------</option>
+                                        <option value="">-------------------------</option>
                                         @foreach($aEvents as $oEvent)
                                             <option value="{{ $oEvent->id }}">{{ $oEvent->name }}</option>
                                         @endforeach
