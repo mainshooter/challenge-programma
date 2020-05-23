@@ -4,7 +4,7 @@
 <div class="container">
 	<h2 class="row justify-content-center">Album {{$oPhotoalbum->name}} bewerken</h2>
 	<div class="row p-4">
-		<div class="col-5">
+		<div class="col-12 col-md-5">
 			<div class="card">
 				<div class="card-header">
 					Album instellingen
@@ -80,32 +80,34 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-7">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Foto's</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach ($oPhotoalbum->photos as $oImage)
-					<tr>
-						<td>
-							<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
-						</td>
-						<td>
-							<a class="btn btn-primary" href="{{ route('photoalbum.photo.create', $oImage) }}">
-								Bewerken
-							</a>
-							<a class="btn btn-danger" href=" {{ route('photoalbum.delete.photo', $oImage->id)}}">
-								Verwijderen
-							</a>
-						</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+		<div class="col-12 col-md-7">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Foto's</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach ($oPhotoalbum->photos as $oImage)
+						<tr>
+							<td>
+								<img class="img-thumbnail rounded mx-auto d-block" src="{{$oImage->image_src}}">
+							</td>
+							<td>
+								<a class="btn btn-primary" href="{{ route('photoalbum.photo.create', $oImage) }}">
+									Bewerken
+								</a>
+								<a class="btn btn-danger" href=" {{ route('photoalbum.delete.photo', $oImage->id)}}">
+									Verwijderen
+								</a>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

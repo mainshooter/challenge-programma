@@ -60,7 +60,7 @@
                                     @break($loop->index == 1)
                                 @endforeach
                               </div>
-                              <div class="tile more-images col-md-2">
+                              <div class="tile more-images col-2">
                                   <a href="{{route('photoalbum.photos', ['id' => $oAlbum->id])}}">
                                     <div class="images-number">{{count($oAlbum->photos)}}</div>
                                     Foto's

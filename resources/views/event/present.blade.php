@@ -12,32 +12,34 @@
         @endcomponent
         <form method="post">
           @csrf
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Voornaam</th>
-                <th>Tussenvoegsel</th>
-                <th>Achternaam</th>
-                <th>Is aanwezig</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($oEvent->students as $oUser)
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
                 <tr>
-                  <td>{{ $oUser->firstname }}</td>
-                  <td>{{ $oUser->middlename }}</td>
-                  <td>{{ $oUser->lastname }}</td>
-                  <td>
-                    @if ($oUser->pivot->was_present == true)
-                      <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}" checked>
-                    @else
-                      <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}">
-                    @endif
-                  </td>
+                  <th>Voornaam</th>
+                  <th>Tussenvoegsel</th>
+                  <th>Achternaam</th>
+                  <th>Is aanwezig</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @foreach($oEvent->students as $oUser)
+                  <tr>
+                    <td>{{ $oUser->firstname }}</td>
+                    <td>{{ $oUser->middlename }}</td>
+                    <td>{{ $oUser->lastname }}</td>
+                    <td>
+                      @if ($oUser->pivot->was_present == true)
+                        <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}" checked>
+                      @else
+                        <input type="checkbox" name="present_user[]" value="{{ $oUser->id }}">
+                      @endif
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
           <input type="submit" value="Opslaan" class="btn btn-primary">
         </form>
       </div>
