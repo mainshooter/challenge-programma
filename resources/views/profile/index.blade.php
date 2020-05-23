@@ -1,12 +1,28 @@
 @extends('layout')
 
 @section('head')
+<script src="{{ asset('js/profile.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/profilePage.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
 <div class="container no-max-width">
+    <div class="float-right">
+        <form method="post">
+            @csrf
+            <label id="selectLabel" class="{{$sSortType}}">Sorteren op:</label>
+            <select name="selectSort" class="form-control" id="selectBox">
+                <option value="all">
+                    Alle evenementen
+                </option>
+                <option value="futureevents">
+                    Sorteer op toekomstige evenementen
+                </option>
+            </select>
+        </form>
+    </div>
+    <br>
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -21,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($oUser->events as $oEvent)
+                    @foreach($aAllEvents as $oEvent)
                     <tr>
                         <td>{{$oEvent->name}}</td>
                         <td>{{$oEvent->event_start_date_time}}</td>

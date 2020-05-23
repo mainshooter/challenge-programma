@@ -36,7 +36,7 @@ $currentUrl = url()->current();
 																</p>
 
 																<p class="button-controls">
-																	<a  href="#" onclick="addcustommenu()"  class="button-secondary submit-add-to-menu right"  >Add menu item</a>
+																	<a  href="#" onclick="addcustommenu()"  class="button-secondary submit-add-to-menu right"  >Menu item toevoegen</a>
 																	<span class="spinner" id="spincustomu"></span>
 																</p>
 
@@ -93,7 +93,7 @@ $currentUrl = url()->current();
 																	</p>
 
 																	<p class="field-css-classes description description-thin">
-																		<label for="edit-menu-item-classes-{{$m->id}}"> Class CSS (optional)
+																		<label for="edit-menu-item-classes-{{$m->id}}"> CSS klasses (optioneel)
 																			<br>
 																			<input type="text" id="clases_menu_{{$m->id}}" class="widefat code edit-menu-item-classes" name="clases_menu_{{$m->id}}" value="{{$m->class}}">
 																		</label>
@@ -112,9 +112,9 @@ $currentUrl = url()->current();
 
 																	<div class="menu-item-actions description-wide submitbox">
 
-																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{ $currentUrl }}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Delete</a>
+																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{ $currentUrl }}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Verwijderen</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
-																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{ $currentUrl }}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
+																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{ $currentUrl }}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Annuleren</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
 																		<a onclick="getmenus()" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Update item</a>
 
