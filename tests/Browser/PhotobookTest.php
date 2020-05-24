@@ -137,4 +137,14 @@ class PhotobookTest extends DuskTestCase
                 ->assertSee('Fotoalbum is verwijderd');
         });
     }
+
+    public function testSearchEvent(){
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
+            $browser->visit('/photoalbum')
+                ->clickLink("Fotoalbum toevoegen")
+                ->value('input[role=searchbox]', 'spr')
+                ->assertSee('Sprint 2');
+        });
+    }
 }
