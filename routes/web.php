@@ -85,6 +85,7 @@ Route::middleware('role:student')->group(function() {
   Route::prefix('student')->group(function() {
       Route::prefix('profile')->group(function() {
           Route::get('/', "ProfileController@index")->name('profile.index');
+          Route::post('/', "ProfileController@index");
           Route::get('terminate', 'ProfileController@terminatePage')->name('profile.terminate');
           Route::post('terminate', 'ProfileController@terminate')->name('profile.terminate.post');
       });

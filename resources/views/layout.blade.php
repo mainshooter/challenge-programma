@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!--
+  Challenge programma
+  Ontwikkeld door:
+  - Rico Bender
+  - Onyi Lam
+  - Peter Romijn
+  - Lars Versteeg
+  - Liam Bonthond
+  - Niels van Daalen
+ -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +19,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}">
@@ -33,13 +41,15 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
+          <a class="navbar-brand" href="#">
+            <img class="CP" src="/images/LogoCP.png">
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- navigation items -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <img class= "CP navbar-brand" src="/images/LogoCP.png">
                 <!-- center navigation links -->
                 <ul class="navbar-nav">
                   @foreach(Menu::get(1) as $aMenu)
