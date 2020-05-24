@@ -80,47 +80,47 @@
               </table>
             </div>
         </div>
-        <div class="col-2"></div>
-    </div>
-    <div class='row justify-content-center'>
-        <div class="col-md-4 ">
-            <div class="card m-4">
-                <div class="card-header">
-                    Behaalde punten (certificaat/vsr)
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table">
-                          <thead>
-                              <tr>
-                                  <th scope="col">
-                                      Type
-                                  </th>
-                                  <th scope="col">
-                                      Aantal behaalde punten
-                                  </th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>
-                                      {{ $oUser->studentInfo->points_decision }}
-                                  </td>
-                                  <td>
-                                      {{ $iPoints }}
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
+        <div class='row justify-content-center'>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Behaalde punten (certificaat/vsr)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th scope="col">
+                                          Type
+                                      </th>
+                                      <th scope="col">
+                                          Aantal behaalde punten
+                                      </th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          {{ $oUser->studentInfo->points_decision }}
+                                      </td>
+                                      <td>
+                                          {{ $iPoints }}
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <button type="button" class="btn btn-danger m-4">
-            <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
-        </button>
+        <div class="row justify-content-center">
+            <button type="button" class="btn btn-danger m-4">
+                <a href="{{ route('profile.terminate')}}">Uitschrijven</a>
+            </button>
+        </div>
+        <div class="col-2"></div>
     </div>
 </div>
 @endsection
