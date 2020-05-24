@@ -51,3 +51,11 @@
         </div>
     </div>
 @endsection
+
+@section('head')
+  <script defer>
+    $(document).ready(() => {
+      $('select').select2();
+    });
+  </script>
+@endsection
