@@ -41,6 +41,10 @@ body{
     justify-content: center;
 }
 
+.scale-select{
+    width:auto;
+}
+
 .content-container{
     margin: 0 auto;
     min-height: 85vh;
