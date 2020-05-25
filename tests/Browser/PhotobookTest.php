@@ -143,8 +143,8 @@ class PhotobookTest extends DuskTestCase
             $browser->loginAs(User::where('email', 'admin@gmail.com')->First());
             $browser->visit('/photoalbum')
                 ->clickLink("Fotoalbum toevoegen")
-                ->value('input[role=searchbox]', 'spr')
-                ->assertSee('Sprint 2');
+                ->script('$("select").select2("open");');
+            $browser->assertSee('Sprint 2');
         });
     }
 }
