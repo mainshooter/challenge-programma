@@ -93,4 +93,38 @@ class EventTest extends DuskTestCase
         $browser->assertChecked('present_user[]');
       });
     }
+
+    public function testWebsockets() {
+      $this->browse(function($createEventBrowser, $websocketTestBrowser) {
+        $websocketTestBrowser->visit('/agenda');
+
+        $createEventBrowser->loginAs(User::where('email', 'admin@gmail.com')->first());
+        $createEventBrowser->visit('/admin/event');
+        $createEventBrowser->clickLink('Event toevoegen');
+        $createEventBrowser->type('event_name', 'websocket event');
+        $createEventBrowser->type('event_description', 'Lorem ipsum da set a mon');
+        $createEventBrowser->type('event_points', 3);
+        $createEventBrowser->type('event_max_students', 1);
+        $createEventBrowser->type('event_straat', 'Onderwijs boulevard');
+        $createEventBrowser->type('event_city', 'Den Bosch');
+        $createEventBrowser->type('event_house_number', '214');
+        $createEventBrowser->type('event_zipcode', '4585XS');
+
+        $createEventBrowser->click('input[name="event_start_date_time"]');
+        $createEventBrowser->waitFor('.xdsoft_date[data-date="12"]');
+        $createEventBrowser->click('.xdsoft_date[data-date="12"]');
+        $createEventBrowser->click("input[name=event_house_number]");
+
+        $createEventBrowser->click('input[name="event_end_date_time"]');
+        $createEventBrowser->waitFor('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
+        $createEventBrowser->click('.xdsoft_datetimepicker:last-child .xdsoft_date[data-date="13"]');
+        $createEventBrowser->click("input[name=event_house_number]");
+
+        $createEventBrowser->click(".content-container input[type=submit]");
+        $createEventBrowser->assertSee('Event toevoegen');
+
+        $websocketTestBrowser->waitForText('websocket event');
+        $websocketTestBrowser->assertSee('websocket event');
+      });
+    }
 }
