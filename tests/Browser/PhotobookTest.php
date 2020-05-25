@@ -87,7 +87,7 @@ class PhotobookTest extends DuskTestCase
                 ->attach('image', public_path('storage/testImage.png'))
                 ->click(".content-container input[name=submitPhoto]")
                 ->clickLink("Verwijderen")
-                ->assertSee('De foto is verwijdert!');
+                ->assertSee('De foto is verwijderd!');
         });
     }
 
