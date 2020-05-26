@@ -13,6 +13,8 @@
                   <h5 class="card-title">
                     @if($sKey == 'event' && Auth::user() && Auth::user()->role == 'student')
                       <a href="{{ route('event.register.student', $oItem->id) }}">{{ $oItem->name }}</a>
+                    @elseif($sKey == 'event')
+                      <a href="{{ route('event.details.guest', $oItem->id) }}">{{ $oItem->name }}</a>
                     @elseif($sKey == 'photoalbum')
                       <a href="{{ route('photoalbum.photos', $oItem->id) }}">{{ $oItem->name }}</a>
                     @else
