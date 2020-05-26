@@ -38,7 +38,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($oUser->events as $oEvent)
+                      @foreach($aAllEvents as $oEvent)
                       <tr>
                           <td>{{$oEvent->name}}</td>
                           <td>{{$oEvent->event_start_date_time}}</td>
