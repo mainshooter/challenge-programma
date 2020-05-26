@@ -149,7 +149,7 @@ Route::middleware('role:admin')->group(function () {
     });
   });
 });
-Route::get("details/{id}", "EventController@details")->name("event.details");
+Route::get("event/details/{id}", "EventController@details")->name("event.details");
 
 Route::get('search', 'SearchController@index')->name('search.index');
 
