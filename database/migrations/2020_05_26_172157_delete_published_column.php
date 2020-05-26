@@ -22,7 +22,7 @@ class DeletePublishedColumn extends Migration
     public function down()
     {
         Schema::table('photoalbum', function (Blueprint $table) {
-            $table->dropColumn('is_published');
+            $table->boolean('is_published')->default(false);
         });
     }
 }
