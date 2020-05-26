@@ -33,6 +33,19 @@ class MenuController extends Controller
         }
     }
 
+    public function deletemenug()
+    {
+      return json_encode(array("resp" => "You can not delete the menu"));
+    }
+
+    public function deleteitemmenu()
+    {
+        $menuitem = MenuItems::find(request()->input("id"));
+
+        $menuitem->delete();
+    }
+
+
     public function addcustommenu()
     {
         $menuitem = new MenuItems();
@@ -41,7 +54,6 @@ class MenuController extends Controller
         $menuitem->menu = request()->input("idmenu");
         $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
         $menuitem->save();
-
     }
 
     public function generatemenucontrol()
