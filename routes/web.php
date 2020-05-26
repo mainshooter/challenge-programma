@@ -163,4 +163,4 @@ Route::prefix('photoalbum')->group(function () {
   Route::post('/', 'PhotoalbumController@index');
 });
 
-Route::get("detailsguest/{id}", "EventController@detailsGuest")->name("event.details.guest");
+Route::get("event/details/{id}", "EventController@detailsGuest")->name("event.details.guest");
