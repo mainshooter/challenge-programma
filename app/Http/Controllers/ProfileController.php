@@ -8,6 +8,7 @@ use App\StudentEvent;
 use App\User;
 use App\StudentInfo;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use http\Message;
 use Session;
@@ -19,7 +20,6 @@ class ProfileController extends Controller
     {
         $oUser = Auth::user();
         $aAllEvents = $oUser->events;
-        $oNow = new DateTime();
 
         $iPoints = 0;
         $sSortType = $request->selectSort;
@@ -27,9 +27,9 @@ class ProfileController extends Controller
         if($sSortType == "futureevents") {
             $aAllEvents = Array();
             foreach($oUser->events as $oEvent) {
-                $oDate = new DateTime($oEvent->event_start_date_time);
-                if($oDate > $oNow) {
-                    $aAllEvents->push($oEvent);
+                $oDate = new Carbon($oEvent->event_start_date_time);
+                if($oDate->greaterThan(Carbon::now())) {
+                    array_push($aAllEvents, $oEvent);
                 }
             }
         }
