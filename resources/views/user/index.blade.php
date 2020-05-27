@@ -30,9 +30,7 @@
                           <td>
                               <a href="{{ route('user.edit', $oUser->id) }}" class="btn btn-primary">Bewerken</a>
                           <a href="{{ route('user.deleteExistingPage', $oUser->id) }}" id="delete-{{$oUser->id}}" class="btn btn-danger">Verwijderen</a>
-                          </td>
-                          <td>
-                              <a href="{{ route('user.details', $oUser->id)}}" class="btn btn-info">Details</a>
+                          <a href="{{ route('user.details', $oUser->id)}}" class="btn btn-info">Details</a>
                           </td>
                       </tr>
                   @endforeach

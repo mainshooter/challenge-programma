@@ -15,7 +15,6 @@
         "guzzlehttp/guzzle": "~6.0",
         "harimayco/laravel-menu": "^1.4",
         "laravel/framework": "^6.2",
-        "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
         "pusher/pusher-php-server": "~3.0",
