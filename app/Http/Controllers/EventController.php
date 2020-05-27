@@ -232,7 +232,10 @@ class EventController extends Controller
         if (is_null($oEvent)) {
             return redirect()->route('event.index');
         }else{
+          if (($oEvent->is_accepted == 0 && Auth::user()->role == 'admin') || $oEvent->is_accepted == 1) {
             return view('event.details', ['oEvent' => $oEvent]);
+          }
+          return redirect()->route('event.index');
         }
     }
 

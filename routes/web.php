@@ -81,6 +81,7 @@ Route::middleware('role:admin|content-writer')->group(function() {
 
 Route::middleware('role:student')->group(function() {
   Route::prefix('student')->group(function() {
+    Route::get("event/details/{id}", "EventController@details")->name("event.details");
       Route::prefix('profile')->group(function() {
           Route::get('/', "ProfileController@index")->name('profile.index');
           Route::post('/', "ProfileController@index");
@@ -147,7 +148,6 @@ Route::middleware('role:admin')->group(function () {
     });
   });
 });
-Route::get("details/{id}", "EventController@details")->name("event.details");
 
 Route::get('search', 'SearchController@index')->name('search.index');
 
