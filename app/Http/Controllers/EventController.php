@@ -239,6 +239,16 @@ class EventController extends Controller
         }
     }
 
+    public function detailsGuest(Request $request, $iId)
+    {
+      $oEvent = Event::find($iId);
+      if (is_null($oEvent)) {
+        return redirect()->route('event.index');
+      } else {
+        return view('event/detailsguest', ['oEvent' => $oEvent]);
+      }
+    }
+
     public function studentRegisterPage(Request $request, $iId) {
       $oEvent = Event::find($iId);
 
