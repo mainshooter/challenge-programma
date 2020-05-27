@@ -47,11 +47,6 @@
 
 						<button type="submit" name="submit" class="btn btn-primary">Opslaan</button>
 					</form>
-					@if ($oPhotoalbum->is_published == false)
-                        @if(Auth::user()->role == 'admin')
-                            <a href="{{ route('photoalbum.publish.prepare', $oPhotoalbum) }}" class="btn btn-primary">Album publiceren naar Linkedin</a>
-                        @endif
-					@endif
 				</div>
 			</div>
 			<br>
