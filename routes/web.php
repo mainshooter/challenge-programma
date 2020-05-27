@@ -77,8 +77,6 @@ Route::middleware('role:admin|content-writer')->group(function() {
     Route::get('photo/{oImage}', 'PhotoalbumController@editPhotoPage')->name('photoalbum.photo.create');
     Route::post('photo/{oImage}', 'PhotoalbumController@editPhoto')->name('photoalbum.photo.create.post');
   });
-  Route::get('linkedin-login', 'Auth\LinkedinLoginController@loginLinkedin')->name('linkedin.login');
-  Route::get('/callback', 'Auth\LinkedinLoginController@loginLinkedinCallback')->name('linkedin.callback');
 });
 
 Route::middleware('role:student')->group(function() {
