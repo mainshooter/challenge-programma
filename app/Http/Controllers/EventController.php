@@ -117,6 +117,7 @@ class EventController extends Controller
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
       $oEvent->user_id = Auth::user()->id;
+      $oEvent->is_accepted = false;
 
       $oEvent->save();
 
