@@ -228,6 +228,7 @@ class EventController extends Controller
     }
 
     public function details(Request $request, $iId){
+
         $oEvent = Event::find($iId);
         if (is_null($oEvent)) {
             return redirect()->route('event.index');
