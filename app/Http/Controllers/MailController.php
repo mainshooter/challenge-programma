@@ -18,13 +18,12 @@ class MailController extends Controller {
     $request->validate([
       'mail_subject' => 'required|min:3|string',
       'page_content' => 'required|min:3|string',
-      'mail_user_role' => 'required|in:admin,company,student,all',
+      'mail_user_role' => 'required|in:admin,company,student,all,content-writer',
     ]);
 
     $sRole = $request->mail_user_role;
     $sSubject = $request->mail_subject;
     $sText = $request->page_content;
-
     $aUsers = [];
 
     if ($sRole == 'all') {
@@ -33,7 +32,7 @@ class MailController extends Controller {
     else {
       $aUsers = User::where('role', $sRole)->get();
     }
-    
+
     foreach ($aUsers as $oUser) {
       Mail::to($oUser->email)->queue(new MailToUser($sSubject, $sText));
     }

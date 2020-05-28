@@ -22,6 +22,7 @@
               <option value="admin">Admin's</option>
               <option value="student">Studenten</option>
               <option value="company">Bedrijven</option>
+              <option value="content-writer">Content writer</option>
             </select>
           </div>
           <div class="form-group">

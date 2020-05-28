@@ -42,6 +42,7 @@
                         <li>Tussenvoegsel: {{ $oUser->middlename }}</li>
                         <li>Achternaam: {{ $oUser->lastname }}</li>
                         <li>Leerjaar: {{ $oUser->studentInfo->school_year }}</li>
+                        <li>Soort punten: {{ $oUser->studentInfo->points_decision }}</li>
                       </ul>
 
                       <h4>Contact gegevens</h4>
