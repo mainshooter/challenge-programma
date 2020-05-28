@@ -38,7 +38,6 @@ class EventController extends Controller
       $oValidator = Validator::make($request->all(), [
         'event_name' => 'required|max:255',
         'event_description' => 'required',
-        'event_points' => 'required|integer',
         'event_max_students' => 'nullable|integer|min:0',
         'event_start_date_time' => 'required|date_format:Y/m/d H:i',
         'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
@@ -60,7 +59,7 @@ class EventController extends Controller
 
       $oEvent->name = $request->event_name;
       $oEvent->description = $request->event_description;
-      $oEvent->points = $request->event_points;
+      $oEvent->points = 0;
       $oEvent->max_students = $request->event_max_students;
       $oEvent->street = $request->event_straat;
       $oEvent->city = $request->event_city;
@@ -70,16 +69,15 @@ class EventController extends Controller
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
       $oEvent->user_id = Auth::user()->id;
+      $oEvent->is_accepted = false;
+
+      $oEvent->save();
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          $oEvent->save();
           event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
-      else {
-        $oEvent->is_accepted = false;
-      }
-
-      $oEvent->save();
 
       return response()->json([
         'status' => true,
@@ -120,12 +118,13 @@ class EventController extends Controller
       $oEvent->event_end_date_time = $request->event_end_date_time;
       $oEvent->user_id = Auth::user()->id;
 
+      $oEvent->save();
+
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          $oEvent->save();
           event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
-
-      $oEvent->save();
 
       return redirect()->route('event.index');
     }
@@ -228,6 +227,7 @@ class EventController extends Controller
     }
 
     public function details(Request $request, $iId){
+
         $oEvent = Event::find($iId);
         if (is_null($oEvent)) {
             return redirect()->route('event.index');

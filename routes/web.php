@@ -80,6 +80,7 @@ Route::middleware('role:admin|content-writer')->group(function() {
 });
 
 Route::middleware('role:student')->group(function() {
+
   Route::prefix('student')->group(function() {
     Route::get("event/details/{id}", "EventController@details")->name("event.details");
       Route::prefix('profile')->group(function() {
@@ -89,6 +90,7 @@ Route::middleware('role:student')->group(function() {
           Route::post('terminate', 'ProfileController@terminate')->name('profile.terminate.post');
       });
     Route::prefix('event')->group(function() {
+      Route::get("details/{id}", "EventController@details")->name("event.details.student");
       Route::get('register/{id}', "EventController@studentRegisterPage")->name('event.register.student');
       Route::post('register/{id}', "EventController@studentRegister")->name('event.register.student.post');
     });
