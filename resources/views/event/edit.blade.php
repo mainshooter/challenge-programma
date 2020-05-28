@@ -10,7 +10,7 @@
 
       <a href="{{ route('event.index') }}" class="btn btn-primary">Terug</a>
 
-      <h1>Event toevoegen</h1>
+      <h1>Evenement bewerken</h1>
       <form method="post" class="row">
         @csrf
         <div class="col-6">
