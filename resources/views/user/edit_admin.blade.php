@@ -6,7 +6,11 @@
             <div class="col-md-8">
                 <a href="{{route('user.index')}}" class="btn btn-primary">Terug</a>
                 <div class="card">
-                    <div class="card-header">Admin Wijzigen</div>
+                    @if($oUser->role == "admin")
+                        <div class="card-header">Admin wijzigen</div>
+                    @else
+                        <div class="card-header">Content writer wijzigen</div>
+                    @endif
                     <div class="card-body">
                         @component('component/formError')
                         @endcomponent
