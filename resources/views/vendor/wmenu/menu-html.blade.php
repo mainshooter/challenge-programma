@@ -116,7 +116,7 @@ $currentUrl = url()->current();
 																		<span class="meta-sep hide-if-no-js"> | </span>
 																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{ $currentUrl }}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Annuleren</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
-																		<a onclick="getmenus()" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Menu item bijwerken</a>
+																		<a onclick="getmenus()" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Bijwerken</a>
 
 																	</div>
 
