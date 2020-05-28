@@ -69,16 +69,15 @@ class EventController extends Controller
       $oEvent->event_start_date_time = $request->event_start_date_time;
       $oEvent->event_end_date_time = $request->event_end_date_time;
       $oEvent->user_id = Auth::user()->id;
+      $oEvent->is_accepted = false;
+
+      $oEvent->save();
 
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          $oEvent->save();
           event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
-      else {
-        $oEvent->is_accepted = false;
-      }
-
-      $oEvent->save();
 
       return response()->json([
         'status' => true,
@@ -119,12 +118,13 @@ class EventController extends Controller
       $oEvent->event_end_date_time = $request->event_end_date_time;
       $oEvent->user_id = Auth::user()->id;
 
+      $oEvent->save();
+
       if(Auth::user()->role == 'admin'){
           $oEvent->is_accepted = true;
+          $oEvent->save();
           event(new NewAgendaEvent(eventToAgendaItem($oEvent)));
       }
-
-      $oEvent->save();
 
       return redirect()->route('event.index');
     }
