@@ -9,7 +9,8 @@
 		"under" : "Onder %s",
 		"outFrom" : "Onder van %s",
 		"menuFocus" : "%1$s. Element menu %2$d of %3$d.",
-		"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s."
+		"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s.",
+		"menuDelete": "Weet je zeker dat je dit wilt verwijderen?",
 	};
 	let addcustommenur= '{{ route("haddcustommenu") }}';
 	let updateitemr= '{{ route("hupdateitem")}}';
@@ -24,6 +25,6 @@
 		}
 	});
 </script>
-<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/override/harimayco-menu/scripts.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts2.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/menu.js')}}"></script>

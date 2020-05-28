@@ -35,7 +35,7 @@ class MenuController extends Controller
 
     public function deletemenug()
     {
-      return json_encode(array("resp" => "You can not delete the menu"));
+      return json_encode(array("resp" => "Je kan niet dit menu verwijderen"));
     }
 
     public function deleteitemmenu()
