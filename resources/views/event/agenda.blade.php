@@ -69,10 +69,6 @@
                 <textarea name="event_description" class="form-control" required>{{ old('event_description') }}</textarea>
               </div>
               <div class="form-group">
-                <label>Punten *</label>
-                <input type="number" name="event_points" class="form-control" value="{{ old('event_points') }}" required>
-              </div>
-              <div class="form-group">
                 <label>Maximaal aantal studenten</label>
                 <input type="number" name="event_max_students" class="form-control" value="{{ old('event_max_students') }}">
               </div>

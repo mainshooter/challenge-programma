@@ -38,7 +38,6 @@ class EventController extends Controller
       $oValidator = Validator::make($request->all(), [
         'event_name' => 'required|max:255',
         'event_description' => 'required',
-        'event_points' => 'required|integer',
         'event_max_students' => 'nullable|integer|min:0',
         'event_start_date_time' => 'required|date_format:Y/m/d H:i',
         'event_end_date_time' => 'required|date_format:Y/m/d H:i|after:event_start_date_time',
@@ -60,7 +59,7 @@ class EventController extends Controller
 
       $oEvent->name = $request->event_name;
       $oEvent->description = $request->event_description;
-      $oEvent->points = $request->event_points;
+      $oEvent->points = 0;
       $oEvent->max_students = $request->event_max_students;
       $oEvent->street = $request->event_straat;
       $oEvent->city = $request->event_city;
