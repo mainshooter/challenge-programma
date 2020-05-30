@@ -2,26 +2,30 @@ version: '2'
 
 services:
   app:
-    image: challangeprogramma
+    image: 10.10.0.1:5000/challangeprogramma:develop
     restart: always
     networks:
       - frontend
       - backend
     ports:
-      - 5002:80
-      - 5111:6001
+      - 127.0.0.1:5002:80
+      - 127.0.0.1:6565:6001
     depends_on:
       - db
+    volumes:
+    - "challange-programma.storage:/var/www/html/storage/app"
   db:
     image: mariadb:latest
     restart: always
     environment:
-    - MYSQL_ROOT_PASSWORD=jamooiwachtwoorddeze
+    - MYSQL_ROOT_PASSWORD=
     - MYSQL_DATABASE=challenge-programma
     - MYSQL_USER=challenge-programma
-    - MYSQL_PASSWORD=jaheelleukwachtwoordhebbenwehier!
+    - MYSQL_PASSWORD=
     networks:
       - backend
+    volumes:
+    - "challange-programma.database:/var/lib/mysql"
 networks:
   frontend:
   backend:
